@@ -52,7 +52,7 @@ const ArticlesPage = () => {
       viewBox="0 0 24 24"
       strokeWidth="1.5"
       stroke="currentColor"
-      class="size-6"
+      className="size-6"
     >
       <path
         strokeLinecap="round"
@@ -94,7 +94,7 @@ const ArticlesPage = () => {
                     viewBox="0 0 24 24"
                     stroke-width="1.5"
                     stroke="currentColor"
-                    class="size-4"
+                    className="size-4"
                   >
                     <path
                       stroke-linecap="round"
@@ -132,7 +132,7 @@ const ArticlesPage = () => {
             viewBox="0 0 24 24"
             strokeWidth="1.5"
             stroke="currentColor"
-            class="size-4"
+            className="size-4"
           >
             <path
               strokeLinecap="round"
