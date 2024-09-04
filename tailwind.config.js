@@ -6,6 +6,9 @@ export default {
       colors: {
         "muted-background": "hsl(240,4.8%,95.9%)",
         "muted-foreground": "#6e6e77",
+        alpha : "#2e539d",
+        beta : "#b09417",
+        gamma : "#f8a205",  
       },
     },
   },
