@@ -3,8 +3,9 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
-      backgroundImage: {
-        // "herosection": "url('/src/assets/images/africa1.jpg')",
+      colors: {
+        "muted-background": "hsl(240,4.8%,95.9%)",
+        "muted-foreground": "#6e6e77",
       },
     },
   },
