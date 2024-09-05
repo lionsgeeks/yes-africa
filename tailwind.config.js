@@ -4,9 +4,9 @@ export default {
   theme: {
     extend: {
       colors: {
-        "alpha": "#2e539d",
-        "beta": "#b09417",
-        "gamma": "#f8a205",
+        alpha: "#2e539d",
+        beta: "#b09417",
+        gamma: "#f8a205",
         "muted-background": "#e5e1da",
         "muted-foreground": "#6e6e77",
       },
