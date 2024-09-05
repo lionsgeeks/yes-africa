@@ -2,11 +2,9 @@ const Button = ({ children, className, outline = false, ...rest }) => {
   return (
     <button
       {...rest}
-      className={`bg-alpha border border-alpha ${
-        outline
-          ? "hover:bg-transparent hover:text-alpha"
-          : "hover:border-beta hover:bg-beta hover:text-white"
-      } px-16 py-2.5 w-fit rounded-lg font-normal duration-[375ms] ${className}`}
+      className={`bg-gamma/75 border text-white border-gamma/75 ${
+        outline ? "hover:bg-transparent hover:text-gamma" : "hover:border-gamma hover:bg-gamma"
+      } px-12 py-2.5 w-fit rounded-lg font-medium duration-[375ms] ${className}`}
     >
       {children}
     </button>

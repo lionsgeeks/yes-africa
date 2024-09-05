@@ -6,6 +6,7 @@ import Navbar from "./layouts/navbar";
 import Footer from "./layouts/footer";
 import AboutPage from "./pages/about/about";
 import { AppProvider } from "./context/AppContext";
+import ErrorPage from "./pages/error";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <AppProvider>
         <Navbar />
         <Routes>
+          <Route path="/*" element={<ErrorPage />} />
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/articles" element={<ArticlesPage />} />
