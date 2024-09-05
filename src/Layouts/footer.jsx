@@ -90,7 +90,7 @@ const Footer = () => {
                 <ul className="list-unstyled text-gray-700">
                   {[
                     [
-                      { en: "Terms &amp; Conditions", ar: "الشروط والأحكام" },
+                      { en: "Terms & Conditions", ar: "الشروط والأحكام" },
                       "/",
                     ],
                     [{ en: "Privacy Policy", ar: "سياسة الخصوصية" }, "/about"],

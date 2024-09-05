@@ -81,7 +81,7 @@ const ArticlesPage = () => {
           selectedLanguage == "ar" ? "text-right items-end" : ""
         }`}
       >
-        <div className="inset-0 absolute bg-black/70 -z-10"></div>
+        <div className="inset-0 absolute bg-gradient-to-r from-black via-[#53450ab5] via-50%  to-alpha opacity-85 -z-10"></div>
         <h1 className="lg:text-5xl text-3xl px-3 font-bold ">
           <TransText
             en="Explore Our Latest Articles"
