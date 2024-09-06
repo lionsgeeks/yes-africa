@@ -6,10 +6,13 @@ import {
   SponsorsSection,
 } from "./partials";
 
+
 const AboutPage = () => {
+
   return (
     <>
       <main>
+      
         <AboutSection />
         <HistorySection />
         <OrganizatesSection />

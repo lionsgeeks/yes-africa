@@ -1,6 +1,9 @@
 import { TransText } from "../../../components";
-import { Imgs } from "../../../constants";
 import { useAppContext } from "../../../context/AppContext";
+
+import african1 from "../../../assets/images/comittee-scientifique/Thebe-Ikalafeng.jpg"
+import african2 from "../../../assets/images/comittee-scientifique/Toba-Tanama.jpg"
+import african3 from "../../../assets/images/comittee-scientifique/Ty-Heath.jpg"
 
 export const CommitteeSection = () => {
   const { selectedLanguage } = useAppContext();
@@ -24,17 +27,17 @@ export const CommitteeSection = () => {
             {
               name: "Dr. Rachel Lim",
               job: { en: "Artificial Intelligence", ar: "الذكاء الاصطناعي" },
-              image: "Thebe-Ikalafeng.jpg",
+              image: african1,
             },
             {
               name: "Prof. Jian Park",
               job: { en: "Quantum Computing", ar: "الحوسبة الكمومية" },
-              image: "Toba-Tanama.jpg",
+              image: african2,
             },
             {
               name: "Dr. Ty Heath",
               job: { en: "Materials Science", ar: "علم المواد" },
-              image: "Ty-Heath.jpg",
+              image: african3,
             },
           ].map(({ name, job, image }, index) => (
             <div
@@ -42,8 +45,9 @@ export const CommitteeSection = () => {
               className="flex items-center flex-col w-full md:w-[calc(calc(100%-calc(2*3rem))/3)] lg:w-[calc(calc(100%-calc(4*3rem))/5)]"
             >
               <img
+              loading="lazy"
                 className="mb-3 aspect-square object-cover w-1/2 border rounded-full"
-                src={Imgs.getImageUrl(image, "comittee-scientifique")}
+                src={image}
                 alt={`${name}'s image`}
               />
               <h2 className="text-base capitalize font-medium tracking-tighter md:text-lg lg:text-xl/none">

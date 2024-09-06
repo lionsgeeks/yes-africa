@@ -1,6 +1,11 @@
 import { TransText } from "../../../components";
-import { Imgs } from "../../../constants";
 import { useAppContext } from "../../../context/AppContext";
+
+import african1 from "../../../assets/images/organizates/Desire-Koussawo.jpg";
+import african2 from "../../../assets/images/organizates/Dr.-Kaoutar-El-Maghraoui.png";
+import african3 from "../../../assets/images/organizates/Kahi-Lumumba.png";
+import african4 from "../../../assets/images/organizates/Osamede-UWUBANMWEN.jpg";
+import african5 from "../../../assets/images/organizates/Oscar-Pierre.jpg";
 
 export const OrganizatesSection = () => {
   const { selectedLanguage } = useAppContext();
@@ -24,32 +29,27 @@ export const OrganizatesSection = () => {
             {
               name: "Desire Koussawo",
               job: { en: "Co-founder", ar: "الشريك المؤسس" },
-              image: "Desire-Koussawo.jpg",
+              image: african1,
             },
             {
               name: "Dr. Kaoutar El Maghraoui",
               job: { en: "Co-founder", ar: "الشريك المؤسس" },
-              image: "Dr.-Kaoutar-El-Maghraoui.png",
-            },
-            {
-              name: "Dr. Kaoutar El Maghraoui",
-              job: { en: "Co-founder", ar: "الشريك المؤسس" },
-              image: "Dr.-Kaoutar-El-Maghraoui.png",
+              image: african2,
             },
             {
               name: "Kahi Lumumba",
               job: { en: "Executive Director", ar: "المدير التنفيذي" },
-              image: "Kahi-Lumumba.png",
+              image: african3,
             },
             {
               name: "Osamede UWUBANMWEN",
               job: { en: "Program Manager", ar: "مدير البرنامج" },
-              image: "Osamede-UWUBANMWEN.jpg",
+              image: african4,
             },
             {
               name: "Oscar Pierre",
               job: { en: "Program Manager", ar: "مدير البرنامج" },
-              image: "Oscar-Pierre.jpg",
+              image: african5,
             },
           ].map(({ image, job, name }, index) => (
             <div
@@ -57,8 +57,9 @@ export const OrganizatesSection = () => {
               className="flex flex-col w-full md:w-[calc(calc(100%-calc(2*1.5rem))/3)] lg:w-[calc(calc(100%-calc(4*3rem))/5)]"
             >
               <img
+                loading="lazy"
                 className="mb-3 aspect-[1/1.25] object-cover border rounded"
-                src={Imgs.getImageUrl(image, "organizates")}
+                src={image}
                 alt={`${name}'s image`}
               />
               <h2 className="text-base capitalize font-medium tracking-tighter md:text-lg lg:text-xl/none">

@@ -81,7 +81,6 @@ const Navbar = () => {
               {[
                 [{ en: "Home", ar: "الرئيسية" }, "/"],
                 [{ en: "About", ar: "حول" }, "/about"],
-                [{ en: "Sommet", ar: "القمة" }, "/"],
                 [{ en: "Articles", ar: "المقالات" }, "/articles"],
                 [{ en: "Contact", ar: "التواصل" }, "/contact"],
               ].map(([name, path], index) => (

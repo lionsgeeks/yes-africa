@@ -1,7 +1,14 @@
 import { Link } from "react-router-dom";
 import { TransText } from "../../../components";
-import { Imgs } from "../../../constants";
 import { useAppContext } from "../../../context/AppContext";
+
+import partner1 from "../../../assets/images/partners-sponsors/AG-Partners.png"
+import partner2 from "../../../assets/images/partners-sponsors/Amazon-Web-Services.png"
+import partner3 from "../../../assets/images/partners-sponsors/Brand-AFRICA.png"       
+import partner4 from "../../../assets/images/partners-sponsors/Glovo-logo-Green.png"
+import partner5 from "../../../assets/images/partners-sponsors/Meta_Lockup_PositivePrimary_RGB.png"
+import partner6 from "../../../assets/images/partners-sponsors/Sages-Noir.png"
+import partner7 from "../../../assets/images/partners-sponsors/UM6P-Primary-Lockup-Web.png"
 
 export const SponsorsSection = () => {
   const { selectedLanguage } = useAppContext();
@@ -22,13 +29,13 @@ export const SponsorsSection = () => {
           }`}
         >
           {[
-            ["AG-Partners.png", "https://publicisgroupeafrica.com/"],
-            ["Amazon-Web-Services.png", "https://aws.amazon.com/"],
-            ["Brand-AFRICA.png", "https://www.brandafrica.org/"],
-            ["Glovo-logo-Green.png", "https://glovoapp.com/"],
-            ["Meta_Lockup_PositivePrimary_RGB.png", "https://about.meta.com/"],
-            ["Sages-Noir.png", "https://sages.africa/"],
-            ["UM6P-Primary-Lockup-Web.png", "https://um6p.ma/"],
+            [partner1, "https://publicisgroupeafrica.com/"],
+            [partner2, "https://aws.amazon.com/"],
+            [partner3, "https://www.brandafrica.org/"],
+            [partner4, "https://glovoapp.com/"],
+            [partner5, "https://about.meta.com/"],
+            [partner6, "https://sages.africa/"],
+            [partner7, "https://um6p.ma/"],
           ].map(([image, link], index) => (
             <Link
               className="aspect-square w-[calc(calc(100%-calc(2*1.5rem))/3)] md:w-[calc(calc(100%-calc(4*2.5rem))/5)] lg:w-[calc(calc(100%-calc(7*4rem))/8)]"
@@ -36,9 +43,10 @@ export const SponsorsSection = () => {
               target="_blank"
             >
               <img
+              loading="lazy"
                 key={index}
                 className="size-full"
-                src={Imgs.getImageUrl(image, "partners-sponsors")}
+                src={image}
                 alt={`sponsor-${index}`}
               />
             </Link>

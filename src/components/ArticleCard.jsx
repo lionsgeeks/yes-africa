@@ -1,0 +1,84 @@
+import { Link } from "react-router-dom";
+import { useAppContext } from "../context/AppContext";
+import TransText from "./TransText";
+
+const ArticleCard = ({ index, image, title, description, author, date }) => {
+  const { selectedLanguage } = useAppContext();
+  const arrow = (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth="1.5"
+      stroke="currentColor"
+      className={`size-6 ${selectedLanguage == "ar" ? "rotate-180" : ""}`}
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3"
+      />
+    </svg>
+  );
+
+  return (
+    <>
+      <div
+        className={`flex flex-col gap-2 lg:w-[calc(calc(100%-2.5rem)/3)] border rounded-lg shadow-sm ${
+          selectedLanguage == "ar" ? "text-right" : ""
+        }`}
+      >
+        <img className="w-full h-[35vh] object-cover rounded-t-md" src={image} alt="" />
+        <div className={`p-3 gap-3 flex flex-col ${selectedLanguage == "ar" ? "justify-end" : ""}`}>
+          <h1 className="text-2xl font-bold">{title}</h1>
+          <div
+            className={`flex text-sm text-muted-foreground gap-2 items-center ${
+              selectedLanguage == "ar" ? "justify-end" : ""
+            }`}
+          >
+            <div className="flex items-center gap-2">
+              <p>{author}</p>
+              <div className="size-[0.325rem] bg-muted-foreground/75 rounded-full"> </div>
+              <p>{date}</p>
+            </div>
+          </div>
+          <div
+            className={`flex gap-3 flex-wrap font-medium text-xs ${
+              selectedLanguage == "ar" ? "justify-end" : ""
+            }`}
+          >
+            <p className="bg-[hsl(240,4.8%,95.9%)] px-3.5 py-1 rounded-xl">
+              <TransText ar="قوة_اتخاذ_القرار" en="Decision_Making_Power" />
+            </p>
+            <p className="bg-[hsl(240,4.8%,95.9%)] px-3.5 py-1 rounded-xl">
+              <TransText ar="الوصول_إلى_التمويل " en="Access_to_Funding" />
+            </p>
+          </div>
+          <p className="text-lg">
+            {description.en.length > 149 ? (
+              <TransText
+                ar={description.ar.substring(0, 149)}
+                en={description.en.substring(0, 149) + "..."}
+              />
+            ) : (
+              <TransText ar={description.ar} en={description.en} />
+            )}
+          </p>
+
+          <Link to={`/articles/${index}`} className={selectedLanguage === "ar" && "self-end"}>
+            <button
+              className={`bg-black flex border-2 text-white items-center gap-2 justify-center border-black hover:border-gamma hover:bg-gamma hover:text-white px-6 py-2.5 w-fit rounded-lg lg:font-medium ${
+                selectedLanguage === "ar" && "flex-row-reverse"
+              }`}
+            >
+              <TransText ar="اقرأ المزيد" en="Read More" />
+              {arrow}
+            </button>
+          </Link>
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default ArticleCard;
