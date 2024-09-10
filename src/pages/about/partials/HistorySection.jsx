@@ -11,7 +11,7 @@ export const HistorySection = () => {
           selectedLanguage == "ar" && "text-end"
         }`}
       >
-        <h2 className="text-xl font-medium tracking-tighter md:text-2xl lg:text-3xl/none">
+        <h2 className="text-xl text-alpha font-medium tracking-tighter md:text-2xl lg:text-3xl/none">
           <TransText en="Our History" ar="تاريخنا" />
         </h2>
         <div
@@ -43,7 +43,7 @@ export const HistorySection = () => {
             },
           ].map(({ period, description }, index) => (
             <div key={index} className="gap-2 flex flex-col lg:w-[calc(calc(100%-3rem)/2)]">
-              <h2 className="text-lg font-medium tracking-tighter md:text-xl lg:text-2xl/none">
+              <h2 className="text-lg text-beta font-medium tracking-tighter md:text-xl lg:text-2xl/none">
                 {period}
               </h2>
               <p className="text-muted-foreground text-base/relaxed text-balance lg:text-lg/snug">

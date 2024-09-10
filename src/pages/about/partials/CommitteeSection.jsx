@@ -15,7 +15,7 @@ export const CommitteeSection = () => {
           selectedLanguage == "ar" && "text-end"
         }`}
       >
-        <h2 className="text-xl font-medium tracking-tighter md:text-2xl lg:text-3xl/none">
+        <h2 className="text-xl text-alpha font-medium tracking-tighter md:text-2xl lg:text-3xl/none">
           <TransText en="The Scientific Committee" ar="اللجنة العلمية" />
         </h2>
         <div

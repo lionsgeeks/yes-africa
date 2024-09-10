@@ -67,7 +67,7 @@ const ArticleCard = ({ index, image, title, description, author, date }) => {
 
           <Link to={`/articles/${index}`} className={selectedLanguage === "ar" && "self-end"}>
             <button
-              className={`bg-black flex border-2 text-white items-center gap-2 justify-center border-black hover:border-gamma hover:bg-gamma hover:text-white px-6 py-2.5 w-fit rounded-lg lg:font-medium ${
+              className={`bg-alpha flex border-2 text-white items-center gap-2 justify-center border-alpha hover:border-beta hover:bg-beta hover:text-white px-6 py-2.5 w-fit rounded-lg lg:font-medium ${
                 selectedLanguage === "ar" && "flex-row-reverse"
               }`}
             >

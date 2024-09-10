@@ -20,7 +20,7 @@ export const SponsorsSection = () => {
           selectedLanguage == "ar" && "text-end"
         }`}
       >
-        <h2 className="text-xl font-medium tracking-tighter md:text-2xl lg:text-3xl/none">
+        <h2 className="text-xl text-alpha font-medium tracking-tighter md:text-2xl lg:text-3xl/none">
           <TransText en="Partners & Sponsors" ar="الشركاء والممولون" />
         </h2>
         <div

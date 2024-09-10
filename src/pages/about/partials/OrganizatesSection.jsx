@@ -17,7 +17,7 @@ export const OrganizatesSection = () => {
           selectedLanguage == "ar" && "text-end"
         }`}
       >
-        <h2 className="text-xl font-medium tracking-tighter md:text-2xl lg:text-3xl/none">
+        <h2 className="text-xl text-alpha font-medium tracking-tighter md:text-2xl lg:text-3xl/none">
           <TransText en="The Organizers" ar="منظمون" />
         </h2>
         <div

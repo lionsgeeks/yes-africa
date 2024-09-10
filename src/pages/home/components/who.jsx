@@ -122,7 +122,7 @@ const Who = () => {
             key={index}
           >
             <h1
-              className={`lg:text-start lg:mb-3 text-3xl font-bold tracking-tighter md:text-4xl lg:text-5xl/none ${
+              className={`lg:text-start text-beta lg:mb-3 text-3xl font-bold tracking-tighter md:text-4xl lg:text-5xl/none ${
                 selectedLanguage == "ar" ? "flex flex-row-reverse gap-2" : ""
               }`}
             >
@@ -143,11 +143,11 @@ const Who = () => {
         {stats.map(({ icon, number, title }, index) => (
           <div
             key={index}
-            className="flex items-center flex-col lg:fle-row justify-center text-center gap-3"
+            className="flex items-center flex-col lg:fle-row justify-center text-alpha text-center gap-3"
           >
             {icon}
             <div>
-              <p className="text-2xl md:text-3xl lg:text-4xl font-bold tracking-wide">{number}</p>
+              <p className="text-2xl text-beta md:text-3xl lg:text-4xl font-bold tracking-wide">{number}</p>
               <p className="text-muted-foreground lg:text-lg font- tracking-wide">
                 <TransText {...title} />
               </p>

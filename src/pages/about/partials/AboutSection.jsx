@@ -27,7 +27,7 @@ export const AboutSection = () => {
           selectedLanguage == "ar" && "text-end"
         }`}
       >
-        <h1 className="text-3xl font-bold tracking-tighter md:text-5xl lg:text-6xl/none">
+        <h1 className="text-3xl text-alpha font-bold tracking-tighter md:text-5xl lg:text-6xl/none">
           <TransText en="About Us" ar="حولنا" />
         </h1>
 
@@ -37,7 +37,7 @@ export const AboutSection = () => {
           }`}
         >
           <div className="gap-2 flex flex-col">
-            <h2 className="text-xl font-medium tracking-tighter md:text-2xl lg:text-3xl/none">
+            <h2 className="text-xl text-beta font-medium tracking-tighter md:text-2xl lg:text-3xl/none">
               <TransText en="Our Mission" ar="مهمتنا" />
             </h2>
             <p className="text-muted-foreground md:text-base/relaxed lg:text-lg/snug">
@@ -49,7 +49,7 @@ export const AboutSection = () => {
           </div>
 
           <div className="gap-2 flex flex-col">
-            <h2 className="text-xl font-medium tracking-tighter md:text-2xl lg:text-3xl/none">
+            <h2 className="text-xl text-beta font-medium tracking-tighter md:text-2xl lg:text-3xl/none">
               <TransText en="Our vision" ar="رؤيتنا" />
             </h2>
             <p className="text-muted-foreground md:text-base/relaxed lg:text-lg/snug">
