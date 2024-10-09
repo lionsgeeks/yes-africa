@@ -1,4 +1,5 @@
 import deuxM from "../../../assets/images/sponsors/2M_Logo.svg.png";
+import ucgc from "../../../assets/images/sponsors/ucgc.jpg";
 import lionsgeek from "../../../assets/images/sponsors/lionsgeek.png";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, FreeMode } from "swiper/modules";
@@ -36,9 +37,9 @@ const Sponsors = () => {
           {Array.from({ length: 6 }).map((_, index) => (
             <SwiperSlide className="aspect-[1/0.5] flex items-center justify-center" key={index}>
               <img
-                src={index % 2 ? deuxM : lionsgeek}
-                className=" w-[75px]"
-                alt={index % 2 ? "2M" : "Lionsgeek"}
+                src={index % 2 ? ucgc : lionsgeek}
+                className={`${index % 2 ?"w-[140px]" : "w-[75px]" }`}
+                alt={index % 2 ? "CGLU Afrique" : "Lionsgeek"}
               />
             </SwiperSlide>
           ))}

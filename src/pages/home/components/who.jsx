@@ -6,7 +6,7 @@ const Who = () => {
   const width = "42px";
   const stats = [
     {
-      number: "32",
+      number: "30+",
       title: { en: "Countries", ar: "دولة" },
       icon: (
         <svg
@@ -26,7 +26,7 @@ const Who = () => {
       ),
     },
     {
-      number: "42+",
+      number: "10+",
       title: { en: "Partners", ar: "شريك" },
       icon: (
         <svg
@@ -48,7 +48,7 @@ const Who = () => {
       ),
     },
     {
-      number: "1,950+",
+      number: "1,000+",
       title: { en: "Attendees", ar: "حاضرون" },
       icon: (
         <svg
@@ -68,7 +68,7 @@ const Who = () => {
       ),
     },
     {
-      number: "60+",
+      number: "10+",
       title: { en: "Speakers", ar: "متحدثون" },
       icon: (
         <svg
@@ -95,13 +95,13 @@ const Who = () => {
     {
       title: { en: "About", ar: "حول" },
       para1: {
-        en: "The African Youth Association is a non-profit organization dedicated to supporting and empowering young people across the continent. We believe in the power of education, entrepreneurship, and community engagement to drive positive change.",
-        ar: "جمعية الشباب الإفريقي هي منظمة غير ربحية مكرسة لدعم وتمكين الشباب عبر القارة. نحن نؤمن بقوة التعليم وريادة الأعمال والمشاركة المجتمعية لتحقيق التغيير الإيجابي.",
+        en: "Jadara is a non-profit organization dedicated to empowering underserved youth and fostering social development in Morocco and beyond. With a mission to provide opportunities for education, skill development, and personal growth, Jadara aims to equip young individuals with the tools they need to overcome social barriers and achieve their full potential. The foundation focuses on initiatives that promote inclusivity, resilience, and community engagement, working collaboratively with local and international partners to create sustainable solutions that uplift marginalized communities. Through its various programs and activities, Jadara is committed to transforming lives and building a brighter future for the next generation.",
+        ar: "جدارة هي منظمة غير ربحية مكرسة لتمكين الشباب المحرومين وتعزيز التنمية الاجتماعية في المغرب وما وراءه. تهدف جادارة، من خلال مهمتها المتمثلة في توفير الفرص للتعليم، وتطوير المهارات، والنمو الشخصي، إلى تجهيز الشباب بالأدوات اللازمة لتجاوز الحواجز الاجتماعية وتحقيق إمكاناتهم الكاملة. تركز المؤسسة على المبادرات التي تعزز الشمولية، والمرونة، والمشاركة المجتمعية، وتعمل بشكل تعاوني مع الشركاء المحليين والدوليين لإنشاء حلول مستدامة ترفع من مستوى المجتمعات المهمشة. من خلال برامجها وأنشطتها المتنوعة، تلتزم جادارة بتحويل الحياة وبناء مستقبل أكثر إشراقًا للجيل القادم.",
       },
-      para2: {
-        en: "dedicated to supporting and empowering the next generation of African leaders. We believe that by investing in the education, skills, and entrepreneurship of African youth, we can create a brighter future for the continent",
-        ar: "مكرسة لدعم وتمكين الجيل القادم من القادة الأفارقة. نحن نؤمن أنه من خلال الاستثمار في تعليم الشباب الأفارقة، ومهاراتهم، وريادتهم للأعمال، يمكننا أن نخلق مستقبلاً أكثر إشراقاً للقارة.",
-      },
+      // para2: {
+      //   en: "dedicated to supporting and empowering the next generation of African leaders. We believe that by investing in the education, skills, and entrepreneurship of African youth, we can create a brighter future for the continent",
+      //   ar: "مكرسة لدعم وتمكين الجيل القادم من القادة الأفارقة. نحن نؤمن أنه من خلال الاستثمار في تعليم الشباب الأفارقة، ومهاراتهم، وريادتهم للأعمال، يمكننا أن نخلق مستقبلاً أكثر إشراقاً للقارة.",
+      // },
     },
   ];
 
@@ -127,7 +127,7 @@ const Who = () => {
               }`}
             >
               <TransText {...title} />
-              <span className="text-alpha"> YES Africa</span>
+              <span className="text-alpha"> Jadara Foundation</span>
             </h1>
             <p className="text-muted-foreground md:text-base/relaxed lg:text-lg/snug">
               <TransText {...para1} />

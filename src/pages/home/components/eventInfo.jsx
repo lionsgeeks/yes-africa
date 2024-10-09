@@ -11,7 +11,7 @@ const EventInfo = () => {
   const eventInformation = [
     {
       icon: <CiCalendar />,
-      text: { en: "June 15, 2023 - June 17, 2023", ar: "15 يونيو 2023 - 17 يونيو 2023" },
+      text: { en: "February 12-13, 2025", ar: "12-13 فبراير 2025"},
     },
     {
       icon: <GoClock />,
@@ -19,7 +19,7 @@ const EventInfo = () => {
     },
     {
       icon: <MdMyLocation />,
-      text: { en: "African Youth Empowerement Summit", ar: "قمة تمكين الشباب الأفارقة" },
+      text: { en: "Casablanca", ar: " الدار البيضاء"},
     },
   ];
 
@@ -27,8 +27,8 @@ const EventInfo = () => {
     {
       title: { en: "Information About The Event", ar: "معلومات عن الحدث" },
       desc: {
-        en: "Join us for a celebration of African youth culture and empowerment. The event will feature inspiring speajers, interactive workshops, and live performances.",
-        ar: "انضم إلينا للاحتفال بثقافة الشباب الإفريقي وتمكينهم. سيشمل الحدث متحدثين ملهمين، وورش عمل تفاعلية، وعروض حية.",
+        en: "Join us for a vibrant celebration of African youth empowerment! Experience an exciting event featuring inspiring speakers, interactive workshops, and captivating live performances. This is a fantastic opportunity to connect with fellow change-makers, exchange ideas, and celebrate the dynamism of African youth. Don’t miss this enriching experience designed to uplift and inspire the next generation!",
+        ar: "انضموا إلينا للاحتفال النابض بتمكين الشباب الأفريقي! عيشوا تجربة مثيرة تتضمن متحدثين ملهمين، ورش عمل تفاعلية، وعروض حية ساحرة. هذه فرصة رائعة للتواصل مع صانعي التغيير الآخرين، وتبادل الأفكار، والاحتفال بحيوية الشباب الأفريقي. لا تفوتوا هذه التجربة الغنية المصممة لرفع معنويات وإلهام الجيل القادم!",
       },
       aboutBtn: { en: "About Summit", ar: "حول الملتقى" },
       contactBtn: { en: "Contact Us", ar: "اتصل بنا" },

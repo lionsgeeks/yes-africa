@@ -28,31 +28,31 @@ const Footer = () => {
               {/* icons */}
               <div className="flex flex-col justify-between gap-2 pt-4">
                 <div className="flex gap-3">
-                  <a target="blank" href="https://www.facebook.com/LionsGeek">
+                  <a target="blank" href="https://www.facebook.com/JadaraFoundation">
                     <FaFacebookF className="text-[1.4rem] fill-gray-400 hover:fill-blue-500 transition duration-200" />
                   </a>
                   <a
                     target="blank"
-                    href="https://www.instagram.com/lions_geek/"
+                    href="https://www.instagram.com/jadara_foundation/"
                   >
                     <FaInstagram className="text-[1.4rem] fill-gray-400 hover:fill-pink-600 transition duration-200" />
                   </a>
-                  <a target="blank" href="https://x.com/LionsGeek">
+                  <a target="blank" href="https://x.com/JadaraFondation">
                     <BsTwitterX className="text-[1.4rem] fill-gray-400 hover:fill-black transition duration-200" />
                   </a>
                   <a
                     target="blank"
-                    href="https://www.linkedin.com/company/lionsgeek/"
+                    href="https://www.linkedin.com/company/jadara-foundation/"
                   >
                     <FaLinkedinIn className="text-[1.4rem] fill-gray-400 hover:fill-[#0a66c2] transition duration-200" />
                   </a>
                   <a
                     target="blank"
-                    href="https://www.youtube.com/channel/UCmd_wMUuFYbZ_jJgFxErDyA"
+                    href="https://www.youtube.com/@FondationMarocainedelEtudiant"
                   >
                     <FaYoutube className="text-[1.4rem] fill-gray-400 hover:fill-[#ff0000] transition duration-200" />
                   </a>
-                  <a target="blank" href="https://www.tiktok.com/@lions_geek">
+                  <a target="blank" href="https://www.tiktok.com/@jadarafoundation">
                     <FaTiktok className="text-[1.4rem] fill-gray-400 hover:fill-black transition duration-200" />
                   </a>
                 </div>
