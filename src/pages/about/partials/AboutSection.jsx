@@ -7,9 +7,8 @@ export const AboutSection = () => {
   return (
     <>
       <div
-        className={`w-full h-[50vh]  relative -z-20 text-white lg:px-16 flex flex-col justify-center gap-3 bg-no-repeat bg-cover bg-center bg-[url('/src/assets/images/africa2.jpg')] ${
-          selectedLanguage == "ar" ? "text-right items-end" : ""
-        }`}
+        className={`w-full h-[50vh]  relative -z-20 text-white lg:px-16 flex flex-col justify-center gap-3 bg-no-repeat bg-cover bg-center bg-[url('/src/assets/images/africa2.jpg')] ${selectedLanguage == "ar" ? "text-right items-end" : ""
+          }`}
       >
         <div className="inset-0 absolute bg-gradient-to-r from-black via-[#53450ab5] via-50%  to-alpha opacity-85 -z-10"></div>
         <h1 className="text-3xl font-bold tracking-tight md:text-5xl lg:text-6xl/none">
@@ -23,7 +22,7 @@ export const AboutSection = () => {
         </p>
       </div>
       <section
-        className={`px-8 md:px-12 lg:px-16 py-16 md:py-20 lg:py-28 flex flex-col justify-center gap-3 md:gap-4 lg:gap-6 ${
+        className={` px-8 md:px-12 lg:px-16 py-16 md:py-20 lg:py-28 flex flex-col justify-center gap-3 md:gap-4 lg:gap-6 ${
           selectedLanguage == "ar" && "text-end"
         }`}
       >
@@ -32,30 +31,43 @@ export const AboutSection = () => {
         </h1>
 
         <div
-          className={`flex flex-col gap-4 md:gap-6 lg:gap-12 ${
-            selectedLanguage == "ar" ? "lg:flex-row-reverse" : "lg:flex-row"
+         className={`flex flex-wrap gap-4 md:gap-6 lg:gap-12 ${
+            selectedLanguage == "ar" ? "flex-row-reverse" : "flex-row"
           }`}
         >
-          <div className="gap-2 flex flex-col">
+          <div className="gap-2 flex flex-col lg:w-[calc(calc(100%-3rem)/2)]">
             <h2 className="text-xl text-beta font-medium tracking-tighter md:text-2xl lg:text-3xl/none">
               <TransText en="Our Mission" ar="مهمتنا" />
             </h2>
             <p className="text-muted-foreground md:text-base/relaxed lg:text-lg/snug">
               <TransText
-                en="Our mission is to bring together the brightest minds in the field of science and technology to drive innovation and progress. We are committed to fostering a collaborative environment where ideas can flourish and solutions can be found to the world's most pressing challenges."
-                ar="مهمتنا هي جمع أذكى العقول في مجال العلوم والتكنولوجيا لدفع الابتكار والتقدم. نحن ملتزمون بتعزيز بيئة تعاونية حيث يمكن للأفكار أن تزدهر ويمكن العثور على حلول للتحديات الأكثر إلحاحًا في العالم"
+                en="Jadara's mission is to empower underserved youth by providing them with the skills, resources, and opportunities necessary to build a brighter future. We are dedicated to fostering an inclusive environment where young individuals can thrive, regardless of their social, economic, or geographical backgrounds. By promoting education, skill development, and entrepreneurship, Jadara aims to break the cycle of poverty and create pathways to success for young people."
+                ar="مهمة جدارة هي تمكين الشباب المحرومين من خلال تزويدهم بالمهارات والموارد والفرص اللازمة لبناء مستقبل مشرق. نحن ملتزمون بتعزيز بيئة شاملة يمكن أن يزدهر فيها الشباب، بغض النظر عن خلفياتهم الاجتماعية أو الاقتصادية أو الجغرافية. من خلال تعزيز التعليم وتطوير المهارات وريادة الأعمال، تهدف جدارة إلى كسر حلقة الفقر وخلق طرق للنجاح للشباب"
               />
             </p>
           </div>
 
-          <div className="gap-2 flex flex-col">
+          <div className="gap-2 flex flex-col lg:w-[calc(calc(100%-3rem)/2)]">
             <h2 className="text-xl text-beta font-medium tracking-tighter md:text-2xl lg:text-3xl/none">
               <TransText en="Our vision" ar="رؤيتنا" />
             </h2>
             <p className="text-muted-foreground md:text-base/relaxed lg:text-lg/snug">
               <TransText
-                en="Our vision is to be a leading hub for scientific and technological advancement, where the most innovative thinkers and doers come together to push the boundaries of what's possible. We aim to inspire and empower the next generation of scientists, engineers, and entrepreneurs to create a better future for all."
-                ar="مهمتنا هي جمع أذكى العقول في مجال العلوم والتكنولوجيا لدفع الابتكار والتقدم. نحن ملتزمون بتعزيز بيئة تعاونية حيث يمكن للأفكار أن تزدهر ويمكن العثور على حلول للتحديات الأكثر إلحاحًا في العالم"
+                en="Our vision is to be a leading force in transforming the lives of young people across the region, enabling them to become active contributors to their communities and the global economy. We strive to inspire and cultivate the next generation of leaders, innovators, and changemakers who will drive social progress and development."
+                ar="رؤيتنا هي أن نكون قوة رائدة في تحويل حياة الشباب في المنطقة، وتمكينهم من أن يصبحوا مساهمين نشطين في مجتمعاتهم والاقتصاد العالمي. نحن نسعى لإلهام وتنمية الجيل القادم من القادة والمبتكرين وصانعي التغيير الذين سيدفعون عجلة التقدم الاجتماعي والتنمية"
+              />
+            </p>
+          </div>
+
+          <div className="gap-2 flex flex-col lg:w-[calc(calc(100%-3rem)/2)]">
+            <h2 className="text-xl text-beta font-medium tracking-tighter md:text-2xl lg:text-3xl/none">
+              <TransText en="Our Approach" ar="نهجنا" />
+            </h2>
+            <p className="text-muted-foreground md:text-base/relaxed lg:text-lg/snug">
+              <TransText
+                en="Since our inception in 2002, Jadara has focused on creating impactful programs and initiatives that address the specific needs of young people. We engage with local communities, educational institutions, and partners to develop tailored solutions that empower youth and promote sustainable development. Through our various programs, we aim to inspire confidence, resilience, and a sense of purpose among the youth we serve.
+"
+                ar="منذ تأسيسنا في عام 2002، ركزت جدارة على إنشاء برامج ومبادرات مؤثرة تعالج الاحتياجات المحددة للشباب. نحن نتواصل مع المجتمعات المحلية والمؤسسات التعليمية والشركاء لتطوير حلول مخصصة تمكّن الشباب وتعزز التنمية المستدامة. من خلال برامجنا المتنوعة، نهدف إلى إلهام الثقة والمرونة وإحساس بالهدف لدى الشباب الذين نخدمهم"
               />
             </p>
           </div>

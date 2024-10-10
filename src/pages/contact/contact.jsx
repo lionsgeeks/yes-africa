@@ -9,42 +9,36 @@ export const ContactUs = () => {
   const { selectedLanguage } = useAppContext();
   return (
     <div
-      className={`flex gap-5 py-[10vh] px-[5vw] lg:flex-row flex-col ${
-        selectedLanguage == "ar" ? "lg:flex-row-reverse" : ""
-      }`}
+      className={`flex gap-5 py-[10vh] px-[5vw] lg:flex-row flex-col ${selectedLanguage == "ar" ? "lg:flex-row-reverse" : ""
+        }`}
     >
       <div
-        className={`lg:w-[50%] flex flex-col gap-5 ${
-          selectedLanguage == "ar" ? "text-right items-end" : ""
-        }`}
+        className={`lg:w-[50%] flex flex-col gap-5 ${selectedLanguage == "ar" ? "text-right items-end" : ""
+          }`}
       >
         <p className="text-3xl font-medium">
           <TransText en="Contact Us" ar="تواصل معنا" />
         </p>
         <p className="text-lg w-[90%]">
           <TransText
-            en="Do you have any questions? Need more information? Fill out our contact
-          form available in multiple languages, or connect with us via social
-          media. You can also call or email us, and we will get back to you as
-          soon as possible."
-            ar="هل لديك أي أسئلة؟ هل تحتاج إلى المزيد من المعلومات؟ املأ نموذج الاتصال الخاص بنا المتوفر بعدة لغات، أو تواصل معنا عبر وسائل التواصل الاجتماعي. يمكنك أيضًا الاتصال بنا أو إرسال بريد إلكتروني، وسنرد عليك في أقرب وقت ممكن."
+            en="Do you have any questions? Need more information? 
+Fill out our contact form available in multiple languages, or connect with us via social media. You can also call or email us, and we will get back to you as soon as possible."
+            ar="هل لديك أي أسئلة؟ هل تحتاج إلى مزيد من المعلومات؟ املأ نموذج الاتصال الخاص بنا المتاح بعدة لغات، أو تواصل معنا عبر وسائل التواصل الاجتماعي. يمكنك أيضًا الاتصال بنا أو إرسال بريد إلكتروني، وسنرد عليك في أقرب وقت ممكن"
           />
         </p>
         <div
-          className={`flex gap-2 items-center text-lg ${
-            selectedLanguage == "ar" ? "flex-row-reverse" : ""
-          }`}
+          className={`flex gap-2 items-center text-lg ${selectedLanguage == "ar" ? "flex-row-reverse" : ""
+            }`}
         >
           <BsTelephone className="font-bold" />
-          <p>+212 661 464 451</p>
+          <p>+212 666 059 258</p>
         </div>
         <div
-          className={`flex gap-2 items-center text-lg ${
-            selectedLanguage == "ar" ? "flex-row-reverse" : ""
-          }`}
+          className={`flex gap-2 items-center text-lg ${selectedLanguage == "ar" ? "flex-row-reverse" : ""
+            }`}
         >
           <MdOutlineMail className="font-bold" />
-          <p>contact@gmail.com</p>
+          <p>Developpement@jadara.foundation</p>
         </div>
         <div className="flex gap-5 text-2xl">
           <FiFacebook className="cursor-pointer" />
@@ -54,17 +48,15 @@ export const ContactUs = () => {
       </div>
       <div className={`lg:w-[50%] flex flex-col gap-3 `}>
         <div
-          className={`flex flex-col gap-2 ${
-            selectedLanguage == "ar" ? "text-right" : ""
-          }`}
+          className={`flex flex-col gap-2 ${selectedLanguage == "ar" ? "text-right" : ""
+            }`}
         >
           <label htmlFor="">
             <TransText en="Full name" ar="الاسم الكامل" />
           </label>
           <input
-            className={`p-2 border rounded-lg ${
-              selectedLanguage == "ar" ? "text-right" : ""
-            }`}
+            className={`p-2 border rounded-lg ${selectedLanguage == "ar" ? "text-right" : ""
+              }`}
             type="text"
             placeholder={
               selectedLanguage == "ar" ? "الاسم الكامل" : "Your name"
@@ -72,50 +64,44 @@ export const ContactUs = () => {
           />
         </div>
         <div
-          className={`flex flex-col gap-2 ${
-            selectedLanguage == "ar" ? "text-right" : ""
-          }`}
+          className={`flex flex-col gap-2 ${selectedLanguage == "ar" ? "text-right" : ""
+            }`}
         >
           <label htmlFor="">
             <TransText ar="البريد الالكتروني" en="Email" />
           </label>
           <input
-            className={`p-2 border rounded-lg float-right ${
-              selectedLanguage == "ar" ? "text-right" : ""
-            }`}
+            className={`p-2 border rounded-lg float-right ${selectedLanguage == "ar" ? "text-right" : ""
+              }`}
             type="email"
             placeholder="Your@email.com"
           />
         </div>
         <div
-          className={`flex flex-col gap-2 ${
-            selectedLanguage == "ar" ? "text-right" : ""
-          }`}
+          className={`flex flex-col gap-2 ${selectedLanguage == "ar" ? "text-right" : ""
+            }`}
         >
           <label htmlFor="">
             <TransText ar="رقم الهاتف" en="Phone number" />
           </label>
           <input
-            className={`p-2 border rounded-lg [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none ${
-              selectedLanguage == "ar" ? "text-right" : ""
-            }`}
+            className={`p-2 border rounded-lg [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none ${selectedLanguage == "ar" ? "text-right" : ""
+              }`}
             type="number"
             placeholder="+33 125 578987"
           />
         </div>
         <div
-          className={`flex flex-col gap-2 ${
-            selectedLanguage == "ar" ? "text-right" : ""
-          }`}
+          className={`flex flex-col gap-2 ${selectedLanguage == "ar" ? "text-right" : ""
+            }`}
         >
           <label htmlFor="">
             {" "}
             <TransText ar="رسالة" en="Message" />
           </label>
           <textarea
-            className={`p-2 border rounded-lg ${
-              selectedLanguage == "ar" ? "text-right" : ""
-            }`}
+            className={`p-2 border rounded-lg ${selectedLanguage == "ar" ? "text-right" : ""
+              }`}
             placeholder={
               selectedLanguage == "ar" ? " رسالتك هنا" : "Your message here ..."
             }

@@ -2,13 +2,15 @@ import { Link } from "react-router-dom";
 import { TransText } from "../../../components";
 import { useAppContext } from "../../../context/AppContext";
 
-import partner1 from "../../../assets/images/partners-sponsors/AG-Partners.png"
-import partner2 from "../../../assets/images/partners-sponsors/Amazon-Web-Services.png"
-import partner3 from "../../../assets/images/partners-sponsors/Brand-AFRICA.png"       
-import partner4 from "../../../assets/images/partners-sponsors/Glovo-logo-Green.png"
-import partner5 from "../../../assets/images/partners-sponsors/Meta_Lockup_PositivePrimary_RGB.png"
-import partner6 from "../../../assets/images/partners-sponsors/Sages-Noir.png"
-import partner7 from "../../../assets/images/partners-sponsors/UM6P-Primary-Lockup-Web.png"
+
+import ucgc from "../../../assets/images/sponsors/ucgc.jpg";
+import lionsgeek from "../../../assets/images/sponsors/lionsgeek.png";
+
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, FreeMode } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
+
 
 export const SponsorsSection = () => {
   const { selectedLanguage } = useAppContext();
@@ -28,29 +30,27 @@ export const SponsorsSection = () => {
             selectedLanguage == "ar" ? "flex-row-reverse" : "flex-row"
           }`}
         >
-          {[
-            [partner1, "https://publicisgroupeafrica.com/"],
-            [partner2, "https://aws.amazon.com/"],
-            [partner3, "https://www.brandafrica.org/"],
-            [partner4, "https://glovoapp.com/"],
-            [partner5, "https://about.meta.com/"],
-            [partner6, "https://sages.africa/"],
-            [partner7, "https://um6p.ma/"],
-          ].map(([image, link], index) => (
-            <Link
-              className="aspect-square w-[calc(calc(100%-calc(2*1.5rem))/3)] md:w-[calc(calc(100%-calc(4*2.5rem))/5)] lg:w-[calc(calc(100%-calc(7*4rem))/8)]"
-              to={link}
-              target="_blank"
-            >
+          <Swiper
+          slidesPerView={window.innerWidth <= 430 ? 2 : 5}
+          speed={3000}
+          freeMode={true}
+          loop={true}
+          autoplay={{
+            delay: 100,
+            disableOnInteraction: false,
+          }}
+          modules={[Autoplay, FreeMode]}
+        >
+          {Array.from({ length: 6 }).map((_, index) => (
+            <SwiperSlide className="aspect-[1/0.5] flex items-center justify-center" key={index}>
               <img
-              loading="lazy"
-                key={index}
-                className="size-full"
-                src={image}
-                alt={`sponsor-${index}`}
+                src={index % 2 ? ucgc : lionsgeek}
+                className={`${index % 2 ?"w-[140px]" : "w-[75px]" }`}
+                alt={index % 2 ? "CGLU Afrique" : "Lionsgeek"}
               />
-            </Link>
+            </SwiperSlide>
           ))}
+        </Swiper>
         </div>
       </section>
     </>
