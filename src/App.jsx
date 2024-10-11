@@ -8,11 +8,12 @@ import { ContactUs } from "./pages/contact/contact";
 import Navbar from "./Layouts/navbar";
 import Footer from "./Layouts/footer";
 import ErrorPage from "./pages/error";
+import save from "./assets/saveDate.jpeg"
 
 function App() {
   return (
     <>
-      <AppProvider>
+      {/* <AppProvider>
         <Navbar />
         <Routes>
           <Route path="/*" element={<ErrorPage />} />
@@ -23,7 +24,8 @@ function App() {
           <Route path="/contact" element={<ContactUs />} />
         </Routes>
         <Footer />
-      </AppProvider>
+      </AppProvider> */}
+      <img className="h-screen w-full  bg-center bg-cover" src={save} alt="" />
     </>
   );
 }
