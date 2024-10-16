@@ -30,14 +30,24 @@ const ArticleCard = ({ index, image, title, description, author, date }) => {
       >
         <img className="w-full h-[35vh] object-cover rounded-t-md" src={image} alt="" />
         <div className={`p-3 gap-3 flex flex-col ${selectedLanguage == "ar" ? "justify-end" : ""}`}>
-          <h1 className="text-2xl font-bold">{title}</h1>
+          {
+            title.en.length > 30 ? (
+              <h1 className="text-2xl font-bold">
+                <TransText ar={title.ar.substring(0,30) + '...'} en={title.en.substring(0,30) + '...'}/>
+                </h1>
+            ) : (<h1 className="text-2xl font-bold">
+              <TransText en={title.en} ar={title.ar}/>
+                
+                </h1>)
+          }
           <div
             className={`flex text-sm text-muted-foreground gap-2 items-center ${
               selectedLanguage == "ar" ? "justify-end" : ""
             }`}
           >
+            <a href=""></a>
             <div className="flex items-center gap-2">
-              <p>{author}</p>
+              {/* <p>{author}</p> */}
               <div className="size-[0.325rem] bg-muted-foreground/75 rounded-full"> </div>
               <p>{date}</p>
             </div>
@@ -47,18 +57,18 @@ const ArticleCard = ({ index, image, title, description, author, date }) => {
               selectedLanguage == "ar" ? "justify-end" : ""
             }`}
           >
-            <p className="bg-[hsl(240,4.8%,95.9%)] px-3.5 py-1 rounded-xl">
-              <TransText ar="قوة_اتخاذ_القرار" en="Decision_Making_Power" />
+            {/* <p className="bg-[hsl(240,4.8%,95.9%)] px-3.5 py-1 rounded-xl">
+              <TransText ar={tags[0].ar} en={tags[0].en} />
             </p>
             <p className="bg-[hsl(240,4.8%,95.9%)] px-3.5 py-1 rounded-xl">
-              <TransText ar="الوصول_إلى_التمويل " en="Access_to_Funding" />
-            </p>
+              <TransText ar={tags[1].ar} en={tags[1].en}/>
+            </p> */}
           </div>
           <p className="text-lg">
             {description.en.length > 149 ? (
               <TransText
-                ar={description.ar.substring(0, 149)}
-                en={description.en.substring(0, 149) + "..."}
+                ar={description.ar.substring(0, 142)}
+                en={description.en.substring(0, 142) + "..."}
               />
             ) : (
               <TransText ar={description.ar} en={description.en} />

@@ -23,11 +23,20 @@ const ArticlePage = () => {
       }`}
     >
       <div className="lg:w-[70%]">
-        <img className="rounded-lg h-[55%] w-full object-cover" src={blogs[id].image} alt="" />
+        <img
+          className="rounded-lg h-[30%] w-full object-cover"
+          src={blogs[id].image}
+          alt=""
+        />
         <div className="py-5 flex flex-col gap-5">
-          <h1 className="text-3xl font-bold">{blogs[id].title}</h1>
+          <h1 className="text-3xl font-bold">
+            <TransText en={blogs[id].title.en} ar={blogs[id].title.ar} />
+          </h1>
           <p className="text-lg">
-            <TransText ar={blogs[id].description.ar} en={blogs[id].description.en} />
+            <TransText
+              ar={blogs[id].description.ar}
+              en={blogs[id].description.en}
+            />
           </p>
         </div>
         <h1 className="font-bold text-xl mb-[1.5vh]">
@@ -38,7 +47,7 @@ const ArticlePage = () => {
             selectedLanguage == "ar" ? "lg:justify-end items-end" : ""
           } `}
         >
-          {tags.map((e, i) => (
+          {blogs[id].tags.map((e, i) => (
             <div key={i} className={`bg-gray-200 px-3 py-2 rounded-lg w-fit `}>
               {<TransText ar={e.ar} en={e.en} />}
             </div>
@@ -49,6 +58,7 @@ const ArticlePage = () => {
         <h1 className="text-xl font-semibold">
           <TransText ar="الأكثر شعبية" en="Populer Posted" />
         </h1>
+
         {blogs.map(
           (e, index) =>
             index != id && (
@@ -57,9 +67,24 @@ const ArticlePage = () => {
                 onClick={() => navigate(`/articles/${index}`)}
                 className="bg-slate-100 w-full flex rounded-lg p-2 gap-4 cursor-pointer"
               >
-                <img src={e.image} className="w-[40%] object-cover rounded-md" alt="" />
+                <img
+                  src={e.image}
+                  className="w-[40%] object-cover rounded-md"
+                  alt=""
+                />
                 <div className="">
-                  <h1 className="font-bold">{e.title}</h1>
+                  {e.title.en.length > 20 ? (
+                    <h1 className="font-bold">
+                      <TransText
+                        ar={e.title.ar.substring(0, 20) + "..."}
+                        en={e.title.en.substring(0, 20) + "..."}
+                      />
+                    </h1>
+                  ) : (
+                    <h1 className="font-bold">
+                      <TransText en={e.title.en} ar={e.title.ar} />
+                    </h1>
+                  )}
                   <p>
                     {e.description.en.length > 155 ? (
                       <TransText
