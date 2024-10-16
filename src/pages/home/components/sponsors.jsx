@@ -37,7 +37,7 @@ const Sponsors = () => {
         >
           {
             [ucgc, lionsgeek, jadara, smala].map((spon, index) => (
-              <SwiperSlide className="aspect-[1/0.5] flex items-center justify-center" key={index}>
+              <SwiperSlide className="lg:aspect-[1/0.5] aspect-[1/2] bg-yellow- flex items-center justify-center" key={index}>
                 <img
                   src={spon}
                   className={`${spon == ucgc ? 'w-[140px]' : 'w-[100px]'}`}

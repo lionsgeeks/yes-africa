@@ -41,7 +41,7 @@ const EventInfo = () => {
         ${selectedLanguage === "ar" ? "lg:flex-row-reverse" : "lg:flex-row"}`}
     >
       <svg
-        className="absolute -z-10 w-1/2 scale-[1.25] opacity-[20%] right-0 -top-[10%] "
+        className={"absolute -z-10 lg:w-1/2 scale-[1.25] opacity-[20%] right-0 lg:-top-[10%] "}
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 264.94 186.06"
       >
