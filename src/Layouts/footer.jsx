@@ -28,25 +28,25 @@ const Footer = () => {
               {/* icons */}
               <div className="flex flex-col justify-between gap-2 pt-4">
                 <div className="flex gap-3">
-                  <a target="blank" href="https://www.facebook.com/JadaraFoundation">
+                  <a target="blank" href="https://www.facebook.com/profile.php?id=61567349305436">
                     <FaFacebookF className="text-[1.4rem] fill-gray-400 hover:fill-blue-500 transition duration-200" />
                   </a>
                   <a
                     target="blank"
-                    href="https://www.instagram.com/jadara_foundation/"
+                    href="https://www.instagram.com/yes_summit_africa/"
                   >
                     <FaInstagram className="text-[1.4rem] fill-gray-400 hover:fill-pink-600 transition duration-200" />
                   </a>
-                  <a target="blank" href="https://x.com/JadaraFondation">
+                  <a target="blank" href="https://x.com/yes_summit?s=21&t=7jqpIPumaHca8lonoHm8Uw">
                     <BsTwitterX className="text-[1.4rem] fill-gray-400 hover:fill-black transition duration-200" />
                   </a>
                   <a
                     target="blank"
-                    href="https://www.linkedin.com/company/jadara-foundation/"
+                    href="https://www.linkedin.com/company/yes-summit-africa"
                   >
                     <FaLinkedinIn className="text-[1.4rem] fill-gray-400 hover:fill-[#0a66c2] transition duration-200" />
                   </a>
-                  <a
+                  {/* <a
                     target="blank"
                     href="https://www.youtube.com/@FondationMarocainedelEtudiant"
                   >
@@ -54,7 +54,7 @@ const Footer = () => {
                   </a>
                   <a target="blank" href="https://www.tiktok.com/@jadarafoundation">
                     <FaTiktok className="text-[1.4rem] fill-gray-400 hover:fill-black transition duration-200" />
-                  </a>
+                  </a> */}
                 </div>
               </div>
             </div>
