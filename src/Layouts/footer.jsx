@@ -69,7 +69,7 @@ const Footer = () => {
                   {[
                     [{ en: "Home", ar: "الرئيسية" }, "/"],
                     [{ en: "About", ar: "حول" }, "/about"],
-                    [{ en: "Sommet", ar: "القمة" }, "/"],
+                //    [{ en: "Sommet", ar: "القمة" }, "/"],
                     [{ en: "Articles", ar: "المقالات" }, "/articles"],
                     // [{ en: "Contact", ar: "التواصل" }, "/contact"],
                   ].map(([name, path], index) => (
@@ -83,7 +83,7 @@ const Footer = () => {
                   ))}
                 </ul>
               </div>
-              <div className="w-full lg:w-4/12 px-4">
+              {/* <div className="w-full lg:w-4/12 px-4">
                 <span className="block uppercase text-blueGray-500 text-sm font-semibold mb-2">
                   <TransText ar="موارد أخرى" en="Other Resources" />
                 </span>
@@ -105,7 +105,7 @@ const Footer = () => {
                     </Link>
                   ))}
                 </ul>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
