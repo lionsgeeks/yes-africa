@@ -79,7 +79,7 @@ const Hero = () => {
                   }`}
                 >
                   <div className={`${selectedLanguage === "ar" ? "text-end" : ""}`}>
-                    <h1 className={`lg:text-5xl text-2xl gap-1 font-bold flex flex-col `}>
+                    <h1 className={`lg:text-5xl text-xl gap-1 font-bold flex flex-col `}>
                       <span>
                         <TransText en="Youth" ar="قمة" />
                       </span>

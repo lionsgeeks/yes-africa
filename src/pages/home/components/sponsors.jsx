@@ -12,7 +12,7 @@ import "swiper/css/pagination";
 import { useAppContext } from "../../../context/AppContext";
 
 const Sponsors = () => {
-  const title = { en: "Our Sponsors", ar: "رعاة الحدث" };
+  const title = { en: "Our Partners", ar: "شركاؤنا"};
   const { selectedLanguage } = useAppContext();
 
   return (
