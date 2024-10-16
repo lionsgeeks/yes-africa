@@ -15,9 +15,9 @@ const AboutPage = () => {
       
         <AboutSection />
         <HistorySection />
-        {/* <OrganizatesSection /> */}
+        <OrganizatesSection />
         <CommitteeSection />
-        <SponsorsSection />
+        {/* <SponsorsSection /> */}
       </main>
     </>
   );
