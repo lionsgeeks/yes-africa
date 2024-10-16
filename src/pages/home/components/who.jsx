@@ -1,4 +1,4 @@
-import aboutimg from "../../../assets/images/heroCarousel/hero2.jpg";
+import aboutimg from "../../../assets/images/heroCarousel/hero4.jpg";
 import TransText from "../../../components/TransText";
 import { useAppContext } from "../../../context/AppContext";
 
