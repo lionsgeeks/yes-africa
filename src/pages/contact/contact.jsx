@@ -26,19 +26,19 @@ Fill out our contact form available in multiple languages, or connect with us vi
             ar="هل لديك أي أسئلة؟ هل تحتاج إلى مزيد من المعلومات؟ املأ نموذج الاتصال الخاص بنا المتاح بعدة لغات، أو تواصل معنا عبر وسائل التواصل الاجتماعي. يمكنك أيضًا الاتصال بنا أو إرسال بريد إلكتروني، وسنرد عليك في أقرب وقت ممكن"
           />
         </p>
-        <div
+        {/* <div
           className={`flex gap-2 items-center text-lg ${selectedLanguage == "ar" ? "flex-row-reverse" : ""
             }`}
         >
           <BsTelephone className="font-bold" />
           <p>+212 666 059 258</p>
-        </div>
+        </div> */}
         <div
           className={`flex gap-2 items-center text-lg ${selectedLanguage == "ar" ? "flex-row-reverse" : ""
             }`}
         >
           <MdOutlineMail className="font-bold" />
-          <p>Developpement@jadara.foundation</p>
+          <p>contact@youthempowermentsummit.africa</p>
         </div>
         <div className="flex gap-5 text-2xl">
           <a target="_blank" href="https://www.facebook.com/profile.php?id=61567349305436">

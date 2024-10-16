@@ -23,7 +23,7 @@ const Hero = () => {
         ar: "قمة تمكين الشباب في أفريقيا هي مبادرة هامة تتصدى للتحدي المتزايد للشباب الذين لا يتلقون التعليم أو التدريب أو يعملون في أفريقيا، والمتوقع أن يتجاوز عددهم 70 مليون بحلول عام 2025. هذا الاتجاه المقلق لا يهدد فقط مستقبل هؤلاء الشباب، بل يهدد أيضًا مستقبل القارة بأكملها. تهدف المبادرة إلى تحويل هذا الوضع من 70 مليون شاب إلى 70 مليون صانع من خلال تعزيز التعاون بين قادة المجتمع المدني، والمجتمعات المحلية، وأصحاب المصلحة في القطاع الخاص."},
     },
     {
-      img: hero2,
+      img: hero4,
       title: { en: "Youth Empowerment Summit, Africa", ar: "قمة تكوين الشباب. أفريقيا" },
       desc: {
         en: "A substantial and focused investment in Africa's human capital, paired with comprehensive reforms aimed at enhancing the business environment, is essential for African governments to attract increased foreign investment. This dual approach not only bolsters economic growth but also mitigates the potential for political instability that often accompanies high unemployment rates.",

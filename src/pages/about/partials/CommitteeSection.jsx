@@ -1,13 +1,15 @@
 import { TransText } from "../../../components";
 import { useAppContext } from "../../../context/AppContext";
 
-import diop from "../../../assets/images/comittee-scientifique/DIOP.jpg";
+import diop from "../../../assets/images/comittee-scientifique/DIOP.jfif";
 import benelfadil from "../../../assets/images/comittee-scientifique/BENELAFDIL.jpg";
 import boujanoui from "../../../assets/images/comittee-scientifique/BOUJANOUI.jpg";
-import boutzil from "../../../assets/images/comittee-scientifique/BOUTZIL.jpg";
-import diedhiou from "../../../assets/images/comittee-scientifique/DIEDHIOU.webp";
+import boutzil from "../../../assets/images/comittee-scientifique/BOUTZIL.jfif";
+import diedhiou from "../../../assets/images/comittee-scientifique/Diedhiou.jfif";
 import mbassi from "../../../assets/images/comittee-scientifique/Mbassi.jpg";
-import santos from "../../../assets/images/comittee-scientifique/SANTOS.jpg";
+import santos from "../../../assets/images/comittee-scientifique/SANTOS.jfif";
+import barba from "../../../assets/images/comittee-scientifique/BARBA.jfif";
+import diffo from "../../../assets/images/comittee-scientifique/DIFFO.jfif";
 
 export const CommitteeSection = () => {
   const { selectedLanguage } = useAppContext();
@@ -15,7 +17,7 @@ export const CommitteeSection = () => {
   return (
     <>
       <section
-        className={`bg-muted-background mt-12 px-8 md:px-12 lg:px-16 py-16 md:py-20 lg:py-28 flex flex-col justify-center gap-3 md:gap-4 lg:gap-6 ${selectedLanguage == "ar" && "text-end"
+        className={`bg-muted-background px-8 md:px-12 lg:px-16 py-16 md:py-20 lg:py-28 flex flex-col justify-center gap-3 md:gap-4 lg:gap-6 ${selectedLanguage == "ar" && "text-end"
           }`}
       >
         <h2 className="text-xl text-alpha font-medium tracking-tighter md:text-2xl lg:text-3xl/none">
@@ -57,64 +59,85 @@ export const CommitteeSection = () => {
           {[
             {
               name: "M. Jean Pierre ELONG MBASSI",
-              job: { en: "Secrétaire Général des Cités et Gouvernements Locaux d'Afrique - Président du Comité Scientifique", ar: "الذكاء الاصطناعي" },
+              job: { en: "Secretary General of the United Cities and Local Governments of Africa - President of the Scientific Committee", ar: "الأمين العام للمدن والحكومات المحلية في أفريقيا - رئيس اللجنة العلمية" },
               image: mbassi,
               linkedin: "https://www.linkedin.com/in/jean-pierre-elong-mbassi-9b2b3ab9",
             },
             {
               name: "M. Hamid BEN ELAFDIL",
-              job: { en: "Révélateur de Talents et de Startups & Entrepreneur Social & Président de Jadara Foundation", ar: "الحوسبة الكمومية" },
+              job: {
+                en: "Talent and Startup Finder & Social Entrepreneur & President of Jadara Foundation",
+                ar: "مكتشف المواهب والشركات الناشئة & رائد أعمال اجتماعي & رئيس مؤسسة جدارة"
+              },
               image: benelfadil,
               linkedin: "https://www.linkedin.com/in/hamidbenelafdil",
 
             },
             {
               name: "M. Cheikh MAMINA DIEDHIOU",
-              job: { en: "Responsable Principal ESG - AFRICA 50", ar: "علم المواد" },
+              job: {
+                en: "Senior ESG Officer - AFRICA 50",
+                ar: "المسؤول الرئيسي للبيئة والمجتمع والحوكمة - أفريقيا 50"
+              },
               image: diedhiou,
               linkedin: "https://www.linkedin.com/in/cheikh-mamina-diedhiou-14b2931a",
 
             },
             {
               name: "Mme. Ileana SANTOS",
-              job: { en: "Consultante en stratégie et Co-fondatrice de Je M’engage pour l’Afrique", ar: "علم المواد" },
+              job: {
+                en: "Strategy Consultant and Co-founder of Je M'engage pour l'Afrique",
+                ar: "استشارية في الاستراتيجية وعضو مؤسس في مؤسسة أنا ألتزم من أجل أفريقيا"
+              },
               image: santos,
               linkedin: "https://www.linkedin.com/in/ileana-santos-243b31108",
 
             },
             {
               name: "M. Abdou SOULEYE DIOP",
-              job: { en: "Managing Partner - FORVIS MAZARS", ar: "علم المواد" },
+              job: {
+                en: "Managing Partner - FORVIS MAZARS",
+                ar: "العضو المدير - فورفيس مازارز"
+              },
               image: diop,
               linkedin: "https://www.linkedin.com/in/abdoudiop",
 
             },
             {
               name: "Mme Hasnaâ BOUTZIL",
-              job: { en: "Conférencière, formatrice, modératrice, coach, conseillère en stratégie et développement", ar: "علم المواد" },
+              job: {
+                en: "Speaker, trainer, moderator, coach, strategy and development advisor",
+                ar: "متحدثة، مدربة، معدة، مدربة، مستشارة في الاستراتيجية والتطوير"
+              },
               image: boutzil,
               linkedin: "https://www.linkedin.com/in/hasna%C3%A2-boutzil-9787ab24",
 
             },
             {
               name: "Mme Khadija BOUJANOUI",
-              job: { en: "Directrice du Pôle Support de 2M, Présidente du Comité Parité et Diversité - Présidente de Lions Geek", ar: "علم المواد" },
+              job: {
+                en: "Director of the Support Department at 2M, President of the Gender Equality and Diversity Committee - President of Lions Geek",
+                ar: "مديرة قسم الدعم في 2M، رئيسة لجنة المساواة بين الجنسين والتنوع - رئيسة Lions Geek"
+              },
               image: boujanoui,
               linkedin: "https://www.linkedin.com/in/khadija-boujanoui",
-
-            },
-
-          ].map(({ name, job, image }, index) => (
+            }
+          ].map(({ name, job, image, linkedin }, index) => (
             <div
               key={index}
-              className="flex items-center flex-col w-full md:w-[calc(calc(100%-calc(2*3rem))/3)] lg:w-[calc(calc(100%-calc(4*3rem))/5)]"
+              className="flex items-center flex-col w-full md:w-[calc(calc(100%-calc(2*3rem))/3)] lg:w-[calc(calc(100%-calc(4*3rem))/4)]"
             >
-              <img
-                loading="lazy"
-                className="mb-3 aspect-square object-cover w-1/2 border rounded-full"
-                src={image}
-                alt={`${name}'s image`}
-              />
+              <a href={linkedin}
+                target="_blank"
+                className="flex items-center justify-center"
+              >
+                <img
+                  loading="lazy"
+                  className="mb-3 aspect-square object-cover w-[140px] border rounded-full"
+                  src={image}
+                  alt={`${name}'s image`}
+                />
+              </a>
               <h2 className="text-base capitalize font-medium tracking-tighter md:text-lg lg:text-xl/none text-center">
                 {name}
               </h2>
@@ -123,16 +146,18 @@ export const CommitteeSection = () => {
               </p>
             </div>
           ))}
+          <div className="flex items-center flex-col w-full md:w-[calc(calc(100%-calc(2*3rem))/3)] lg:w-[calc(calc(100%-calc(4*3rem))/4)]">
+            <img src={barba} loading="lazy"
+              className="mb-3 aspect-square object-cover w-[140px] border rounded-full" alt="barba's image" />
+            <h2 className="text-base capitalize font-medium tracking-tighter md:text-lg lg:text-xl/none text-center">
+              M. Jean Yves BARBA
+            </h2>
+            <p className="text-muted-foreground text-sm/relaxed text-balance lg:text-base/snug text-center mt-3">
+              <TransText en="Technical Advisor - International Labour Organization (ILO)" ar="مستشار تقني - منظمة العمل الدولية (OIT/ILO)"/>
+            </p>
+          </div>
         </div>
       </section>
     </>
   );
 };
-
-{/* {
-              name: "M. Jean Yves BARBA",
-              job: { en: "Conseiller Technique - Organisation International du Travail (OIT/ILO)", ar: "علم المواد" },
-              image: boujanoui,
-              linkedin: "https://www.linkedin.com/in/khadija-boujanoui",
-
-            }, */}

@@ -40,7 +40,7 @@ const Navbar = () => {
     { label: "العربية", code: "ar" },
   ];
   return (
-    <div>
+    <div className="sticky top-0 z-30">
       {/* <!-- component --> */}
       <nav className="bg-white border border-gray-200 px-3 sm:px-16 py-4 rounded shadow">
         <div
