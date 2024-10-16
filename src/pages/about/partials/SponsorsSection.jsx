@@ -5,7 +5,7 @@ import { useAppContext } from "../../../context/AppContext";
 
 import ucgc from "../../../assets/images/sponsors/ucgc.jpg";
 import lionsgeek from "../../../assets/images/sponsors/lionsgeek.png";
-import jadara from "../../../assets/images/sponsors/jadaralogo.png";
+import jadara from "../../../assets/images/sponsors/Jadaralogo.png";
 import smala from "../../../assets/images/sponsors/happylogo.webp";
 
 import { Swiper, SwiperSlide } from "swiper/react";
