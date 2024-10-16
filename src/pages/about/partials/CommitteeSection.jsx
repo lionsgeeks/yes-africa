@@ -1,9 +1,13 @@
 import { TransText } from "../../../components";
 import { useAppContext } from "../../../context/AppContext";
 
-import african1 from "../../../assets/images/comittee-scientifique/Thebe-Ikalafeng.jpg"
-import african2 from "../../../assets/images/comittee-scientifique/Toba-Tanama.jpg"
-import african3 from "../../../assets/images/comittee-scientifique/Ty-Heath.jpg"
+import diop from "../../../assets/images/comittee-scientifique/DIOP.jpg";
+import benelfadil from "../../../assets/images/comittee-scientifique/BENELAFDIL.jpg";
+import boujanoui from "../../../assets/images/comittee-scientifique/BOUJANOUI.jpg";
+import boutzil from "../../../assets/images/comittee-scientifique/BOUTZIL.jpg";
+import diedhiou from "../../../assets/images/comittee-scientifique/DIEDHIOU.webp";
+import mbassi from "../../../assets/images/comittee-scientifique/Mbassi.jpg";
+import santos from "../../../assets/images/comittee-scientifique/SANTOS.jpg";
 
 export const CommitteeSection = () => {
   const { selectedLanguage } = useAppContext();
@@ -11,7 +15,7 @@ export const CommitteeSection = () => {
   return (
     <>
       <section
-        className={`bg-muted-background px-8 md:px-12 lg:px-16 py-16 md:py-20 lg:py-28 flex flex-col justify-center gap-3 md:gap-4 lg:gap-6 ${selectedLanguage == "ar" && "text-end"
+        className={`bg-muted-background mt-12 px-8 md:px-12 lg:px-16 py-16 md:py-20 lg:py-28 flex flex-col justify-center gap-3 md:gap-4 lg:gap-6 ${selectedLanguage == "ar" && "text-end"
           }`}
       >
         <h2 className="text-xl text-alpha font-medium tracking-tighter md:text-2xl lg:text-3xl/none">
@@ -54,43 +58,52 @@ export const CommitteeSection = () => {
             {
               name: "M. Jean Pierre ELONG MBASSI",
               job: { en: "Secrétaire Général des Cités et Gouvernements Locaux d'Afrique - Président du Comité Scientifique", ar: "الذكاء الاصطناعي" },
-              image: african1,
+              image: mbassi,
+              linkedin: "https://www.linkedin.com/in/jean-pierre-elong-mbassi-9b2b3ab9",
             },
             {
               name: "M. Hamid BEN ELAFDIL",
               job: { en: "Révélateur de Talents et de Startups & Entrepreneur Social & Président de Jadara Foundation", ar: "الحوسبة الكمومية" },
-              image: african2,
+              image: benelfadil,
+              linkedin: "https://www.linkedin.com/in/hamidbenelafdil",
+
             },
             {
               name: "M. Cheikh MAMINA DIEDHIOU",
               job: { en: "Responsable Principal ESG - AFRICA 50", ar: "علم المواد" },
-              image: african3,
+              image: diedhiou,
+              linkedin: "https://www.linkedin.com/in/cheikh-mamina-diedhiou-14b2931a",
+
             },
             {
               name: "Mme. Ileana SANTOS",
               job: { en: "Consultante en stratégie et Co-fondatrice de Je M’engage pour l’Afrique", ar: "علم المواد" },
-              image: african3,
+              image: santos,
+              linkedin: "https://www.linkedin.com/in/ileana-santos-243b31108",
+
             },
             {
               name: "M. Abdou SOULEYE DIOP",
               job: { en: "Managing Partner - FORVIS MAZARS", ar: "علم المواد" },
-              image: african3,
+              image: diop,
+              linkedin: "https://www.linkedin.com/in/abdoudiop",
+
             },
             {
               name: "Mme Hasnaâ BOUTZIL",
               job: { en: "Conférencière, formatrice, modératrice, coach, conseillère en stratégie et développement", ar: "علم المواد" },
-              image: african3,
+              image: boutzil,
+              linkedin: "https://www.linkedin.com/in/hasna%C3%A2-boutzil-9787ab24",
+
             },
             {
               name: "Mme Khadija BOUJANOUI",
               job: { en: "Directrice du Pôle Support de 2M, Présidente du Comité Parité et Diversité - Présidente de Lions Geek", ar: "علم المواد" },
-              image: african3,
+              image: boujanoui,
+              linkedin: "https://www.linkedin.com/in/khadija-boujanoui",
+
             },
-            {
-              name: "M. Jean Yves BARBA",
-              job: { en: "Conseiller Technique - Organisation International du Travail (OIT/ILO)", ar: "علم المواد" },
-              image: african3,
-            },
+
           ].map(({ name, job, image }, index) => (
             <div
               key={index}
@@ -115,3 +128,11 @@ export const CommitteeSection = () => {
     </>
   );
 };
+
+{/* {
+              name: "M. Jean Yves BARBA",
+              job: { en: "Conseiller Technique - Organisation International du Travail (OIT/ILO)", ar: "علم المواد" },
+              image: boujanoui,
+              linkedin: "https://www.linkedin.com/in/khadija-boujanoui",
+
+            }, */}

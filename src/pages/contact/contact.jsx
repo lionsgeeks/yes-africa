@@ -41,9 +41,15 @@ Fill out our contact form available in multiple languages, or connect with us vi
           <p>Developpement@jadara.foundation</p>
         </div>
         <div className="flex gap-5 text-2xl">
-          <FiFacebook className="cursor-pointer" />
-          <FaXTwitter className="cursor-pointer" />
-          <FaInstagram className="cursor-pointer" />
+          <a target="_blank" href="https://www.facebook.com/profile.php?id=61567349305436">
+            <FiFacebook className="cursor-pointer" />
+          </a>
+          <a target="_blank" href="https://x.com/yes_summit?s=21&t=7jqpIPumaHca8lonoHm8Uw">
+            <FaXTwitter className="cursor-pointer" />
+          </a>
+          <a target="_blank" href="https://www.instagram.com/yes_summit_africa/">
+            <FaInstagram className="cursor-pointer" />
+          </a>
         </div>
       </div>
       <div className={`lg:w-[50%] flex flex-col gap-3 `}>

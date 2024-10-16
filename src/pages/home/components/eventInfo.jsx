@@ -11,7 +11,7 @@ const EventInfo = () => {
   const eventInformation = [
     {
       icon: <CiCalendar />,
-      text: { en: "February 12-13, 2025", ar: "12-13 فبراير 2025"},
+      text: { en: "February 12-13, 2025", ar: "12-13 فبراير 2025" },
     },
     {
       icon: <GoClock />,
@@ -19,7 +19,7 @@ const EventInfo = () => {
     },
     {
       icon: <MdMyLocation />,
-      text: { en: "Casablanca", ar: " الدار البيضاء"},
+      text: { en: "Casablanca", ar: " الدار البيضاء" },
     },
   ];
 
@@ -37,11 +37,11 @@ const EventInfo = () => {
 
   return (
     <section
-      className={`py-16 relative md:py-20 lg:py-24 bg-beta -z-20 overflow-hidden rounded-2xl flex flex-col lg:items-center gap-12 lg:gap-5 justify-around text-white my-6 lg:my-16 p-6 mx-3 lg:mx-16
+      className={`py-16 relative md:py-20 lg:py-24 bg-beta z-20 overflow-hidden rounded-2xl flex flex-col lg:items-center gap-12 lg:gap-5 justify-around text-white my-6 lg:my-16 p-6 mx-3 lg:mx-16
         ${selectedLanguage === "ar" ? "lg:flex-row-reverse" : "lg:flex-row"}`}
     >
       <svg
-        className="absolute -z-10 w-1/2 scale-[1.25] opacity-[20%] right-0 -top-[10%] "
+        className={"absolute -z-10 lg:w-1/2 scale-[1.25] opacity-[20%] right-0 lg:-top-[10%] "}
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 264.94 186.06"
       >
@@ -63,7 +63,11 @@ const EventInfo = () => {
         />
       </svg>
 
-      <div className={`lg:w-[50%] ${selectedLanguage == "ar" && "text-end justify-end"}`}>
+      <div
+        className={`lg:w-[50%] ${
+          selectedLanguage == "ar" && "text-end justify-end z-50"
+        }`}
+      >
         {text.map(({ title, desc, aboutBtn, contactBtn }, index) => (
           <div className="flex flex-col gap-4" key={index}>
             <h1 className="text-2xl font-semibold tracking-tighter md:text-3xl lg:text-4xl/none">
@@ -102,7 +106,9 @@ const EventInfo = () => {
         {eventInformation.map(({ icon, text }, index) => (
           <div
             key={index}
-            className={`flex items-center gap-2 ${selectedLanguage === "ar" && "flex-row-reverse"}`}
+            className={`flex items-center gap-2 ${
+              selectedLanguage === "ar" && "flex-row-reverse"
+            }`}
           >
             {icon}
             <p className="text-gray-100 md:text-base/relaxed lg:text-lg/snug">

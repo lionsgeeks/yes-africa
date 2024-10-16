@@ -1,6 +1,8 @@
-import deuxM from "../../../assets/images/sponsors/2M_Logo.svg.png";
 import ucgc from "../../../assets/images/sponsors/ucgc.jpg";
 import lionsgeek from "../../../assets/images/sponsors/lionsgeek.png";
+import jadara from "../../../assets/images/sponsors/jadaralogo.png";
+import smala from "../../../assets/images/sponsors/happylogo.webp";
+
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, FreeMode } from "swiper/modules";
 import TransText from "../../../components/TransText";
@@ -16,33 +18,34 @@ const Sponsors = () => {
   return (
     <section className="px-8 md:px-12 lg:px-16 pt-8 md:pt-10 lg:pt-14 pb-16 md:pb-20 lg:pb-28">
       <h2
-        className={`text-2xl font-bold tracking-tighter md:text-3xl lg:text-4xl/none mb-6 ${
-          selectedLanguage === "ar" && "text-end"
-        }`}
+        className={`text-2xl font-bold tracking-tighter md:text-3xl lg:text-4xl/none mb-6 ${selectedLanguage === "ar" && "text-end"
+          }`}
       >
         <TransText {...title} />
       </h2>
       <div className="flex items-center justify-around gap-4">
         <Swiper
-          slidesPerView={window.innerWidth <= 430 ? 2 : 5}
+          slidesPerView={3}
+          loop={true}
           speed={3000}
           freeMode={true}
-          loop={true}
           autoplay={{
             delay: 100,
-            disableOnInteraction: true,
+            disableOnInteraction: false,
           }}
           modules={[Autoplay, FreeMode]}
         >
-          {Array.from({ length: 6 }).map((_, index) => (
-            <SwiperSlide className="aspect-[1/0.5] flex items-center justify-center" key={index}>
-              <img
-                src={index % 2 ? ucgc : lionsgeek}
-                className={`${index % 2 ?"w-[140px]" : "w-[75px]" }`}
-                alt={index % 2 ? "CGLU Afrique" : "Lionsgeek"}
-              />
-            </SwiperSlide>
-          ))}
+          {
+            [ucgc, lionsgeek, jadara, smala].map((spon, index) => (
+              <SwiperSlide className="lg:aspect-[1/0.5] aspect-[1/2] bg-yellow- flex items-center justify-center" key={index}>
+                <img
+                  src={spon}
+                  className={`${spon == ucgc ? 'w-[140px]' : 'w-[100px]'}`}
+                  alt=""
+                />
+              </SwiperSlide>
+            ))
+          }
         </Swiper>
       </div>
     </section>
