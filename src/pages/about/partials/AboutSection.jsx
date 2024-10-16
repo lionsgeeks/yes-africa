@@ -7,22 +7,22 @@ export const AboutSection = () => {
   return (
     <>
       <div
-        className={`w-full h-[50vh]  relative -z-20 text-white lg:px-16 flex flex-col justify-center gap-3 bg-no-repeat bg-cover bg-center bg-[url('/src/assets/images/africa2.jpg')] ${selectedLanguage == "ar" ? "text-right items-end" : ""
+        className={`w-full h-[50vh] bg-muted-background  relative -z-20 text-white lg:px-16 flex flex-col justify-center gap-3 bg-no-repeat bg-cover bg-center bg-[url('/src/assets/images/africa2.jpg')] ${selectedLanguage == "ar" ? "text-right items-end" : ""
           }`}
       >
         <div className="inset-0 absolute bg-gradient-to-r from-black via-[#53450ab5] via-50%  to-alpha opacity-85 -z-10"></div>
         <h1 className="text-3xl font-bold tracking-tight md:text-5xl lg:text-6xl/none">
-          <TransText en="In-Depth Knowledge, Expert" ar="معارف عميقة وتحليلات متخصصة" />
+          <TransText en="Youth Empowerement Summit Africa" ar="معارف عميقة وتحليلات متخصصة" />
         </h1>
         <p className="lg:text-2xl text-2xl lg:w-[62.5%] ">
           <TransText
-            ar="اكتشف عالمًا جديدًا من المعرفة والتحليل. انغمس في قصصنا الملهمة والرؤى القيمة"
-            en="Discover a new world of knowledge and analysis. Immerse yourself in our inspiring stories and valuable insights."
+            ar="من 70 مليون شاب أفريقي خارج التعليم أو العمل إلى 70 مليون صانع"
+            en="From 70 Million African NEETs to 70 Million Doers"
           />
         </p>
       </div>
       <section
-        className={` px-8 md:px-12 lg:px-16 py-16 md:py-20 lg:py-28 flex flex-col justify-center gap-3 md:gap-4 lg:gap-6 ${
+        className={` px-8 md:px-12 lg:px-16 py-16 md:py-20 lg:py-10 flex flex-col justify-center gap-3 md:gap-4 lg:gap-6 ${
           selectedLanguage == "ar" && "text-end"
         }`}
       >

@@ -14,7 +14,7 @@ const AboutPage = () => {
       <main>
       
         <AboutSection />
-        <HistorySection />
+        {/* <HistorySection /> */}
         <OrganizatesSection />
         <CommitteeSection />
         {/* <SponsorsSection /> */}
