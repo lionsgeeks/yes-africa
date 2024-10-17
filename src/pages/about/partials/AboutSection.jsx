@@ -22,7 +22,7 @@ export const AboutSection = () => {
         </p>
       </div>
       <section
-        className={` px-8 md:px-12 lg:px-16 py-16 md:py-20 lg:py-10 flex flex-col justify-center gap-3 md:gap-4 lg:gap-6 ${
+        className={`px-8 md:px-12 bg-muted-background lg:px-16 py-16 md:py-20 lg:py-10 flex flex-col justify-center gap-3 md:gap-4 lg:gap-6 ${
           selectedLanguage == "ar" && "text-end"
         }`}
       >
