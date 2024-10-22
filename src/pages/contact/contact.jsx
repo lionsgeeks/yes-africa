@@ -1,12 +1,36 @@
-import { BsTelephone } from "react-icons/bs";
 import { MdOutlineMail } from "react-icons/md";
 import { FiFacebook } from "react-icons/fi";
 import { FaXTwitter } from "react-icons/fa6";
 import { FaInstagram } from "react-icons/fa";
 import TransText from "../../components/TransText";
 import { useAppContext } from "../../context/AppContext";
+import { useState } from "react";
+import axios from "axios";
 export const ContactUs = () => {
   const { selectedLanguage } = useAppContext();
+  const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [message, setMessage] = useState("");
+  const sendMessage = async () => {
+    let data = {
+      fullname:fullName,
+      email,
+      phone,
+      message
+    }
+    // console.log(data);
+    try {
+      await axios.post('http://172.28.0.201:8000/api/messages', data);
+    } catch (error) {
+      console.log(error)
+    } finally {
+      setFullName('');
+      setEmail('');
+      setPhone('');
+      setMessage('')
+    }
+  }
   return (
     <div
       className={`flex gap-5 py-[10vh] px-[5vw] lg:flex-row flex-col ${selectedLanguage == "ar" ? "lg:flex-row-reverse" : ""
@@ -61,6 +85,9 @@ Fill out our contact form available in multiple languages, or connect with us vi
             <TransText en="Full name" ar="الاسم الكامل" />
           </label>
           <input
+          value={fullName}
+          onChange={(e)=>setFullName(e.target.value)}
+          required
             className={`p-2 border rounded-lg ${selectedLanguage == "ar" ? "text-right" : ""
               }`}
             type="text"
@@ -77,6 +104,9 @@ Fill out our contact form available in multiple languages, or connect with us vi
             <TransText ar="البريد الالكتروني" en="Email" />
           </label>
           <input
+          value={email}
+          onChange={(e)=>setEmail(e.target.value)}
+          required
             className={`p-2 border rounded-lg float-right ${selectedLanguage == "ar" ? "text-right" : ""
               }`}
             type="email"
@@ -91,6 +121,9 @@ Fill out our contact form available in multiple languages, or connect with us vi
             <TransText ar="رقم الهاتف" en="Phone number" />
           </label>
           <input
+          value={phone}
+          onChange={(e)=>setPhone(e.target.value)}
+          required
             className={`p-2 border rounded-lg [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none ${selectedLanguage == "ar" ? "text-right" : ""
               }`}
             type="number"
@@ -106,6 +139,9 @@ Fill out our contact form available in multiple languages, or connect with us vi
             <TransText ar="رسالة" en="Message" />
           </label>
           <textarea
+          value={message}
+          onChange={(e)=>setMessage(e.target.value)}
+          required
             className={`p-2 border rounded-lg ${selectedLanguage == "ar" ? "text-right" : ""
               }`}
             placeholder={
@@ -116,7 +152,7 @@ Fill out our contact form available in multiple languages, or connect with us vi
             id=""
           ></textarea>
         </div>
-        <button className="bg-black text-white py-3 rounded-lg">
+        <button onClick={sendMessage} className="bg-black text-white py-3 rounded-lg">
           <TransText ar="إرسال" en="Submit" />
         </button>
       </div>
