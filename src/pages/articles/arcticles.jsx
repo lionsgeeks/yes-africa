@@ -4,14 +4,13 @@ import { useAppContext } from "../../context/AppContext";
 import { ArticleCard } from "../../components";
 
 const ArticlesPage = () => {
-  const { blogs, selectedLanguage } = useAppContext();
+  const { articles, selectedLanguage } = useAppContext();
 
   return (
-    <div className="">
+    articles && <div className="">
       <div
-        className={`w-full h-[50vh]  relative -z-20 text-white lg:px-16 flex flex-col justify-center gap-3 bg-no-repeat bg-cover bg-center bg-[url('/src/assets/images/africa1.jpg')] ${
-          selectedLanguage == "ar" ? "text-right items-end" : ""
-        }`}
+        className={`w-full h-[50vh]  relative -z-20 text-white lg:px-16 flex flex-col justify-center gap-3 bg-no-repeat bg-cover bg-center bg-[url('/src/assets/images/africa1.jpg')] ${selectedLanguage == "ar" ? "text-right items-end" : ""
+          }`}
       >
         <div className="inset-0 absolute bg-gradient-to-r from-black via-[#53450ab5] via-50%  to-alpha opacity-85 -z-10"></div>
         <h1 className="lg:text-5xl text-3xl px-3 font-bold ">
@@ -21,14 +20,14 @@ const ArticlesPage = () => {
           <TransText
             ar="اغمر نفسك في عالم من القصص المفيدة، والتحليلات المتخصصة، والرؤى المثيرة للتفكير"
             en="Dive into a world of insightful stories, expert analysis, and
-          thought-provoking perspectives."
+        thought-provoking perspectives."
           />
         </p>
       </div>
       <div className="flex justify-center lg:px-16 px-3">
         <div className="flex flex-wrap lg:flex-row flex-col gap-5 py-6">
-          {blogs.map((blog, index) => (
-            <ArticleCard key={index} {...{ index, ...blog }} />
+          {articles.map((article, index) => (
+            <ArticleCard key={index} {...{ index, ...article }} />
           ))}
         </div>
       </div>

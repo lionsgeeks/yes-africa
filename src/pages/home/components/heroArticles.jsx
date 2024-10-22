@@ -2,7 +2,7 @@ import { ArticleCard, TransText } from "../../../components";
 import { useAppContext } from "../../../context/AppContext";
 
 const HeroArticles = () => {
-  const { blogs, selectedLanguage } = useAppContext();
+  const { articles, selectedLanguage } = useAppContext();
 
   return (
     <section className="mt-12 px-8 md:px-12 lg:px-16 pt-8 md:pt-10 lg:pt-12 pb-16 md:pb-20 lg:pb-24">
@@ -15,7 +15,7 @@ const HeroArticles = () => {
       </h1>
       <br />
       <div className="flex items-center justify-around flex-col lg:flex-row gap-7">
-        {blogs.slice(0, 3).map((blog, index) => (
+        {articles.slice(0, 3).map((blog, index) => (
           <ArticleCard key={index} index={index} {...blog} />
         ))}
       </div>
