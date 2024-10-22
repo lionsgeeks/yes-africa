@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import TransText from "../../components/TransText";
 import { useAppContext } from "../../context/AppContext";
+import 'quill/dist/quill.snow.css'; 
 
 const ArticlePage = () => {
   const { articles, selectedLanguage } = useAppContext();
@@ -41,7 +42,7 @@ const ArticlePage = () => {
           <h1 className="text-3xl font-bold">
             <TransText en={thisArticle.title.en} ar={thisArticle.title.ar} />
           </h1>
-          <div className="text-lg">
+          <div className="view ql-editor reset-tw" >
             {
               selectedLanguage == "ar" ?
                 <div dangerouslySetInnerHTML={{ __html: thisArticle.description.ar }} />
