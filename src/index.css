@@ -3,8 +3,15 @@
 @tailwind utilities;
 
 @media (max-width: 768px) {
+
     .swiper-button-next,
     .swiper-button-prev {
         display: none;
     }
+}
+
+/* To Reset Tailwind Classes in a div and it's children */
+.reset-tw,
+.reset-tw * {
+    all: revert ;
 }
