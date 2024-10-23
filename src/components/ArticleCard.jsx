@@ -3,7 +3,7 @@ import { useAppContext } from "../context/AppContext";
 import TransText from "./TransText";
 
 const ArticleCard = ({ index, id, image, title, description, created_at }) => {
-  const { selectedLanguage } = useAppContext();
+  const { selectedLanguage, IMAGEURL } = useAppContext();
   const arrow = (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -27,7 +27,7 @@ const ArticleCard = ({ index, id, image, title, description, created_at }) => {
         className={`flex flex-col gap-2 lg:w-[calc(calc(100%-2.5rem)/3)] border rounded-lg shadow-sm ${selectedLanguage == "ar" ? "text-right" : ""
           }`}
       >
-        <img className="w-full h-[35vh] object-cover rounded-t-md" src={`http://172.28.0.135:8000/storage/images/${image}`} alt="" />
+        <img className="w-full h-[35vh] object-cover rounded-t-md" src={IMAGEURL + image} alt="" />
         <div className={`p-3 gap-3 flex flex-col ${selectedLanguage == "ar" ? "justify-end" : ""}`}>
           {
             title.en.length > 30 ? (

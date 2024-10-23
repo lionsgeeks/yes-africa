@@ -5,7 +5,7 @@ import { useAppContext } from "../../context/AppContext";
 import 'quill/dist/quill.snow.css'; 
 
 const ArticlePage = () => {
-  const { articles, selectedLanguage } = useAppContext();
+  const { articles, selectedLanguage, IMAGEURL } = useAppContext();
   const navigate = useNavigate();
   const { id } = useParams();
   const [thisArticle, setThisArticle] = useState();
@@ -35,7 +35,7 @@ const ArticlePage = () => {
       <div className="lg:w-[70%]">
         <img
           className="rounded-lg h-[30%] w-full object-cover"
-          src={`http://172.28.0.135:8000/storage/images/${thisArticle.image}`}
+          src={IMAGEURL + thisArticle.image}
           alt=""
         />
         <div className="py-5 flex flex-col gap-5">
@@ -101,7 +101,7 @@ const ArticlePage = () => {
                 className="bg-slate-100 w-full flex rounded-lg p-2 gap-4 cursor-pointer"
               >
                 <img
-                  src={`http://172.28.0.135:8000/storage/images/${e.image}`}
+                  src={IMAGEURL + e.image}
                   className="w-[40%] object-cover rounded-md"
                   alt=""
                 />

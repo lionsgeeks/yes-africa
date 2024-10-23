@@ -12,12 +12,14 @@ const AppContext = createContext();
 const AppProvider = ({ children }) => {
   const path = useLocation();
   const [articles, setArticles] = useState();
+  const url = "http://172.28.0.135:8000";
+  const IMAGEURL = "http://172.28.0.135:8000/storage/images/"
 
   useEffect(() => {
     window.scrollTo(0, 0);
     const fetchArticles = async () => {
       try {
-        const response = await fetch("http://172.28.0.135:8000/api/articles/");
+        const response = await fetch(url + "/api/articles/");
         const articles = await response.json(); 
 
         setArticles(articles.data);
@@ -42,7 +44,7 @@ const AppProvider = ({ children }) => {
   return (
     <>
       <AppContext.Provider
-        value={{ articles, selectedLanguage, setSelectedLanguage }}
+        value={{ articles, selectedLanguage, setSelectedLanguage, url, IMAGEURL }}
       >
         {children}
       </AppContext.Provider>

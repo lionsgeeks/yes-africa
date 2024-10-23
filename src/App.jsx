@@ -10,6 +10,7 @@ import Footer from "./Layouts/footer";
 import ErrorPage from "./pages/error";
 import save from "./assets/saveDate.jpeg"
 import Formulaire from "./pages/formulaire/formulaire";
+import Form from "./pages/formulaire/partials/form";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="/articles/:id" element={<ArticlePage />} />
           <Route path="/contact" element={<ContactUs />} />
           <Route path="/form" element={<Formulaire />} />
+          <Route path="/formulaire" element={<Form />} />
         </Routes>
         <Footer />
       </AppProvider>
