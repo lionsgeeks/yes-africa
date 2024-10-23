@@ -15,7 +15,7 @@ const HeroArticles = () => {
       </h1>
       <br />
       <div className="flex items-center justify-around flex-col lg:flex-row gap-7">
-        {articles.slice(0, 3).map((blog, index) => (
+        {articles?.slice(0, 3).map((blog, index) => (
           <ArticleCard key={index} index={index} {...blog} />
         ))}
       </div>

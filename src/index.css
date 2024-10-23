@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+    font-family:'made_tomy';
+    src: url('../src/assets/fonts/MADE\ TOMMY\ Regular_PERSONAL\ USE.otf');
+}
 @media (max-width: 768px) {
 
     .swiper-button-next,
@@ -10,6 +14,9 @@
     }
 }
 
+body{
+    font-family: 'made_tomy';
+}
 /* To Reset Tailwind Classes in a div and it's children */
 .reset-tw,
 .reset-tw * {

@@ -219,6 +219,7 @@ const Navbar = () => {
               {[
                 [{ en: "Home", ar: "الرئيسية" }, "/"],
                 [{ en: "About", ar: "حول" }, "/about"],
+                [{ en: "Participate", ar: "مشاركة" }, "/form"],
                 [{ en: "Articles", ar: "المقالات" }, "/articles"],
                 [{ en: "Contact", ar: "التواصل" }, "/contact"],
               ].map(([name, path], index) => (
@@ -244,7 +245,7 @@ const Navbar = () => {
                   } items-center ${languageIsOpen ? "text-beta" : "text-alpha"}`}
                 >
                   <HiOutlineLanguage className="h-[5vh]" />
-                  <p className="">{selectedLanguage}</p>
+                  <p className="">{selectedLanguage !== 'sw' ? selectedLanguage : 'en'}</p>
                   <svg
                     fill="currentColor"
                     viewBox="0 0 20 20"

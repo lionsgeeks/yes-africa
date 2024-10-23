@@ -9,6 +9,7 @@ import Navbar from "./Layouts/navbar";
 import Footer from "./Layouts/footer";
 import ErrorPage from "./pages/error";
 import save from "./assets/saveDate.jpeg"
+import Formulaire from "./pages/formulaire/formulaire";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/articles" element={<ArticlesPage />} />
           <Route path="/articles/:id" element={<ArticlePage />} />
           <Route path="/contact" element={<ContactUs />} />
+          <Route path="/form" element={<Formulaire />} />
         </Routes>
         <Footer />
       </AppProvider>
