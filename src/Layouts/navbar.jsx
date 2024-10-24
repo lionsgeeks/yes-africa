@@ -7,6 +7,11 @@ import { useAppContext } from "../context/AppContext";
 const Navbar = () => {
   const [isToggle, setIsToggle] = useState(false);
   const [languageIsOpen, setLanguageIsOpen] = useState(false);
+  const [dropdownIsOpen, setDropdownIsOpen] = useState(false);
+  const dropdownRef = useRef(null);
+  const toggleDropdown = () => {
+    setDropdownIsOpen(!dropdownIsOpen);
+  };
   const toggleLanguageIsOpen = () => {
     setLanguageIsOpen(!languageIsOpen);
   };
@@ -14,6 +19,9 @@ const Navbar = () => {
   const handleClickOutside = (event) => {
     if (selectRef.current && !selectRef.current.contains(event.target)) {
       setLanguageIsOpen(false);
+    }
+    if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+      setDropdownIsOpen(false);
     }
   };
   useEffect(() => {
@@ -28,11 +36,15 @@ const Navbar = () => {
   const handleChangeLanguage = (e) => {
     let code = e.currentTarget.dataset.code;
     if (code) {
-      // i18n.changeLanguage(code);
       setSelectedLanguage(code);
     }
   };
-
+  const navItems = [
+    { label: {en:"Home", ar:"الرئيسية"}, path: "/" },
+    { label: {en:"About", ar:"حول"}, path: "/about" },
+    { label: {en:"Participate", ar:"المشاركة"}, path: "/participate", isDropdown: true }, // Mark "Participate" as a dropdown
+    { label: {en:"Contact", ar:"اتصل بنا"}, path: "/contact" },
+  ];
   const LANGUAGES = [
     // { label: "francais", code: "fr" },
     { label: "English", code: "en" },
@@ -54,7 +66,6 @@ const Navbar = () => {
               data-name="Layer 2"
               // className="bg-red-500"
               className="w-32 md:w-40 "
-  
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 797.35 234.47"
             >
@@ -196,7 +207,12 @@ const Navbar = () => {
             >
               <span className="sr-only">Open main menu</span>
               {/* <!-- Hamburger icon --> */}
-              <svg className="h-6 w-6 text-alpha" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg
+                className="h-6 w-6 text-alpha"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -216,23 +232,89 @@ const Navbar = () => {
                 selectedLanguage == "ar" ? "md:flex-row-reverse" : "md:flex-row"
               } md:gap-x-8 md:mt-0 md:text-sm md:font-medium`}
             >
-              {[
-                [{ en: "Home", ar: "الرئيسية" }, "/"],
-                [{ en: "About", ar: "حول" }, "/about"],
-                [{ en: "Participate", ar: "مشاركة" }, "/form"],
-                [{ en: "Articles", ar: "المقالات" }, "/articles"],
-                [{ en: "Contact", ar: "التواصل" }, "/contact"],
-              ].map(([name, path], index) => (
-                <Link
-                  key={index}
-                  to={path}
-                  className={`block py-2 pr-4 pl-3 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-beta md:p-0 ${
-                    location.pathname == path ? "text-beta" : "text-alpha"
-                  }`}
-                >
-                  <TransText {...name} />
-                </Link>
-              ))}
+              {navItems.map((item, index) => {
+                if (item.isDropdown) {
+                  return (
+                    <li key={index} className={`relative`} ref={dropdownRef}>
+                      <button
+                        onClick={toggleDropdown}
+                        className="flex items-center space-x-2 text-gray-700 hover:text-gray-900 focus:outline-none"
+                      >
+                        <span
+                          className={`${
+                            location.pathname === '/form'
+                              ? "text-beta"
+                              : "text-alpha"
+                          }`}
+                        >
+                          {item.label[selectedLanguage] ? item.label[selectedLanguage] : item.label['en'] }
+                        </span>
+                        <svg
+                          className={`w-5 h-5 transition-transform transform ${
+                            dropdownIsOpen ? "rotate-180" : ""
+                          } ${
+                            location.pathname === '/form'
+                              ? "text-beta"
+                              : "text-alpha"
+                          }`}
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M19 9l-7 7-7-7"
+                          />
+                        </svg>
+                      </button>
+
+                      {/* Dropdown Menu */}
+                      {dropdownIsOpen && (
+                        <ul className="absolute left-0 w-40 mt-2 bg-white border border-gray-200 shadow-lg rounded">
+                          <li>
+                            <Link
+                              to="/form"
+                              className={`block px-4 py-2 hover:bg-gray-100 ${
+                                location.pathname === '/form'
+                                  ? "text-beta"
+                                  : "text-alpha"
+                              }`}
+                            >
+                              NGO's
+                            </Link>
+                          </li>
+                          {/* <li>
+                            <Link
+                              to="/organizations"
+                              className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+                            >
+                              Organizations
+                            </Link>
+                          </li> */}
+                        </ul>
+                      )}
+                    </li>
+                  );
+                } else {
+                  return (
+                    <li key={index}>
+                      <Link
+                        to={item.path}
+                        className={`${
+                          location.pathname === item.path
+                            ? "text-beta"
+                            : "text-alpha"
+                        } hover:text-beta`}
+                      >
+                        {item.label[selectedLanguage] ? item.label[selectedLanguage] : item.label['en'] }
+                      </Link>
+                    </li>
+                  );
+                }
+              })}
 
               <div
                 ref={selectRef}
@@ -242,10 +324,14 @@ const Navbar = () => {
                 <div
                   className={`cursor-pointer flex gap-1  ${
                     selectedLanguage == "ar" ? "flex-row-reverse" : ""
-                  } items-center ${languageIsOpen ? "text-beta" : "text-alpha"}`}
+                  } items-center ${
+                    languageIsOpen ? "text-beta" : "text-alpha"
+                  }`}
                 >
                   <HiOutlineLanguage className="h-[5vh]" />
-                  <p className="">{selectedLanguage !== 'sw' ? selectedLanguage : 'en'}</p>
+                  <p className="">
+                    {selectedLanguage !== "sw" ? selectedLanguage : "en"}
+                  </p>
                   <svg
                     fill="currentColor"
                     viewBox="0 0 20 20"
