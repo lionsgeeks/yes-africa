@@ -21,7 +21,7 @@ export const ContactUs = () => {
     }
     // console.log(data);
     try {
-      await axios.post('http://172.28.0.201:8000/api/messages', data);
+      await axios.post('https://managment.youthempowermentsummit.africa/api/messages', data);
     } catch (error) {
       console.log(error)
     } finally {
