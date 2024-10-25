@@ -32,9 +32,9 @@ const ArticlePage = () => {
       className={`flex lg:flex-row flex-col justify-center p-10 ${selectedLanguage == "ar" ? "lg:flex-row-reverse text-right" : ""
         }`}
     >
-      <div className="lg:w-[70%]">
+      <div className="lg:w-[70%] h-fit">
         <img
-          className="rounded-lg h-[30%] w-full object-cover"
+          className="rounded-lg h-[30rem] w-full object-cover"
           src={IMAGEURL + thisArticle.image}
           alt=""
         />

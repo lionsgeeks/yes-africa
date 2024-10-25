@@ -43,6 +43,7 @@ const Navbar = () => {
     { label: {en:"Home", ar:"الرئيسية"}, path: "/" },
     { label: {en:"About", ar:"حول"}, path: "/about" },
     { label: {en:"Participate", ar:"المشاركة"}, path: "/participate", isDropdown: true }, // Mark "Participate" as a dropdown
+    { label: {en:"Articles", ar:" المقالات"}, path: "/articles" },
     { label: {en:"Contact", ar:"اتصل بنا"}, path: "/contact" },
   ];
   const LANGUAGES = [

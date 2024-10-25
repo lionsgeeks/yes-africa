@@ -126,8 +126,8 @@ Fill out our contact form available in multiple languages, or connect with us vi
           required
             className={`p-2 border rounded-lg [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none ${selectedLanguage == "ar" ? "text-right" : ""
               }`}
-            type="number"
-            placeholder="+33 125 578987"
+            type="tel"
+            placeholder="+212 125 578987"
           />
         </div>
         <div
