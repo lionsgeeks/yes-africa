@@ -13,8 +13,8 @@ const AppContext = createContext();
 const AppProvider = ({ children }) => {
   const path = useLocation();
   const [articles, setArticles] = useState();
-  const url = "https://managment.youthempowermentsummit.africa";
-  const IMAGEURL = "https://managment.youthempowermentsummit.africa/storage/images/"
+  const url = "https://management.youthempowermentsummit.africa";
+  const IMAGEURL = "https://management.youthempowermentsummit.africa/storage/images/"
 
   useEffect(() => {
     window.scrollTo(0, 0);
