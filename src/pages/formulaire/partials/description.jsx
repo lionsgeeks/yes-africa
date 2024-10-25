@@ -1,27 +1,27 @@
 import React from "react";
 import TransText from "../../../components/TransText";
 import { useAppContext } from "../../../context/AppContext";
-import { NavLink, useNavigate } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 
 const Description = () => {
   const { selectedLanguage } = useAppContext();
   const navigate = useNavigate();
-  // const docs = {
-  //   en: "https://docs.google.com/forms/d/e/1FAIpQLSewPV6To23bNyjIlBZjAz_2IGq33bEOkbCBOjfBHdOlAwcwtA/viewform",
-  //   fr: "https://docs.google.com/forms/d/e/1FAIpQLScSAoRrStJMmYN8vI11oY2H1B4jTtfZqTcdcNK2Xtc_hSanIA/viewform",
-  //   ar: "https://docs.google.com/forms/d/e/1FAIpQLScIxRPbs8aTPmZh4Yi1E_qkU3BoNCEvX0kPWhEUFi5pHMCCqA/viewform",
-  //   pr: "https://docs.google.com/forms/d/e/1FAIpQLSfWoQkJBDXGCPPOlTfybBg4IiqAl5_yNLc-FUnypzvSPeDPTg/viewform",
-  //   sw: "https://docs.google.com/forms/d/e/1FAIpQLSc63QYGfgEVQW8hksFmNYYP2I1Vpba8lpDr4YQWLea0jH3xfw/viewform",
-  // };
+  const docs = {
+    en: "https://docs.google.com/forms/d/e/1FAIpQLSewPV6To23bNyjIlBZjAz_2IGq33bEOkbCBOjfBHdOlAwcwtA/viewform",
+    fr: "https://docs.google.com/forms/d/e/1FAIpQLScSAoRrStJMmYN8vI11oY2H1B4jTtfZqTcdcNK2Xtc_hSanIA/viewform",
+    ar: "https://docs.google.com/forms/d/e/1FAIpQLScIxRPbs8aTPmZh4Yi1E_qkU3BoNCEvX0kPWhEUFi5pHMCCqA/viewform",
+    pr: "https://docs.google.com/forms/d/e/1FAIpQLSfWoQkJBDXGCPPOlTfybBg4IiqAl5_yNLc-FUnypzvSPeDPTg/viewform",
+    sw: "https://docs.google.com/forms/d/e/1FAIpQLSc63QYGfgEVQW8hksFmNYYP2I1Vpba8lpDr4YQWLea0jH3xfw/viewform",
+  };
   const goToDocs = () => {
     window.open(docs[selectedLanguage], '_blank');;
   };
   const pdfDocs = {
-    ar: "/documents/YES Africa - دعوة للتعبير عن الاهتمام من قبل المنظمات غير الحكومية.pdf",
-    fr: "/documents/AMI_aux_OSCs_Africaines-Y.E.S Africa.pdf",
-    en: "/documents/Call_for_African_NGOs-Y.E.S_Africa.pdf",
-    pr: "/documents/Apelo_às_ONG_africanas-YES_Africa.pdf",
-    sw: "/documents/Wito_kwa_NGOs_za_Kiafrika-YES Africa.pdf"
+    ar:"/documents/YES Africa - دعوة للتعبير عن الاهتمام من قبل المنظمات غير الحكومية.pdf",
+    fr:"/documents/AMI_aux_OSCs_Africaines-Y.E.S Africa.pdf",
+    en:"/documents/Call_for_African_NGOs-Y.E.S_Africa.pdf",
+    pr:"/documents/Apelo_às_ONG_africanas-YES_Africa.pdf",
+    sw:"/documents/Wito_kwa_NGOs_za_Kiafrika-YES Africa.pdf"
   }
   return (
     <div
@@ -472,23 +472,31 @@ const Description = () => {
             sw="Mashirika yasiyo ya kiserikali yanayovutiwa yanakaribishwa kujaza fomu ya maombi inayopatikana kwenye tovuti yetu kwa anuani ifuatayo:"
           />
         </p>
-        <NavLink
-          to={'/formulaire'}
-          className="underline text-blue-800">
+        
+        <NavLink to={"/formulaire"} className="underline text-blue-800">
           <TransText
-            en="Youth Empowerment Summit - YES Africa. Call for African NGOs"
-            fr="Sommet sur l'autonomisation des jeunes - YES Africa - Appel aux ONG africaines"
+            en="Youth Empowerment Summit - YES Africa. Call for African NGOs (google.com)"
+            fr="Sommet sur l'autonomisation des jeunes - YES Africa - Appel aux ONG africaines (google.com)"
             ar="قمة تمكين الشباب - YES Africa - دعوة للتعبير عن الاهتمام من قبل المنظمات غير الحكومية"
-            pr="Cimeira da Capacitação dos Jovens - YES Africa - Apelo às ONG africanas."
-            sw="Mkutano wa Uwezeshaji Vijana - YES Africa -Wito kwa NGOs za Kiafrika."
+            pr="Cimeira da Capacitação dos Jovens - YES Africa - Apelo às ONG africanas (google.com)."
+            sw="Mkutano wa Uwezeshaji Vijana - YES Africa -Wito kwa NGOs za Kiafrika (google.com)."
           />
         </NavLink>
+        {/* <button onClick={() => goToDocs()} className="underline text-blue-800">
+          <TransText
+            en="Youth Empowerment Summit - YES Africa. Call for African NGOs (google.com)"
+            fr="Sommet sur l'autonomisation des jeunes - YES Africa - Appel aux ONG africaines (google.com)"
+            ar="قمة تمكين الشباب - YES Africa - دعوة للتعبير عن الاهتمام من قبل المنظمات غير الحكومية"
+            pr="Cimeira da Capacitação dos Jovens - YES Africa - Apelo às ONG africanas (google.com)."
+            sw="Mkutano wa Uwezeshaji Vijana - YES Africa -Wito kwa NGOs za Kiafrika (google.com)."
+          />
+        </button> */}
         <p className="font-medium">
           The submission deadline is October 6th, 2024.{" "}
         </p>
       </div>
-
-      <a className="bg-alpha text-white px-3 py-2 w-fit rounded" href={pdfDocs[selectedLanguage]} download><TransText en="Download the file for more informations" fr="Téléchargez le document pour plus d'informations." ar="قم بتنزيل الملف لمزيد من المعلومات" pr="Baixe o arquivo para mais informações" sw="Pakua faili kwa maelezo zaidi." /> </a>
+      
+      <a className="bg-alpha text-white px-3 py-2 w-fit rounded" href={pdfDocs[selectedLanguage]} download><TransText en="Download the file for more informations" fr="Téléchargez le document pour plus d'informations." ar="قم بتنزيل الملف لمزيد من المعلومات" pr="Baixe o arquivo para mais informações" sw="Pakua faili kwa maelezo zaidi."/> </a>
     </div>
   );
 };
