@@ -24,32 +24,6 @@ export const CommitteeSection = () => {
           <TransText en="The Scientific Committee" ar="اللجنة العلمية" />
         </h2>
         <div>
-          <p className="text-lg">
-            <TransText
-              en="The scientific committee of Y.E.S Africa, primarily comprised of African experts in youth empowerment and impact financing, is tasked with the following responsibilities:"
-              ar="اللجنة العلمية لـ Y.E.S Africa، التي تتكون أساسًا من خبراء أفارقة في تمكين الشباب وتمويل الأثر، مُكلفة بالمسؤوليات التالية:"
-            />
-          </p>
-          <ul className={`${selectedLanguage == 'ar' ? '' : 'list-disc'}`}>
-            <li className="my-1">
-              <TransText
-                en="Defining the intervention themes and selecting the speakers;"
-                ar="تحديد موضوعات التدخل واختيار المتحدثين؛"
-              />
-            </li>
-            <li className="my-1">
-              <TransText
-                en="Developing the application model for African stakeholders;"
-                ar="تطوير نموذج التطبيق للجهات المعنية الأفريقية؛"
-              />
-            </li>
-            <li className="my-1">
-              <TransText
-                en="Identifying the African empowerment actors who could present their projects to funders."
-                ar="تحديد الفاعلين في تمكين الشباب الأفارقة الذين يمكنهم عرض مشاريعهم على الممولين."
-              />
-            </li>
-          </ul>
 
         </div>
         <div
