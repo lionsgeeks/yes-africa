@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import HomePage from "./pages/home/home";
 import ArticlesPage from "./pages/articles/arcticles";
 import ArticlePage from "./pages/articles/article_id";
@@ -8,16 +8,18 @@ import { ContactUs } from "./pages/contact/contact";
 import Navbar from "./Layouts/navbar";
 import Footer from "./Layouts/footer";
 import ErrorPage from "./pages/error";
-import save from "./assets/saveDate.jpeg"
 import Formulaire from "./pages/formulaire/formulaire";
 import Form from "./pages/formulaire/partials/form";
+import ManagementRedirect from "./pages/management";
 
 function App() {
+
   return (
     <>
       <AppProvider>
         <Navbar />
         <Routes>
+          <Route path="/management" element={<ManagementRedirect />} />
           <Route path="/*" element={<ErrorPage />} />
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
@@ -29,7 +31,6 @@ function App() {
         </Routes>
         <Footer />
       </AppProvider>
-      {/* <img className="h-screen w-full  bg-center bg-cover" src={save} alt="" /> */}
     </>
   );
 }
