@@ -99,7 +99,7 @@ const Form = () => {
             newForm.append(key, allData[key]);
         });
 
-        const response = await fetch(url + '/api/formulaire', {
+        const response = await fetch(url + 'api/formulaire', {
             method: 'POST',
             body: newForm,
         });

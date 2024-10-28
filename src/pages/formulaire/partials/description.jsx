@@ -475,11 +475,11 @@ const Description = () => {
         
         <NavLink to={"/formulaire"} className="underline text-blue-800">
           <TransText
-            en="Youth Empowerment Summit - YES Africa. Call for African NGOs (google.com)"
-            fr="Sommet sur l'autonomisation des jeunes - YES Africa - Appel aux ONG africaines (google.com)"
+            en="Youth Empowerment Summit - YES Africa. Call for African NGOs"
+            fr="Sommet sur l'autonomisation des jeunes - YES Africa - Appel aux ONG africaines"
             ar="قمة تمكين الشباب - YES Africa - دعوة للتعبير عن الاهتمام من قبل المنظمات غير الحكومية"
-            pr="Cimeira da Capacitação dos Jovens - YES Africa - Apelo às ONG africanas (google.com)."
-            sw="Mkutano wa Uwezeshaji Vijana - YES Africa -Wito kwa NGOs za Kiafrika (google.com)."
+            pr="Cimeira da Capacitação dos Jovens - YES Africa - Apelo às ONG africanas."
+            sw="Mkutano wa Uwezeshaji Vijana - YES Africa -Wito kwa NGOs za Kiafrika."
           />
         </NavLink>
         {/* <button onClick={() => goToDocs()} className="underline text-blue-800">
