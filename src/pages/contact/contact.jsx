@@ -7,7 +7,7 @@ import { useAppContext } from "../../context/AppContext";
 import { useState } from "react";
 import axios from "axios";
 export const ContactUs = () => {
-  const { selectedLanguage } = useAppContext();
+  const { selectedLanguage , url } = useAppContext();
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -21,7 +21,7 @@ export const ContactUs = () => {
     }
     // console.log(data);
     try {
-      await axios.post('https://managment.youthempowermentsummit.africa/api/messages', data);
+      await axios.post(url + '/api/messages', data);
     } catch (error) {
       console.log(error)
     } finally {

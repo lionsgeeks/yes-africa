@@ -19,7 +19,7 @@ function App() {
       <AppProvider>
         <Navbar />
         <Routes>
-          <Route path="/management" element={<ManagementRedirect />} />
+          <Route path="/backoffice" element={<ManagementRedirect />} />
           <Route path="/*" element={<ErrorPage />} />
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
