@@ -71,17 +71,18 @@ const Form = () => {
 
 
 
-
+    const [loading, setLoading] = useState(false);
     const handleSubmitForm = async (e) => {
         e.preventDefault();
-
+        setLoading(true);
         const allData = {
             ...formData,
-            sources_funding: selectedFunding == "other" ? otherFunding : selectedFunding,
-            project_financing: selectedFinancing == "other" ? otherFin : selectedFinancing,
-            themes_intervention: selectedThemes == "other" ? otherTheme : selectedThemes,
+            sources_funding: selectedFunding + " " + otherFunding,
+            project_financing: selectedFinancing + " " + otherFin,
+            themes_intervention: selectedThemes + " " + otherTheme,
             partners: selectedPartner == "no-partners" ? selectedPartner : selectedPartner + otherPartner,
             approached_funders: selectedFunders == "no-funders" ? selectedFunders : selectedFinancing + otherFunders,
+            intervention_themes: selectedInterv + " " + otherInterv,
             area_intervention: selectedArea,
             country_registration: regCountry,
             country_intervention: intCountry,
@@ -110,9 +111,9 @@ const Form = () => {
             // TODO* Show the user that his form was received : add toast
             // TODO* (optional) do an else if there's an error : add toast
         }
+        // setLoading(false);
     }
 
-    const tabs = ['General Information', 'Project Information', 'Previous Projects'];
     const [currentTab, setCurrentTab] = useState('General Information');
     const formLanguages = [
         { language: "English", code: "en" },
@@ -128,6 +129,9 @@ const Form = () => {
 
     const [selectedThemes, setSelectedThemes] = useState([]);
     const [otherTheme, setOtherTheme] = useState('');
+
+    const [selectedInterv, setSelectedInterv] = useState([]);
+    const [otherInterv, setOtherInterv] = useState('');
 
     const [selectedFunding, setSelectedFunding] = useState('');
     const [otherFunding, setOtherFunding] = useState('');
@@ -383,6 +387,14 @@ const Form = () => {
         },
     ];
 
+    const Required = () => {
+        return (
+            <>
+                <span className="text-red-600 font-bold"> *</span>
+            </>
+        )
+    }
+
     return (
         <section className="p-4" >
             <div className="flex gap-3 items-center p-3 bg-gray-300">
@@ -420,7 +432,7 @@ const Form = () => {
                                 ar="اسم المنظمة"
                                 sw="Jina la shirika"
                                 pr="Nome da Organização"
-                            />
+                            /> <Required />
                         </label>
                         <input value={formData.name_organization} onChange={handleInputChange}
                             className="border rounded p-2" type="text" name="name_organization" id="name_organization" required />
@@ -445,7 +457,7 @@ const Form = () => {
                                     sw="Jina na jina la mwakilishi wa kisheria"
                                     ar="الاسم الكامل للممثل القانوني"
                                     fr="Nom et prénom du représentant légal"
-                                />
+                                /> <Required />
                             </label>
                             <input
                                 value={formData.name_representative} onChange={handleInputChange}
@@ -459,7 +471,7 @@ const Form = () => {
                                     ar="منصب الممثل القانوني"
                                     fr="Fonction du représentant légal"
                                     pr="Posição do representante legal"
-                                />
+                                /> <Required />
                             </label>
                             <input
                                 value={formData.position_representative} onChange={handleInputChange}
@@ -478,7 +490,7 @@ const Form = () => {
                                     sw="Nambari ya simu ya mwakilishi wa kisheria"
                                     ar="رقم هاتف الممثل القانوني"
                                     fr="Numéro de téléphone du représentant légal"
-                                />
+                                /> <Required />
                             </label>
                             <input
                                 value={formData.phone_representative} onChange={handleInputChange}
@@ -493,7 +505,7 @@ const Form = () => {
                                     sw="Anwani ya barua pepe ya mwakilishi wa kisheria"
                                     ar="عنوان البريد الإلكتروني للممثل القانوني"
                                     pr="Endereço de e-mail do representante legal"
-                                />
+                                /> <Required />
                             </label>
                             <input
                                 value={formData.email_representative} onChange={handleInputChange}
@@ -508,7 +520,7 @@ const Form = () => {
                                     ar="رابط الملف الشخصي للممثل القانوني على موقع LinkedIn"
                                     sw="Unganisha kwenye wasifu wa LinkedIn wa mwakilishi wa kisheria"
                                     fr="Lien au profil LinkedIn du représentant légal"
-                                />
+                                /> <Required />
                             </label>
                             <input
                                 value={formData.linkedin_representative} onChange={handleInputChange}
@@ -624,7 +636,7 @@ const Form = () => {
                                     ar="سنوات التواجد"
                                     sw="Miaka ya kuwepo"
                                     fr="Années d'existence"
-                                />
+                                /> <Required />
                             </label>
                             <input
                                 value={formData.years_existence} onChange={handleInputChange}
@@ -639,11 +651,8 @@ const Form = () => {
                                     sw="Nchi (ya usajili wa kisheria wa chama)"
                                     ar="بلد (التسجيل القانوني للجمعية)"
                                     pr="País (de registo legal da associação)"
-                                />
+                                /> <Required />
                             </label>
-                            {/* <input
-                                value={formData.country_registration} onChange={handleInputChange}
-                                className="border rounded p-2" type="text" name="country_registration" id="country_registration" required /> */}
                             <select
                                 id="country_registration"
                                 className="border rounded p-2"
@@ -667,11 +676,11 @@ const Form = () => {
                                     ar="الوضع القانوني"
                                     fr="Statuts juridiques"
                                     sw="Hali ya kisheria"
-                                />
+                                /> <Required />
                             </label>
                             <input
                                 onChange={(e) => { handleFileChange(e, setLegal) }}
-                                className="border rounded p-2" type="file" accept="application/pdf" name="legal_statutes" id="legal_statutes" />
+                                className="border rounded p-2" type="file" accept="application/pdf" name="legal_statutes" id="legal_statutes" required />
                         </div>
 
                         <div className="flex flex-col gap-1 w-full">
@@ -682,11 +691,11 @@ const Form = () => {
                                     sw="Kanuni za utaratibu"
                                     ar="اللوائح الداخلية"
                                     fr="Règlement intérieur"
-                                />
+                                /> <Required />
                             </label>
                             <input
                                 onChange={(e) => { handleFileChange(e, setInternal) }}
-                                className="border rounded p-2" type="file" accept="application/pdf" name="internal_regulations" id="internal_regulations" />
+                                className="border rounded p-2" type="file" accept="application/pdf" name="internal_regulations" id="internal_regulations" required />
                         </div>
 
                         <div className="flex flex-col gap-1 w-full">
@@ -697,7 +706,7 @@ const Form = () => {
                                     ar="عرض تقديمي للجمعية وأنشطتها (ملاحظة لتضمين الهيكل التنظيمي)"
                                     sw="Uwasilishaji wa chama na shughuli zake (kumbuka kujumuisha chati ya shirika)"
                                     pr="Apresentação da associação e das suas atividades (nota a incluir organograma)"
-                                />
+                                /> <Required />
                             </label>
 
                             <input
@@ -718,7 +727,7 @@ const Form = () => {
                                     sw="Idadi ya wafanyakazi"
                                     ar="عدد الموظفين"
                                     fr="Nombre d'employés"
-                                />
+                                /> <Required />
                             </label>
                             <input
                                 value={formData.num_employees} onChange={handleInputChange}
@@ -733,7 +742,7 @@ const Form = () => {
                                     ar="عدد المتطوعين "
                                     sw="Idadi ya wafanyakazi wa kujitolea"
                                     pr="Número de voluntários "
-                                />
+                                /> <Required />
                             </label>
                             <input
                                 value={formData.num_volunteers} onChange={handleInputChange}
@@ -751,7 +760,7 @@ const Form = () => {
                                     sw="Wanufaika wa programu zako"
                                     ar="المستفيدون من برامجكم"
                                     fr="Bénéficiaires de vos programmes"
-                                />
+                                /> <Required />
                             </label>
                             <input
                                 value={formData.beneficiaries} onChange={handleInputChange}
@@ -766,11 +775,8 @@ const Form = () => {
                                     ar="بلد التدخل"
                                     sw="Nchi ya kuingilia kati"
                                     pr="País de intervenção"
-                                />
+                                /> <Required />
                             </label>
-                            {/* <input
-                                value={formData.country_intervention} onChange={handleInputChange}
-                                className="border rounded p-2" type="text" name="country_intervention" id="country_intervention" required /> */}
 
                             <select
                                 id="country_intervention"
@@ -792,8 +798,7 @@ const Form = () => {
                                     sw="Mazingira ya kuingilia kati"
                                     ar="مجال التدخل"
                                     fr="Milieu d'intervention"
-                                />
-
+                                /> <Required />
                             </label>
 
                             <select
@@ -804,10 +809,43 @@ const Form = () => {
                                 required
                             >
                                 <option value="">Select an option</option>
-                                <option value="urbain">Urbain</option>
-                                <option value="péri-urbain">Péri-Urbain</option>
-                                <option value="rural">Rural</option>
-                                <option value="let_trois">Les trois</option>
+                                <option value="urban">
+                                    <TransText
+                                        en="Urban"
+                                        pr="Urbano"
+                                        sw="Mji"
+                                        ar="حضري"
+                                        fr="Urbain"
+                                    />
+                                </option>
+                                <option value="peri-urban">
+                                    <TransText
+                                        en="Peri-Urban"
+                                        pr="Peri-Urbano"
+                                        sw="Pembe za Mji"
+                                        ar="شبه حضري"
+                                        fr="Péri-Urbain"
+                                    />
+                                </option>
+                                <option value="rural">
+                                    <TransText
+                                        en="Rural"
+                                        pr="Rural"
+                                        sw="Kijijini"
+                                        ar="ريفي"
+                                        fr="Rural"
+                                    />
+                                </option>
+                                <option value="all_three">
+                                    <TransText
+                                        en="All three"
+                                        pr="Os três"
+                                        sw="Zote tatu"
+                                        ar="الجميع"
+                                        fr="Les trois"
+                                    />
+                                </option>
+
                             </select>
                         </div>
                     </div>
@@ -823,7 +861,7 @@ const Form = () => {
                                 ar="مصادر تمويل الجمعية"
                                 sw="Vyanzo vya fedha kwa ajili ya chama"
                                 pr="Fontes de financiamento da associação"
-                            /> :
+                            /> <Required />
                         </label>
 
                         <div className="flex items-center gap-4 flex-wrap">
@@ -862,34 +900,6 @@ const Form = () => {
                                 fr="Thématiques d'intervention"
                             />:
                         </label>
-
-                        {/* <select
-                            id="themes_intervention"
-                            className="border rounded p-2"
-                            value={selectedTheme}
-                            onChange={(e) => { handleSelectChange(e, setSelectedTheme) }}
-                        >
-                            <option value="">Select an option</option>
-                            <option value="accessibility-to-education">Accessibility to Education</option>
-                            <option value="vocational-training">Vocational Training and Skills</option>
-                            <option value="alternative-jobs">Alternative Jobs and Micro-entrepreneurship</option>
-                            <option value="mentoring-support">Mentoring and Support Initiatives</option>
-                            <option value="social-inclusion">Social Inclusion and Equity</option>
-                            <option value="digital-technologies">Use of Digital Technologies</option>
-                            <option value="public-private-partnerships">Public-Private Partnerships</option>
-                            <option value="gender-dynamics">Gender Dynamics and NEETs</option>
-                            <option value="community-mobilization">Community Mobilization</option>
-                            <option value="migration-of-neet">Migration of NEET</option>
-                            <option value="other">Other</option>
-                        </select>
-                        {selectedTheme === 'other' && (
-                            <input
-                                type="text"
-                                className="border rounded p-2"
-                                onChange={(e) => setOtherTheme(e.target.value)}
-                            />
-                        )} */}
-
                         <div className="flex items-center gap-4 flex-wrap">
                             {themeOptions.map((option) => (
                                 <label key={option.value} className="block">
@@ -912,6 +922,7 @@ const Form = () => {
                                 className="border rounded p-2"
                                 placeholder="Please specify"
                                 onChange={(e) => setOtherTheme(e.target.value)}
+                                required
                             />
                         )}
 
@@ -944,6 +955,47 @@ const Form = () => {
                             <label className="font-[4px]" htmlFor="intervention_themes">Intervention Themes:</label>
                             <input className="border rounded p-2" type="text" name="intervention_themes" id="intervention_themes" placeholder="List intervention themes..." required />
                         </div> */}
+
+                    <div className="flex flex-col gap-1 mt-3">
+
+                        <label className="font-[4px]" htmlFor="themes_intervention">
+                            <TransText
+                                en="Themes of Intervention"
+                                pr="Tópicos de intervenção"
+                                sw="Mada ya kuingilia kati"
+                                ar="مواضيع التدخل"
+                                fr="Thématiques d'intervention"
+                            />:
+                        </label>
+
+                        <div className="flex items-center gap-4 flex-wrap">
+                            {themeOptions.map((option) => (
+                                <label key={option.value} className="block">
+                                    <input
+                                        type="checkbox"
+                                        value={option.value}
+                                        checked={selectedInterv.includes(option.value)}
+                                        onChange={(e) => {
+                                            handleCheckboxChange(e, setSelectedInterv)
+                                        }}
+                                        className="mr-2"
+                                    />
+                                    {option.label}
+                                </label>
+                            ))}
+                        </div>
+                        {selectedInterv.includes('other') && (
+                            <input
+                                type="text"
+                                className="border rounded p-2"
+                                placeholder="Please specify"
+                                onChange={(e) => setOtherInterv(e.target.value)}
+                                required
+                            />
+                        )}
+                    </div>
+
+
 
                     <div className="flex flex-col gap-1">
                         <label className="font-[4px]" htmlFor="funding_requirements">
@@ -1280,7 +1332,22 @@ const Form = () => {
                     </label>
                 </div>
                 <button disabled={!isFormComplete} className={`w-full py-3 rounded transition-all ${isFormComplete ? 'bg-black text-white ' : 'bg-gray-300 text-black/60'}`} type="submit">
-                    Submit
+
+
+                    {
+                        loading ?
+                            <div role="status" className="flex items-center justify-center">
+                                <svg aria-hidden="true" className="w-8 h-8 text-gray-200 animate-spin fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor" />
+                                    <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill" />
+                                </svg>
+                                <span className="sr-only">Loading...</span>
+                            </div>
+                            :
+                            <>
+                                Submit Form
+                            </>
+                    }
                 </button>
             </form>
 

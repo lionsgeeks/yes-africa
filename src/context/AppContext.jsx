@@ -15,7 +15,7 @@ const AppProvider = ({ children }) => {
   const [articles, setArticles] = useState();
   const url = "https://management.youthempowermentsummit.africa";
   const IMAGEURL = "https://management.youthempowermentsummit.africa/storage/images/"
-  // const url = "http://172.28.0.135:8000/";
+  // const url = "http://172.28.0.135:8000";
   // const IMAGEURL = "http://172.28.0.135:8000/storage/images/"
 
   useEffect(() => {
