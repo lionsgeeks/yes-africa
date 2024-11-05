@@ -17,11 +17,11 @@ const Description = () => {
     window.open(docs[selectedLanguage], '_blank');;
   };
   const pdfDocs = {
-    ar:"/documents/YES Africa - دعوة للتعبير عن الاهتمام من قبل المنظمات غير الحكومية.pdf",
-    fr:"/documents/AMI_aux_OSCs_Africaines-Y.E.S Africa.pdf",
-    en:"/documents/Call_for_African_NGOs-Y.E.S_Africa.pdf",
-    pr:"/documents/Apelo_às_ONG_africanas-YES_Africa.pdf",
-    sw:"/documents/Wito_kwa_NGOs_za_Kiafrika-YES Africa.pdf"
+    ar: "/documents/YES Africa - دعوة للتعبير عن الاهتمام من قبل المنظمات غير الحكومية.pdf",
+    fr: "/documents/AMI_aux_OSCs_Africaines-Y.E.S Africa.pdf",
+    en: "/documents/Call_for_African_NGOs-Y.E.S_Africa.pdf",
+    pr: "/documents/Apelo_às_ONG_africanas-YES_Africa.pdf",
+    sw: "/documents/Wito_kwa_NGOs_za_Kiafrika-YES Africa.pdf"
   }
   return (
     <div
@@ -292,22 +292,22 @@ const Description = () => {
           <li>
             <TransText
               en="Be available for the capacity-building program for 3 hours/week from
-            September 23, 2024, to December 13, 2024."
-              fr="Être disponible pour le programme de renforcement des capacités à hauteur de 3 heures / semaine du 23 septembre 2024 et au 13 décembre 2024."
-              ar="أن تكون متاحة للمشاركة في برنامج تعزيز القدرات بمعدل 3 ساعات/الأسبوع من 23 سبتمبر 2024 حتى 13 ديسمبر 2024"
-              pr="Estar disponível para o programa de fortalecimento de capacidades de 3 horas/semana de 23 de setembro de 2024 a 13 de dezembro de 2024."
-              sw="Kuwa na upatikanaji wa kushiriki katika programu ya kuimarisha uwezo kwa muda wa saa 3 kwa wiki kuanzia tarehe 23 Septemba 2024 hadi tarehe 13 Desemba 2024."
+            December 16, 2024, to January 11, 2025."
+              fr="Être disponible pour le programme de renforcement des capacités à hauteur de 3 heures / semaine du 16 décembre 2024 et au 11 janvier 2025."
+              ar="أن تكون متاحة للمشاركة في برنامج تعزيز القدرات بمعدل 3 ساعات/الأسبوع من 16 دجنبر 2024 حتى 11 يناير 2025"
+              pr="Estar disponível para o programa de fortalecimento de capacidades de 3 horas/semana de 23 de dezembro de 2024 a 11 de janeiro de 2025."
+              sw="Kuwa na upatikanaji wa kushiriki katika programu ya kuimarisha uwezo kwa muda wa saa 3 kwa wiki kuanzia tarehe 23 Desemba 2024 hadi tarehe 11 januari 2025."
             />
           </li>
           <li>
             <TransText
               en="Have the capacity to assign a representative to fully participate in
-            the summit to be held in December 2024 in Morocco, either physically
+            the summit to be held in 12 and 13 of February 2025 in Morocco, either physically
             or digitally."
-              ar="القدرة على تعيين ممثل للمشاركة بشكل كامل في القمة التي ستعقد في ديسمبر 2024 في المغرب، سواء بشكل حضوري أو عن بعد"
-              fr="Avoir la capacité de détacher un représentant pour participer pleinement au sommet qui se tiendra en décembre 2024 au maroc et ce, de manière physique et/ou digitale"
-              pr="Ter a capacidade de designar um representante para participar plenamente da cúpula que ocorrerá em dezembro de 2024 no Marrocos, de forma presencial e/ou digital."
-              sw="Kuwa na uwezo wa kumteua mwakilishi kushiriki kikamilifu katika mkutano mkuu utakaofanyika Desemba 2024 nchini Morocco, kwa njia ya ana kwa ana au kidigitali"
+              ar="القدرة على تعيين ممثل للمشاركة بشكل كامل في القمة التي ستعقد يومي 12 و13 فبراير 2025 في المغرب، سواء بشكل حضوري أو عن بعد"
+              fr="Avoir la capacité de détacher un représentant pour participer pleinement au sommet qui se tiendra les 12 et 13 février 2025 au maroc et ce, de manière physique et/ou digitale."
+              pr="Ter capacidade para destacar um representante para participar plenamente na cimeira que se realizará nos dias 12 e 13 de fevereiro de 2025 em Marrocos, de forma física e/ou digital."
+              sw="Kuwa na uwezo wa kutwaa mwakilishi ili kushiriki kikamilifu katika mkutano huo utakaofanyika Februari 12 na 13, 2025 nchini Moroko, kwa njia halisi na/au dijitali."
             />
           </li>
         </ul>
@@ -472,7 +472,7 @@ const Description = () => {
             sw="Mashirika yasiyo ya kiserikali yanayovutiwa yanakaribishwa kujaza fomu ya maombi inayopatikana kwenye tovuti yetu kwa anuani ifuatayo:"
           />
         </p>
-        
+
         <NavLink to={"/formulaire"} className="underline text-blue-800">
           <TransText
             en="Youth Empowerment Summit - YES Africa. Call for African NGOs"
@@ -492,11 +492,18 @@ const Description = () => {
           />
         </button> */}
         <p className="font-medium">
-          The submission deadline is October 6th, 2024.{" "}
+          <TransText
+            en="The submission deadline is 30 November 2024."
+            fr="La date limite de soumission est le 30 novembre 2024."
+            ar="اخر موعد تقديم الطلبات هو 30 نوفمبر 2024."
+            pr="O prazo de submissão é 30 de novembro de 2024."
+            sw="Tarehe ya mwisho ya kuwasilisha ni 30 Novemba 2024."
+          />
+          {" "}
         </p>
       </div>
-      
-      <a className="bg-alpha text-white px-3 py-2 w-fit rounded" href={pdfDocs[selectedLanguage]} download><TransText en="Download the file for more informations" fr="Téléchargez le document pour plus d'informations." ar="قم بتنزيل الملف لمزيد من المعلومات" pr="Baixe o arquivo para mais informações" sw="Pakua faili kwa maelezo zaidi."/> </a>
+
+      <a className="bg-alpha text-white px-3 py-2 w-fit rounded" href={pdfDocs[selectedLanguage]} download><TransText en="Download the file for more informations" fr="Téléchargez le document pour plus d'informations." ar="قم بتنزيل الملف لمزيد من المعلومات" pr="Baixe o arquivo para mais informações" sw="Pakua faili kwa maelezo zaidi." /> </a>
     </div>
   );
 };
