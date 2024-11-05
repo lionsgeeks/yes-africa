@@ -23,3 +23,9 @@ body{
 .reset-tw * {
     all: revert ;
 }
+
+input[type="checkbox"] {
+    width: 15px;
+    height: 15px;
+    accent-color: #2e539d;
+  }

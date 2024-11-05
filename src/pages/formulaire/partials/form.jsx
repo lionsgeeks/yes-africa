@@ -410,7 +410,7 @@ const Form = () => {
             <form
                 dir={selectedLanguage == "ar" ? 'rtl' : 'ltr'}
                 onSubmit={handleSubmitForm}
-                className="flex flex-col gap-3">
+                className="flex flex-col gap-3 bg-gray-100/30 p-2">
                 <div className="w-full bg-gray-200 flex items-center gap-2 sticky top-[80px]">
                     {
                         newTab.map((tab, index) => (
@@ -447,9 +447,9 @@ const Form = () => {
                             sw="Mwakilishi wa kisheria"
                         />
                     </h2>
-                    <div className="flex items-center gap-2 justify-around">
+                    <div className="flex items-center gap-4 justify-around flex-col lg:flex-row">
 
-                        <div className="flex flex-col gap-1 w-full">
+                        <div className="flex flex-col gap-2 w-full">
                             <label className="font-[4px]" htmlFor="name_representative">
                                 <TransText
                                     en="Full Name of Legal Representative"
@@ -480,7 +480,7 @@ const Form = () => {
                     </div>
 
 
-                    <div className="flex items-start gap-2 justify-around">
+                    <div className="flex items-start gap-2 justify-around flex-col lg:flex-row">
 
                         <div className="flex flex-col gap-1 w-full">
                             <label className="font-[4px]" htmlFor="phone_representative">
@@ -540,7 +540,7 @@ const Form = () => {
                         />
                     </h2>
 
-                    <div className="flex items-center gap-2 justify-around">
+                    <div className="flex items-center gap-4 justify-around flex-col lg:flex-row">
                         <div className="flex flex-col gap-1 w-full">
                             <label className="font-[4px]" htmlFor="name_tenderer">
                                 <TransText
@@ -573,7 +573,7 @@ const Form = () => {
                     </div>
 
 
-                    <div className="flex items-center gap-2 justify-around">
+                    <div className="flex items-center gap-4 justify-around flex-col lg:flex-row">
                         <div className="flex flex-col gap-1 w-full">
                             <label className="font-[4px]" htmlFor="phone_tenderer">
                                 <TransText
@@ -627,7 +627,7 @@ const Form = () => {
                             ar="معلومات"
                         />
                     </h2>
-                    <div className="flex items-center gap-2 justify-around">
+                    <div className="flex items-center gap-4 justify-around flex-col lg:flex-row">
                         <div className="flex flex-col gap-1 w-full">
                             <label className="font-[4px]" htmlFor="years_existence">
                                 <TransText
@@ -667,7 +667,7 @@ const Form = () => {
                     </div>
 
 
-                    <div className="flex items-center gap-2 justify-around">
+                    <div className="flex items-center gap-4 justify-around flex-col lg:flex-row">
                         <div className="flex flex-col gap-1 w-full">
                             <label className="font-[4px]" htmlFor="legal_statutes">
                                 <TransText
@@ -718,7 +718,7 @@ const Form = () => {
 
 
 
-                    <div className="flex items-center gap-2 justify-around">
+                    <div className="flex items-center gap-4 justify-around flex-col lg:flex-row">
                         <div className="flex flex-col gap-1 w-full">
                             <label className="font-[4px]" htmlFor="num_employees">
                                 <TransText
@@ -751,7 +751,7 @@ const Form = () => {
                     </div>
 
 
-                    <div className="flex items-center gap-2 justify-around">
+                    <div className="flex items-center gap-4 justify-around flex-col lg:flex-row">
                         <div className="flex flex-col gap-1 w-full">
                             <label className="font-[4px]" htmlFor="beneficiaries">
                                 <TransText
@@ -1138,7 +1138,7 @@ const Form = () => {
                         </textarea>
                     </div>
 
-                    <div className="flex items-center gap-2 justify-around">
+                    <div className="flex items-center gap-4 justify-around flex-col lg:flex-row">
                         <div className="flex flex-col gap-1 w-full">
                             <label className="font-[4px]" htmlFor="project_duration">
                                 <TransText
