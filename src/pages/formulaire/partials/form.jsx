@@ -34,8 +34,18 @@ const Form = () => {
     const [fund, setFund] = useState();
     const [otherProj, setOtherProj] = useState()
     const [projEva, setProjEva] = useState()
+
     const handleFileChange = (e, setter) => {
-        setter(e.target.files[0]);
+        const MAX_SIZE = 10 * 1024 * 1024;
+        const selectedFile = e.target.files[0];
+
+        if (selectedFile) {
+            if (selectedFile.size > MAX_SIZE) {
+                alert('File is too large. Max size is 10MB.');
+            } else {
+                setter(selectedFile);
+            }
+        }
     }
 
     // text 
@@ -61,6 +71,7 @@ const Form = () => {
         project_duration: '',
         project_area: '',
     });
+
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setFormData((prev) => ({
@@ -370,22 +381,9 @@ const Form = () => {
 
 
 
-    const isFormComplete = Object.values(formData).every(value => value.trim() !== '') && legal && internal && presentation && proDesc && fund && otherProj && projEva && conform && accepting;
 
-    const newTab = [
-        {
-            title: 'General Information',
-            text: <TransText en="General Information" ar="معلومات عامة" fr="Informations Générales" pr="Informações Gerais" sw="Taarifa za Jumla" />
-        },
-        {
-            title: 'Project Information',
-            text: <TransText en="Project Information" ar="معلومات المشروع" fr="Informations sur le Projet" pr="Informações do Projeto" sw="Taarifa za Mradi" />
-        },
-        {
-            title: 'Previous Projects',
-            text: <TransText en="Previous Projects" ar="المشاريع السابقة" fr="Projets Précédents" pr="Projetos Anteriores" sw="Miradi ya Awali" />
-        },
-    ];
+
+
 
     const Required = () => {
         return (
@@ -395,11 +393,82 @@ const Form = () => {
         )
     }
 
+
+    const generalBoolean = (
+        [
+            formData.name_organization,
+            formData.name_representative,
+            formData.position_representative,
+            formData.phone_representative,
+            formData.email_representative,
+            formData.years_existence,
+            formData.num_employees,
+            formData.num_volunteers,
+            formData.beneficiaries
+        ].every(field => field.trim() !== '') &&
+
+        regCountry.trim() &&
+
+        legal && internal && presentation &&
+
+        intCountry.trim() &&
+        selectedArea.trim() &&
+
+        selectedFunding.length > 0 &&
+        selectedThemes.length > 0 &&
+        (selectedFunding.includes('other') ? otherFunding : true) &&
+        (selectedThemes.includes('other') ? otherTheme : true)
+    );
+
+
+
+    const projInfoBoolean = (
+        proDesc && fund &&
+        selectedFunders && selectedPartner &&
+        selectedInterv.length > 0 &&
+        (selectedInterv.includes('other') ? otherInterv.trim() : true) &&
+        (selectedFunders === 'no-funders' ? otherFunders.trim() : true) &&
+        (selectedPartner === 'no-partners' ? true : otherPartner.trim())
+    )
+
+    const prevProjBoolean = [
+        formData.neet_project_example,
+        formData.project_reach,
+        formData.project_impact,
+        formData.project_duration,
+        formData.project_area,
+    ].every(value => value.trim()) &&
+        selectedFinancing &&
+        (selectedFinancing !== 'other' || otherFin.trim()) &&
+        projEva &&
+        otherProj;
+
+    const isFormComplete = generalBoolean && projInfoBoolean && prevProjBoolean && conform && accepting;
+
+
+    const newTab = [
+        {
+            title: 'General Information',
+            text: <TransText en="General Information" ar="معلومات عامة" fr="Informations Générales" pr="Informações Gerais" sw="Taarifa za Jumla" />,
+            bool: generalBoolean,
+        },
+        {
+            title: 'Project Information',
+            text: <TransText en="Project Information" ar="معلومات المشروع" fr="Informations sur le Projet" pr="Informações do Projeto" sw="Taarifa za Mradi" />,
+            bool: projInfoBoolean
+        },
+        {
+            title: 'Previous Projects',
+            text: <TransText en="Previous Projects" ar="المشاريع السابقة" fr="Projets Précédents" pr="Projetos Anteriores" sw="Miradi ya Awali" />,
+            bool: prevProjBoolean
+        },
+    ];
     return (
         <section className="p-4" >
             <div className="flex gap-3 items-center p-3 bg-gray-300">
                 {formLanguages.map(({ language, code }, index) => (
                     <button
+                        key={index}
                         onClick={() => setSelectedLanguage(code)}
                         className="bg-white py-2 w-[20%] rounded font-medium hover:bg-alpha hover:text-white"
                     >
@@ -411,12 +480,12 @@ const Form = () => {
                 dir={selectedLanguage == "ar" ? 'rtl' : 'ltr'}
                 onSubmit={handleSubmitForm}
                 className="flex flex-col gap-3 bg-gray-100/30 p-2">
-                <div className="w-full bg-gray-200 flex items-center gap-2 sticky top-[80px]">
+                <div className="w-full z-10 flex bg-gray-300 items-center gap-2 sticky top-[80px]">
                     {
                         newTab.map((tab, index) => (
                             <button type="button"
-                                key={index} className={`${tab.title == currentTab ? 'bg-black text-white' : 'text-black'}  px-4 py-2 w-full rounded`}
-                                onClick={() => { setCurrentTab(tab.title) }}
+                                key={index} className={`${tab.title == currentTab || tab.bool ? 'bg-alpha text-white' : 'text-black'} px-4 py-2 w-full rounded`}
+                                onClick={() => { tab.bool ? setCurrentTab(tab.title) : null }}
                             >
                                 {tab.text}
                             </button>
@@ -667,51 +736,92 @@ const Form = () => {
                     </div>
 
 
-                    <div className="flex items-center gap-4 justify-around flex-col lg:flex-row">
+                    <div className="flex items-center gap-4 justify-around flex-col lg:flex-row mt-4">
+
                         <div className="flex flex-col gap-1 w-full">
-                            <label className="font-[4px]" htmlFor="legal_statutes">
-                                <TransText
-                                    en="Legal Statutes"
-                                    pr="Estatutos Legais"
-                                    ar="الوضع القانوني"
-                                    fr="Statuts juridiques"
-                                    sw="Hali ya kisheria"
-                                /> <Required />
-                            </label>
-                            <input
-                                onChange={(e) => { handleFileChange(e, setLegal) }}
-                                className="border rounded p-2" type="file" accept="application/pdf" name="legal_statutes" id="legal_statutes" required />
+                            <div className="relative">
+                                <input
+                                    onChange={(e) => { handleFileChange(e, setLegal) }}
+                                    className="absolute inset-0 opacity-0 cursor-pointer"
+                                    type="file"
+                                    accept="application/pdf"
+                                    name="legal_statutes"
+                                    id="legal_statutes"
+                                    required
+                                />
+                                <label
+                                    htmlFor="legal_statutes"
+                                    className={`flex items-center gap-3 cursor-pointer border border-alpha/20 rounded p-2 ${legal ? 'bg-alpha text-white' : ''}`}
+                                >
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="size-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 9.776c.112-.017.227-.026.344-.026h15.812c.117 0 .232.009.344.026m-16.5 0a2.25 2.25 0 0 0-1.883 2.542l.857 6a2.25 2.25 0 0 0 2.227 1.932H19.05a2.25 2.25 0 0 0 2.227-1.932l.857-6a2.25 2.25 0 0 0-1.883-2.542m-16.5 0V6A2.25 2.25 0 0 1 6 3.75h3.879a1.5 1.5 0 0 1 1.06.44l2.122 2.12a1.5 1.5 0 0 0 1.06.44H18A2.25 2.25 0 0 1 20.25 9v.776" />
+                                    </svg>
+                                    <TransText
+                                        en="Legal Statutes"
+                                        pr="Estatutos Legais"
+                                        ar="الوضع القانوني"
+                                        fr="Statuts juridiques"
+                                        sw="Hali ya kisheria"
+                                    /> <Required />
+                                </label>
+                            </div>
                         </div>
 
                         <div className="flex flex-col gap-1 w-full">
-                            <label className="font-[4px]" htmlFor="internal_regulations">
-                                <TransText
-                                    en="Internal Regulations"
-                                    pr="Regulamento Interno"
-                                    sw="Kanuni za utaratibu"
-                                    ar="اللوائح الداخلية"
-                                    fr="Règlement intérieur"
-                                /> <Required />
-                            </label>
-                            <input
-                                onChange={(e) => { handleFileChange(e, setInternal) }}
-                                className="border rounded p-2" type="file" accept="application/pdf" name="internal_regulations" id="internal_regulations" required />
+                            <div className="relative">
+                                <input
+                                    onChange={(e) => handleFileChange(e, setInternal)}
+                                    className="absolute inset-0 opacity-0 cursor-pointer"
+                                    type="file"
+                                    accept="application/pdf"
+                                    name="internal_regulations"
+                                    id="internal_regulations"
+                                    required
+                                />
+                                <label
+                                    htmlFor="internal_regulations"
+                                    className={`flex items-center gap-3 cursor-pointer border border-alpha/20 rounded p-2 ${internal ? 'bg-alpha text-white' : ''}`}
+                                >
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="size-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 9.776c.112-.017.227-.026.344-.026h15.812c.117 0 .232.009.344.026m-16.5 0a2.25 2.25 0 0 0-1.883 2.542l.857 6a2.25 2.25 0 0 0 2.227 1.932H19.05a2.25 2.25 0 0 0 2.227-1.932l.857-6a2.25 2.25 0 0 0-1.883-2.542m-16.5 0V6A2.25 2.25 0 0 1 6 3.75h3.879a1.5 1.5 0 0 1 1.06.44l2.122 2.12a1.5 1.5 0 0 0 1.06.44H18A2.25 2.25 0 0 1 20.25 9v.776" />
+                                    </svg>
+                                    <TransText
+                                        en="Internal Regulations"
+                                        pr="Regulamento Interno"
+                                        sw="Kanuni za utaratibu"
+                                        ar="اللوائح الداخلية"
+                                        fr="Règlement intérieur"
+                                    />
+                                    <Required />
+                                </label>
+                            </div>
                         </div>
 
                         <div className="flex flex-col gap-1 w-full">
-                            <label className="font-[4px]" htmlFor="presentation">
-                                <TransText
-                                    en="Presentation of the Association and its Activities"
-                                    fr="Présentation de l'association et ses activités (note pour inclure l'organigramme)"
-                                    ar="عرض تقديمي للجمعية وأنشطتها (ملاحظة لتضمين الهيكل التنظيمي)"
-                                    sw="Uwasilishaji wa chama na shughuli zake (kumbuka kujumuisha chati ya shirika)"
-                                    pr="Apresentação da associação e das suas atividades (nota a incluir organograma)"
-                                /> <Required />
-                            </label>
-
-                            <input
-                                onChange={(e) => handleFileChange(e, setPresentation)}
-                                className="border rounded p-2" type="file" name="presentation" id="presentation" accept="application/pdf" required />
+                            <div className="relative">
+                                <input
+                                    onChange={(e) => handleFileChange(e, setPresentation)}
+                                    className="absolute inset-0 opacity-0 cursor-pointer"
+                                    type="file"
+                                    accept="application/pdf"
+                                    name="presentation" id="presentation"
+                                    required
+                                />
+                                <label
+                                    htmlFor="presentation"
+                                    className={`flex items-center gap-3 cursor-pointer border border-alpha/20 rounded p-2 ${presentation ? 'bg-alpha text-white' : ''}`}                                >
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="size-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 9.776c.112-.017.227-.026.344-.026h15.812c.117 0 .232.009.344.026m-16.5 0a2.25 2.25 0 0 0-1.883 2.542l.857 6a2.25 2.25 0 0 0 2.227 1.932H19.05a2.25 2.25 0 0 0 2.227-1.932l.857-6a2.25 2.25 0 0 0-1.883-2.542m-16.5 0V6A2.25 2.25 0 0 1 6 3.75h3.879a1.5 1.5 0 0 1 1.06.44l2.122 2.12a1.5 1.5 0 0 0 1.06.44H18A2.25 2.25 0 0 1 20.25 9v.776" />
+                                    </svg>
+                                    <TransText
+                                        en="Presentation of the Association and its Activities"
+                                        fr="Présentation de l'association et ses activités (note pour inclure l'organigramme)"
+                                        ar="عرض تقديمي للجمعية وأنشطتها (ملاحظة لتضمين الهيكل التنظيمي)"
+                                        sw="Uwasilishaji wa chama na shughuli zake (kumbuka kujumuisha chati ya shirika)"
+                                        pr="Apresentação da associação e das suas atividades (nota a incluir organograma)"
+                                    /> <Required />
+                                </label>
+                            </div>
                         </div>
                     </div>
 
@@ -898,7 +1008,7 @@ const Form = () => {
                                 sw="Mada ya kuingilia kati"
                                 ar="مواضيع التدخل"
                                 fr="Thématiques d'intervention"
-                            />:
+                            />:<Required />
                         </label>
                         <div className="flex items-center gap-4 flex-wrap">
                             {themeOptions.map((option) => (
@@ -927,14 +1037,16 @@ const Form = () => {
                         )}
 
                     </div>
+
+                    <button disabled={!generalBoolean} className={`w-full py-3 rounded transition-all ${generalBoolean ? 'bg-alpha text-white ' : 'bg-gray-300 text-black/60'}`} type="button" onClick={() => setCurrentTab('Project Information')}>
+                        Next Section
+                    </button>
                 </div>
-
-
 
                 <div className={`flex flex-col gap-2 ${currentTab == "Project Information" ? '' : 'hidden'}`}>
 
 
-                    <div className="flex flex-col gap-1">
+                    {/* <div className="flex flex-col gap-1">
                         <label className="font-[4px]" htmlFor="project_description">
                             <TransText
                                 en="Project Description (include target, activities, and impact)"
@@ -942,12 +1054,40 @@ const Form = () => {
                                 ar="وصف المشروع (بما في ذلك الهدف، الأنشطة والأثر)"
                                 fr="Description du projet (inclure ici cible, activités et impact)"
                                 sw="Maelezo ya mradi (pamoja na lengo hapa, shughuli na athari)"
-                            />
+                            /><Required />
                         </label>
 
                         <input
                             onChange={(e) => { handleFileChange(e, setProDesc) }}
                             className="border rounded p-2" name="project_description" id="project_description" type="file" accept="application/pdf" required />
+                    </div> */}
+
+                    <div className="flex flex-col gap-1 w-full">
+                        <div className="relative">
+                            <input
+                                onChange={(e) => { handleFileChange(e, setProDesc) }}
+                                className="absolute inset-0 opacity-0 cursor-pointer"
+                                type="file"
+                                accept="application/pdf"
+                                name="project_description" id="project_description"
+                                required
+                            />
+                            <label
+                                htmlFor="project_description"
+                                className={`flex items-center gap-3 cursor-pointer border border-alpha/20 rounded p-2 ${proDesc ? 'bg-alpha text-white' : ''}`}
+                            >
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="size-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 9.776c.112-.017.227-.026.344-.026h15.812c.117 0 .232.009.344.026m-16.5 0a2.25 2.25 0 0 0-1.883 2.542l.857 6a2.25 2.25 0 0 0 2.227 1.932H19.05a2.25 2.25 0 0 0 2.227-1.932l.857-6a2.25 2.25 0 0 0-1.883-2.542m-16.5 0V6A2.25 2.25 0 0 1 6 3.75h3.879a1.5 1.5 0 0 1 1.06.44l2.122 2.12a1.5 1.5 0 0 0 1.06.44H18A2.25 2.25 0 0 1 20.25 9v.776" />
+                                </svg>
+                                <TransText
+                                    en="Project Description (include target, activities, and impact)"
+                                    pr="Descrição do projeto (incluir objetivo, atividades e impacto)"
+                                    ar="وصف المشروع (بما في ذلك الهدف، الأنشطة والأثر)"
+                                    fr="Description du projet (inclure ici cible, activités et impact)"
+                                    sw="Maelezo ya mradi (pamoja na lengo hapa, shughuli na athari)"
+                                /><Required />
+                            </label>
+                        </div>
                     </div>
 
                     {/* TODO: checkbox with different id from the previous one */}
@@ -958,14 +1098,14 @@ const Form = () => {
 
                     <div className="flex flex-col gap-1 mt-3">
 
-                        <label className="font-[4px]" htmlFor="themes_intervention">
+                        <label className="font-[4px]" htmlFor="intervention_themes">
                             <TransText
                                 en="Themes of Intervention"
                                 pr="Tópicos de intervenção"
                                 sw="Mada ya kuingilia kati"
                                 ar="مواضيع التدخل"
                                 fr="Thématiques d'intervention"
-                            />:
+                            />:<Required />
                         </label>
 
                         <div className="flex items-center gap-4 flex-wrap">
@@ -996,7 +1136,7 @@ const Form = () => {
                     </div>
 
 
-
+                    {/* 
                     <div className="flex flex-col gap-1">
                         <label className="font-[4px]" htmlFor="funding_requirements">
                             <TransText
@@ -1005,12 +1145,40 @@ const Form = () => {
                                 ar="متطلبات التمويل (الميزانية)"
                                 sw="Mahitaji ya Fedha (Budget)"
                                 pr="Necessidades de financiamento (orçamento)"
-                            />
+                            /> <Required />
                         </label>
 
                         <input
                             onChange={(e) => { handleFileChange(e, setFund) }}
                             className="border rounded p-2" type="file" name="funding_requirements" id="funding_requirements" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" required />
+                    </div> */}
+
+                    <div className="flex flex-col gap-1 w-full">
+                        <div className="relative">
+                            <input
+                                onChange={(e) => { handleFileChange(e, setFund) }}
+                                className="absolute inset-0 opacity-0 cursor-pointer"
+                                type="file"
+                                name="funding_requirements" id="funding_requirements"
+                                accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
+                                required
+                            />
+                            <label
+                                htmlFor="funding_requirements"
+                                className={`flex items-center gap-3 cursor-pointer border border-alpha/20 rounded p-2 ${fund ? 'bg-alpha text-white' : ''}`}
+                            >
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="size-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 9.776c.112-.017.227-.026.344-.026h15.812c.117 0 .232.009.344.026m-16.5 0a2.25 2.25 0 0 0-1.883 2.542l.857 6a2.25 2.25 0 0 0 2.227 1.932H19.05a2.25 2.25 0 0 0 2.227-1.932l.857-6a2.25 2.25 0 0 0-1.883-2.542m-16.5 0V6A2.25 2.25 0 0 1 6 3.75h3.879a1.5 1.5 0 0 1 1.06.44l2.122 2.12a1.5 1.5 0 0 0 1.06.44H18A2.25 2.25 0 0 1 20.25 9v.776" />
+                                </svg>
+                                <TransText
+                                    en="Funding Requirements (budget)"
+                                    fr="Besoins en financement (Budget)"
+                                    ar="متطلبات التمويل (الميزانية)"
+                                    sw="Mahitaji ya Fedha (Budget)"
+                                    pr="Necessidades de financiamento (orçamento)"
+                                /> <Required />
+                            </label>
+                        </div>
                     </div>
 
                     <div className="flex flex-col gap-1">
@@ -1021,7 +1189,7 @@ const Form = () => {
                                 pr="Já contactou financiadores para este projeto?"
                                 fr="Avez-vous déjà approché des bailleurs de fonds pour ce projet ?"
                                 sw="Je, tayari umewasiliana na wafadhili kwa ajili ya mradi huu?"
-                            />
+                            /> <Required />
                         </label>
 
                         <select
@@ -1040,7 +1208,7 @@ const Form = () => {
                             <option value="other">Other</option>
                             <option value="no-funders">no-funders</option>
                         </select>
-                        {(selectedFunders && selectedFunders === "no-funders") && (
+                        {(selectedFunders && selectedFunders !== "no-funders") && (
                             <input
                                 type="text"
                                 placeholder="Please specify"
@@ -1059,7 +1227,7 @@ const Form = () => {
                                 pr="Em caso afirmativo, pode nomeá-los? (para cada parceiro, por favor inclua a sua participação)"
                                 sw="Kama ni hivyo, unaweza kuwataja? (kwa kila mwenzi, jumuisha uingiliaji wao)"
                                 ar="إذا كانت الإجابة بنعم، هل يمكنك تسميتهم؟ (لكل شريك، ذكر مشاركته)"
-                            />
+                            /><Required />
                         </label>
                         <select
                             id="partners"
@@ -1085,8 +1253,10 @@ const Form = () => {
                         )}
                     </div>
 
+                    <button disabled={!projInfoBoolean} className={`w-full py-3 rounded transition-all ${projInfoBoolean ? 'bg-alpha text-white ' : 'bg-gray-300 text-black/60'}`} type="button" onClick={() => setCurrentTab('Previous Projects')}>
+                        Next Section
+                    </button>
                 </div>
-
 
                 <div className={`flex flex-col gap-2 ${currentTab == "Previous Projects" ? '' : 'hidden'}`}>
                     <div className="flex flex-col gap-1">
@@ -1097,10 +1267,10 @@ const Form = () => {
                                 pr="Descreva um exemplo de um projeto que levou a cabo e que afetou os jovens da N.E.E.T."
                                 sw="Kama ni hivyo, unaweza kuwataja? (Kwa kila mwenzi, jumuisha uingiliaji wao)"
                                 fr="Décrire un exemple de projet ayant touché les jeunes N.E.E.T que vous avez réalisé"
-                            />
+                            /><Required />
                         </label>
                         <textarea
-                            onChange={handleInputChange}
+                            onChange={handleInputChange} required
                             className="border rounded p-2" name="neet_project_example" id="neet_project_example">
                             {formData.neet_project_example}
                         </textarea>
@@ -1114,10 +1284,10 @@ const Form = () => {
                                 fr="Combien de personnes ce projet a-t-il touché ?"
                                 sw="Mradi huu umefikia watu wangapi?"
                                 pr="Quantas pessoas beneficiaram deste projeto?"
-                            />
+                            /><Required />
                         </label>
                         <input
-                            value={formData.project_reach} onChange={handleInputChange}
+                            value={formData.project_reach} onChange={handleInputChange} required
                             className="border rounded p-2" type="number" name="project_reach" id="project_reach" />
                     </div>
 
@@ -1129,10 +1299,10 @@ const Form = () => {
                                 sw="Je, ni athari gani za moja kwa moja kwa walengwa wa mradi huu?"
                                 fr="Quel a été l'impact direct sur les bénéficiaires de ce projet ?"
                                 ar="ما هو التأثير المباشر على المستفيدين من هذا المشروع؟"
-                            />
+                            /><Required />
                         </label>
                         <textarea
-                            onChange={handleInputChange}
+                            onChange={handleInputChange} required
                             className="border rounded p-2" name="project_impact" id="project_impact">
                             {formData.project_impact}
                         </textarea>
@@ -1147,10 +1317,10 @@ const Form = () => {
                                     ar="ما المدة التي استغرقها المشروع؟"
                                     sw="Mradi huu ulichukua muda gani?"
                                     pr="Quanto tempo durou o projeto?"
-                                />
+                                /><Required />
                             </label>
                             <input
-                                value={formData.project_duration} onChange={handleInputChange}
+                                value={formData.project_duration} onChange={handleInputChange} required
                                 className="border rounded p-2" type="text" name="project_duration" id="project_duration" />
                         </div>
 
@@ -1162,11 +1332,11 @@ const Form = () => {
                                     sw="Je, ni eneo gani la kuingilia kati kwa mradi huu?"
                                     ar="ما هي المنطقة التي غطاها المشروع؟"
                                     fr="Quelle a été la zone d'intervention de ce projet ?"
-                                />
+                                /><Required />
                             </label>
                             {/* todo select countries */}
                             <input
-                                value={formData.project_area} onChange={handleInputChange}
+                                value={formData.project_area} onChange={handleInputChange} required
                                 className="border rounded p-2" type="text" name="project_area" id="project_area" />
                         </div>
                     </div>
@@ -1180,7 +1350,7 @@ const Form = () => {
                                 ar="كيف تم تمويل هذا المشروع؟"
                                 sw="Ni kwa namna gani umeufadhili mradi huu?"
                                 pr="Como foi financiado este projeto?"
-                            />
+                            /><Required />
                         </label>
 
                         <select
@@ -1264,7 +1434,7 @@ const Form = () => {
                         )}
                     </div>
 
-                    <div className="flex flex-col gap-1">
+                    {/* <div className="flex flex-col gap-1">
                         <label className="font-[4px]" htmlFor="project_evaluation">
                             <TransText
                                 en="Project evaluation report (if applicable)"
@@ -1278,8 +1448,34 @@ const Form = () => {
                         <input
                             onChange={(e) => { handleFileChange(e, setProjEva) }} accept="application/pdf"
                             className="border rounded p-2" type="file" name="project_evaluation" id="project_evaluation" />
+                    </div> */}
+                    <div className="flex flex-col gap-1 w-full">
+                        <div className="relative">
+                            <input
+                                onChange={(e) => { handleFileChange(e, setProjEva) }}
+                                className="absolute inset-0 opacity-0 cursor-pointer"
+                                type="file"
+                                accept="application/pdf"
+                                name="project_evaluation" id="project_evaluation"
+                            />
+                            <label
+                                htmlFor="project_evaluation"
+                                className={`flex items-center gap-3 cursor-pointer border border-alpha/20 rounded p-2 ${projEva ? 'bg-alpha text-white' : ''}`}
+                            >
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="size-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 9.776c.112-.017.227-.026.344-.026h15.812c.117 0 .232.009.344.026m-16.5 0a2.25 2.25 0 0 0-1.883 2.542l.857 6a2.25 2.25 0 0 0 2.227 1.932H19.05a2.25 2.25 0 0 0 2.227-1.932l.857-6a2.25 2.25 0 0 0-1.883-2.542m-16.5 0V6A2.25 2.25 0 0 1 6 3.75h3.879a1.5 1.5 0 0 1 1.06.44l2.122 2.12a1.5 1.5 0 0 0 1.06.44H18A2.25 2.25 0 0 1 20.25 9v.776" />
+                                </svg>
+                                <TransText
+                                    en="Project evaluation report (if applicable)"
+                                    pr="Relatório de avaliação do projeto (se aplicável)"
+                                    sw="Ripoti ya Tathmini ya Mradi (ikiwa inafaa)"
+                                    ar="تقرير تقييم المشروع (إن أمكن)"
+                                    fr="Rapport d'évaluation du projet (si applicable)"
+                                />
+                            </label>
+                        </div>
                     </div>
-
+                    {/* 
                     <div className="flex flex-col gap-1">
                         <label className="font-[4px]" htmlFor="other_projects">
                             <TransText
@@ -1295,60 +1491,94 @@ const Form = () => {
                             className="border rounded p-2" name="other_projects"
                             type="file"
                             id="other_projects" />
+                    </div> */}
+
+                    <div className="flex flex-col gap-1 w-full">
+                        <div className="relative">
+                            <input
+                                onChange={(e) => { handleFileChange(e, setOtherProj) }}
+                                className="absolute inset-0 opacity-0 cursor-pointer"
+                                type="file"
+                                accept="application/pdf"
+                                name="other_projects" id="other_projects"
+                            />
+                            <label
+                                htmlFor="other_projects"
+                                className={`flex items-center gap-3 cursor-pointer border border-alpha/20 rounded p-2 ${otherProj ? 'bg-alpha text-white' : ''}`}
+                            >
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="size-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 9.776c.112-.017.227-.026.344-.026h15.812c.117 0 .232.009.344.026m-16.5 0a2.25 2.25 0 0 0-1.883 2.542l.857 6a2.25 2.25 0 0 0 2.227 1.932H19.05a2.25 2.25 0 0 0 2.227-1.932l.857-6a2.25 2.25 0 0 0-1.883-2.542m-16.5 0V6A2.25 2.25 0 0 1 6 3.75h3.879a1.5 1.5 0 0 1 1.06.44l2.122 2.12a1.5 1.5 0 0 0 1.06.44H18A2.25 2.25 0 0 1 20.25 9v.776" />
+                                </svg>
+                                <TransText
+                                    en="Would you like to share other projects targeting young people?"
+                                    fr="Voulez-vous partager d'autres projets ayant pour cible les jeunes ?"
+                                    sw="Je, ungependa kushiriki miradi mingine inayolenga vijana?"
+                                    pr="Gostaria de partilhar outros projetos destinados aos jovens?"
+                                    ar="هل ترغب في مشاركة مشاريع أخرى تستهدف الشباب؟"
+                                />
+                            </label>
+                        </div>
                     </div>
                 </div>
 
 
                 <hr />
-                <div className="flex items-center gap-2">
-                    <input
-                        checked={conform}
-                        onChange={() => { setConform(!conform) }}
-                        type="checkbox" name="conform" id="conform" required />
-                    <label className="font-[4px]" htmlFor="conform">
-                        <TransText
-                            en="By checking this box, I certify the conformity of the information provided."
-                            ar="بالتأشير على هذا المربع، أقر بأن المعلومات المقدمة صحيحة."
-                            pr="Ao assinalar esta casa, certifico que as informações prestadas estão corretas. "
-                            sw="Kwa kuweka sanduku hili, ninathibitisha kufuata habari iliyotolewa"
-                            fr="En cochant cette case, je certifie la conformité des informations fournies"
-                        />
+                {
+                    generalBoolean && projInfoBoolean && prevProjBoolean && <div>
+                        <div className="flex items-center gap-2">
+                            <input
+                                checked={conform}
+                                onChange={() => { setConform(!conform) }}
+                                type="checkbox" name="conform" id="conform" required />
+                            <label className="font-[4px]" htmlFor="conform">
+                                <TransText
+                                    en="By checking this box, I certify the conformity of the information provided."
+                                    ar="بالتأشير على هذا المربع، أقر بأن المعلومات المقدمة صحيحة."
+                                    pr="Ao assinalar esta casa, certifico que as informações prestadas estão corretas. "
+                                    sw="Kwa kuweka sanduku hili, ninathibitisha kufuata habari iliyotolewa"
+                                    fr="En cochant cette case, je certifie la conformité des informations fournies"
+                                /><Required />
 
-                    </label>
-                </div>
-                <div className="flex items-center gap-2">
-                    <input
-                        checked={accepting}
-                        onChange={() => { setAccepting(!accepting) }}
-                        type="checkbox" name="accepting" id="accepting" required />
-                    <label className="font-[4px]" htmlFor="accepting">
-                        <TransText
-                            en="I undertake to provide the necessary time to prepare my NGO's participation in Y.E.S Africa."
-                            fr="Je m'engage à fournir le temps nécessaire pour la préparation de la participation de mon ONG à Y.E.S Africa"
-                            sw="Ninaahidi kutoa muda muhimu kwa ajili ya maandalizi ya ushiriki wa NGO yangu katika Y.E.S Africa"
-                            pr="Comprometo-me a dedicar algum tempo a preparar a participação da minha ONG na Y.E.S Africa."
-                            ar="أتعهد بتوفير الوقت اللازم لإعداد مشاركة منظمتي غير الحكومية في برنامج Y.E.S أفريقيا."
-                        />
-                    </label>
-                </div>
-                <button disabled={!isFormComplete} className={`w-full py-3 rounded transition-all ${isFormComplete ? 'bg-black text-white ' : 'bg-gray-300 text-black/60'}`} type="submit">
+                            </label>
+                        </div>
+                        <div className="flex items-center gap-2">
+                            <input
+                                checked={accepting}
+                                onChange={() => { setAccepting(!accepting) }}
+                                type="checkbox" name="accepting" id="accepting" required />
+                            <label className="font-[4px]" htmlFor="accepting">
+                                <TransText
+                                    en="I undertake to provide the necessary time to prepare my NGO's participation in Y.E.S Africa."
+                                    fr="Je m'engage à fournir le temps nécessaire pour la préparation de la participation de mon ONG à Y.E.S Africa"
+                                    sw="Ninaahidi kutoa muda muhimu kwa ajili ya maandalizi ya ushiriki wa NGO yangu katika Y.E.S Africa"
+                                    pr="Comprometo-me a dedicar algum tempo a preparar a participação da minha ONG na Y.E.S Africa."
+                                    ar="أتعهد بتوفير الوقت اللازم لإعداد مشاركة منظمتي غير الحكومية في برنامج Y.E.S أفريقيا."
+                                /> <Required />
+                            </label>
+                        </div>
+                    </div>
+                }
+
+                {
+                    isFormComplete && <button disabled={!isFormComplete} className={`w-full py-3 rounded transition-all ${isFormComplete ? 'bg-alpha text-white ' : 'bg-gray-300 text-black/60'}`} type="submit">
 
 
-                    {
-                        loading ?
-                            <div role="status" className="flex items-center justify-center">
-                                <svg aria-hidden="true" className="w-8 h-8 text-gray-200 animate-spin fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor" />
-                                    <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill" />
-                                </svg>
-                                <span className="sr-only">Loading...</span>
-                            </div>
-                            :
-                            <>
-                                Submit Form
-                            </>
-                    }
-                </button>
+                        {
+                            loading ?
+                                <div role="status" className="flex items-center justify-center">
+                                    <svg aria-hidden="true" className="w-8 h-8 text-gray-200 animate-spin fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor" />
+                                        <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill" />
+                                    </svg>
+                                    <span className="sr-only">Loading...</span>
+                                </div>
+                                :
+                                <>
+                                    Submit Form
+                                </>
+                        }
+                    </button>
+                }
             </form>
 
         </section>
