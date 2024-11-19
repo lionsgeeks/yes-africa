@@ -7,7 +7,11 @@ const Who = () => {
   const stats = [
     {
       number: "30+",
-      title: { en: "Countries", ar: "دولة" },
+      title: {
+        en: "Countries",
+        ar: "دولة",
+        fr: "Pays"
+      },
       icon: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -27,7 +31,11 @@ const Who = () => {
     },
     {
       number: "10+",
-      title: { en: "Partners", ar: "شريك" },
+      title: {
+        en: "Partners",
+        ar: "شريك",
+        fr: "Partenaires"
+      },
       icon: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -49,7 +57,11 @@ const Who = () => {
     },
     {
       number: "1,000+",
-      title: { en: "Attendees", ar: "حاضرون" },
+      title: {
+        en: "Attendees",
+        ar: "حاضرون",
+        fr: "Participants"
+      },
       icon: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -69,7 +81,11 @@ const Who = () => {
     },
     {
       number: "10+",
-      title: { en: "Speakers", ar: "متحدثون" },
+      title: {
+        en: "Speakers",
+        ar: "متحدثون",
+        fr: "Intervenants"
+      },
       icon: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -89,45 +105,46 @@ const Who = () => {
     },
   ];
 
+
   const { selectedLanguage } = useAppContext();
 
   const text = [
     {
-      title: { en: "About", ar: "حول" },
+      title: {
+        en: "About Jadara Foundation",
+        ar: "حول مؤسسة جدارة",
+        fr: "À propos de Foundation Jadara"
+      },
       para1: {
         en: "Jadara is a non-profit organization dedicated to empowering underserved youth and fostering social development in Morocco and beyond. With a mission to provide opportunities for education, skill development, and personal growth, Jadara aims to equip young individuals with the tools they need to overcome social barriers and achieve their full potential. The foundation focuses on initiatives that promote inclusivity, resilience, and community engagement, working collaboratively with local and international partners to create sustainable solutions that uplift marginalized communities. Through its various programs and activities, Jadara is committed to transforming lives and building a brighter future for the next generation.",
         ar: "جدارة هي منظمة غير ربحية مكرسة لتمكين الشباب المحرومين وتعزيز التنمية الاجتماعية في المغرب وما وراءه. تهدف جادارة، من خلال مهمتها المتمثلة في توفير الفرص للتعليم، وتطوير المهارات، والنمو الشخصي، إلى تجهيز الشباب بالأدوات اللازمة لتجاوز الحواجز الاجتماعية وتحقيق إمكاناتهم الكاملة. تركز المؤسسة على المبادرات التي تعزز الشمولية، والمرونة، والمشاركة المجتمعية، وتعمل بشكل تعاوني مع الشركاء المحليين والدوليين لإنشاء حلول مستدامة ترفع من مستوى المجتمعات المهمشة. من خلال برامجها وأنشطتها المتنوعة، تلتزم جادارة بتحويل الحياة وبناء مستقبل أكثر إشراقًا للجيل القادم.",
-      },
-      // para2: {
-      //   en: "dedicated to supporting and empowering the next generation of African leaders. We believe that by investing in the education, skills, and entrepreneurship of African youth, we can create a brighter future for the continent",
-      //   ar: "مكرسة لدعم وتمكين الجيل القادم من القادة الأفارقة. نحن نؤمن أنه من خلال الاستثمار في تعليم الشباب الأفارقة، ومهاراتهم، وريادتهم للأعمال، يمكننا أن نخلق مستقبلاً أكثر إشراقاً للقارة.",
-      // },
+        fr: "Jadara est une organisation à but non lucratif dédiée à l'autonomisation des jeunes défavorisés et à la promotion du développement social au Maroc et au-delà. Avec pour mission de fournir des opportunités d'éducation, de développement des compétences et de croissance personnelle, Jadara vise à doter les jeunes des outils nécessaires pour surmonter les barrières sociales et réaliser leur plein potentiel. La fondation se concentre sur des initiatives qui favorisent l'inclusivité, la résilience et l'engagement communautaire, en collaborant avec des partenaires locaux et internationaux pour créer des solutions durables qui élèvent les communautés marginalisées. À travers ses divers programmes et activités, Jadara s'engage à transformer des vies et à construire un avenir plus brillant pour la prochaine génération."
+      }
     },
   ];
+
 
   return (
     <section className="min-h-[50vh]">
       <div
-        className={`min-h-[30vh] flex items-center flex-col justify-between gap-8 lg:gap-0 ${
-          selectedLanguage === "ar" ? "lg:flex-row-reverse text-end" : "lg:flex-row"
-        }`}
+        className={`min-h-[30vh] flex items-center flex-col justify-between gap-8 lg:gap-0 ${selectedLanguage === "ar" ? "lg:flex-row-reverse text-end" : "lg:flex-row"
+          }`}
       >
         <img src={aboutimg} className="lg:w-[50%] object-cover" alt="" />
 
         {text.map(({ title, para1, para2 }, index) => (
           <div
-            className={`flex flex-col gap-4 tracking-wide ${
-              selectedLanguage === "ar" ? "px-8 md:pl-12 lg:pl-16" : "px-8 md:pr-12 lg:pr-16"
-            }`}
+            className={`flex flex-col gap-4 tracking-wide ${selectedLanguage === "ar" ? "px-8 md:pl-12 lg:pl-16" : "px-8 md:pr-12 lg:pr-16"
+              }`}
             key={index}
           >
             <h1
-              className={`lg:text-start text-beta lg:mb-3 text-3xl font-bold tracking-tighter md:text-4xl lg:text-5xl/none ${
-                selectedLanguage == "ar" ? "flex flex-row-reverse gap-2" : ""
-              }`}
+              className={`lg:text-start text-beta lg:mb-3 text-3xl font-bold tracking-tighter md:text-4xl lg:text-5xl/none ${selectedLanguage == "ar" ? "flex flex-row-reverse gap-2" : ""
+                }`}
             >
+              {/* TODO: mafia li ygadha, khaliha mcommentia - oussama */}
               <TransText {...title} />
-              <span className="text-alpha"> Jadara Foundation</span>
+              {/* <span className="text-alpha"> Jadara Foundation</span> */}
             </h1>
             <p className="text-muted-foreground md:text-base/relaxed lg:text-lg/snug">
               <TransText {...para1} />

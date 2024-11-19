@@ -11,29 +11,56 @@ const EventInfo = () => {
   const eventInformation = [
     {
       icon: <CiCalendar />,
-      text: { en: "February 12-13, 2025", ar: "12-13 فبراير 2025" },
+      text: {
+        en: "February 12-13, 2025",
+        ar: "12-13 فبراير 2025",
+        fr: "12-13 février 2025"
+      },
     },
     {
       icon: <GoClock />,
-      text: { en: "9:00 AM - 5:00 PM", ar: "9:00 ص - 5:00 م" },
+      text: {
+        en: "9:00 AM - 5:00 PM",
+        ar: "9:00 ص - 5:00 م",
+        fr: "9h00 - 17h00"
+      },
     },
     {
       icon: <MdMyLocation />,
-      text: { en: "Casablanca", ar: " الدار البيضاء" },
+      text: {
+        en: "Casablanca",
+        ar: "الدار البيضاء",
+        fr: "Casablanca"
+      },
     },
   ];
 
+
   const text = [
     {
-      title: { en: "Information About The Event", ar: "معلومات عن الحدث" },
+      title: {
+        en: "Information About The Event",
+        ar: "معلومات عن الحدث",
+        fr: "Informations sur l'événement"
+      },
       desc: {
         en: "Join us for a vibrant celebration of African youth empowerment! Experience an exciting event featuring inspiring speakers, interactive workshops, and captivating live performances. This is a fantastic opportunity to connect with fellow change-makers, exchange ideas, and celebrate the dynamism of African youth. Don’t miss this enriching experience designed to uplift and inspire the next generation!",
         ar: "انضموا إلينا للاحتفال النابض بتمكين الشباب الأفريقي! عيشوا تجربة مثيرة تتضمن متحدثين ملهمين، ورش عمل تفاعلية، وعروض حية ساحرة. هذه فرصة رائعة للتواصل مع صانعي التغيير الآخرين، وتبادل الأفكار، والاحتفال بحيوية الشباب الأفريقي. لا تفوتوا هذه التجربة الغنية المصممة لرفع معنويات وإلهام الجيل القادم!",
+        fr: "Rejoignez-nous pour une célébration vibrante de l'autonomisation des jeunes africains ! Vivez un événement passionnant avec des conférenciers inspirants, des ateliers interactifs et des performances en direct captivantes. C'est une occasion fantastique de se connecter avec d'autres acteurs du changement, d'échanger des idées et de célébrer le dynamisme des jeunes africains. Ne manquez pas cette expérience enrichissante conçue pour élever et inspirer la prochaine génération !"
       },
-      aboutBtn: { en: "About Summit", ar: "حول الملتقى" },
-      contactBtn: { en: "Contact Us", ar: "اتصل بنا" },
+      aboutBtn: {
+        en: "About Summit",
+        ar: "حول الملتقى",
+        fr: "À propos du sommet"
+      },
+      contactBtn: {
+        en: "Contact Us",
+        ar: "اتصل بنا",
+        fr: "Contactez-nous"
+      },
     },
   ];
+
 
   return (
     <section
@@ -64,9 +91,8 @@ const EventInfo = () => {
       </svg>
 
       <div
-        className={`lg:w-[50%] ${
-          selectedLanguage == "ar" && "text-end justify-end z-50"
-        }`}
+        className={`lg:w-[50%] ${selectedLanguage == "ar" && "text-end justify-end z-50"
+          }`}
       >
         {text.map(({ title, desc, aboutBtn, contactBtn }, index) => (
           <div className="flex flex-col gap-4" key={index}>
@@ -78,9 +104,8 @@ const EventInfo = () => {
             </p>
 
             <div
-              className={`mt-4 flex items-center gap-4 ${
-                selectedLanguage === "ar" && "flex-row-reverse"
-              }`}
+              className={`mt-4 flex items-center gap-4 ${selectedLanguage === "ar" && "flex-row-reverse"
+                }`}
             >
               <Link to={"/about"}>
                 <button className="bg-alpha border-2 lg:text-lg text-white border-alpha hover:border-white hover:bg-white hover:text-alpha px-8 py-2.5 w-fit rounded-lg lg:font-medium">
@@ -99,16 +124,14 @@ const EventInfo = () => {
       </div>
 
       <div
-        className={`lg:w-[40%] flex flex-col gap-3 ${
-          selectedLanguage === "ar" ? "items-end" : "items-start"
-        }`}
+        className={`lg:w-[40%] flex flex-col gap-3 ${selectedLanguage === "ar" ? "items-end" : "items-start"
+          }`}
       >
         {eventInformation.map(({ icon, text }, index) => (
           <div
             key={index}
-            className={`flex items-center gap-2 ${
-              selectedLanguage === "ar" && "flex-row-reverse"
-            }`}
+            className={`flex items-center gap-2 ${selectedLanguage === "ar" && "flex-row-reverse"
+              }`}
           >
             {icon}
             <p className="text-gray-100 md:text-base/relaxed lg:text-lg/snug">

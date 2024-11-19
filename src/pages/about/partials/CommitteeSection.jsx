@@ -21,7 +21,7 @@ export const CommitteeSection = () => {
           }`}
       >
         <h2 className="text-xl text-alpha font-medium tracking-tighter md:text-2xl lg:text-3xl/none">
-          <TransText en="The Scientific Committee" ar="اللجنة العلمية" />
+          <TransText en="The Scientific Committee" ar="اللجنة العلمية" fr="Le Comité Scientifique" />
         </h2>
         <div>
 
@@ -33,7 +33,7 @@ export const CommitteeSection = () => {
           {[
             {
               name: "M. Jean Pierre ELONG MBASSI",
-              job: { en: "Secretary General of the United Cities and Local Governments of Africa - President of the Scientific Committee", ar: "الأمين العام للمدن والحكومات المحلية في أفريقيا - رئيس اللجنة العلمية" },
+              job: { en: "Secretary General of the United Cities and Local Governments of Africa - President of the Scientific Committee", ar: "الأمين العام للمدن والحكومات المحلية في أفريقيا - رئيس اللجنة العلمية", fr: "Secrétaire Général des Cités et Gouvernements Locaux Unis d'Afrique - Président du Comité Scientifique" },
               image: mbassi,
               linkedin: "https://www.linkedin.com/in/jean-pierre-elong-mbassi-9b2b3ab9",
             },
@@ -41,57 +41,58 @@ export const CommitteeSection = () => {
               name: "M. Hamid BEN ELAFDIL",
               job: {
                 en: "Talent and Startup Finder & Social Entrepreneur & President of Jadara Foundation",
-                ar: "مكتشف المواهب والشركات الناشئة & رائد أعمال اجتماعي & رئيس مؤسسة جدارة"
+                ar: "مكتشف المواهب والشركات الناشئة & رائد أعمال اجتماعي & رئيس مؤسسة جدارة",
+                fr: "Détecteur de talents et de startups & Entrepreneur social & Président de la Fondation Jadara"
               },
               image: benelfadil,
               linkedin: "https://www.linkedin.com/in/hamidbenelafdil",
-
             },
             {
               name: "M. Cheikh MAMINA DIEDHIOU",
               job: {
                 en: "Senior ESG Officer - AFRICA 50",
-                ar: "المسؤول الرئيسي للبيئة والمجتمع والحوكمة - أفريقيا 50"
+                ar: "المسؤول الرئيسي للبيئة والمجتمع والحوكمة - أفريقيا 50",
+                fr: "Responsable ESG Senior - AFRICA 50"
               },
               image: diedhiou,
               linkedin: "https://www.linkedin.com/in/cheikh-mamina-diedhiou-14b2931a",
-
             },
             {
               name: "Mme. Ileana SANTOS",
               job: {
                 en: "Strategy Consultant and Co-founder of Je M'engage pour l'Afrique",
-                ar: "استشارية في الاستراتيجية وعضو مؤسس في مؤسسة أنا ألتزم من أجل أفريقيا"
+                ar: "استشارية في الاستراتيجية وعضو مؤسس في مؤسسة أنا ألتزم من أجل أفريقيا",
+                fr: "Consultante en stratégie et Co-fondatrice de Je M'engage pour l'Afrique"
               },
               image: santos,
               linkedin: "https://www.linkedin.com/in/ileana-santos-243b31108",
-
             },
             {
               name: "M. Abdou SOULEYE DIOP",
               job: {
                 en: "Managing Partner - FORVIS MAZARS",
-                ar: "العضو المدير - فورفيس مازارز"
+                ar: "العضو المدير - فورفيس مازارز",
+                fr: "Associé Directeur - FORVIS MAZARS"
               },
               image: diop,
               linkedin: "https://www.linkedin.com/in/abdoudiop",
-
             },
             {
               name: "Mme Hasnaâ BOUTZIL",
               job: {
                 en: "Speaker, trainer, moderator, coach, strategy and development advisor",
-                ar: "متحدثة، مدربة، معدة، مدربة، مستشارة في الاستراتيجية والتطوير"
+                ar: "متحدثة، مدربة، معدة، مدربة، مستشارة في الاستراتيجية والتطوير",
+                fr: "Conférencière, formatrice, modératrice, coach, conseillère en stratégie et développement"
               },
               image: boutzil,
               linkedin: "https://www.linkedin.com/in/hasna%C3%A2-boutzil-9787ab24",
-
             },
             {
               name: "Mme Khadija BOUJANOUI",
               job: {
                 en: "Director of the Support Department at 2M, President of the Gender Equality and Diversity Committee - President of Lions Geek",
-                ar: "مديرة قسم الدعم في 2M، رئيسة لجنة المساواة بين الجنسين والتنوع - رئيسة Lions Geek"
+                ar: "مديرة قسم الدعم في 2M، رئيسة لجنة المساواة بين الجنسين والتنوع - رئيسة Lions Geek",
+                fr: "Directrice du Département Support chez 2M, Présidente du Comité de l'Égalité des Genres et de la Diversité - Présidente de Lions Geek"
               },
               image: boujanoui,
               linkedin: "https://www.linkedin.com/in/khadija-boujanoui",
@@ -127,9 +128,10 @@ export const CommitteeSection = () => {
               M. Jean Yves BARBA
             </h2>
             <p className="text-muted-foreground text-sm/relaxed text-balance lg:text-base/snug text-center mt-3">
-              <TransText en="Technical Advisor - International Labour Organization (ILO)" ar="مستشار تقني - منظمة العمل الدولية (OIT/ILO)"/>
+              <TransText en="Technical Advisor - International Labour Organization (ILO)" ar="مستشار تقني - منظمة العمل الدولية (OIT/ILO)" fr="Conseiller technique - Organisation Internationale du Travail (OIT)" />
             </p>
           </div>
+
         </div>
       </section>
     </>
