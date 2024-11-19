@@ -40,14 +40,24 @@ const Navbar = () => {
     }
   };
   const navItems = [
-    { label: {en:"Home", ar:"الرئيسية"}, path: "/" },
-    { label: {en:"About", ar:"حول"}, path: "/about" },
-    { label: {en:"Participate", ar:"المشاركة"}, path: "/participate", isDropdown: true }, // Mark "Participate" as a dropdown
-    { label: {en:"Articles", ar:" المقالات"}, path: "/articles" },
-    { label: {en:"Contact", ar:"اتصل بنا"}, path: "/contact" },
+    { label: { en: "Home", ar: "الرئيسية", fr: "Accueil" }, path: "/" },
+    { label: { en: "About", ar: "حول", fr: "À propos" }, path: "/about" },
+    {
+      label: { en: "Participate", ar: "المشاركة", fr: "Participer" },
+      path: "/participate",
+      isDropdown: true,
+    }, // Mark "Participate" as a dropdown
+    {
+      label: { en: "Articles", ar: " المقالات", fr: "Articles" },
+      path: "/articles",
+    },
+    {
+      label: { en: "Contact", ar: "اتصل بنا", fr: "Contact" },
+      path: "/contact",
+    },
   ];
   const LANGUAGES = [
-    // { label: "francais", code: "fr" },
+    { label: "francais", code: "fr" },
     { label: "English", code: "en" },
     { label: "العربية", code: "ar" },
   ];
@@ -243,18 +253,20 @@ const Navbar = () => {
                       >
                         <span
                           className={`${
-                            location.pathname === '/form'
+                            location.pathname === "/form"
                               ? "text-beta"
                               : "text-alpha"
                           }`}
                         >
-                          {item.label[selectedLanguage] ? item.label[selectedLanguage] : item.label['en'] }
+                          {item.label[selectedLanguage]
+                            ? item.label[selectedLanguage]
+                            : item.label["en"]}
                         </span>
                         <svg
                           className={`w-5 h-5 transition-transform transform ${
                             dropdownIsOpen ? "rotate-180" : ""
                           } ${
-                            location.pathname === '/form'
+                            location.pathname === "/form"
                               ? "text-beta"
                               : "text-alpha"
                           }`}
@@ -279,7 +291,7 @@ const Navbar = () => {
                             <Link
                               to="/form"
                               className={`block px-4 py-2 hover:bg-gray-100 ${
-                                location.pathname === '/form'
+                                location.pathname === "/form"
                                   ? "text-beta"
                                   : "text-alpha"
                               }`}
@@ -310,7 +322,9 @@ const Navbar = () => {
                             : "text-alpha"
                         } hover:text-beta`}
                       >
-                        {item.label[selectedLanguage] ? item.label[selectedLanguage] : item.label['en'] }
+                        {item.label[selectedLanguage]
+                          ? item.label[selectedLanguage]
+                          : item.label["en"]}
                       </Link>
                     </li>
                   );

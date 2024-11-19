@@ -9,26 +9,42 @@ import TransText from "../components/TransText";
 import { Link } from "react-router-dom";
 import { useAppContext } from "../context/AppContext";
 const Footer = () => {
-  const { selectedLanguage } = useAppContext()
+  const { selectedLanguage } = useAppContext();
   return (
     <div>
       <div className="container mx-auto px-4 py-10 border-t-2 border-gray-100">
-        <div className={`flex flex-wrap text-left lg:text-left  ${selectedLanguage == 'ar' ? "flex-row-reverse" : ""}`}>
-          <div className={`w-full lg:w-6/12 px-4 ${selectedLanguage == 'ar' ? "flex flex-col items-end" : ""}`}>
+        <div
+          className={`flex flex-wrap text-left lg:text-left  ${
+            selectedLanguage == "ar" ? "flex-row-reverse" : ""
+          }`}
+        >
+          <div
+            className={`w-full lg:w-6/12 px-4 ${
+              selectedLanguage == "ar" ? "flex flex-col items-end" : ""
+            }`}
+          >
             <h4 className="text-3xl fonat-semibold text-blueGray-700">
-              <TransText ar="دعنا نبقى على تواصل" en="Let's keep in touch!" />
+              <TransText
+                ar="دعنا نبقى على تواصل"
+                en="Let's keep in touch!"
+                fr="Restons en contact !"
+              />
             </h4>
             <h5 className="text-lg mt-0 mb-2 text-blueGray-600">
               <TransText
                 ar="ابحث عنا على أي من هذه المنصات"
                 en="Find us on any of these platforms"
+                fr="Retrouvez-nous sur l'une de ces plateformes."
               />
             </h5>
             <div className="mt-6 lg:mb-0 mb-6">
               {/* icons */}
               <div className="flex flex-col justify-between gap-2 pt-4">
                 <div className="flex gap-3">
-                  <a target="blank" href="https://www.facebook.com/profile.php?id=61567349305436">
+                  <a
+                    target="blank"
+                    href="https://www.facebook.com/profile.php?id=61567349305436"
+                  >
                     <FaFacebookF className="text-[1.4rem] fill-gray-400 hover:fill-blue-500 transition duration-200" />
                   </a>
                   <a
@@ -37,7 +53,10 @@ const Footer = () => {
                   >
                     <FaInstagram className="text-[1.4rem] fill-gray-400 hover:fill-pink-600 transition duration-200" />
                   </a>
-                  <a target="blank" href="https://x.com/yes_summit?s=21&t=7jqpIPumaHca8lonoHm8Uw">
+                  <a
+                    target="blank"
+                    href="https://x.com/yes_summit?s=21&t=7jqpIPumaHca8lonoHm8Uw"
+                  >
                     <BsTwitterX className="text-[1.4rem] fill-gray-400 hover:fill-black transition duration-200" />
                   </a>
                   <a
@@ -59,18 +78,29 @@ const Footer = () => {
               </div>
             </div>
           </div>
-          <div className={`w-full lg:w-6/12 px-4 ${selectedLanguage == 'ar' ? "text-right" : ""}`}>
+          <div
+            className={`w-full lg:w-6/12 px-4 ${
+              selectedLanguage == "ar" ? "text-right" : ""
+            }`}
+          >
             <div className="flex flex-wrap items-top mb-6 gap-5">
               <div className="w-full lg:w-4/12 px-4 ml-auto">
                 <span className="block uppercase text-blueGray-500 text-sm font-semibold mb-2">
-                  <TransText ar="روابط مفيدة" en="Useful Links" />
+                  <TransText
+                    ar="روابط مفيدة"
+                    en="Useful Links"
+                    fr="Liens utiles"
+                  />
                 </span>
                 <ul className="list-unstyled text-gray-700">
                   {[
-                    [{ en: "Home", ar: "الرئيسية" }, "/"],
-                    [{ en: "About", ar: "حول" }, "/about"],
-                //    [{ en: "Sommet", ar: "القمة" }, "/"],
-                    [{ en: "Articles", ar: "المقالات" }, "/articles"],
+                    [{ en: "Home", ar: "الرئيسية", fr: "Accueil" }, "/"],
+                    [{ en: "About", ar: "حول", fr: "À propos" }, "/about"],
+                    //    [{ en: "Sommet", ar: "القمة" }, "/"],
+                    [
+                      { en: "Articles", ar: "المقالات", fr: "Articles" },
+                      "/articles",
+                    ],
                     // [{ en: "Contact", ar: "التواصل" }, "/contact"],
                   ].map(([name, path], index) => (
                     <Link

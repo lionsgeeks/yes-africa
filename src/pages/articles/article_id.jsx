@@ -59,7 +59,7 @@ const ArticlePage = () => {
           <TransText ar=" الكلمات المفتاحية" en="Tags" />
         </h1>
         <div
-          className={`flex lg:flex-row flex-col gap-3 ${selectedLanguage == "ar" ? "lg:justify-end items-end" : ""
+          className={`flex lg:flex-row flex-wrap flex-col gap-3 ${selectedLanguage == "ar" ? "lg:justify-end items-end" : ""
             } `}
         >
 
@@ -67,7 +67,7 @@ const ArticlePage = () => {
 
           {
             selectedLanguage == "ar" ?
-              thisArticle.tags.ar.split(',').map(tag => tag.trim()).map((e, i) => (
+              thisArticle.tags.ar.split('،').map(tag => tag.trim()).map((e, i) => (
                 <div key={i} className={`bg-gray-200 px-3 py-2 rounded-lg w-fit `}>
                   {e}
                 </div>
