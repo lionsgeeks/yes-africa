@@ -3,8 +3,6 @@ import { useAppContext } from "../../../context/AppContext";
 import TransText from "../../../components/TransText";
 import CountrySelect from "./countrySelect";
 
-//TODO! TRANSLATE THE OPTIONS IN SELECTS
-
 const Form = () => {
     const { url, selectedLanguage, setSelectedLanguage } = useAppContext();
 
@@ -427,7 +425,7 @@ const Form = () => {
         selectedFunders && selectedPartner &&
         selectedInterv.length > 0 &&
         (selectedInterv.includes('other') ? otherInterv.trim() : true) &&
-        (selectedFunders === 'no-funders' ? otherFunders.trim() : true) &&
+        (selectedFunders === 'no-funders' ? true : otherFunders.trim()) &&
         (selectedPartner === 'no-partners' ? true : otherPartner.trim())
     )
 
@@ -439,9 +437,7 @@ const Form = () => {
         formData.project_area,
     ].every(value => value.trim()) &&
         selectedFinancing &&
-        (selectedFinancing !== 'other' || otherFin.trim()) &&
-        projEva &&
-        otherProj;
+        (selectedFinancing !== 'other' || otherFin.trim());
 
     const isFormComplete = generalBoolean && projInfoBoolean && prevProjBoolean && conform && accepting;
 
