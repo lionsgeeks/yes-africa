@@ -120,7 +120,7 @@ const Form = () => {
             // TODO* Show the user that his form was received : add toast
             // TODO* (optional) do an else if there's an error : add toast
         }
-        // setLoading(false);
+        setLoading(false);
     }
 
     const [currentTab, setCurrentTab] = useState('General Information');
@@ -1556,7 +1556,7 @@ const Form = () => {
                 }
 
                 {
-                    isFormComplete && <button disabled={!isFormComplete} className={`w-full py-3 rounded transition-all ${isFormComplete ? 'bg-alpha text-white ' : 'bg-gray-300 text-black/60'}`} type="submit">
+                    isFormComplete && <button disabled={!loading} className={`w-full py-3 rounded transition-all bg-alpha text-white`} type="submit">
 
 
                         {
