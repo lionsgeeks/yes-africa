@@ -1556,7 +1556,7 @@ const Form = () => {
                 }
 
                 {
-                    isFormComplete && <button disabled={!loading} className={`w-full py-3 rounded transition-all bg-alpha text-white`} type="submit">
+                    isFormComplete && <button disabled={loading} className={`w-full py-3 rounded transition-all bg-alpha text-white`} type="submit">
 
 
                         {
