@@ -28,6 +28,7 @@ const AppProvider = ({ children }) => {
 
         setArticles(response?.data.data);
       } catch (error) {
+        window.location.href = "https://management.youthempowermentsummit.africa"
         console.log("error fetching articles", error)
       }
     }
