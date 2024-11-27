@@ -29,3 +29,24 @@ input[type="checkbox"] {
     height: 15px;
     accent-color: #2e539d;
   }
+
+  @keyframes ellipsis {
+    0% {
+      content: "Loading";
+    }
+    33% {
+      content: "Loading.";
+    }
+    66% {
+      content: "Loading..";
+    }
+    100% {
+      content: "Loading...";
+    }
+  }
+  
+  .ellipsis-animation::after {
+    content: "Loading";
+    animation: ellipsis 1.5s infinite steps(1, end);
+  }
+  
