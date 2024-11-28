@@ -15,21 +15,21 @@ const AppProvider = ({ children }) => {
   const [articles, setArticles] = useState();
   const url = "https://management.youthempowermentsummit.africa";
   const IMAGEURL = "https://management.youthempowermentsummit.africa/storage/images/"
-  // const url = "http://172.28.0.135:8000";
-  // const IMAGEURL = "http://172.28.0.135:8000/storage/images/"
+  // const url = "http://172.28.0.31:8000";
+  // const IMAGEURL = "http://172.28.0.31:8000/storage/images/"
 
   useEffect(() => {
     window.scrollTo(0, 0);
     const fetchArticles = async () => {
       try {
-        const response = await axios.get(url + "/api/articles");
+        const response = await axios.get(url + "/adpi/articles");
         // const articles = await response; 
         // console.log(response.data.data);
 
         setArticles(response?.data.data);
       } catch (error) {
-        window.location.href = "https://management.youthempowermentsummit.africa"
-        console.log("error fetching articles", error)
+        window.location.href = "https://management.youthempowermentsummit.africa?redirect=true";
+        console.log("Error fetching articles", error);
       }
     }
 
