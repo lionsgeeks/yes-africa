@@ -22,7 +22,7 @@ const AppProvider = ({ children }) => {
     window.scrollTo(0, 0);
     const fetchArticles = async () => {
       try {
-        const response = await axios.get(url + "/adpi/articles");
+        const response = await axios.get(url + "/api/articles");
         // const articles = await response; 
         // console.log(response.data.data);
 
