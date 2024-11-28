@@ -1,7 +1,8 @@
 import ucgc from "../../../assets/images/sponsors/ucgc.jpg";
 import lionsgeek from "../../../assets/images/sponsors/lionsgeek.png";
 import jadara from "../../../assets/images/sponsors/Jadaralogo.png";
-import smala from "../../../assets/images/sponsors/happylogo.webp";
+import epic from "../../../assets/images/sponsors/epic-afric.jpg";
+// import smala from "../../../assets/images/sponsors/happylogo.webp";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, FreeMode } from "swiper/modules";
@@ -40,11 +41,11 @@ const Sponsors = () => {
           modules={[Autoplay, FreeMode]}
         >
           {
-            [ucgc, lionsgeek, jadara].map((spon, index) => (
+            [ucgc, lionsgeek, jadara , epic].map((spon, index) => (
               <SwiperSlide className="lg:aspect-[1/0.5] aspect-[1/2] bg-yellow- flex items-center justify-center" key={index}>
                 <img
                   src={spon}
-                  className={`${spon == ucgc ? 'w-[200px]' : 'w-[140px]'}`}
+                  className={`${spon == ucgc ? 'w-[200px]' : spon == epic ? "w-[400px]" : 'w-[140px]'}`}
                   alt=""
                 />
               </SwiperSlide>

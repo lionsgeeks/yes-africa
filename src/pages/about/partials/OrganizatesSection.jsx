@@ -4,7 +4,8 @@ import { useAppContext } from "../../../context/AppContext";
 import ucgc from "../../../assets/images/sponsors/ucgc.jpg";
 import lionsgeek from "../../../assets/images/sponsors/lionsgeek.png";
 import jadara from "../../../assets/images/sponsors/Jadaralogo.png";
-import smala from "../../../assets/images/sponsors/happylogo.webp";
+import epic from "../../../assets/images/sponsors/epic-afric.jpg";
+// import smala from "../../../assets/images/sponsors/";
 
 export const OrganizatesSection = () => {
   const { selectedLanguage } = useAppContext();
@@ -29,6 +30,18 @@ export const OrganizatesSection = () => {
           en="LionsGeek is the result of a partnership between 2M, MolenGeek, Charlewood, the Belgian Radio and Television RTBF; as well as the Ministry of Economic Inclusion, Small Business, Employment, and Skills, the Wallonia-Brussels Region, through the General Delegation of Wallonia-Brussels in Morocco, and the Association for the Promotion of Education and Training Abroad (APEFE). It is an association focused on an inclusive action in favor of young people in NEET (Not in Education, Employment, or Training) situations. LionsGeek offers diverse support tailored to the needs of each individual, centered around three main areas of intervention: a full-time training program, an incubator for project holders, and a coworking space.  LionsGeek aims to meet the various expectations of young people and the job market through long-term training, short courses, and certification programs in multimedia and digital fields."
           ar="LionsGeek هو ثمرة شراكة بين 2M، MolenGeek، Charlewood، وإذاعة التلفزيون البلجيكي RTBF؛ بالإضافة إلى وزارة الإدماج الاقتصادي، والمشاريع الصغيرة، والتوظيف، والمهارات، ومنطقة والونيا بروكسل، من خلال الوفد العام لوالونيا-بروكسل في المغرب، والجمعية من أجل تعزيز التعليم والتكوين في الخارج (APEFE). هي جمعية موجهة نحو العمل الشامل لصالح الشباب في وضع NEET (ليس في التعليم، أو العمل، أو التدريب). يقدم LionsGeek دعمًا متنوعًا ومناسبًا لاحتياجات كل فرد، مع التركيز على ثلاث محاور رئيسية: برنامج تدريب بدوام كامل، حاضنة لحاملي المشاريع، ومساحة للعمل المشترك. يهدف LionsGeek إلى تلبية مختلف توقعات الشباب وسوق العمل من خلال برامج تدريبية طويلة، ودورات قصيرة، وبرامج تدريب معتمدة في مجالات الوسائط المتعددة والرقمنة."
           fr="LionsGeek est le résultat d'un partenariat entre 2M, MolenGeek, Charlewood, la Radio et Télévision belge RTBF, ainsi que le Ministère de l'Inclusion économique, des Petites entreprises, de l'Emploi et des Compétences, la Région Wallonie-Bruxelles, à travers la Délégation générale Wallonie-Bruxelles au Maroc, et l'Association pour la Promotion de l'Éducation et de la Formation à l'Étranger (APEFE). Il s'agit d'une association axée sur une action inclusive en faveur des jeunes en situation NEET (Ni en éducation, ni en emploi, ni en formation). LionsGeek offre un soutien diversifié adapté aux besoins de chaque individu, centré sur trois principaux domaines d'intervention : un programme de formation à temps plein, un incubateur pour les porteurs de projets, et un espace de coworking. LionsGeek vise à répondre aux différentes attentes des jeunes et du marché du travail à travers des formations longues, des cours courts et des programmes de certification dans les domaines des médias et du numérique."
+        />
+      ),
+    },
+    {
+      logo: epic,
+      title: "EPIC-Africa",
+      text: (
+        <TransText
+          en="EPIC-Africa is a nonprofit organization dedicated to strengthening African civil society by promoting transparency, accountability, and collaboration. It supports civil society organizations (CSOs) through research, data analysis, and initiatives like the African CSO Platform. EPIC-Africa fosters partnerships to enhance the impact of CSOs in building a better future for Africa. Recognized as a thought leader, the organization has contributed to global discussions on the role of international NGOs and locally-led development. Its intellectual leadership is reflected in its publications, including research reports, articles, book chapters, and interviews."
+          ar="EPIC-Africa هي منظمة غير ربحية مكرسة لتعزيز المجتمع المدني الأفريقي من خلال تعزيز الشفافية والمساءلة والتعاون. تدعم المنظمة منظمات المجتمع المدني (OSC) عبر الأبحاث وتحليل البيانات ومبادرات مثل منصة المنظمات المدنية الأفريقية. تعزز EPIC-Africa الشراكات لزيادة تأثير المنظمات المدنية في بناء مستقبل أفضل لأفريقيا.
+معروفة كجهة فكرية رائدة، ساهمت المنظمة في مناقشات عالمية حول دور المنظمات الدولية غير الحكومية والتنمية المحلية. يظهر قيادتها الفكرية من خلال منشوراتها، بما في ذلك تقارير الأبحاث والمقالات وفصول الكتب و المقابلات."
+          fr="EPIC-Africa est une organisation à but non lucratif dédiée au renforcement de la société civile africaine en promouvant la transparence, la responsabilité et la collaboration. Elle soutient les organisations de la société civile (OSC) à travers la recherche, l'analyse de données et des initiatives telles que la Plateforme des OSC africaines. EPIC-Africa favorise les partenariats pour accroître l'impact des OSC dans la construction d'un avenir meilleur pour l'Afrique. Reconnu comme un leader d'opinion, l'organisation a contribué à des discussions mondiales sur le rôle des ONG internationales et le développement dirigé localement. Son leadership intellectuel se reflète dans ses publications, telles que des rapports de recherche, des articles, des chapitres de livres et des interviews."
         />
       ),
     },
@@ -75,7 +88,7 @@ export const OrganizatesSection = () => {
                   src={org.logo}
                   alt=""
                   className={` ${
-                    org.logo == ucgc ? "w-[210px]" : "w-[120px] lg:w-[180px]"
+                    org.logo == ucgc ? "w-[210px]" : org.logo == epic ? "w-[400px]  " : "w-[120px] lg:w-[180px]"
                   }`}
                 />
               </div>
