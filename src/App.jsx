@@ -11,6 +11,7 @@ import ErrorPage from "./pages/error";
 import Formulaire from "./pages/formulaire/formulaire";
 import Form from "./pages/formulaire/partials/form";
 import ManagementRedirect from "./pages/management";
+import { SponsorsForm } from "./pages/formulaire/SponsorsForm";
 
 function App() {
 
@@ -28,6 +29,7 @@ function App() {
           <Route path="/contact" element={<ContactUs />} />
           <Route path="/form" element={<Formulaire />} />
           <Route path="/formulaire" element={<Form />} />
+          <Route path="/sponsorship" element={<SponsorsForm/>} ></Route>
         </Routes>
         <Footer />
       </AppProvider>
