@@ -102,7 +102,7 @@ const Ngosparticipate = () => {
     }
     const closeBtn = () => {
         return <>
-            <button onClick={() => { setIsSentSuc(false) }}>close</button>
+            <button className='bg-alpha px-5 py-2 hover:bg-alpha/80 text-white rounded-lg' onClick={() => { setIsSentSuc(false) }}>close</button>
         </>
     }
     return (

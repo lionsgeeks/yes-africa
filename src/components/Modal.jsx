@@ -60,9 +60,9 @@ const Modal = ({ validate, confirm, action }) => {
         <p>
           {validate ? (
             <TransText
-              ar="شكراً لتسجيلك في جلسة المعلومات"
-              fr="Merci de vous être inscrit(e) à la session d'information !"
-              en="Thank you for signing up for the info session!"
+              ar="شكراً لتسجيلك "
+              fr="Merci de vous être inscrit(e) !"
+              en="Thank you for signing up !"
             />
           ) : (
             <TransText
