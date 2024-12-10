@@ -165,7 +165,7 @@ const Ngosparticipate = () => {
                             </div>
                         </div>
                         <div className="flex flex-col gap-2">
-                            <label htmlFor="flname"><TransText ar='الاسم و اللقب' fr='Nom & Prénom' en='Last Name & First Name' pr='Sobrenome & Primeiro Nome' sw='Jina la ukoo & Jina la kwanza' /><span className='text-red-700 '>*</span></label>
+                            <label htmlFor="flname"><TransText ar='الاسم و اللقب' fr='Nom & Prénom' en='Full Name' pr='Sobrenome & Primeiro Nome' sw='Jina la ukoo & Jina la kwanza' /><span className='text-red-700 '>*</span></label>
                             <input required value={data.name} onChange={HandleChange} placeholder={selectedLanguage === "ar" ? "أدخل الاسم الكامل" : selectedLanguage === "fr" ? "Entrez le nom complet" : selectedLanguage === "en" ? "Enter Full Name" : selectedLanguage === "pr" ? "Insira o nome completo" : selectedLanguage === "sw" ? "Ingiza jina kamili" : ""} className='border-[1.4px] px-2 py-1 rounded-[5px] ' type="text" name="name" id="flname" />
                         </div>
                         <div className="flex flex-col gap-2">

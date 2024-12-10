@@ -29,7 +29,7 @@ function App() {
           <Route path="/contact" element={<ContactUs />} />
           <Route path="/form" element={<Formulaire />} />
           <Route path="/formulaire" element={<Form />} />
-          <Route path="/sponsorship" element={<SponsorsForm/>} ></Route>
+          <Route path="/participants" element={<SponsorsForm/>} ></Route>
         </Routes>
         <Footer />
       </AppProvider>

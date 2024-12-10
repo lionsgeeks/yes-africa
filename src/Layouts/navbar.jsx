@@ -299,6 +299,18 @@ const Navbar = () => {
                               NGO's
                             </Link>
                           </li>
+                          <li>
+                            <Link
+                              to="/participants"
+                              className={`block px-4 py-2 hover:bg-gray-100 ${
+                                location.pathname === "/form"
+                                  ? "text-beta"
+                                  : "text-alpha"
+                              }`}
+                            >
+                              Participants
+                            </Link>
+                          </li>
                           {/* <li>
                             <Link
                               to="/organizations"
