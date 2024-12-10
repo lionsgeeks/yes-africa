@@ -8,7 +8,7 @@ import Modal from '../../../components/Modal';
 
 const Ngosparticipate = () => {
 
-    const { selectedLanguage, setSelectedLanguage } = useAppContext();
+    const { selectedLanguage, setSelectedLanguage, url } = useAppContext();
 
 
     // ? POST FUNC
@@ -38,14 +38,14 @@ const Ngosparticipate = () => {
         }
     }, [data.country])
 
-    let isFormFull = Object.keys(data).every((e) => data[e].trim() !== "") && (data.country == "other" ? otherCount.trim() : true) 
+    let isFormFull = Object.keys(data).every((e) => data[e].trim() !== "") && (data.country == "other" ? otherCount.trim() : true)
     // const [isFormFull,setIsFormFull] = useState(Object.keys(data).every((e)=>data[e].trim() !== ""))
 
     // console.log(isFormFull);
 
     const [isLoading, setIsLoading] = useState(false)
 
-    const [isSentSuc,setIsSentSuc] = useState(false);
+    const [isSentSuc, setIsSentSuc] = useState(false);
 
     const HandleChange = (e) => {
         const value = e.target.value;
@@ -77,14 +77,14 @@ const Ngosparticipate = () => {
 
 
         try {
-            const response = await axios.post("http://172.28.0.185:8000/api/participants", userData)
+            const response = await axios.post(url + "/api/participants", userData)
             console.log(response);
             // console.log(userData);
             if (response.status == 200) {
                 setIsSentSuc(true)
             }
         } catch (error) {
-            console.error("Error:", error);            
+            console.error("Error:", error);
         } finally {
             setData({
                 civility: "",
@@ -102,7 +102,7 @@ const Ngosparticipate = () => {
     }
     const closeBtn = () => {
         return <>
-            <button onClick={()=>{setIsSentSuc(false)}}>close</button>
+            <button onClick={() => { setIsSentSuc(false) }}>close</button>
         </>
     }
     return (
