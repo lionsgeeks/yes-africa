@@ -1,12 +1,116 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { TransText } from '../../../components';
 import { useAppContext } from '../../../context/AppContext';
+import axios from 'axios';
+import CountrySelect from './countrySelect';
+import { useEffect } from 'react';
+import Modal from '../../../components/Modal';
 
 const Ngosparticipate = () => {
+
     const { selectedLanguage, setSelectedLanguage } = useAppContext();
 
+
+    // ? POST FUNC
+
+    const [data, setData] = useState({
+        civility: "",
+        name: "",
+        organisation: "",
+        category: "",
+        position: "",
+        mail: "",
+        phone: "",
+        country: "",
+    })
+
+    // console.log(data);
+
+
+    const [otherCount, setOtherCount] = useState("");
+    const [isOtherChoosed, setIsOtherChoosed] = useState(false)
+
+    useEffect(() => {
+        if (data.country == "other") {
+            setIsOtherChoosed(true)
+        } else {
+            setIsOtherChoosed(false)
+        }
+    }, [data.country])
+
+    let isFormFull = Object.keys(data).every((e) => data[e].trim() !== "") && (data.country == "other" ? otherCount.trim() : true) 
+    // const [isFormFull,setIsFormFull] = useState(Object.keys(data).every((e)=>data[e].trim() !== ""))
+
+    // console.log(isFormFull);
+
+    const [isLoading, setIsLoading] = useState(false)
+
+    const [isSentSuc,setIsSentSuc] = useState(false);
+
+    const HandleChange = (e) => {
+        const value = e.target.value;
+
+        setData({
+            ...data,
+            [e.target.name]: value
+        })
+    }
+
+    const HandleSubmit = async (e) => {
+        if (isLoading) return
+
+        setIsLoading(true)
+
+        e.preventDefault();
+
+        const userData = {
+            civility: data.civility,
+            name: data.name,
+            organisation: data.organisation,
+            category: data.category,
+            position: data.position,
+            mail: data.mail,
+            phone: data.phone,
+            country: data.country,
+            otherCount: otherCount
+        }
+
+
+        try {
+            const response = await axios.post("http://172.28.0.185:8000/api/participants", userData)
+            console.log(response);
+            // console.log(userData);
+            if (response.status == 200) {
+                setIsSentSuc(true)
+            }
+        } catch (error) {
+            console.error("Error:", error);            
+        } finally {
+            setData({
+                civility: "",
+                name: "",
+                organisation: "",
+                category: "",
+                position: "",
+                mail: "",
+                phone: "",
+                country: "",
+            })
+            setIsLoading(false)
+            setOtherCount("")
+        }
+    }
+    const closeBtn = () => {
+        return <>
+            <button onClick={()=>{setIsSentSuc(false)}}>close</button>
+        </>
+    }
     return (
         <div>
+            {
+                isSentSuc &&
+                <Modal confirm={isSentSuc} validate={true} action={closeBtn()} />
+            }
             <div className="w-full flex justify-center ">
                 <div className="relative lg:py-20 py-12 flex lg:flex-row flex-col justify-between w-[100%] lg:px-10 px-3 lg:gap-0 gap-16 ">
                     <div className=" lg:w-[45%] w-[100%] flex flex-col lg:text-start text-center lg:items-start items-center ">
@@ -45,56 +149,72 @@ const Ngosparticipate = () => {
                     </div>
                     <form
                         className='lg:w-[50%]  p-8 border-gray-300 flex flex-col gap-5 border-[1.4px] rounded-[20px] '
-                        action=""
+                        onSubmit={HandleSubmit}
                     >
                         <div className="flex flex-col gap-3">
                             <label className='text-[18px] ' htmlFor=""><TransText ar='اللقب' fr='Civilité' en='Civility' pr='Civilidade' sw='Heshima' /><span className='text-red-700 '>*</span></label>
                             <div className="flex gap-3">
                                 <div className="flex items-center gap-2">
                                     <label htmlFor="mr"><TransText ar='السيد' fr='M.' en='Mr.' pr='Sr.' sw='Bw.' /></label>
-                                    <input type="radio" name="Civility" id="mr" />
+                                    <input required type="radio" onChange={HandleChange} value="Mr" name="civility" id="mr" />
                                 </div>
                                 <div className="flex items-center gap-2">
                                     <label htmlFor="mme"><TransText ar='السيدة' fr='Mme.' en='Ms.' pr='Sra.' sw='Bi.' /></label>
-                                    <input type="radio" name="Civility" id="mme" />
+                                    <input required type="radio" onChange={HandleChange} value="Ms" name="civility" id="mme" />
                                 </div>
                             </div>
                         </div>
                         <div className="flex flex-col gap-2">
                             <label htmlFor="flname"><TransText ar='الاسم و اللقب' fr='Nom & Prénom' en='Last Name & First Name' pr='Sobrenome & Primeiro Nome' sw='Jina la ukoo & Jina la kwanza' /><span className='text-red-700 '>*</span></label>
-                            <input placeholder={selectedLanguage === "ar" ? "أدخل الاسم الكامل" : selectedLanguage === "fr" ? "Entrez le nom complet" : selectedLanguage ===  "en" ? "Enter Full Name" : selectedLanguage ===  "pr" ? "Insira o nome completo" : selectedLanguage ===  "sw" ? "Ingiza jina kamili" : ""} className='border-[1.4px] px-2 py-1 rounded-[5px] ' type="text" name="name" id="flname" />
+                            <input required value={data.name} onChange={HandleChange} placeholder={selectedLanguage === "ar" ? "أدخل الاسم الكامل" : selectedLanguage === "fr" ? "Entrez le nom complet" : selectedLanguage === "en" ? "Enter Full Name" : selectedLanguage === "pr" ? "Insira o nome completo" : selectedLanguage === "sw" ? "Ingiza jina kamili" : ""} className='border-[1.4px] px-2 py-1 rounded-[5px] ' type="text" name="name" id="flname" />
                         </div>
                         <div className="flex flex-col gap-2">
                             <label htmlFor="organisation"><TransText ar='المنظمة' fr='Organisme' en='Organization' pr='Organização' sw='Shirika' /><span className='text-red-700 '>*</span></label>
-                            <input placeholder={selectedLanguage === "ar" ? "أدخل اسم المنظمة" : selectedLanguage === "fr" ? "Entrez l'organisation" : selectedLanguage ===  "en" ? "Enter Organization" : selectedLanguage ===  "pr" ? "Insira a organização" : selectedLanguage ===  "sw" ? "Ingiza shirika" : ""} className='border-[1.4px] px-2 py-1 rounded-[5px] ' type="text" name="organisation" id="organisation" />
+                            <input required value={data.organisation} onChange={HandleChange} placeholder={selectedLanguage === "ar" ? "أدخل اسم المنظمة" : selectedLanguage === "fr" ? "Entrez l'organisation" : selectedLanguage === "en" ? "Enter Organization" : selectedLanguage === "pr" ? "Insira a organização" : selectedLanguage === "sw" ? "Ingiza shirika" : ""} className='border-[1.4px] px-2 py-1 rounded-[5px] ' type="text" name="organisation" id="organisation" />
                         </div>
                         <div className="flex flex-col gap-2">
                             <label htmlFor="category"><TransText ar='الفئة' fr='Catégorie' en='Category' pr='Categoria' sw='Kundi' /><span className='text-red-700 '>*</span></label>
-                            <select className='border-[1.4px] py-2 rounded-[5px] ' name="" id="">
+                            <select required onChange={HandleChange} className='border-[1.4px] py-2 rounded-[5px] ' name="category" id="">
+                                <option selected disabled>{selectedLanguage === "ar" ? "اختر الفئة" : selectedLanguage === "fr" ? "Choisissez une catégorie" : selectedLanguage === "en" ? "Choose a category" : selectedLanguage === "pr" ? "Escolha uma categoria" : selectedLanguage === "sw" ? "Chagua kundi" : ""}</option>
                                 <option value="ngo"><TransText ar='منظمة غير حكومية' fr='ONG' en='NGO' pr='ONG ' sw='NGO ' /></option>
-                                <option value=""><TransText ar='شركة' fr='Entreprise' en='Company' pr='Empresa' sw='Kampuni' /></option>
-                                <option value=""><TransText ar='هيئة حكومية' fr='Organisme Public' en='Public Organization' pr='Organização Pública' sw='Shirika la Umma' /></option>
-                                <option value=""><TransText ar='محترف مستقل' fr='Professionnel Indépendant' en='Freelancer' pr='Profissional Independente' sw='Mtaalamu huru' /></option>
+                                <option value="Company"><TransText ar='شركة' fr='Entreprise' en='Company' pr='Empresa' sw='Kampuni' /></option>
+                                <option value="Public Organization"><TransText ar='هيئة حكومية' fr='Organisme Public' en='Public Organization' pr='Organização Pública' sw='Shirika la Umma' /></option>
+                                <option value="Freelancer"><TransText ar='محترف مستقل' fr='Professionnel Indépendant' en='Freelancer' pr='Profissional Independente' sw='Mtaalamu huru' /></option>
                             </select>
                         </div>
                         <div className="flex flex-col gap-2">
                             <label htmlFor="position"><TransText ar='الوظيفة' fr='Fonction' en='Position / Role' pr='Função' sw='Cheo' /><span className='text-red-700 '>*</span></label>
-                            <input placeholder={selectedLanguage === "ar" ? "أدخل وظيفتك" : selectedLanguage === "fr" ? "Entrez votre fonction" : selectedLanguage ===  "en" ? "Enter your position/role" : selectedLanguage ===  "pr" ? "Insira sua função" : selectedLanguage ===  "sw" ? "Ingiza cheo chako" : ""} className='border-[1.4px] px-2 py-1 rounded-[5px]  ' type="text" name="position" id="position" />
+                            <input required value={data.position} onChange={HandleChange}
+                                placeholder={selectedLanguage === "ar" ? "أدخل وظيفتك" : selectedLanguage === "fr" ? "Entrez votre fonction" : selectedLanguage === "en" ? "Enter your position/role" : selectedLanguage === "pr" ? "Insira sua função" : selectedLanguage === "sw" ? "Ingiza cheo chako" : ""}
+                                className='border-[1.4px] px-2 py-1 rounded-[5px]  ' type="text" name="position" id="position" />
                         </div>
 
                         <div className="flex flex-col gap-2">
                             <label htmlFor="mail"><TransText ar='البريد الإلكتروني' fr='Adresse mail' en='Email address' pr='Endereço de e-mail' sw='Anuani ya barua pepe' /><span className='text-red-700 '>*</span></label>
-                            <input placeholder={selectedLanguage === "ar" ? "أدخل بريدك الإلكتروني" : selectedLanguage === "fr" ? "Entrez votre adresse e-mail" : selectedLanguage ===  "en" ? "Enter your email" : selectedLanguage ===  "pr" ? "Insira seu e-mail" : selectedLanguage ===  "sw" ? "Ingiza barua pepe yako" : ""} className='border-[1.4px] px-2 py-1 rounded-[5px]  ' type="email" name="mail" id="mail" />
+                            <input required value={data.mail} onChange={HandleChange} placeholder={selectedLanguage === "ar" ? "أدخل بريدك الإلكتروني" : selectedLanguage === "fr" ? "Entrez votre adresse e-mail" : selectedLanguage === "en" ? "Enter your email" : selectedLanguage === "pr" ? "Insira seu e-mail" : selectedLanguage === "sw" ? "Ingiza barua pepe yako" : ""} className='border-[1.4px] px-2 py-1 rounded-[5px]  ' type="email" name="mail" id="mail" />
                         </div>
                         <div className="flex flex-col gap-2">
                             <label htmlFor="phone"><TransText ar='الهاتف' fr='Téléphone' en='Phone' pr='Telefone' sw='Simu' /><span className='text-red-700 '>*</span></label>
-                            <input placeholder={selectedLanguage === "ar" ? "أدخل رقم هاتفك" : selectedLanguage === "fr" ? "Entrez votre numéro de téléphone" : selectedLanguage ===  "en" ? "Enter your phone" : selectedLanguage ===  "pr" ? "Insira seu telefone" : selectedLanguage ===  "sw" ? "Ingiza namba yako ya simu" : ""} className='border-[1.4px] px-2 py-1 rounded-[5px]  ' type="text" name="phone" id="phone" />
+                            <input required value={data.phone} onChange={HandleChange} placeholder={selectedLanguage === "ar" ? "أدخل رقم هاتفك" : selectedLanguage === "fr" ? "Entrez votre numéro de téléphone" : selectedLanguage === "en" ? "Enter your phone" : selectedLanguage === "pr" ? "Insira seu telefone" : selectedLanguage === "sw" ? "Ingiza namba yako ya simu" : ""} className='border-[1.4px] px-2 py-1 rounded-[5px]  ' type="number" name="phone" id="phone" />
                         </div>
                         <div className="flex flex-col gap-2">
                             <label htmlFor="position"><TransText ar='البلد' fr='Pays' en='Country' pr='País' sw='Nchi' /><span className='text-red-700 '>*</span></label>
-                            <input placeholder={selectedLanguage === "ar" ? "أدخل بلدك" : selectedLanguage === "fr" ? "Entrez votre pays" : selectedLanguage ===  "en" ? "Enter your country" : selectedLanguage ===  "pr" ? "Insira seu país" : selectedLanguage ===  "sw" ? "Ingiza nchi yako" : ""} className='border-[1.4px] px-2 py-1 rounded-[5px]  ' type="text" name="position" id="position" />
+                            <select required value={data.country} onChange={HandleChange} className={`  border-[1.4px] py-2 rounded-[5px]`} name="country" id="country">
+                                <option selected disabled value="">{selectedLanguage === "ar" ? "أدخل بلدك" : selectedLanguage === "fr" ? "Entrez votre pays" : selectedLanguage === "en" ? "Enter your country" : selectedLanguage === "pr" ? "Insira seu país" : selectedLanguage === "sw" ? "Ingiza nchi yako" : ""}</option>
+                                <CountrySelect />
+                                <option value="other" >Autre</option>
+                            </select>
+                            {
+                                data.country == "other" &&
+                                <>
+                                    <input required value={otherCount} onChange={(e) => { setOtherCount(e.target.value) }}
+                                        placeholder={selectedLanguage === "ar" ? "أخرى" : selectedLanguage === "fr" ? "Autre" : selectedLanguage === "en" ? "Other" : selectedLanguage === "pr" ? "Outro" : selectedLanguage === "sw" ? "Nyingine" : ""}
+                                        className={` ${isOtherChoosed ? "flex" : "hidden"} border-[1.4px] px-2 py-1 rounded-[5px] `}
+                                        type="text" name="other" id="otherCount" />
+                                </>
+                            }
                         </div>
-                        <button className='bg-alpha py-3 text-white rounded-[5px] ' >Submit</button>
+                        <button type='submit' className={` ${isFormFull ? "bg-alpha" : "bg-gray-500 cursor-not-allowed"} py-3 ${isLoading && "bg-gray-300 cursor-progress"} text-white rounded-[5px]`} disabled={isLoading} >{isLoading ? "Loading" : "Submit"}</button>
                     </form>
                 </div>
 
