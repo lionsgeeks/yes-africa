@@ -19,18 +19,18 @@ function App() {
     <>
       <AppProvider>
         <Navbar />
-        <Routes>
-          <Route path="/backoffice" element={<ManagementRedirect />} />
-          <Route path="/*" element={<ErrorPage />} />
-          <Route path="/" element={<HomePage />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/articles" element={<ArticlesPage />} />
-          <Route path="/articles/:id" element={<ArticlePage />} />
-          <Route path="/contact" element={<ContactUs />} />
-          <Route path="/form" element={<Formulaire />} />
-          <Route path="/formulaire" element={<Form />} />
-          <Route path="/participants" element={<SponsorsForm/>} ></Route>
-        </Routes>
+          <Routes>
+            <Route path="/backoffice" element={<ManagementRedirect />} />
+            <Route path="/*" element={<ErrorPage />} />
+            <Route path="/" element={<HomePage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/articles" element={<ArticlesPage />} />
+            <Route path="/articles/:id" element={<ArticlePage />} />
+            <Route path="/contact" element={<ContactUs />} />
+            <Route path="/form" element={<Formulaire />} />
+            <Route path="/formulaire" element={<Form />} />
+            <Route path="/participants" element={<SponsorsForm/>} ></Route>
+          </Routes>
         <Footer />
       </AppProvider>
     </>
