@@ -7,6 +7,8 @@ import boujanoui from "../../../assets/images/comittee-scientifique/BOUJANOUI.jp
 import boutzil from "../../../assets/images/comittee-scientifique/BOUTZIL.jfif";
 import diedhiou from "../../../assets/images/comittee-scientifique/Diedhiou.jfif";
 import mbassi from "../../../assets/images/comittee-scientifique/Mbassi.jpg";
+import bakor from "../../../assets/images/comittee-scientifique/bakor.jpg";
+import bening from "../../../assets/images/comittee-scientifique/bening.jpg";
 import santos from "../../../assets/images/comittee-scientifique/SANTOS.jfif";
 import barba from "../../../assets/images/comittee-scientifique/BARBA.jfif";
 import diffo from "../../../assets/images/comittee-scientifique/DIFFO.jfif";
@@ -96,11 +98,32 @@ export const CommitteeSection = () => {
               },
               image: boujanoui,
               linkedin: "https://www.linkedin.com/in/khadija-boujanoui",
-            }
+            },
+            {
+              name: "Salaheddine BAKOR",
+              job: {
+                en: "Deputy Secretary General of the Pan-African Youth Union",
+                ar: "نائب الأمين العام لاتحاد الشباب الإفريقي",
+                fr: "Secrétaire Général Adjoint de l'Union Panafricaine de la Jeunesse"
+              },
+              image: bakor,
+              linkedin: "https://www.linkedin.com/in/salaheddine-bakor-01913359/"
+            },
+            {
+              name: "BENING AHMED WIISICHONG",
+              job: {
+                en: "General Secretary of the Pan-African Youth Union",
+                ar: "الأمين العام لاتحاد الشباب الإفريقي",
+                fr: "Secrétaire Général de l'Union Panafricaine de la Jeunesse"
+              },
+              image: bening,
+              linkedin: "https://www.linkedin.com/in/bening-ahmed-wiisichong-76663828/"
+            },
+
           ].map(({ name, job, image, linkedin }, index) => (
             <div
               key={index}
-              className="flex items-center flex-col w-full md:w-[calc(calc(100%-calc(2*3rem))/3)] lg:w-[calc(calc(100%-calc(4*3rem))/4)]"
+              className="flex items-center flex-col w-full md:w-[calc(calc(100%-calc(2*3rem))/3)] lg:w-[calc(calc(100%-calc(4*3rem))/5)]"
             >
               <a href={linkedin}
                 target="_blank"
@@ -121,7 +144,7 @@ export const CommitteeSection = () => {
               </p>
             </div>
           ))}
-          <div className="flex items-center flex-col w-full md:w-[calc(calc(100%-calc(2*3rem))/3)] lg:w-[calc(calc(100%-calc(4*3rem))/4)]">
+          <div className="flex items-center flex-col w-full md:w-[calc(calc(100%-calc(2*3rem))/3)] lg:w-[calc(calc(100%-calc(4*3rem))/5)]">
             <img src={barba} loading="lazy"
               className="mb-3 aspect-square object-cover w-[140px] border rounded-full" alt="barba's image" />
             <h2 className="text-base capitalize font-medium tracking-tighter md:text-lg lg:text-xl/none text-center">
