@@ -91,7 +91,7 @@ const ArticlesPage = () => {
       <div>
         <div className="w-full h-[50vh] bg-[#1f1f1f5a] animate-pulse"></div>
         <div className="flex justify-center lg:px-16 px-3">
-          <div className="flex flex-wrap lg:flex-row flex-col gap-5 p-6">
+          <div className="flex flex-wrap lg:flex-row flex-col gap-5 py-6">
                 <div className="lg:w-[29vw] w-[95vw] bg-[#1f1f1f5a] animate-pulse h-[55vh] border rounded-lg shadow-sm">
                 </div>
                 <div className="lg:w-[29vw] w-[95vw] bg-[#1f1f1f5a] animate-pulse h-[55vh] border rounded-lg shadow-sm">
