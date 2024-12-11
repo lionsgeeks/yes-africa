@@ -6,7 +6,7 @@ import CountrySelect from './countrySelect';
 import { useEffect } from 'react';
 import Modal from '../../../components/Modal';
 
-const Ngosparticipate = () => {
+const Participants = () => {
 
     const { selectedLanguage, setSelectedLanguage, url } = useAppContext();
 
@@ -111,7 +111,7 @@ const Ngosparticipate = () => {
                 isSentSuc &&
                 <Modal confirm={isSentSuc} validate={true} action={closeBtn()} />
             }
-            <div className="w-full flex justify-center ">
+            <div dir={selectedLanguage == "ar" && "rtl"} className="w-full flex justify-center ">
                 <div className="relative lg:py-20 py-12 flex lg:flex-row flex-col justify-between w-[100%] lg:px-10 px-3 lg:gap-0 gap-16 ">
                     <div className=" lg:w-[45%] w-[100%] flex flex-col lg:text-start text-center lg:items-start items-center ">
                         <h1 className='text-[37px] '>Youth Empowerment Summit Y.E.S. Africa</h1>
@@ -214,7 +214,7 @@ const Ngosparticipate = () => {
                                 </>
                             }
                         </div>
-                        <button type='submit' className={` ${isFormFull ? "bg-alpha" : "bg-gray-500 cursor-not-allowed"} py-3 ${isLoading && "bg-gray-300 cursor-progress"} text-white rounded-[5px]`} disabled={isLoading} >{isLoading ? "Loading" : "Submit"}</button>
+                        <button type='submit' className={` ${isFormFull ? "bg-alpha" : "bg-gray-500 cursor-not-allowed"} py-3 ${isLoading && "bg-gray-300 cursor-progress"} text-white rounded-[5px]`} disabled={isLoading} ><TransText ar={isLoading ? "جارٍ التحميل" : "إرسال"} fr={isLoading ? "Chargement" : "Soumettre"} en={isLoading ? "Loading" : "Submit"} pr={isLoading ? "Carregando" : "Enviar"} sw={isLoading ? "Inapakia" : "Tuma"} /></button>
                     </form>
                 </div>
 
@@ -223,4 +223,4 @@ const Ngosparticipate = () => {
     );
 };
 
-export default Ngosparticipate;
+export default Participants;

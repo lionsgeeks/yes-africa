@@ -255,6 +255,8 @@ const Navbar = () => {
                           className={`${
                             location.pathname === "/form"
                               ? "text-beta"
+                              : location.pathname === "/participants" ?
+                              "text-beta"
                               : "text-alpha"
                           }`}
                         >
@@ -268,6 +270,8 @@ const Navbar = () => {
                           } ${
                             location.pathname === "/form"
                               ? "text-beta"
+                              : location.pathname === "/participants" ?
+                              "text-beta"
                               : "text-alpha"
                           }`}
                           xmlns="http://www.w3.org/2000/svg"
@@ -286,7 +290,7 @@ const Navbar = () => {
 
                       {/* Dropdown Menu */}
                       {dropdownIsOpen && (
-                        <ul className="absolute left-0 w-40 mt-2 bg-white border border-gray-200 shadow-lg rounded">
+                        <ul className="absolute left-0 w-40 mt-2 z-10 bg-white border border-gray-200 shadow-lg rounded">
                           <li>
                             <Link
                               to="/form"
@@ -303,7 +307,7 @@ const Navbar = () => {
                             <Link
                               to="/participants"
                               className={`block px-4 py-2 hover:bg-gray-100 ${
-                                location.pathname === "/form"
+                                location.pathname === "/participants"
                                   ? "text-beta"
                                   : "text-alpha"
                               }`}
