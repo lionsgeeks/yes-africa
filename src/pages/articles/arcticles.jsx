@@ -2,7 +2,6 @@ import React from "react";
 import TransText from "../../components/TransText";
 import { useAppContext } from "../../context/AppContext";
 import { ArticleCard } from "../../components";
-import "react-loading-skeleton/dist/skeleton.css";
 
 const ArticlesPage = () => {
   const { articles, selectedLanguage } = useAppContext();
