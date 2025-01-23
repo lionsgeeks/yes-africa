@@ -144,16 +144,8 @@ export const CommitteeSection = () => {
               </p>
             </div>
           ))}
-          <div className="flex items-center flex-col w-full md:w-[calc(calc(100%-calc(2*3rem))/3)] lg:w-[calc(calc(100%-calc(4*3rem))/5)]">
-            <img src={barba} loading="lazy"
-              className="mb-3 aspect-square object-cover w-[140px] border rounded-full" alt="barba's image" />
-            <h2 className="text-base capitalize font-medium tracking-tighter md:text-lg lg:text-xl/none text-center">
-              M. Jean Yves BARBA
-            </h2>
-            <p className="text-muted-foreground text-sm/relaxed text-balance lg:text-base/snug text-center mt-3">
-              <TransText en="Technical Advisor - International Labour Organization (ILO)" ar="مستشار تقني - منظمة العمل الدولية (OIT/ILO)" fr="Conseiller technique - Organisation Internationale du Travail (OIT)" />
-            </p>
-          </div>
+
+
 
         </div>
       </section>
