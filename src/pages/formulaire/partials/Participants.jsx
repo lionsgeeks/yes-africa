@@ -24,6 +24,8 @@ const Participants = () => {
         country: "",
     })
 
+    const [logo, setLogo] = useState();
+
     // console.log(data);
 
 
@@ -38,7 +40,7 @@ const Participants = () => {
         }
     }, [data.country])
 
-    let isFormFull = Object.keys(data).every((e) => data[e].trim() !== "") && (data.country == "other" ? otherCount.trim() : true)
+    let isFormFull = Object.keys(data).every((e) => data[e].trim() !== "") && (data.country == "other" ? otherCount.trim() : true) && logo
     // const [isFormFull,setIsFormFull] = useState(Object.keys(data).every((e)=>data[e].trim() !== ""))
 
     // console.log(isFormFull);
@@ -56,6 +58,19 @@ const Participants = () => {
         })
     }
 
+    const handleFileChange = (e, setter) => {
+        const MAX_SIZE = 10 * 1024 * 1024;
+        const selectedFile = e.target.files[0];
+
+        if (selectedFile) {
+            if (selectedFile.size > MAX_SIZE) {
+                alert('File is too large. Max size is 10MB.');
+            } else {
+                setter(selectedFile);
+            }
+        }
+    }
+
     const HandleSubmit = async (e) => {
         if (isLoading) return
 
@@ -63,41 +78,44 @@ const Participants = () => {
 
         e.preventDefault();
 
-        const userData = {
-            civility: data.civility,
-            name: data.name,
-            organisation: data.organisation,
-            category: data.category,
-            position: data.position,
-            mail: data.mail,
-            phone: data.phone,
-            country: data.country,
-            otherCount: otherCount
-        }
+        const formData = new FormData();
+
+        // Append non-file fields
+        formData.append('civility', data.civility);
+        formData.append('name', data.name);
+        formData.append('organisation', data.organisation);
+        formData.append('category', data.category);
+        formData.append('position', data.position);
+        formData.append('mail', data.mail);
+        formData.append('phone', data.phone);
+        formData.append('country', data.country);
+        formData.append('otherCount', otherCount);
+        formData.append('logo', logo);
+
 
 
         try {
-            const response = await axios.post(url + "/api/participants", userData)
+            const response = await axios.post(url + "/api/participants", formData)
             console.log(response);
-            // console.log(userData);
             if (response.status == 200) {
                 setIsSentSuc(true)
             }
         } catch (error) {
             console.error("Error:", error);
         } finally {
-            setData({
-                civility: "",
-                name: "",
-                organisation: "",
-                category: "",
-                position: "",
-                mail: "",
-                phone: "",
-                country: "",
-            })
-            setIsLoading(false)
-            setOtherCount("")
+            // setData({
+            //     civility: "",
+            //     name: "",
+            //     organisation: "",
+            //     category: "",
+            //     position: "",
+            //     mail: "",
+            //     phone: "",
+            //     country: "",
+            // })
+            // setIsLoading(false)
+            // setOtherCount("")
+            // setLogo('')
         }
     }
     const closeBtn = () => {
@@ -138,12 +156,13 @@ const Participants = () => {
                             <p>Y.E.S. Africa</p>
                             <p>
                                 <TransText
-                                    fr='12 & 13 février 2025 - Marrakech'
-                                    ar=' فبراير 2025 - مراكش 12 & 13 '
-                                    en='February 12 & 13, 2025 - Marrakech'
-                                    pr='12 e 13 de fevereiro de 2025 - Marrakech'
-                                    sw='12 na 13 Februari 2025 - Marrakech'
+                                    fr='19 & 20 juin 2025 - Marrakech'
+                                    ar=' يونيو 2025 - مراكش 19 & 20 '
+                                    en='June 19 & 20, 2025 - Marrakech'
+                                    pr='19 e 20 de junho de 2025 - Marrakech'
+                                    sw='19 na 20 Juni 2025 - Marrakech'
                                 />
+
                             </p>
                         </div>
                     </div>
@@ -171,6 +190,30 @@ const Participants = () => {
                         <div className="flex flex-col gap-2">
                             <label htmlFor="organisation"><TransText ar='المنظمة' fr='Organisme' en='Organization' pr='Organização' sw='Shirika' /><span className='text-red-700 '>*</span></label>
                             <input required value={data.organisation} onChange={HandleChange} placeholder={selectedLanguage === "ar" ? "أدخل اسم المنظمة" : selectedLanguage === "fr" ? "Entrez l'organisation" : selectedLanguage === "en" ? "Enter Organization" : selectedLanguage === "pr" ? "Insira a organização" : selectedLanguage === "sw" ? "Ingiza shirika" : ""} className='border-[1.4px] px-2 py-1 rounded-[5px] ' type="text" name="organisation" id="organisation" />
+                        </div>
+
+                        <div className="flex flex-col gap-2">
+                            <div className="relative">
+                                <p>Logo: <span className='text-red-700 '>*</span></p>
+                                <input
+                                    onChange={(e) => { handleFileChange(e, setLogo) }}
+                                    className="absolute inset-0 opacity-0 cursor-pointer"
+                                    type="file"
+                                    accept="image/jpeg, image/png, image/gif, image/webp, image/svg+xml"
+                                    name="logo"
+                                    id="logo"
+                                    required
+                                />
+                                <label
+                                    htmlFor="logo"
+                                    className={`flex items-center gap-3 cursor-pointer border border-alpha/20 rounded p-2 ${logo ? 'bg-alpha text-white' : ''}`}
+                                >
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 0 0 1.5-1.5V6a1.5 1.5 0 0 0-1.5-1.5H3.75A1.5 1.5 0 0 0 2.25 6v12a1.5 1.5 0 0 0 1.5 1.5Zm10.5-11.25h.008v.008h-.008V8.25Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
+                                    </svg>
+                                    <TransText ar='شعار' fr='Logo' en='Logo' pr='Logotipo' sw='Nembo' />
+                                </label>
+                            </div>
                         </div>
                         <div className="flex flex-col gap-2">
                             <label htmlFor="category"><TransText ar='الفئة' fr='Catégorie' en='Category' pr='Categoria' sw='Kundi' /><span className='text-red-700 '>*</span></label>

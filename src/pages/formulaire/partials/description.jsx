@@ -302,13 +302,14 @@ const Description = () => {
           <li>
             <TransText
               en="Have the capacity to assign a representative to fully participate in
-            the summit to be held in 12 and 13 of February 2025 in Morocco, either physically
-            or digitally."
-              ar="القدرة على تعيين ممثل للمشاركة بشكل كامل في القمة التي ستعقد يومي 12 و13 فبراير 2025 في المغرب، سواء بشكل حضوري أو عن بعد"
-              fr="Avoir la capacité de détacher un représentant pour participer pleinement au sommet qui se tiendra les 12 et 13 février 2025 au maroc et ce, de manière physique et/ou digitale."
-              pr="Ter capacidade para destacar um representante para participar plenamente na cimeira que se realizará nos dias 12 e 13 de fevereiro de 2025 em Marrocos, de forma física e/ou digital."
-              sw="Kuwa na uwezo wa kutwaa mwakilishi ili kushiriki kikamilifu katika mkutano huo utakaofanyika Februari 12 na 13, 2025 nchini Moroko, kwa njia halisi na/au dijitali."
+        the summit to be held in 19 and 20 of June 2025 in Morocco, either physically
+        or digitally."
+              ar="القدرة على تعيين ممثل للمشاركة بشكل كامل في القمة التي ستعقد يومي 19 و20 يونيو 2025 في المغرب، سواء بشكل حضوري أو عن بعد"
+              fr="Avoir la capacité de détacher un représentant pour participer pleinement au sommet qui se tiendra les 19 et 20 juin 2025 au Maroc, de manière physique et/ou digitale."
+              pr="Ter capacidade para destacar um representante para participar plenamente na cimeira que se realizará nos dias 19 e 20 de junho de 2025 em Marrocos, de forma física e/ou digital."
+              sw="Kuwa na uwezo wa kutwaa mwakilishi ili kushiriki kikamilifu katika mkutano huo utakaofanyika Juni 19 na 20, 2025 nchini Moroko, kwa njia halisi na/au dijitali."
             />
+
           </li>
         </ul>
       </div>
@@ -493,11 +494,11 @@ const Description = () => {
         </button> */}
         <p className="font-medium">
           <TransText
-            en="The submission deadline is 30 November 2024."
-            fr="La date limite de soumission est le 30 novembre 2024."
-            ar="اخر موعد تقديم الطلبات هو 30 نوفمبر 2024."
-            pr="O prazo de submissão é 30 de novembro de 2024."
-            sw="Tarehe ya mwisho ya kuwasilisha ni 30 Novemba 2024."
+            en="The submission deadline is 20 February 2025."
+            fr="La date limite de soumission est le 20 février 2025."
+            ar="اخر موعد تقديم الطلبات هو 20 فبراير 2025."
+            pr="O prazo de submissão é 20 de fevereiro de 2025."
+            sw="Tarehe ya mwisho ya kuwasilisha ni 20 Februari 2025."
           />
           {" "}
         </p>
