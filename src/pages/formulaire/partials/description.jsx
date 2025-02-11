@@ -292,12 +292,13 @@ const Description = () => {
           <li>
             <TransText
               en="Be available for the capacity-building program for 3 hours/week from
-            December 16, 2024, to January 11, 2025."
-              fr="Être disponible pour le programme de renforcement des capacités à hauteur de 3 heures / semaine du 16 décembre 2024 et au 11 janvier 2025."
-              ar="أن تكون متاحة للمشاركة في برنامج تعزيز القدرات بمعدل 3 ساعات/الأسبوع من 16 دجنبر 2024 حتى 11 يناير 2025"
-              pr="Estar disponível para o programa de fortalecimento de capacidades de 3 horas/semana de 23 de dezembro de 2024 a 11 de janeiro de 2025."
-              sw="Kuwa na upatikanaji wa kushiriki katika programu ya kuimarisha uwezo kwa muda wa saa 3 kwa wiki kuanzia tarehe 23 Desemba 2024 hadi tarehe 11 januari 2025."
+    March 10, 2025, to April 7, 2025."
+              fr="Être disponible pour le programme de renforcement des capacités à hauteur de 3 heures / semaine du 10 mars 2025 au 7 avril 2025."
+              ar="أن تكون متاحة للمشاركة في برنامج تعزيز القدرات بمعدل 3 ساعات/الأسبوع من 10 مارس 2025 حتى 7 أبريل 2025"
+              pr="Estar disponível para o programa de fortalecimento de capacidades de 3 horas/semana de 10 de março de 2025 a 7 de abril de 2025."
+              sw="Kuwa na upatikanaji wa kushiriki katika programu ya kuimarisha uwezo kwa muda wa saa 3 kwa wiki kuanzia tarehe 10 Machi 2025 hadi tarehe 7 Aprili 2025."
             />
+
           </li>
           <li>
             <TransText
