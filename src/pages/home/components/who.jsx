@@ -1,4 +1,5 @@
-import aboutimg from "../../../assets/images/heroCarousel/hero4.jpg";
+import aboutimg1 from "../../../assets/images/heroCarousel/hero4.jpg";
+import aboutimg from "../../../assets/images/heroCarousel/hero5.jpg";
 import TransText from "../../../components/TransText";
 import { useAppContext } from "../../../context/AppContext";
 
@@ -122,12 +123,26 @@ const Who = () => {
       }
     },
   ];
+  const text1 = [
+    {
+      title: {
+        en: "Pan-African Youth Center",
+        ar: "مركز الشباب الأفريقي",
+        fr: "Centre de la Jeunesse Panafricaine"
+      },
+      para1: {
+        en: "The Pan-African Union of Youth (UPJ) is a continental organization dedicated to empowering African youth and promoting unity, peace, and sustainable development. Founded in 1962 in Conakry, Guinea, originally as the Pan-African Youth Movement (MPJ), it played a crucial role in mobilizing youth for Africa’s decolonization. Today, UPJ unites national youth councils, civil society organizations, and regional platforms to foster African integration and strengthen the values of the African Union (AU). Working alongside governments and development partners, it continues to adapt to the evolving challenges of African youth, ensuring their active participation in shaping the continent’s future.",
+        ar: "اتحاد الشباب الأفريقي (UPJ) هو منظمة قارية مكرسة لتمكين الشباب الأفريقي وتعزيز الوحدة والسلام والتنمية المستدامة. تأسس عام 1962 في كوناكري، غينيا، تحت اسم حركة الشباب الأفريقي (MPJ)، ولعب دورًا أساسيًا في تعبئة الشباب من أجل إنهاء الاستعمار في أفريقيا. اليوم، يجمع UPJ المجالس الوطنية للشباب، ومنظمات المجتمع المدني، والمنصات الإقليمية لتعزيز التكامل الأفريقي وقيم الاتحاد الأفريقي (AU). من خلال العمل مع الحكومات والشركاء في التنمية، يواصل التكيف مع التحديات الحديثة لضمان مشاركة الشباب الفعالة في بناء مستقبل القارة.",
+        fr: "L’Union Panafricaine de la Jeunesse (UPJ) est une organisation continentale dédiée à l'autonomisation des jeunes africains et à la promotion de l'unité, de la paix et du développement durable. Fondée en 1962 à Conakry, en Guinée, sous le nom de Mouvement Panafricain de la Jeunesse (MPJ), elle a joué un rôle clé dans la mobilisation des jeunes pour la décolonisation de l'Afrique. Aujourd’hui, l’UPJ rassemble les conseils nationaux de la jeunesse, les organisations de la société civile et les plateformes régionales pour renforcer l'intégration africaine et les valeurs de l’Union Africaine (UA). En collaboration avec les gouvernements et les partenaires du développement, elle s’adapte aux défis actuels pour garantir l’implication des jeunes dans l’avenir du continent."
+      }
+    },
+  ];
 
 
   return (
     <section className="min-h-[50vh]">
       <div
-        className={`min-h-[30vh] flex items-center flex-col justify-between gap-8 lg:gap-0 ${selectedLanguage === "ar" ? "lg:flex-row-reverse text-end" : "lg:flex-row"
+        className={`min-h-[30vh] m-3 flex items-center flex-col justify-between gap-8 lg:gap-0 ${selectedLanguage === "ar" ? "lg:flex-row-reverse text-end" : "lg:flex-row"
           }`}
       >
         <img src={aboutimg} className="lg:w-[50%] object-cover" alt="" />
@@ -154,6 +169,33 @@ const Who = () => {
             </p>
           </div>
         ))}
+      </div>
+
+      <div   className={`min-h-[30vh] m-5 flex items-center flex-col justify-between gap-8 lg:gap-0 ${selectedLanguage === "ar" ? "lg:flex-row-reverse text-end" : "lg:flex-row"
+          }`}>
+            {text1.map(({ title, para1, para2 }, index) => (
+          <div
+            className={`flex flex-col gap-4 tracking-wide ${selectedLanguage === "ar" ? "px-8 md:pl-12 lg:pl-16" : "px-8 md:pr-12 lg:pr-16"
+              }`}
+            key={index}
+          >
+            <h1
+              className={`lg:text-start text-beta lg:mb-3 text-3xl font-bold tracking-tighter md:text-4xl lg:text-5xl/none ${selectedLanguage == "ar" ? "flex flex-row-reverse gap-2" : ""
+                }`}
+            >
+              {/* TODO: mafia li ygadha, khaliha mcommentia - oussama */}
+              <TransText {...title} />
+              {/* <span className="text-alpha"> Jadara Foundation</span> */}
+            </h1>
+            <p className="text-muted-foreground md:text-base/relaxed lg:text-lg/snug">
+              <TransText {...para1} />
+            </p>
+            <p className="text-muted-foreground md:text-base/relaxed lg:text-lg/snug">
+              <TransText {...para2} />
+            </p>
+          </div>
+        ))}
+      <img src={aboutimg1} className="lg:w-[50%] object-cover" alt="" />
       </div>
 
       <div className="bg-muted-background flex items-center justify-around flex-col gap-10 lg:flex-row px-8 md:px-12 lg:px-16 my-8 md:my-10 lg:my-12 py-8 md:py-10 lg:py-12">

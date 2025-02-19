@@ -495,11 +495,11 @@ const Description = () => {
         </button> */}
         <p className="font-medium">
           <TransText
-            en="The submission deadline is 20 February 2025."
-            fr="La date limite de soumission est le 20 février 2025."
-            ar="اخر موعد تقديم الطلبات هو 20 فبراير 2025."
-            pr="O prazo de submissão é 20 de fevereiro de 2025."
-            sw="Tarehe ya mwisho ya kuwasilisha ni 20 Februari 2025."
+            en="The submission deadline is 28 February 2025."
+            fr="La date limite de soumission est le 28 février 2025."
+            ar="اخر موعد تقديم الطلبات هو 28 فبراير 2025."
+            pr="O prazo de submissão é 28 de fevereiro de 2025."
+            sw="Tarehe ya mwisho ya kuwasilisha ni 28 Februari 2025."
           />
           {" "}
         </p>
