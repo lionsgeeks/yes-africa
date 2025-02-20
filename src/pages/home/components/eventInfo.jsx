@@ -13,8 +13,8 @@ const EventInfo = () => {
       icon: <CiCalendar />,
       text: {
         en: "June 19-20, 2025",
-        ar: "19-20 فبراير 2025",
-        fr: "19-20 يونيو 2025"
+        ar: "19-20 يونيو 2025",
+        fr: "19-20 juin 2025"
       },
     },
     {
@@ -28,9 +28,9 @@ const EventInfo = () => {
     {
       icon: <MdMyLocation />,
       text: {
-        en: "Casablanca",
-        ar: "الدار البيضاء",
-        fr: "Casablanca"
+        en: "Marrakech",
+        ar: "مراكش",
+        fr: "Marrakech"
       },
     },
   ];
