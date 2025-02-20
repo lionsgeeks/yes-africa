@@ -145,7 +145,7 @@ const Who = () => {
         className={`min-h-[30vh] m-3 flex items-center flex-col justify-between gap-8 lg:gap-0 ${selectedLanguage === "ar" ? "lg:flex-row-reverse text-end" : "lg:flex-row"
           }`}
       >
-        <img src={aboutimg} className="lg:w-[50%] object-cover" alt="" />
+        <img src={aboutimg} className="lg:w-[50%] object-cover rounded" alt="" />
 
         {text.map(({ title, para1, para2 }, index) => (
           <div
