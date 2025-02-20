@@ -27,20 +27,9 @@ export const OrganizatesSection = () => {
       logo: pan,
       title: "Pan-African Youth Center",
       text: (
-        <TransText en="The Pan-African Union of Youth was founded under the name of Pan-African Youth Movement on April 26, 1962, in Conakry, Guinea, under the impulse of the heads of state, as a special vehicle intended to mobilize youth for the decolonization of Africa. The movement played a strategic role in mobilizing political support for the independence of African states.
-The Pan-African Union of Youth, as a continental coordination institution, does not only bring together national youth councils and equivalent structures across the African continent, but also gathers youth-led and youth-focused civil society organizations, as well as regional platforms of the regional economic commissions. The UPJ also works with ministries of youth and other development partners in African countries.
-The Union strives to support and strengthen the values and ideals of the African Union (AU) in promoting unity, peace, democracy, sustainable development, and African integration since 1962, then known as the Pan-African Youth Movement (MPJ).
-The current structure of the Pan-African Union of Youth (UPJ) is the result of a deep and rigorous transformation and revitalization of the MPJ, with the main objective of adapting to the evolving challenges faced by youth and those arising from the post-colonial political scene, while keeping in mind the challenges to come."
-          fr="L'Union Panafricaine de la Jeunesse a été fondée sous le nom de Mouvement panafricain de la jeunesse le 26 avril 1962 en Guinée Conakry, sous l'impulsion des chefs d'État, en tant que véhicule spécial destiné à mobiliser les jeunes pour la décolonisation de l'Afrique. Le mouvement a joué un rôle stratégique dans la mobilisation du soutien politique en faveur de l'indépendance des États africains.
-L'Union panafricaine de la jeunesse, en tant qu'institution de coordination continentale, ne se contente pas de fédérer les conseils nationaux de la jeunesse et les structures équivalentes à travers le continent africain, mais rassemble également les OSC dirigées par des jeunes et centrées sur les jeunes, ainsi que les plateformes régionales des commissions économiques régionales. L'UPJ travaille aussi avec les ministères de la jeunesse et d'autres partenaires de développement dans les pays africains.
-L'Union s'efforce de soutenir et de renforcer les valeurs et les idéaux de l'Union africaine (UA) dans la promotion de l'unité, de la paix, de la démocratie, du développement durable et de l'intégration africaine depuis 1962, alors connue sous le nom de Mouvement panafricain de la jeunesse (MPJ).
-La structure actuelle de l'Union panafricaine de la jeunesse (UPJ) est le résultat d'une transformation et d'une revitalisation profondes et rigoureuses du MPJ, avec pour objectif principal de s'adapter à l'évolution des défis auxquels les jeunes sont confrontés et à ceux qui découlent de la scène politique post-coloniale, tout en gardant à l'esprit les défis à venir."
-          ar="تم تأسيس الاتحاد الأفريقي للشباب تحت اسم حركة الشباب الإفريقية في 26 أبريل 1962 في كوناكري، غينيا، بتوجيه من رؤساء الدول، كآلية خاصة تهدف إلى حشد الشباب من أجل إنهاء الاستعمار في إفريقيا. لعبت الحركة دورًا استراتيجيًا في حشد الدعم السياسي من أجل استقلال الدول الأفريقية.
-الاتحاد الأفريقي للشباب، كهيئة تنسيق قارية، لا يقتصر على توحيد مجالس الشباب الوطنية والهياكل المماثلة في القارة الإفريقية فحسب، بل يجمع أيضًا المنظمات المدنية التي يقودها الشباب والتي تركز على الشباب، بالإضافة إلى المنصات الإقليمية للجان الاقتصادية الإقليمية. كما يعمل الاتحاد مع وزارات الشباب وشركاء التنمية الآخرين في الدول الأفريقية.
-يسعى الاتحاد إلى دعم وتعزيز القيم والمثل العليا للاتحاد الإفريقي (UA) في تعزيز الوحدة والسلام والديمقراطية والتنمية المستدامة والتكامل الإفريقي منذ عام 1962، حين كان يعرف باسم حركة الشباب الإفريقية (MPJ).
-الهيكل الحالي للاتحاد الأفريقي للشباب (UPJ) هو نتيجة لتحول وتجديد عميقين ودقيقين لـ MPJ، بهدف رئيسي هو التكيف مع التحديات المتطورة التي يواجهها الشباب وتلك التي تنبع من المشهد السياسي ما بعد الاستعماري، مع مراعاة التحديات المقبلة."
-        />
-
+        <TransText en="The Pan-African Union of Youth (PUY) is a continental organization dedicated to empowering African youth and promoting unity, peace, and sustainable development. Founded in 1962 in Conakry, Guinea, originally as the Pan-African Youth Movement (MPJ), it played a crucial role in mobilizing youth for Africa’s decolonization. Today, UPJ unites national youth councils, civil society organizations, and regional platforms to foster African integration and strengthen the values of the African Union (AU). Working alongside governments and development partners, it continues to adapt to the evolving challenges of African youth, ensuring their active participation in shaping the continent’s future."
+          fr="L'Union panafricaine de la jeunesse (PUY) est une organisation continentale dédiée à l'autonomisation des jeunes africains et à la promotion de l'unité, de la paix et du développement durable. Fondée en 1962 à Conakry, en Guinée, à l'origine sous le nom de Mouvement panafricain de la jeunesse (MPJ), elle a joué un rôle crucial dans la mobilisation des jeunes pour la décolonisation de l'Afrique. Aujourd'hui, le PUY réunit les conseils nationaux de la jeunesse, les organisations de la société civile et les plateformes régionales pour favoriser l'intégration africaine et renforcer les valeurs de l'Union africaine (UA). En collaborant avec les gouvernements et les partenaires au développement, il continue de s'adapter aux défis évolutifs des jeunes africains, garantissant leur participation active à la construction de l'avenir du continent."
+          ar="الاتحاد الإفريقي للشباب (PUY) هو منظمة قارية مكرسة لتمكين الشباب الإفريقي وتعزيز الوحدة والسلام والتنمية المستدامة. تأسست في عام 1962 في كوناكري، غينيا، تحت اسم حركة الشباب الإفريقي (MPJ)، ولعبت دوراً حاسماً في تحفيز الشباب من أجل تحرر إفريقيا من الاستعمار. اليوم، يوحد PUY مجالس الشباب الوطنية، ومنظمات المجتمع المدني، والمنصات الإقليمية لتعزيز التكامل الإفريقي وتقوية قيم الاتحاد الإفريقي (UA). يعمل الاتحاد جنباً إلى جنب مع الحكومات والشركاء في التنمية، ويستمر في التكيف مع التحديات المتزايدة التي يواجهها الشباب الإفريقي، مما يضمن مشاركتهم الفعالة في تشكيل مستقبل القارة." />
       )
     },
     {
@@ -77,7 +66,7 @@ La structure actuelle de l'Union panafricaine de la jeunesse (UPJ) est le résul
         />
       ),
     },
-   
+
   ];
 
 
