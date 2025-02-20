@@ -12,9 +12,9 @@ const EventInfo = () => {
     {
       icon: <CiCalendar />,
       text: {
-        en: "February 12-13, 2025",
-        ar: "12-13 فبراير 2025",
-        fr: "12-13 février 2025"
+        en: "June 19-20, 2025",
+        ar: "19-20 فبراير 2025",
+        fr: "19-20 يونيو 2025"
       },
     },
     {
