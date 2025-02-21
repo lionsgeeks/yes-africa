@@ -126,9 +126,9 @@ const Who = () => {
   const text1 = [
     {
       title: {
-        en: "Pan-African Youth Center",
-        ar: "مركز الشباب الأفريقي",
-        fr: "Centre de la Jeunesse Panafricaine"
+        en: "Pan-African Youth Union",
+        ar: "اتحاد الشباب الأفريقي",
+        fr: "Union de la Jeunesse Panafricaine"
       },
       para1: {
         en: "The Pan-African Union of Youth (PUY) is a continental organization dedicated to empowering African youth and promoting unity, peace, and sustainable development. Founded in 1962 in Conakry, Guinea, originally as the Pan-African Youth Movement, it played a crucial role in mobilizing youth for Africa’s decolonization. Today, PYU unites national youth councils, civil society organizations, and regional platforms to foster African integration and strengthen the values of the African Union (AU). Working alongside governments and development partners, it continues to adapt to the evolving challenges of African youth, ensuring their active participation in shaping the continent’s future.",
