@@ -504,7 +504,7 @@ const Description = () => {
         </p>
       </div>
 
-      <a className="bg-alpha text-white px-3 py-2 w-fit rounded" href={pdfDocs[selectedLanguage]} download><TransText en="Download the file for more informations" fr="Téléchargez le document pour plus d'informations." ar="قم بتنزيل الملف لمزيد من المعلومات" pr="Baixe o arquivo para mais informações" sw="Pakua faili kwa maelezo zaidi." /> </a>
+      {/* <a className="bg-alpha text-white px-3 py-2 w-fit rounded" href={pdfDocs[selectedLanguage]} download><TransText en="Download the file for more informations" fr="Téléchargez le document pour plus d'informations." ar="قم بتنزيل الملف لمزيد من المعلومات" pr="Baixe o arquivo para mais informações" sw="Pakua faili kwa maelezo zaidi." /> </a> */}
     </div>
   );
 };
