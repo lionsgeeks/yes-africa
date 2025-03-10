@@ -79,7 +79,7 @@ const Navbar = () => {
               <img className="w-[10vw]" src={yeslogo} alt="" />
             </a>
             <div className="flex gap-2 items-center">
-              <a href="https://jadara.foundation/" target="_blank">
+              <a href="https://jadara.ngo/" target="_blank">
                 <img className="w-20" src={jadara} alt="" />
               </a>
               <a href="https://panafricanyouthunion.org/fr/" target="_blank">
