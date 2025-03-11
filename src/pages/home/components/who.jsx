@@ -7,7 +7,7 @@ const Who = () => {
   const width = "42px";
   const stats = [
     {
-      number: "30+",
+      number: "54",
       title: {
         en: "Countries",
         ar: "دولة",

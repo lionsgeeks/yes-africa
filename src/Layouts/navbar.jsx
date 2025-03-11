@@ -6,7 +6,7 @@ import { useAppContext } from "../context/AppContext";
 
 import jadara from "../assets/images/sponsors/Jadaralogo.png";
 import pan from "../assets/images/sponsors/pan.jpeg";
-import yeslogo from "../assets/images/yeslogo.png"
+import yeslogo from "../assets/images/yeslogo.png";
 
 const Navbar = () => {
   const [isToggle, setIsToggle] = useState(false);
@@ -65,30 +65,41 @@ const Navbar = () => {
     { label: "English", code: "en" },
     { label: "العربية", code: "ar" },
   ];
+  const logos = [
+    {
+      image: yeslogo,
+      link: "/",
+    },
+    {
+      image: jadara,
+      link: "https://jadara.ngo/",
+    },
+    {
+      image: pan,
+      link: "https://panafricanyouthunion.org/fr/",
+    },
+  ];
   return (
     <div className="sticky top-0 z-30">
     <h1 className="bg-sky-700 text-amber-800">hada lmahdi ki testi script dialo f production wast l project fl main o ylh derna reunion m3a clients</h1>
       {/* <!-- component --> */}
       <nav className="bg-white border border-gray-200 px-3 sm:px-16 py-4 rounded shadow">
         <div
-          className={`container flex flex-wrap ${selectedLanguage == "ar" && "flex-row-reverse"
-            } justify-between items-center mx-auto`}
+          className={`container flex flex-wrap ${
+            selectedLanguage == "ar" && "flex-row-reverse"
+          } justify-between items-center mx-auto`}
         >
           <div className="flex items-center gap-10">
-            <a href="/" className="flex items-center">
-              {/* <span className="self-center text-xl font-semibold whitespace-nowrap">Yes Africa</span> */}
-              <img className="w-[10vw]" src={yeslogo} alt="" />
-            </a>
             <div className="flex gap-2 items-center">
-              <a href="https://jadara.foundation/" target="_blank">
-                <img className="w-20" src={jadara} alt="" />
-              </a>
-              <a href="https://panafricanyouthunion.org/fr/" target="_blank">
-                <img className="w-20" src={pan} alt="" />
-              </a>
+              {/* <span className="self-center text-xl font-semibold whitespace-nowrap">Yes Africa</span> */}
+              {logos.map((element, index) => (
+                <a key={index} href={element.link} className="flex items-center">
+                  <img className={`${index === 0 ? 'lg:w-[5.5vw] md:w-[11vw] w-[20vw]' : 'lg:w-[3vw] md:w-[7vw] w-[12vw]'} `} src={element.image} alt="" />
+                </a>
+              ))}
             </div>
           </div>
-
+ 
           <div className="flex items-center">
             <button
               onClick={() => setIsToggle(!isToggle)}
@@ -112,7 +123,6 @@ const Navbar = () => {
                 />
               </svg>
             </button>
-
           </div>
 
           <div
@@ -120,8 +130,9 @@ const Navbar = () => {
             id="mobile-menu"
           >
             <ul
-              className={`flex flex-col items-center mt-4 ${selectedLanguage == "ar" ? "md:flex-row-reverse" : "md:flex-row"
-                } md:gap-x-8 md:mt-0 md:text-sm md:font-medium`}
+              className={`flex flex-col items-center mt-4 ${
+                selectedLanguage == "ar" ? "md:flex-row-reverse" : "md:flex-row"
+              } md:gap-x-8 md:mt-0 md:text-sm md:font-medium`}
             >
               {navItems.map((item, index) => {
                 if (item.isDropdown) {
@@ -132,25 +143,28 @@ const Navbar = () => {
                         className="flex items-center space-x-2 text-gray-700 hover:text-gray-900 focus:outline-none"
                       >
                         <span
-                          className={`${location.pathname === "/form"
-                            ? "text-beta"
-                            : location.pathname === "/participants" ?
-                              "text-beta"
+                          className={`${
+                            location.pathname === "/form"
+                              ? "text-beta"
+                              : location.pathname === "/participants"
+                              ? "text-beta"
                               : "text-alpha"
-                            }`}
+                          }`}
                         >
                           {item.label[selectedLanguage]
                             ? item.label[selectedLanguage]
                             : item.label["en"]}
                         </span>
                         <svg
-                          className={`w-5 h-5 transition-transform transform ${dropdownIsOpen ? "rotate-180" : ""
-                            } ${location.pathname === "/form"
+                          className={`w-5 h-5 transition-transform transform ${
+                            dropdownIsOpen ? "rotate-180" : ""
+                          } ${
+                            location.pathname === "/form"
                               ? "text-beta"
-                              : location.pathname === "/participants" ?
-                                "text-beta"
-                                : "text-alpha"
-                            }`}
+                              : location.pathname === "/participants"
+                              ? "text-beta"
+                              : "text-alpha"
+                          }`}
                           xmlns="http://www.w3.org/2000/svg"
                           fill="none"
                           viewBox="0 0 24 24"
@@ -171,10 +185,11 @@ const Navbar = () => {
                           <li>
                             <Link
                               to="/form"
-                              className={`block px-4 py-2 hover:bg-gray-100 ${location.pathname === "/form"
-                                ? "text-beta"
-                                : "text-alpha"
-                                }`}
+                              className={`block px-4 py-2 hover:bg-gray-100 ${
+                                location.pathname === "/form"
+                                  ? "text-beta"
+                                  : "text-alpha"
+                              }`}
                             >
                               NGO's
                             </Link>
@@ -182,10 +197,11 @@ const Navbar = () => {
                           <li>
                             <Link
                               to="/participants"
-                              className={`block px-4 py-2 hover:bg-gray-100 ${location.pathname === "/participants"
-                                ? "text-beta"
-                                : "text-alpha"
-                                }`}
+                              className={`block px-4 py-2 hover:bg-gray-100 ${
+                                location.pathname === "/participants"
+                                  ? "text-beta"
+                                  : "text-alpha"
+                              }`}
                             >
                               Participants
                             </Link>
@@ -207,10 +223,11 @@ const Navbar = () => {
                     <li key={index}>
                       <Link
                         to={item.path}
-                        className={`${location.pathname === item.path
-                          ? "text-beta"
-                          : "text-alpha"
-                          } hover:text-beta`}
+                        className={`${
+                          location.pathname === item.path
+                            ? "text-beta"
+                            : "text-alpha"
+                        } hover:text-beta`}
                       >
                         {item.label[selectedLanguage]
                           ? item.label[selectedLanguage]
@@ -227,9 +244,11 @@ const Navbar = () => {
                 onClick={toggleLanguageIsOpen}
               >
                 <div
-                  className={`cursor-pointer flex gap-1  ${selectedLanguage == "ar" ? "flex-row-reverse" : ""
-                    } items-center ${languageIsOpen ? "text-beta" : "text-alpha"
-                    }`}
+                  className={`cursor-pointer flex gap-1  ${
+                    selectedLanguage == "ar" ? "flex-row-reverse" : ""
+                  } items-center ${
+                    languageIsOpen ? "text-beta" : "text-alpha"
+                  }`}
                 >
                   <HiOutlineLanguage className="h-[5vh]" />
                   <p className="">
@@ -238,9 +257,11 @@ const Navbar = () => {
                   <svg
                     fill="currentColor"
                     viewBox="0 0 20 20"
-                    className={`inline w-4 h-4  ${selectedLanguage == "ar" ? "mr-1" : "ml-1"
-                      } transition-transform duration-75 transform ${languageIsOpen ? "rotate-180" : "rotate-0"
-                      }`}
+                    className={`inline w-4 h-4  ${
+                      selectedLanguage == "ar" ? "mr-1" : "ml-1"
+                    } transition-transform duration-75 transform ${
+                      languageIsOpen ? "rotate-180" : "rotate-0"
+                    }`}
                   >
                     <path
                       fillRule="evenodd"

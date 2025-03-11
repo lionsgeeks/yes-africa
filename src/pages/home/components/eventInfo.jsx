@@ -4,6 +4,7 @@ import { MdMyLocation } from "react-icons/md";
 import { useAppContext } from "../../../context/AppContext";
 import TransText from "../../../components/TransText";
 import { Link } from "react-router-dom";
+import Countdown from "../../../components/Countdown";
 
 const EventInfo = () => {
   const { selectedLanguage } = useAppContext();
@@ -139,6 +140,9 @@ const EventInfo = () => {
             </p>
           </div>
         ))}
+        <div>
+          <Countdown targetDate="2025-06-19T00:09:00"/>
+        </div>
       </div>
     </section>
   );
