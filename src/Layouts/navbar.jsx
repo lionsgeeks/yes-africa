@@ -98,7 +98,7 @@ const Navbar = () => {
               ))}
             </div>
           </div>
-
+ 
           <div className="flex items-center">
             <button
               onClick={() => setIsToggle(!isToggle)}
