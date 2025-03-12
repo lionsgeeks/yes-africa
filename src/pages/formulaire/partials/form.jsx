@@ -1048,6 +1048,8 @@ const Form = () => {
                                             className="border rounded p-2"
                                             placeholder="Please specify"
                                             onChange={(e) => setOtherFunding(e.target.value)}
+                                            value={otherFunding}
+                                            required
                                         />
                                     )}
                                 </div>
@@ -1084,6 +1086,7 @@ const Form = () => {
                                             className="border rounded p-2"
                                             placeholder="Please specify"
                                             onChange={(e) => setOtherTheme(e.target.value)}
+                                            value={otherTheme}
                                             required
                                         />
                                     )}
@@ -1159,6 +1162,7 @@ const Form = () => {
                                             className="border rounded p-2"
                                             placeholder="Please specify"
                                             onChange={(e) => setOtherInterv(e.target.value)}
+                                            value={otherInterv}
                                             required
                                         />
                                     )}
@@ -1225,6 +1229,8 @@ const Form = () => {
                                             placeholder="Please specify"
                                             className="border rounded p-2"
                                             onChange={(e) => setOtherFunders(e.target.value)}
+                                            value={otherFunders}
+                                            required
                                         />
                                     )}
                                 </div>
@@ -1260,6 +1266,8 @@ const Form = () => {
                                             placeholder="Please specify"
                                             className="border rounded p-2"
                                             onChange={(e) => setOtherPartner(e.target.value)}
+                                            value={otherPartner}
+                                            required
                                         />
                                     )}
                                 </div>
@@ -1282,9 +1290,11 @@ const Form = () => {
                                     </label>
                                     <textarea
                                         onChange={handleInputChange} required
-                                        className="border rounded p-2" name="neet_project_example" id="neet_project_example">
-                                        {formData.neet_project_example}
-                                    </textarea>
+                                        className="border rounded p-2" name="neet_project_example" id="neet_project_example"
+                                        defaultValue={formData.neet_project_example}
+                                        />
+                                        {/* {formData.neet_project_example} */}
+                                    {/* </textarea> */}
                                 </div>
 
                                 <div className="flex flex-col gap-1">
@@ -1314,9 +1324,11 @@ const Form = () => {
                                     </label>
                                     <textarea
                                         onChange={handleInputChange} required
-                                        className="border rounded p-2" name="project_impact" id="project_impact">
-                                        {formData.project_impact}
-                                    </textarea>
+                                        className="border rounded p-2" name="project_impact" id="project_impact"
+                                        defaultValue={formData.project_impact}
+                                        />
+                                        {/* {formData.project_impact} */}
+                                    {/* </textarea> */}
                                 </div>
 
                                 <div className="flex items-center gap-4 justify-around flex-col lg:flex-row">
