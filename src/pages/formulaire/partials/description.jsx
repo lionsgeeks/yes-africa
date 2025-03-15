@@ -474,7 +474,7 @@ const Description = () => {
           />
         </p>
 
-        <NavLink to={"/formulaire"} className="underline text-blue-800">
+        <NavLink target="_blank" to={"/formulaire"} className="underline text-blue-800">
           <TransText
             en="Youth Empowerment Summit - YES Africa. Call for African NGOs"
             fr="Sommet sur l'autonomisation des jeunes - YES Africa - Appel aux ONG africaines"
