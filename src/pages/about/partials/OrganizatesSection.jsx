@@ -73,8 +73,8 @@ export const OrganizatesSection = () => {
   return (
     <>
       <section
-        className={`lg:py-12 flex flex-col justify-center gap-3 md:gap-2  ${selectedLanguage == "ar" && "text-end"
-          }`}
+      dir={selectedLanguage == "ar"? "rtl" : "ltr"}
+        className={`lg:py-12 flex flex-col justify-center gap-3 md:gap-2`}
       >
         <h2 className="text-3xl md:text-5xl lg:text-5xl/none  text-alpha font-bold tracking-tighter px-2 md:px-3 lg:px-14 py-4 md:py-5">
           <TransText en="The Organizers" ar="منظمون" fr="Organisateurs" />
