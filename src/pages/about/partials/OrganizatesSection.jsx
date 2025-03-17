@@ -81,30 +81,35 @@ export const OrganizatesSection = () => {
         </h2>
         <div>
           {organizers.map((org, ind) => (
-            <div
-              key={ind}
-              className={` px-6 md:px-10 lg:px-14 py-14 md:py-10 my-8 flex justify-between items-start gap-6 flex-col ${ind % 2 == 1
-                ? "lg:flex-row bg-muted-background"
-                : "lg:flex-row-reverse bg-white"
-                }`}
-            >
+            <>
+
               <div
-                className={`flex items-center justify-center  md:bg-transparent w-full lg:w-[40%] sticky top-[75px] ${ind % 2 == 1 ? "bg-muted-background" : "bg-white"
+                key={ind}
+                className={` px-6 md:px-10 lg:px-14 py-14 md:py-10 my-8 flex justify-between items-start gap-6 flex-col ${ind % 2 == 1
+                  ? "lg:flex-row bg-muted-background"
+                  : "lg:flex-row-reverse bg-white"
                   }`}
               >
-                <img
-                  src={org.logo}
-                  alt=""
-                  className={` ${org.logo == ucgc ? "w-[210px]" : org.logo == epic ? "w-[400px]  " : "w-[120px] lg:w-[180px]"
-                    }`}
-                />
-              </div>
 
-              <div className="w-full lg:w-[50%] text-lg leading-7">
-                <span className="font-bold text-xl">{org.title}: </span>
-                <p>{org.text}</p>
+                <div
+                  className={`flex items-center justify-center  md:bg-transparent w-full lg:w-[40%] sticky top-[75px] ${ind % 2 == 1 ? "bg-muted-background" : "bg-white"
+                    }`}
+                >
+                  <img
+                    src={org.logo}
+                    alt=""
+                    className={` ${org.logo == ucgc ? "w-[210px]" : org.logo == epic ? "w-[400px]  " : "w-[120px] lg:w-[180px]"
+                      }`}
+                  />
+                </div>
+
+                <div className="w-full lg:w-[50%] text-lg leading-7">
+                  {org.title == "LionsGeek" && <h1 className="p-1 text-xs font-bold rounded-lg font-sans bg-alpha text-white  w-fit"><TransText en="Technical partner" fr="Partenaire technique" ar="شريك تقني" /></h1>}
+                  <span className="font-bold text-xl">{org.title}: </span>
+                  <p>{org.text}</p>
+                </div>
               </div>
-            </div>
+            </>
           ))}
         </div>
       </section>
