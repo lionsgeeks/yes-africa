@@ -81,6 +81,7 @@ const Navbar = () => {
   ];
   return (
     <div className="sticky top-0 z-30">
+    <h1>jkhkjhkjhkj</h1>
       {/* <!-- component --> */}
       <nav className="bg-white border border-gray-200 px-3 sm:px-16 py-4 rounded shadow">
         <div
