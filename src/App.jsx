@@ -28,7 +28,7 @@ function App() {
             <Route path="/articles/:id" element={<ArticlePage />} />
             <Route path="/contact" element={<ContactUs />} />
             <Route path="/form" element={<Formulaire />} />
-            <Route path="/formulaire" element={<Form />} />
+            {/* <Route path="/formulaire" element={<Form />} /> */}
             <Route path="/participants" element={<SponsorsForm/>} ></Route>
           </Routes>
         <Footer />
