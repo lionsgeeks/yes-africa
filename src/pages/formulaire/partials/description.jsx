@@ -474,7 +474,7 @@ const Description = () => {
           />
         </p> */}
 
-        {/* <NavLink target="_blank" to={"https://docs.google.com/forms/d/e/1FAIpQLScD20Y6YZnQvcwiRdgglkPytiv1mTimyvrOu8wkVL6bIT3IVA/viewform"} className="underline text-blue-800">
+        <NavLink target="_blank" to={"https://docs.google.com/forms/d/e/1FAIpQLScD20Y6YZnQvcwiRdgglkPytiv1mTimyvrOu8wkVL6bIT3IVA/viewform?usp=sharing"} className="underline text-blue-800">
           <TransText
             en="Youth Empowerment Summit - YES Africa. Call for African NGOs"
             fr="Sommet sur l'autonomisation des jeunes - YES Africa - Appel aux ONG africaines"
@@ -482,7 +482,7 @@ const Description = () => {
             pr="Cimeira da Capacitação dos Jovens - YES Africa - Apelo às ONG africanas."
             sw="Mkutano wa Uwezeshaji Vijana - YES Africa -Wito kwa NGOs za Kiafrika."
           />
-        </NavLink> */}
+        </NavLink>
         {/* <button onClick={() => goToDocs()} className="underline text-blue-800">
           <TransText
             en="Youth Empowerment Summit - YES Africa. Call for African NGOs (google.com)"
