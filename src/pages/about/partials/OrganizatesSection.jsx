@@ -6,6 +6,8 @@ import lionsgeek from "../../../assets/images/sponsors/lionsgeek.png";
 import jadara from "../../../assets/images/sponsors/Jadaralogo.png";
 import epic from "../../../assets/images/sponsors/epic-afric.jpg";
 import pan from "../../../assets/images/sponsors/pan.jpeg";
+import Méditerranée from "../../../assets/images/sponsors/Méditerranée.jpg";
+import RMed from "../../../assets/images/sponsors/RMed_Logo_IECD.png";
 // import smala from "../../../assets/images/sponsors/";
 
 export const OrganizatesSection = () => {
@@ -22,6 +24,7 @@ export const OrganizatesSection = () => {
           fr="Ex-Fondation Marocaine de l'Étudiant est une association marocaine à but non lucratif reconnue d’utilité publique, créée en 2002. Sa mission est de permettre à chaque jeune de choisir et de construire son avenir avec confiance et ambition, sans être soumis aux déterminismes sociaux, territoriaux, du handicap ou du genre. Chaque année, nous recherchons, mobilisons et identifions des jeunes pour les inspirer, les guider, les soutenir financièrement, leur fournir un mentor et développer leurs compétences transversales. Pour ce faire, nous déployons des programmes d'ascension sociale soutenus par des partenaires éducatifs, des entreprises à impact, des bénévoles engagés et des donateurs sensibles à notre cause. Forte de plus de vingt ans d'expérience, la Fondation a développé un modèle robuste qui en fait aujourd’hui un acteur clé du secteur tertiaire. Ce long parcours a été marqué par des impacts et des succès durables, permettant à la Fondation de consolider sa réputation de catalyseur de l'ascension sociale au Maroc. Aujourd'hui, en tant qu'acteur fiable du secteur tertiaire, la Fondation continue de travailler avec détermination pour contribuer à des changements significatifs et durables, renforçant ainsi sa position de partenaire de confiance et moteur du progrès social qui a transformé la vie de plus de 2 750 jeunes au Maroc."
         />
       ),
+      Technical : false
     },
     {
       logo: pan,
@@ -30,7 +33,9 @@ export const OrganizatesSection = () => {
         <TransText en="The Pan-African Union of Youth (PUY) is a continental organization dedicated to empowering African youth and promoting unity, peace, and sustainable development. Founded in 1962 in Conakry, Guinea, originally as the Pan-African Youth Movement (MPJ), it played a crucial role in mobilizing youth for Africa’s decolonization. Today, UPJ unites national youth councils, civil society organizations, and regional platforms to foster African integration and strengthen the values of the African Union (AU). Working alongside governments and development partners, it continues to adapt to the evolving challenges of African youth, ensuring their active participation in shaping the continent’s future."
           fr="L'Union panafricaine de la jeunesse (PUY) est une organisation continentale dédiée à l'autonomisation des jeunes africains et à la promotion de l'unité, de la paix et du développement durable. Fondée en 1962 à Conakry, en Guinée, à l'origine sous le nom de Mouvement panafricain de la jeunesse (MPJ), elle a joué un rôle crucial dans la mobilisation des jeunes pour la décolonisation de l'Afrique. Aujourd'hui, le PUY réunit les conseils nationaux de la jeunesse, les organisations de la société civile et les plateformes régionales pour favoriser l'intégration africaine et renforcer les valeurs de l'Union africaine (UA). En collaborant avec les gouvernements et les partenaires au développement, il continue de s'adapter aux défis évolutifs des jeunes africains, garantissant leur participation active à la construction de l'avenir du continent."
           ar="الاتحاد الإفريقي للشباب (PUY) هو منظمة قارية مكرسة لتمكين الشباب الإفريقي وتعزيز الوحدة والسلام والتنمية المستدامة. تأسست في عام 1962 في كوناكري، غينيا، تحت اسم حركة الشباب الإفريقي (MPJ)، ولعبت دوراً حاسماً في تحفيز الشباب من أجل تحرر إفريقيا من الاستعمار. اليوم، يوحد PUY مجالس الشباب الوطنية، ومنظمات المجتمع المدني، والمنصات الإقليمية لتعزيز التكامل الإفريقي وتقوية قيم الاتحاد الإفريقي (UA). يعمل الاتحاد جنباً إلى جنب مع الحكومات والشركاء في التنمية، ويستمر في التكيف مع التحديات المتزايدة التي يواجهها الشباب الإفريقي، مما يضمن مشاركتهم الفعالة في تشكيل مستقبل القارة." />
-      )
+      ),
+      Technical : false
+      
     },
     {
       logo: lionsgeek,
@@ -42,6 +47,7 @@ export const OrganizatesSection = () => {
           fr="LionsGeek est le résultat d'un partenariat entre 2M, MolenGeek, Charlewood, la Radio et Télévision belge RTBF, ainsi que le Ministère de l'Inclusion économique, des Petites entreprises, de l'Emploi et des Compétences, la Région Wallonie-Bruxelles, à travers la Délégation générale Wallonie-Bruxelles au Maroc, et l'Association pour la Promotion de l'Éducation et de la Formation à l'Étranger (APEFE). Il s'agit d'une association axée sur une action inclusive en faveur des jeunes en situation NEET (Ni en éducation, ni en emploi, ni en formation). LionsGeek offre un soutien diversifié adapté aux besoins de chaque individu, centré sur trois principaux domaines d'intervention : un programme de formation à temps plein, un incubateur pour les porteurs de projets, et un espace de coworking. LionsGeek vise à répondre aux différentes attentes des jeunes et du marché du travail à travers des formations longues, des cours courts et des programmes de certification dans les domaines des médias et du numérique."
         />
       ),
+      Technical : true
     },
     {
       logo: epic,
@@ -54,6 +60,20 @@ export const OrganizatesSection = () => {
           fr="EPIC-Africa est une organisation à but non lucratif dédiée au renforcement de la société civile africaine en promouvant la transparence, la responsabilité et la collaboration. Elle soutient les organisations de la société civile (OSC) à travers la recherche, l'analyse de données et des initiatives telles que la Plateforme des OSC africaines. EPIC-Africa favorise les partenariats pour accroître l'impact des OSC dans la construction d'un avenir meilleur pour l'Afrique. Reconnu comme un leader d'opinion, l'organisation a contribué à des discussions mondiales sur le rôle des ONG internationales et le développement dirigé localement. Son leadership intellectuel se reflète dans ses publications, telles que des rapports de recherche, des articles, des chapitres de livres et des interviews."
         />
       ),
+      Technical : false
+    },
+    {
+      logo: Méditerranée,
+      logo2: RMed ,
+      title: "Le réseau Méditerranée",
+      text: (
+        <TransText
+          en="The Mediterranean New Chance Network is a project led by the European Institute for Cooperation and Development (IECD), an international solidarity organization founded in 1988 and recognized as a public-interest entity. Its mission is to unite and strengthen innovative and sustainable socio-professional integration programs in the Mediterranean region, in order to offer new opportunities to young people in vulnerable situations."
+          ar="(IECD)شبكة المتوسط فرصة جديدة هي مشروع يقوده المعهد الأوروبي للتعاون والتنمية ، وهي منظمة تضامن دولي تأسست عام 1988 ومعترف بها كمؤسسة ذات منفعة عامة. وتتمثل مهمتها في توحيد وتعزيز البرامج المبتكرة والمستدامة للإدماج الاجتماعي والمهني في منطقة البحر الأبيض المتوسط، وذلك من أجل توفير فرص جديدة للشباب في أوضاع هشة."
+          fr="Le réseau Méditerranée Nouvelle Chance est un projet piloté par l’Institut européen de coopération et développement (IECD), organisation de solidarité internationale fondée en 1988 et reconnue d'utilisé publique. Il a pour mission de Fédérer et renforcer les dispositifs innovants et durables de l'insertion socio-professionnelle dans la région méditerranéenne, afin d'offrir de nouvelles chances aux jeunes en situation de vulnérabilité"
+        />
+      ),
+      Technical : true
     },
     {
       logo: ucgc,
@@ -65,7 +85,9 @@ export const OrganizatesSection = () => {
           fr="CGLU Afrique est l'organisation parapluie et la voix représentative unifiée des gouvernements locaux en Afrique. Elle a été fondée en 2005 à Tshwane, en Afrique du Sud, suite à l'unification de trois groupes continentaux de gouvernements locaux : l'Union Africaine des Autorités Locales (AULA), l'Union des Villes Africaines (UVA) et le Chapitre Africain de l'Uniao dos Ciudades y Capitais Lusofonas Africana (UCCL AFRICA). Établie en tant que section africaine de l'organisation mondiale CGLU (United Cities and Local Governments), CGLU Afrique regroupe désormais 44 associations nationales de gouvernements locaux de toutes les régions de l'Afrique, ainsi que 2 000 villes de plus de 100 000 habitants. À ce titre, l'organisation représente près de 350 millions de citoyens africains. Son siège est situé à Rabat, où il jouit..."
         />
       ),
+      Technical : false
     },
+ 
 
   ];
 
@@ -95,6 +117,16 @@ export const OrganizatesSection = () => {
                   className={`flex items-center justify-center  md:bg-transparent w-full lg:w-[40%] sticky top-[75px] ${ind % 2 == 1 ? "bg-muted-background" : "bg-white"
                     }`}
                 >
+
+                  {org.logo2 && (
+                    <img
+                    src={org.logo2}
+                    alt=""
+                    className={` ${org.logo2 == ucgc ? "w-[210px]" : org.logo2 == epic ? "w-[400px]  " : "w-[120px] lg:w-[180px] px-5"
+                      }`}
+                  />
+                    )}
+                 
                   <img
                     src={org.logo}
                     alt=""
@@ -104,7 +136,7 @@ export const OrganizatesSection = () => {
                 </div>
 
                 <div className="w-full lg:w-[50%] text-lg leading-7">
-                  {org.title == "LionsGeek" && <h1 className="p-1 text-xs font-bold rounded-lg font-sans bg-alpha text-white  w-fit"><TransText en="Technical partner" fr="Partenaire technique" ar="شريك تقني" /></h1>}
+                  {org.Technical == true && <h1 className="p-1 text-xs font-bold rounded-lg font-sans bg-alpha text-white  w-fit"><TransText en="Technical partner" fr="Partenaire technique" ar="شريك تقني" /></h1>}
                   <span className="font-bold text-xl">{org.title}: </span>
                   <p>{org.text}</p>
                 </div>
