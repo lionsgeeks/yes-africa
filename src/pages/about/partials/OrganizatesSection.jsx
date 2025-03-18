@@ -38,7 +38,7 @@ export const OrganizatesSection = () => {
       
     },
     {
-      logo: lionsgeek,
+      logo: lionsgeek, 
       title: "LionsGeek",
       text: (
         <TransText
