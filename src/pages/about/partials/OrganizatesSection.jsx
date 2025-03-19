@@ -86,7 +86,7 @@ export const OrganizatesSection = () => {
     {
       logo: Méditerranée,
       logo2: RMed,
-      title: "Le réseau Méditerranée",
+      title: "IECD",
       text: (
         <TransText
           en="The Mediterranean New Chance Network is a project led by the European Institute for Cooperation and Development (IECD), an international solidarity organization founded in 1988 and recognized as a public-interest entity. Its mission is to unite and strengthen innovative and sustainable socio-professional integration programs in the Mediterranean region, in order to offer new opportunities to young people in vulnerable situations."
