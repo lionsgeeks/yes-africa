@@ -114,7 +114,7 @@ const Who = () => {
       title: {
         en: "About Jadara Foundation",
         ar: "حول مؤسسة جدارة",
-        fr: "À propos de Foundation Jadara"
+        fr: "À propos de Jadara Foundation"
       },
       para1: {
         en: "Jadara is a non-profit organization dedicated to empowering underserved youth and fostering social development in Morocco and beyond. With a mission to provide opportunities for education, skill development, and personal growth, Jadara aims to equip young individuals with the tools they need to overcome social barriers and achieve their full potential. The foundation focuses on initiatives that promote inclusivity, resilience, and community engagement, working collaboratively with local and international partners to create sustainable solutions that uplift marginalized communities. Through its various programs and activities, Jadara is committed to transforming lives and building a brighter future for the next generation.",
@@ -149,7 +149,7 @@ const Who = () => {
 
         {text.map(({ title, para1, para2 }, index) => (
           <div
-            className={`flex flex-col gap-4 tracking-wide ${selectedLanguage === "ar" ? "px-8 md:pl-12 lg:pl-16" : "px-8 md:pr-12 lg:pr-16"
+            className={`flex flex-col gap-4 tracking-wide   ${selectedLanguage === "ar" ? "px-8 md:pl-12 lg:pl-16" : "px-8 md:pr-12 lg:pr-16"
               }`}
             key={index}
           >
@@ -161,10 +161,10 @@ const Who = () => {
               <TransText {...title} />
               {/* <span className="text-alpha"> Jadara Foundation</span> */}
             </h1>
-            <p className="text-muted-foreground md:text-base/relaxed lg:text-lg/snug">
+            <p className={`text-muted-foreground  md:text-base/relaxed lg:text-lg/snug ${selectedLanguage != "ar" && "text-justify"}`}>
               <TransText {...para1} />
             </p>
-            <p className="text-muted-foreground md:text-base/relaxed lg:text-lg/snug">
+            <p className={`text-muted-foreground  md:text-base/relaxed lg:text-lg/snug ${selectedLanguage != "ar" && "text-justify"}`}>
               <TransText {...para2} />
             </p>
           </div>
@@ -175,7 +175,7 @@ const Who = () => {
           }`}>
             {text1.map(({ title, para1, para2 }, index) => (
           <div
-            className={`flex flex-col gap-4 tracking-wide ${selectedLanguage === "ar" ? "px-8 md:pl-12 lg:pl-16" : "px-8 md:pr-12 lg:pr-16"
+            className={`flex flex-col gap-4 tracking-wide  ${selectedLanguage === "ar" ? "px-8 md:pl-12 lg:pl-16" : "px-8 md:pr-12 lg:pr-16"
               }`}
             key={index}
           >
@@ -187,10 +187,10 @@ const Who = () => {
               <TransText {...title} />
               {/* <span className="text-alpha"> Jadara Foundation</span> */}
             </h1>
-            <p className="text-muted-foreground md:text-base/relaxed lg:text-lg/snug">
+            <p className={`text-muted-foreground  md:text-base/relaxed lg:text-lg/snug ${selectedLanguage != "ar" && "text-justify"}`}>
               <TransText {...para1} />
             </p>
-            <p className="text-muted-foreground md:text-base/relaxed lg:text-lg/snug">
+            <p className={`text-muted-foreground  md:text-base/relaxed lg:text-lg/snug ${selectedLanguage != "ar" && "text-justify"}`}>
               <TransText {...para2} />
             </p>
           </div>
