@@ -31,7 +31,7 @@ export const AboutSection = () => {
           }`}
       >
         <h1 className="text-3xl text-alpha font-bold tracking-tighter md:text-5xl lg:text-6xl/none">
-          <TransText en="About Us" ar="حولنا" fr="À propos de nous" />
+          <TransText en="About Yes Africa" ar=" Yes Africa حول " fr="À propos de Yes Africa" />
         </h1>
 
         <div
