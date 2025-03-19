@@ -50,16 +50,6 @@ export const CommitteeSection = () => {
               linkedin: "https://www.linkedin.com/in/hamidbenelafdil",
             },
             {
-              name: "M. Cheikh MAMINA DIEDHIOU",
-              job: {
-                en: "Senior ESG Officer - AFRICA 50",
-                ar: "المسؤول الرئيسي للبيئة والمجتمع والحوكمة - أفريقيا 50",
-                fr: "Responsable ESG Senior - AFRICA 50"
-              },
-              image: diedhiou,
-              linkedin: "https://www.linkedin.com/in/cheikh-mamina-diedhiou-14b2931a",
-            },
-            {
               name: "Mme. Ileana SANTOS",
               job: {
                 en: "Strategy Consultant and Co-founder of Je M'engage pour l'Afrique",
@@ -68,36 +58,6 @@ export const CommitteeSection = () => {
               },
               image: santos,
               linkedin: "https://www.linkedin.com/in/ileana-santos-243b31108",
-            },
-            {
-              name: "M. Abdou SOULEYE DIOP",
-              job: {
-                en: "Managing Partner - FORVIS MAZARS",
-                ar: "العضو المدير - فورفيس مازارز",
-                fr: "Associé Directeur - FORVIS MAZARS"
-              },
-              image: diop,
-              linkedin: "https://www.linkedin.com/in/abdoudiop",
-            },
-            {
-              name: "Mme Hasnaâ BOUTZIL",
-              job: {
-                en: "Speaker, trainer, moderator, coach, strategy and development advisor",
-                ar: "متحدثة، مدربة، معدة، مدربة، مستشارة في الاستراتيجية والتطوير",
-                fr: "Conférencière, formatrice, modératrice, coach, conseillère en stratégie et développement"
-              },
-              image: boutzil,
-              linkedin: "https://www.linkedin.com/in/hasna%C3%A2-boutzil-9787ab24",
-            },
-            {
-              name: "Mme Khadija BOUJANOUI",
-              job: {
-                en: "Director of the Support Department at 2M, President of the Gender Equality and Diversity Committee - President of Lions Geek",
-                ar: "مديرة قسم الدعم في 2M، رئيسة لجنة المساواة بين الجنسين والتنوع - رئيسة Lions Geek",
-                fr: "Directrice du Département Support chez 2M, Présidente du Comité de l'Égalité des Genres et de la Diversité - Présidente de Lions Geek"
-              },
-              image: boujanoui,
-              linkedin: "https://www.linkedin.com/in/khadija-boujanoui",
             },
             {
               name: "Salaheddine BAKOR",
@@ -119,6 +79,51 @@ export const CommitteeSection = () => {
               image: bening,
               linkedin: "https://www.linkedin.com/in/bening-ahmed-wiisichong-76663828/"
             },
+            {
+              name: "Mme Hasnaâ BOUTZIL",
+              job: {
+                en: "Speaker, trainer, moderator, coach, strategy and development advisor",
+                ar: "متحدثة، مدربة، معدة، مدربة، مستشارة في الاستراتيجية والتطوير",
+                fr: "Conférencière, formatrice, modératrice, coach, conseillère en stratégie et développement"
+              },
+              image: boutzil,
+              linkedin: "https://www.linkedin.com/in/hasna%C3%A2-boutzil-9787ab24",
+            },
+            {
+              name: "M. Cheikh MAMINA DIEDHIOU",
+              job: {
+                en: "Senior ESG Officer - AFRICA 50",
+                ar: "المسؤول الرئيسي للبيئة والمجتمع والحوكمة - أفريقيا 50",
+                fr: "Responsable ESG Senior - AFRICA 50"
+              },
+              image: diedhiou,
+              linkedin: "https://www.linkedin.com/in/cheikh-mamina-diedhiou-14b2931a",
+            },
+
+            {
+              name: "Mme Khadija BOUJANOUI",
+              job: {
+                en: "Director of the Support Department at 2M, President of the Gender Equality and Diversity Committee - President of Lions Geek",
+                ar: "مديرة قسم الدعم في 2M، رئيسة لجنة المساواة بين الجنسين والتنوع - رئيسة Lions Geek",
+                fr: "Directrice du Département Support chez 2M, Présidente du Comité de l'Égalité des Genres et de la Diversité - Présidente de Lions Geek"
+              },
+              image: boujanoui,
+              linkedin: "https://www.linkedin.com/in/khadija-boujanoui",
+            },
+
+            
+            {
+              name: "M. Abdou SOULEYE DIOP",
+              job: {
+                en: "Managing Partner - FORVIS MAZARS",
+                ar: "العضو المدير - فورفيس مازارز",
+                fr: "Associé Directeur - FORVIS MAZARS"
+              },
+              image: diop,
+              linkedin: "https://www.linkedin.com/in/abdoudiop",
+            },
+     
+        
 
           ].map(({ name, job, image, linkedin }, index) => (
             <div

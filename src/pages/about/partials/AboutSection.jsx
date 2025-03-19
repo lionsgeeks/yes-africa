@@ -44,7 +44,7 @@ export const AboutSection = () => {
             </h2>
             <p
               dir={selectedLanguage === "ar" ? "rtl" : "ltr"}
-              className="text-muted-foreground md:text-base/relaxed lg:text-lg/snug">
+              className={`text-muted-foreground md:text-base/relaxed lg:text-lg/snug ${selectedLanguage != "ar" && "text-justify "}`}>
               <TransText
                 en="Y.E.S Africa (Youth Empowerment Summit Africa) is a crucial initiative dedicated to addressing the growing challenge of NEET (Not in Education, Employment, or Training) youth in Africa, with projections estimating this number to exceed 70 million by 2025. This alarming trend poses significant risks not only to the future of these young individuals but also to the continent as a whole. Our mission is to transform this staggering statistic from 70 million NEETs to 70 million Doers by fostering collaboration among civil society leaders, local communities, and private sector stakeholders."
                 ar="تعتبر Y.E.S Africa (قمة تمكين الشباب في إفريقيا) مبادرة حاسمة تهدف إلى معالجة التحدي المتزايد للشباب غير المنخرطين في التعليم أو العمل أو التدريب (NEET) في إفريقيا، حيث تشير التوقعات إلى أن هذا العدد سيتجاوز 70 مليونًا بحلول عام 2025. يشكل هذا الاتجاه المقلق مخاطر كبيرة ليس فقط على مستقبل هؤلاء الشباب ولكن أيضًا على القارة ككل. مهمتنا هي تحويل هذا الرقم المذهل من 70 مليون شاب عاطل إلى 70 مليون فاعل من خلال تعزيز التعاون بين قادة المجتمع المدني والمجتمعات المحلية وأصحاب المصلحة في القطاع الخاص."
@@ -59,7 +59,7 @@ export const AboutSection = () => {
             </h2>
             <p
               dir={selectedLanguage === "ar" ? "rtl" : "ltr"}
-              className="text-muted-foreground md:text-base/relaxed lg:text-lg/snug">
+              className={`text-muted-foreground md:text-base/relaxed lg:text-lg/snug ${selectedLanguage != "ar" && "text-justify "}`}>
               <TransText
                 en="Our vision is to empower youth across Africa by providing them with the skills and opportunities necessary to become active contributors to their communities and the global economy. Y.E.S Africa aims to serve as a marketplace dedicated to funding innovative programs that focus on reducing the proportion of NEET youth. By partnering with African and international donors, we strive to create a sustainable support system for youth empowerment."
                 ar="رؤيتنا هي تمكين الشباب في جميع أنحاء إفريقيا من خلال تزويدهم بالمهارات والفرص اللازمة ليصبحوا مساهمين نشطين في مجتمعاتهم والاقتصاد العالمي. تهدف Y.E.S Africa إلى أن تكون منصة مخصصة لتمويل البرامج المبتكرة التي تركز على تقليل نسبة الشباب غير المنخرطين في التعليم أو العمل أو التدريب. من خلال الشراكة مع المانحين الأفارقة والدوليين، نسعى إلى إنشاء نظام دعم مستدام لتمكين الشباب."
@@ -74,7 +74,7 @@ export const AboutSection = () => {
             </h2>
             <p
               dir={selectedLanguage === "ar" ? "rtl" : "ltr"}
-              className="text-muted-foreground md:text-base/relaxed lg:text-lg/snug">
+              className={`text-muted-foreground md:text-base/relaxed lg:text-lg/snug ${selectedLanguage != "ar" && "text-justify "}`}>
               <TransText
                 en="Through targeted training programs, Y.E.S Africa will strengthen the capacity of NGOs working in the field of youth empowerment. The capacity-building program will focus on key areas, including:
         - Technical and financial project development

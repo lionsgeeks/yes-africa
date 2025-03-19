@@ -104,7 +104,7 @@ const Hero = () => {
                     </h1>
 
                     <br />
-                    <p className="lg:text-lg">
+                    <p className={`lg:text-lg ${selectedLanguage != "ar" && "text-justify"}`}>
                       <TransText {...desc} />
                     </p>
                   </div>

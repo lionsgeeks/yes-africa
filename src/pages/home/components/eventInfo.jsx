@@ -100,7 +100,7 @@ const EventInfo = () => {
             <h1 className="text-2xl font-semibold tracking-tighter md:text-3xl lg:text-4xl/none">
               <TransText {...title} />
             </h1>
-            <p className="text-gray-100 md:text-base/relaxed lg:text-lg/snug">
+            <p className={`text-gray-100 md:text-base/relaxed lg:text-lg/snug ${selectedLanguage != "ar" && "text-justify"}`}>
               <TransText {...desc} />
             </p>
 

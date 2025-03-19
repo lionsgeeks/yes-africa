@@ -61,7 +61,7 @@ const ArticleCard = ({ index, id, image, title, description, created_at }) => {
               <TransText ar={tags[1].ar} en={tags[1].en}/>
             </p> */}
           </div>
-          <p className="text-lg">
+          <p className="text-lg text-justify">
             
             {
               selectedLanguage == "ar" ?
