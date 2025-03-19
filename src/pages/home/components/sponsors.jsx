@@ -31,7 +31,7 @@ const Sponsors = () => {
       </h2>
       <div className="flex items-center justify-around gap-4">
         <Swiper
-          slidesPerView={3}
+          slidesPerView={2}
           loop={true}
           speed={3000}
           freeMode={true}
@@ -42,7 +42,7 @@ const Sponsors = () => {
           modules={[Autoplay, FreeMode]}
         >
           {
-            [ucgc, jadara, pan, lionsgeek, epic].map((spon, index) => (
+            [ucgc,  lionsgeek, ].map((spon, index) => (
               <SwiperSlide className="lg:aspect-[1/0.5] aspect-[1/2] bg-yellow- flex items-center justify-center" key={index}>
                 <img
                   src={spon}
