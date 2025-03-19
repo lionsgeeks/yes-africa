@@ -19,8 +19,8 @@ const Hero = () => {
       img: hero1,
       title: {
         en: "Youth Empowerment Summit, Africa",
-        ar: "قمة تمكين الشباب. أفريقيا",
-        fr: "Sommet de l'Autonomisation des Jeunes, Afrique"
+        ar: "Youth Empowerment Summit, Africa",
+        fr: "Youth Empowerment Summit, Africa"
       },
       desc: {
         en: "Y.E.S Africa (Youth Empowerment Summit Africa) is a crucial initiative addressing the growing challenge of NEET (Not in Education, Employment, or Training) youth in Africa, projected to exceed 70 million by 2025. This alarming trend threatens not only the future of these young individuals but also the continent as a whole. Y.E.S Africa aims to transform this situation from 70 million NEETs to 70 million Doers by fostering collaboration among civil society leaders, local communities, and private sector stakeholders.",
@@ -32,8 +32,8 @@ const Hero = () => {
       img: hero4,
       title: {
         en: "Youth Empowerment Summit, Africa",
-        ar: "قمة تمكين الشباب. أفريقيا",
-        fr: "Sommet de l'Autonomisation des Jeunes, Afrique"
+        ar: "Youth Empowerment Summit, Africa",
+        fr: "Youth Empowerment Summit, Africa"
       },
       desc: {
         en: "A substantial and focused investment in Africa's human capital, paired with comprehensive reforms aimed at enhancing the business environment, is essential for African governments to attract increased foreign investment. This dual approach not only bolsters economic growth but also mitigates the potential for political instability that often accompanies high unemployment rates.",
@@ -45,8 +45,8 @@ const Hero = () => {
       img: hero3,
       title: {
         en: "Youth Empowerment Summit, Africa",
-        ar: "قمة تمكين الشباب. أفريقيا",
-        fr: "Sommet de l'Autonomisation des Jeunes, Afrique"
+        ar: "Youth Empowerment Summit, Africa",
+        fr: "Youth Empowerment Summit, Africa"
       },
       desc: {
         en: "Join us at Y.E.S Africa and be part of the solution! Our initiative focuses on empowering the youth of Africa by creating opportunities for education, employment, and skills development. Together, we can turn the tide on the NEET crisis, transforming young lives and building a brighter future for the continent. Through collaboration and innovation, we aim to cultivate a new generation of leaders and change-makers, ensuring that every young person has the chance to thrive. Let’s work together to make the vision of 70 million Doers a reality!",
@@ -90,15 +90,15 @@ const Hero = () => {
                   <div className={`${selectedLanguage === "ar" ? "text-end" : ""}`}>
                     <h1 className={`lg:text-5xl text-xl gap-1 font-bold flex flex-col `}>
                       <span>
-                        <TransText en="Youth" ar="قمة" fr="Jeunesse" />
+                        <TransText en="Youth" ar="Youth" fr="Youth" />
                       </span>
                       <span>
-                        <TransText en="Empowerment" ar="تمكين" fr="Autonomisation" />
+                        <TransText en="Empowerment" ar="Empowerment" fr="Empowerment" />
                       </span>
                       <span>
-                        <TransText en="Summit" ar="شباب" fr="Sommet" />
+                        <TransText en="Summit" ar="Summit" fr="Summit" />
                         <span className="text-xl lg:text-3xl font-normal mx-6">
-                          <TransText en="Africa" ar="أفريقيا" fr="Afrique" />
+                          <TransText en="Africa" ar="Africa" fr="Africa" />
                         </span>
                       </span>
                     </h1>

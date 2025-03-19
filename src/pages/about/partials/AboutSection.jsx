@@ -14,8 +14,8 @@ export const AboutSection = () => {
         <h1 className="text-3xl font-bold tracking-tight md:text-5xl lg:text-6xl/none">
           <TransText
             en="Youth Empowerment Summit Africa"
-            ar="قمة تمكين الشباب في أفريقيا"
-            fr="Sommet de l'Autonomisation des Jeunes en Afrique" />
+            ar="Youth Empowerment Summit Africa"
+            fr="Youth Empowerment Summit Africa" />
         </h1>
         <p className="lg:text-2xl text-2xl lg:w-[62.5%] ">
           <TransText
