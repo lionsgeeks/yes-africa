@@ -8,6 +8,7 @@ import epic from "../../../assets/images/sponsors/epic-afric.jpg";
 import pan from "../../../assets/images/sponsors/pan.jpeg";
 import Méditerranée from "../../../assets/images/sponsors/Méditerranée.jpg";
 import RMed from "../../../assets/images/sponsors/RMed_Logo_IECD.png";
+import { CommitteeSection } from "./CommitteeSection";
 // import smala from "../../../assets/images/sponsors/";
 
 export const OrganizatesSection = () => {
@@ -28,30 +29,36 @@ export const OrganizatesSection = () => {
     },
     {
       logo: pan,
-      title: "Pan-African Youth Center",
+      title: "Pan-African Youth Union",
       text: (
-        <TransText en="The Pan-African Union of Youth (PUY) is a continental organization dedicated to empowering African youth and promoting unity, peace, and sustainable development. Founded in 1962 in Conakry, Guinea, originally as the Pan-African Youth Movement (MPJ), it played a crucial role in mobilizing youth for Africa’s decolonization. Today, UPJ unites national youth councils, civil society organizations, and regional platforms to foster African integration and strengthen the values of the African Union (AU). Working alongside governments and development partners, it continues to adapt to the evolving challenges of African youth, ensuring their active participation in shaping the continent’s future."
-          fr="L'Union panafricaine de la jeunesse (PUY) est une organisation continentale dédiée à l'autonomisation des jeunes africains et à la promotion de l'unité, de la paix et du développement durable. Fondée en 1962 à Conakry, en Guinée, à l'origine sous le nom de Mouvement panafricain de la jeunesse (MPJ), elle a joué un rôle crucial dans la mobilisation des jeunes pour la décolonisation de l'Afrique. Aujourd'hui, le PUY réunit les conseils nationaux de la jeunesse, les organisations de la société civile et les plateformes régionales pour favoriser l'intégration africaine et renforcer les valeurs de l'Union africaine (UA). En collaborant avec les gouvernements et les partenaires au développement, il continue de s'adapter aux défis évolutifs des jeunes africains, garantissant leur participation active à la construction de l'avenir du continent."
-          ar="الاتحاد الإفريقي للشباب (PUY) هو منظمة قارية مكرسة لتمكين الشباب الإفريقي وتعزيز الوحدة والسلام والتنمية المستدامة. تأسست في عام 1962 في كوناكري، غينيا، تحت اسم حركة الشباب الإفريقي (MPJ)، ولعبت دوراً حاسماً في تحفيز الشباب من أجل تحرر إفريقيا من الاستعمار. اليوم، يوحد PUY مجالس الشباب الوطنية، ومنظمات المجتمع المدني، والمنصات الإقليمية لتعزيز التكامل الإفريقي وتقوية قيم الاتحاد الإفريقي (UA). يعمل الاتحاد جنباً إلى جنب مع الحكومات والشركاء في التنمية، ويستمر في التكيف مع التحديات المتزايدة التي يواجهها الشباب الإفريقي، مما يضمن مشاركتهم الفعالة في تشكيل مستقبل القارة." />
+        <TransText en="The Pan-African Youth Union (PYU) is a continental organization dedicated to empowering African youth and promoting unity, peace, and sustainable development. Founded in 1962 in Conakry, Guinea, originally as the Pan-African Youth Movement (PYM), it played a crucial role in mobilizing youth for Africa’s decolonization. Today, UPJ unites national youth councils, civil society organizations, and regional platforms to foster African integration and strengthen the values of the African Union (AU). Working alongside governments and development partners, it continues to adapt to the evolving challenges of African youth, ensuring their active participation in shaping the continent’s future."
+          fr="L'Union panafricaine de la jeunesse (UPJ) est une organisation continentale dédiée à l'autonomisation des jeunes africains et à la promotion de l'unité, de la paix et du développement durable. Fondée en 1962 à Conakry, en Guinée, à l'origine sous le nom de Mouvement panafricain de la jeunesse (MPJ), elle a joué un rôle crucial dans la mobilisation des jeunes pour la décolonisation de l'Afrique. Aujourd'hui, le PUY réunit les conseils nationaux de la jeunesse, les organisations de la société civile et les plateformes régionales pour favoriser l'intégration africaine et renforcer les valeurs de l'Union africaine (UA). En collaborant avec les gouvernements et les partenaires au développement, il continue de s'adapter aux défis évolutifs des jeunes africains, garantissant leur participation active à la construction de l'avenir du continent."
+          ar="الاتحاد الإفريقي للشباب (PYU) هو منظمة قارية مكرسة لتمكين الشباب الإفريقي وتعزيز الوحدة والسلام والتنمية المستدامة. تأسست في عام 1962 في كوناكري، غينيا، تحت اسم حركة الشباب الإفريقي (MPJ)، ولعبت دوراً حاسماً في تحفيز الشباب من أجل تحرر إفريقيا من الاستعمار. اليوم، يوحد PUY مجالس الشباب الوطنية، ومنظمات المجتمع المدني، والمنصات الإقليمية لتعزيز التكامل الإفريقي وتقوية قيم الاتحاد الإفريقي (UA). يعمل الاتحاد جنباً إلى جنب مع الحكومات والشركاء في التنمية، ويستمر في التكيف مع التحديات المتزايدة التي يواجهها الشباب الإفريقي، مما يضمن مشاركتهم الفعالة في تشكيل مستقبل القارة." />
       ),
       Technical: false
 
     },
 
-    {
-      logo: epic,
-      title: "EPIC-Africa",
-      text: (
-        <TransText
-          en="EPIC-Africa is a nonprofit organization dedicated to strengthening African civil society by promoting transparency, accountability, and collaboration. It supports civil society organizations (CSOs) through research, data analysis, and initiatives like the African CSO Platform. EPIC-Africa fosters partnerships to enhance the impact of CSOs in building a better future for Africa. Recognized as a thought leader, the organization has contributed to global discussions on the role of international NGOs and locally-led development. Its intellectual leadership is reflected in its publications, including research reports, articles, book chapters, and interviews."
-          ar="EPIC-Africa هي منظمة غير ربحية مكرسة لتعزيز المجتمع المدني الأفريقي من خلال تعزيز الشفافية والمساءلة والتعاون. تدعم المنظمة منظمات المجتمع المدني (OSC) عبر الأبحاث وتحليل البيانات ومبادرات مثل منصة المنظمات المدنية الأفريقية. تعزز EPIC-Africa الشراكات لزيادة تأثير المنظمات المدنية في بناء مستقبل أفضل لأفريقيا.
-معروفة كجهة فكرية رائدة، ساهمت المنظمة في مناقشات عالمية حول دور المنظمات الدولية غير الحكومية والتنمية المحلية. يظهر قيادتها الفكرية من خلال منشوراتها، بما في ذلك تقارير الأبحاث والمقالات وفصول الكتب و المقابلات."
-          fr="EPIC-Africa est une organisation à but non lucratif dédiée au renforcement de la société civile africaine en promouvant la transparence, la responsabilité et la collaboration. Elle soutient les organisations de la société civile (OSC) à travers la recherche, l'analyse de données et des initiatives telles que la Plateforme des OSC africaines. EPIC-Africa favorise les partenariats pour accroître l'impact des OSC dans la construction d'un avenir meilleur pour l'Afrique. Reconnu comme un leader d'opinion, l'organisation a contribué à des discussions mondiales sur le rôle des ONG internationales et le développement dirigé localement. Son leadership intellectuel se reflète dans ses publications, telles que des rapports de recherche, des articles, des chapitres de livres et des interviews."
-        />
-      ),
-      Technical: false
-    },
+//     {
+//       logo: epic,
+//       title: "EPIC-Africa",
+//       text: (
+//         <TransText
+//           en="EPIC-Africa is a nonprofit organization dedicated to strengthening African civil society by promoting transparency, accountability, and collaboration. It supports civil society organizations (CSOs) through research, data analysis, and initiatives like the African CSO Platform. EPIC-Africa fosters partnerships to enhance the impact of CSOs in building a better future for Africa. Recognized as a thought leader, the organization has contributed to global discussions on the role of international NGOs and locally-led development. Its intellectual leadership is reflected in its publications, including research reports, articles, book chapters, and interviews."
+//           ar="EPIC-Africa هي منظمة غير ربحية مكرسة لتعزيز المجتمع المدني الأفريقي من خلال تعزيز الشفافية والمساءلة والتعاون. تدعم المنظمة منظمات المجتمع المدني (OSC) عبر الأبحاث وتحليل البيانات ومبادرات مثل منصة المنظمات المدنية الأفريقية. تعزز EPIC-Africa الشراكات لزيادة تأثير المنظمات المدنية في بناء مستقبل أفضل لأفريقيا.
+// معروفة كجهة فكرية رائدة، ساهمت المنظمة في مناقشات عالمية حول دور المنظمات الدولية غير الحكومية والتنمية المحلية. يظهر قيادتها الفكرية من خلال منشوراتها، بما في ذلك تقارير الأبحاث والمقالات وفصول الكتب و المقابلات."
+//           fr="EPIC-Africa est une organisation à but non lucratif dédiée au renforcement de la société civile africaine en promouvant la transparence, la responsabilité et la collaboration. Elle soutient les organisations de la société civile (OSC) à travers la recherche, l'analyse de données et des initiatives telles que la Plateforme des OSC africaines. EPIC-Africa favorise les partenariats pour accroître l'impact des OSC dans la construction d'un avenir meilleur pour l'Afrique. Reconnu comme un leader d'opinion, l'organisation a contribué à des discussions mondiales sur le rôle des ONG internationales et le développement dirigé localement. Son leadership intellectuel se reflète dans ses publications, telles que des rapports de recherche, des articles, des chapitres de livres et des interviews."
+//         />
+//       ),
+//       Technical: false
+//     },
 
+
+
+
+  ];
+
+  const tech_partners = [
     {
       logo: ucgc,
       title: "CGLU Afrique",
@@ -64,12 +71,6 @@ export const OrganizatesSection = () => {
       ),
       Technical: false
     },
-
-
-  ];
-
-  const tech_partners = [
-
     {
       logo: lionsgeek,
       title: "LionsGeek",
@@ -117,7 +118,7 @@ export const OrganizatesSection = () => {
 
               <div
                 key={ind}
-                className={` px-6 text-justify md:px-10 lg:px-14 py-14 md:py-10 my-8 flex justify-between items-start gap-6 flex-col ${ind % 2 == 1
+                className={` px-6 text-justify md:px-10 lg:px-14 py-14 md:py-10 my-8 flex justify-between items-start gap-6 flex-col ${ind % 2 != 1
                   ? "lg:flex-row bg-muted-background"
                   : "lg:flex-row-reverse bg-white"
                   }`}
@@ -132,7 +133,7 @@ export const OrganizatesSection = () => {
                     <img
                       src={org.logo2}
                       alt=""
-                      className={` ${org.logo2 == ucgc ? "w-[210px]" : org.logo2 == epic ? "w-[400px]  " : "w-[120px] lg:w-[180px] px-5"
+                      className={` ${org.logo2 == ucgc ? "w-[210px]" : org.logo2 == epic ? "w-[400px]  " : "w-[120px] lg:w-[180px] px-5 mix-blend-darken"
                         }`}
                     />
                   )}
@@ -155,6 +156,8 @@ export const OrganizatesSection = () => {
           ))}
         </div>
 
+        <CommitteeSection />
+
 
         <h2 className="text-3xl md:text-5xl lg:text-5xl/none  text-alpha font-bold tracking-tighter px-2 md:px-3 lg:px-14 py-4 md:py-5">
         <TransText en="Technical Partners" ar="الشركاء التقنيون" fr="Partenaires techniques" />
@@ -165,7 +168,7 @@ export const OrganizatesSection = () => {
 
               <div
                 key={ind}
-                className={` px-6 text-justify md:px-10 lg:px-14 py-14 md:py-10 my-8 flex justify-between items-start gap-6 flex-col ${ind % 2 != 1
+                className={` px-6 text-justify md:px-10 lg:px-14 py-14 md:py-10 my-8 flex justify-between items-start gap-6 flex-col ${ind % 2 == 1
                   ? "lg:flex-row bg-muted-background"
                   : "lg:flex-row-reverse bg-white"
                   }`}
