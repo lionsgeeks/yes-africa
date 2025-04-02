@@ -6,6 +6,7 @@ import lionsgeek from "../../../assets/images/sponsors/lionsgeek.png";
 import jadara from "../../../assets/images/sponsors/Jadaralogo.png";
 import epic from "../../../assets/images/sponsors/epic-afric.jpg";
 import pan from "../../../assets/images/sponsors/pan.jpeg";
+import kamlin from "../../../assets/images/sponsors/kamlin.jpeg";
 import Méditerranée from "../../../assets/images/sponsors/Méditerranée.jpg";
 import RMed from "../../../assets/images/sponsors/RMed_Logo_IECD.png";
 import { CommitteeSection } from "./CommitteeSection";
@@ -97,6 +98,19 @@ export const OrganizatesSection = () => {
       ),
       Technical: false
     },
+    {
+      logo: kamlin,
+      logo2: "Lab",
+      title: "Kamlin Lab",
+      text: (
+        <TransText
+          en="Kamlin Lab transforms social action by combining innovation and commitment. We provide associations with digital tools and tailored training to strengthen their impact, visibility, and access to funding. Through our hybrid platform, we connect associations with strategic partners and facilitate their professionalization. By integrating technology at the core of our solutions, we optimize the management, communication, and field engagement of civil society actors. Kamlin Lab: the digital lever that energizes civil society and amplifies its impact!"
+          ar="يحول Kamlin Lab العمل الاجتماعي من خلال الجمع بين الابتكار والالتزام. نحن نقدم للجمعيات أدوات رقمية وتدريبًا مخصصًا لتعزيز تأثيرها ورؤيتها وإمكانية وصولها إلى التمويل. من خلال منصتنا الهجينة، نربط الجمعيات بشركاء استراتيجيين ونسهل احترافهم. من خلال دمج التكنولوجيا في صميم حلولنا، نقوم بتحسين إدارة الجهات الفاعلة في المجتمع المدني واتصالها ومشاركتها الميدانية. Kamlin Lab: الرافعة الرقمية التي تنشط المجتمع المدني وتضخم تأثيره!"
+          fr="Kamlin Lab transforme l’action sociale en alliant innovation et engagement. Nous offrons aux associations des outils digitaux et des formations sur mesure pour renforcer leur impact, leur visibilité et leur accès aux financements. Grâce à notre plateforme hybride, nous connectons les associations à des partenaires stratégiques et facilitons leur professionnalisation. En intégrant la technologie au cœur de nos solutions, nous optimisons la gestion, la communication et l’engagement terrain des acteurs issus de la société civile. Kamlin Lab : le levier numérique qui dynamise la société civile et amplifie son impact !"
+        />
+      ),
+      Technical: false
+    }
   ]
 
 

@@ -3,6 +3,11 @@ import lionsgeek from "../../../assets/images/sponsors/lionsgeek.png";
 import jadara from "../../../assets/images/sponsors/Jadaralogo.png";
 import epic from "../../../assets/images/sponsors/epic-afric.jpg";
 import pan from "../../../assets/images/sponsors/pan.jpeg";
+import spo1 from "../../../assets/images/sponsors/1.jpeg";
+import spo2 from "../../../assets/images/sponsors/2.jpeg";
+import spo3 from "../../../assets/images/sponsors/3.jpeg";
+import spo4 from "../../../assets/images/sponsors/4.jpeg";
+import spo5 from "../../../assets/images/sponsors/5.jpeg";
 // import smala from "../../../assets/images/sponsors/happylogo.webp";
 
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -31,7 +36,7 @@ const Sponsors = () => {
       </h2>
       <div className="flex items-center justify-around gap-4">
         <Swiper
-          slidesPerView={2}
+          slidesPerView={4}
           loop={true}
           speed={3000}
           freeMode={true}
@@ -42,7 +47,7 @@ const Sponsors = () => {
           modules={[Autoplay, FreeMode]}
         >
           {
-            [ucgc,  lionsgeek, ].map((spon, index) => (
+            [ucgc,  lionsgeek,  spo1 , spo2 , spo3 , spo4 , spo5].map((spon, index) => (
               <SwiperSlide className="lg:aspect-[1/0.5] aspect-[1/2] bg-yellow- flex items-center justify-center" key={index}>
                 <img
                   src={spon}
