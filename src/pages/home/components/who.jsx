@@ -140,7 +140,9 @@ const Who = () => {
 
 
   return (
-    <section className="min-h-[50vh]">
+    <section
+      // dir={selectedLanguage === "ar" ? "rtl" : "ltr"}
+      className="min-h-[50vh]">
       <div
         className={`min-h-[30vh] m-3 flex items-center flex-col justify-between gap-8 lg:gap-0 ${selectedLanguage === "ar" ? "lg:flex-row-reverse text-end" : "lg:flex-row"
           }`}
@@ -161,19 +163,19 @@ const Who = () => {
               <TransText {...title} />
               {/* <span className="text-alpha"> Jadara Foundation</span> */}
             </h1>
-            <p className={`text-muted-foreground  md:text-base/relaxed lg:text-lg/snug ${selectedLanguage != "ar" && "text-justify"}`}>
+            <p className={`text-muted-foreground  md:text-base/relaxed lg:text-lg/snug ${selectedLanguage != "ar" && "text-justify "}`}>
               <TransText {...para1} />
             </p>
-            <p className={`text-muted-foreground  md:text-base/relaxed lg:text-lg/snug ${selectedLanguage != "ar" && "text-justify"}`}>
+            <p className={`text-muted-foreground  md:text-base/relaxed lg:text-lg/snug ${selectedLanguage != "ar" && "text-justify "}`}>
               <TransText {...para2} />
             </p>
           </div>
         ))}
       </div>
 
-      <div   className={`min-h-[30vh] m-5 flex items-center flex-col justify-between gap-8 lg:gap-0 ${selectedLanguage === "ar" ? "lg:flex-row-reverse text-end" : "lg:flex-row"
-          }`}>
-            {text1.map(({ title, para1, para2 }, index) => (
+      <div className={`min-h-[30vh] m-5 flex items-center flex-col justify-between gap-8 lg:gap-0 ${selectedLanguage === "ar" ? "lg:flex-row-reverse text-end" : "lg:flex-row"
+        }`}>
+        {text1.map(({ title, para1, para2 }, index) => (
           <div
             className={`flex flex-col gap-4 tracking-wide  ${selectedLanguage === "ar" ? "px-8 md:pl-12 lg:pl-16" : "px-8 md:pr-12 lg:pr-16"
               }`}
@@ -183,19 +185,19 @@ const Who = () => {
               className={`lg:text-start text-beta lg:mb-3 text-3xl font-bold tracking-tighter md:text-4xl lg:text-5xl/none ${selectedLanguage == "ar" ? "flex flex-row-reverse gap-2" : ""
                 }`}
             >
-              {/* TODO: mafia li ygadha, khaliha mcommentia - oussama */}
               <TransText {...title} />
               {/* <span className="text-alpha"> Jadara Foundation</span> */}
             </h1>
-            <p className={`text-muted-foreground  md:text-base/relaxed lg:text-lg/snug ${selectedLanguage != "ar" && "text-justify"}`}>
+            <p className={`text-muted-foreground  md:text-base/relaxed lg:text-lg/snug ${selectedLanguage == "ar" ? 'text-start' : ''}`}
+              dir={selectedLanguage === "ar" ? "rtl" : "ltr"}
+
+            >
               <TransText {...para1} />
-            </p>
-            <p className={`text-muted-foreground  md:text-base/relaxed lg:text-lg/snug ${selectedLanguage != "ar" && "text-justify"}`}>
-              <TransText {...para2} />
+
             </p>
           </div>
         ))}
-      <img src={aboutimg1} className="lg:w-[50%] object-cover" alt="" />
+        <img src={aboutimg1} className="lg:w-[50%] object-cover" alt="" />
       </div>
 
       <div className="bg-muted-background flex items-center justify-around flex-col gap-10 lg:flex-row px-8 md:px-12 lg:px-16 my-8 md:my-10 lg:my-12 py-8 md:py-10 lg:py-12">
