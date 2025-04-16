@@ -10,7 +10,6 @@ import kamlin from "../../../assets/images/sponsors/kamlin.jpeg";
 import Méditerranée from "../../../assets/images/sponsors/Méditerranée.jpg";
 import RMed from "../../../assets/images/sponsors/RMed_Logo_IECD.png";
 import { CommitteeSection } from "./CommitteeSection";
-// import smala from "../../../assets/images/sponsors/";
 
 export const OrganizatesSection = () => {
   const { selectedLanguage } = useAppContext();
@@ -40,19 +39,19 @@ export const OrganizatesSection = () => {
 
     },
 
-//     {
-//       logo: epic,
-//       title: "EPIC-Africa",
-//       text: (
-//         <TransText
-//           en="EPIC-Africa is a nonprofit organization dedicated to strengthening African civil society by promoting transparency, accountability, and collaboration. It supports civil society organizations (CSOs) through research, data analysis, and initiatives like the African CSO Platform. EPIC-Africa fosters partnerships to enhance the impact of CSOs in building a better future for Africa. Recognized as a thought leader, the organization has contributed to global discussions on the role of international NGOs and locally-led development. Its intellectual leadership is reflected in its publications, including research reports, articles, book chapters, and interviews."
-//           ar="EPIC-Africa هي منظمة غير ربحية مكرسة لتعزيز المجتمع المدني الأفريقي من خلال تعزيز الشفافية والمساءلة والتعاون. تدعم المنظمة منظمات المجتمع المدني (OSC) عبر الأبحاث وتحليل البيانات ومبادرات مثل منصة المنظمات المدنية الأفريقية. تعزز EPIC-Africa الشراكات لزيادة تأثير المنظمات المدنية في بناء مستقبل أفضل لأفريقيا.
-// معروفة كجهة فكرية رائدة، ساهمت المنظمة في مناقشات عالمية حول دور المنظمات الدولية غير الحكومية والتنمية المحلية. يظهر قيادتها الفكرية من خلال منشوراتها، بما في ذلك تقارير الأبحاث والمقالات وفصول الكتب و المقابلات."
-//           fr="EPIC-Africa est une organisation à but non lucratif dédiée au renforcement de la société civile africaine en promouvant la transparence, la responsabilité et la collaboration. Elle soutient les organisations de la société civile (OSC) à travers la recherche, l'analyse de données et des initiatives telles que la Plateforme des OSC africaines. EPIC-Africa favorise les partenariats pour accroître l'impact des OSC dans la construction d'un avenir meilleur pour l'Afrique. Reconnu comme un leader d'opinion, l'organisation a contribué à des discussions mondiales sur le rôle des ONG internationales et le développement dirigé localement. Son leadership intellectuel se reflète dans ses publications, telles que des rapports de recherche, des articles, des chapitres de livres et des interviews."
-//         />
-//       ),
-//       Technical: false
-//     },
+    //     {
+    //       logo: epic,
+    //       title: "EPIC-Africa",
+    //       text: (
+    //         <TransText
+    //           en="EPIC-Africa is a nonprofit organization dedicated to strengthening African civil society by promoting transparency, accountability, and collaboration. It supports civil society organizations (CSOs) through research, data analysis, and initiatives like the African CSO Platform. EPIC-Africa fosters partnerships to enhance the impact of CSOs in building a better future for Africa. Recognized as a thought leader, the organization has contributed to global discussions on the role of international NGOs and locally-led development. Its intellectual leadership is reflected in its publications, including research reports, articles, book chapters, and interviews."
+    //           ar="EPIC-Africa هي منظمة غير ربحية مكرسة لتعزيز المجتمع المدني الأفريقي من خلال تعزيز الشفافية والمساءلة والتعاون. تدعم المنظمة منظمات المجتمع المدني (OSC) عبر الأبحاث وتحليل البيانات ومبادرات مثل منصة المنظمات المدنية الأفريقية. تعزز EPIC-Africa الشراكات لزيادة تأثير المنظمات المدنية في بناء مستقبل أفضل لأفريقيا.
+    // معروفة كجهة فكرية رائدة، ساهمت المنظمة في مناقشات عالمية حول دور المنظمات الدولية غير الحكومية والتنمية المحلية. يظهر قيادتها الفكرية من خلال منشوراتها، بما في ذلك تقارير الأبحاث والمقالات وفصول الكتب و المقابلات."
+    //           fr="EPIC-Africa est une organisation à but non lucratif dédiée au renforcement de la société civile africaine en promouvant la transparence, la responsabilité et la collaboration. Elle soutient les organisations de la société civile (OSC) à travers la recherche, l'analyse de données et des initiatives telles que la Plateforme des OSC africaines. EPIC-Africa favorise les partenariats pour accroître l'impact des OSC dans la construction d'un avenir meilleur pour l'Afrique. Reconnu comme un leader d'opinion, l'organisation a contribué à des discussions mondiales sur le rôle des ONG internationales et le développement dirigé localement. Son leadership intellectuel se reflète dans ses publications, telles que des rapports de recherche, des articles, des chapitres de livres et des interviews."
+    //         />
+    //       ),
+    //       Technical: false
+    //     },
 
 
 
@@ -117,13 +116,13 @@ export const OrganizatesSection = () => {
   return (
     <>
       <section
-        className={`lg:py-12 flex flex-col justify-center gap-3 md:gap-2  ${selectedLanguage == "ar" && "text-end"
-          }`}
+        dir={selectedLanguage === "ar" ? "rtl" : "ltr"}
+        className={`lg:py-12 flex flex-col justify-center gap-3 md:gap-2 `}
       >
 
 
-      
-        <h2 className="text-3xl md:text-5xl lg:text-5xl/none  text-alpha font-bold tracking-tighter px-2 md:px-3 lg:px-14 py-4 md:py-5">
+
+        <h2 className="text-3xl md:text-5xl lg:text-5xl/none  text-alpha font-bold tracking-tighter px-2 md:px-3 lg:px-14 py-4 md:py-5 ">
           <TransText en="The Organizers" ar="منظمون" fr="Organisateurs" />
         </h2>
         <div>
@@ -174,7 +173,7 @@ export const OrganizatesSection = () => {
 
 
         <h2 className="text-3xl md:text-5xl lg:text-5xl/none  text-alpha font-bold tracking-tighter px-2 md:px-3 lg:px-14 py-4 md:py-5">
-        <TransText en="Technical Partners" ar="الشركاء التقنيون" fr="Partenaires techniques" />
+          <TransText en="Technical Partners" ar="الشركاء التقنيون" fr="Partenaires techniques" />
         </h2>
         <div>
           {tech_partners.map((org, ind) => (

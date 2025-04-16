@@ -8,6 +8,7 @@ import spo2 from "../../../assets/images/sponsors/2.jpeg";
 import spo3 from "../../../assets/images/sponsors/3.jpeg";
 import spo4 from "../../../assets/images/sponsors/4.jpeg";
 import spo5 from "../../../assets/images/sponsors/5.jpeg";
+import Africa_50 from "../../../assets/images/sponsors/Africa_50.jpg";
 // import smala from "../../../assets/images/sponsors/happylogo.webp";
 
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -36,7 +37,6 @@ const Sponsors = () => {
       </h2>
       <div className="flex items-center justify-around gap-4">
         <Swiper
-          slidesPerView={4}
           loop={true}
           speed={3000}
           freeMode={true}
@@ -45,10 +45,21 @@ const Sponsors = () => {
             disableOnInteraction: false,
           }}
           modules={[Autoplay, FreeMode]}
+          breakpoints={{
+            0: {
+              slidesPerView: 2,
+            },
+            768: {
+              slidesPerView: 3,
+            },
+            1024: {
+              slidesPerView: 4,
+            },
+          }}
         >
           {
-            [ucgc,  lionsgeek,  spo1 , spo2 , spo3 , spo4 , spo5].map((spon, index) => (
-              <SwiperSlide className="lg:aspect-[1/0.5] aspect-[1/2] bg-yellow- flex items-center justify-center" key={index}>
+            [ucgc,  lionsgeek,  spo1 , spo2 , spo3 , spo4 , spo5 , Africa_50].map((spon, index) => (
+              <SwiperSlide className="lg:aspect-[1/0.5] aspect-[1/1.5] bg-yellow- flex items-center justify-center" key={index}>
                 <img
                   src={spon}
                   className={`${spon == ucgc ? 'w-[200px]' : spon == epic ? "w-[400px]" : 'w-[140px]'}`}

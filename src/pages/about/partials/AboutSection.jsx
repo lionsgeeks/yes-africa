@@ -7,8 +7,7 @@ export const AboutSection = () => {
   return (
     <>
       <div
-        className={`w-full h-[50vh] bg-muted-background  relative -z-20 text-white lg:px-16 flex flex-col justify-center gap-3 bg-no-repeat bg-cover bg-center bg-[url('/src/assets/images/africa2.jpg')] ${selectedLanguage == "ar" ? "text-right items-end" : ""
-          }`}
+        className={`w-full h-[50vh] bg-muted-background  relative -z-20 text-white lg:px-16 flex flex-col justify-center gap-3 bg-no-repeat bg-cover bg-center bg-[url('/src/assets/images/africa2.jpg')] `}
       >
         <div className="inset-0 absolute bg-gradient-to-r from-black via-[#53450ab5] via-50%  to-alpha opacity-85 -z-10"></div>
         <h1 className="text-3xl font-bold tracking-tight md:text-5xl lg:text-6xl/none">
@@ -27,10 +26,10 @@ export const AboutSection = () => {
         </p>
       </div>
       <section
-        className={`px-8 md:px-12 bg-muted-background lg:px-16 py-16 md:py-20 lg:py-10 flex flex-col justify-center gap-3 md:gap-4 lg:gap-6 ${selectedLanguage == "ar" && "text-end"
-          }`}
+        className={`px-8 md:px-12 bg-muted-background lg:px-16 py-16 md:py-20 lg:py-10 flex flex-col justify-center gap-3 md:gap-4 lg:gap-6 `}
       >
-        <h1 className="text-3xl text-alpha font-bold tracking-tighter md:text-5xl lg:text-6xl/none">
+        <h1
+          className={`text-3xl text-alpha font-bold tracking-tighter md:text-5xl lg:text-6xl/none ${selectedLanguage == "ar" ? 'text-end' : ''}`}>
           <TransText en="About Yes Africa" ar=" Yes Africa حول " fr="À propos de Yes Africa" />
         </h1>
 
@@ -39,12 +38,12 @@ export const AboutSection = () => {
           className={`flex flex-wrap gap-4 md:gap-6 lg:gap-12 ${selectedLanguage == "ar" ? "flex-row-reverse" : "flex-row"}`}
         >
           <div className="gap-2 flex flex-col lg:w-[calc(calc(100%-3rem)/2)]">
-            <h2 className="text-xl text-beta font-medium tracking-tighter md:text-2xl lg:text-3xl/none">
+            <h2 className={`}text-xl text-beta font-medium tracking-tighter md:text-2xl lg:text-3xl/none ${selectedLanguage == "ar" ? 'text-end' : ''}`}>
               <TransText en="Our Mission" ar="مهمتنا" fr="Notre mission" />
             </h2>
             <p
               dir={selectedLanguage === "ar" ? "rtl" : "ltr"}
-              className={`text-muted-foreground md:text-base/relaxed lg:text-lg/snug ${selectedLanguage != "ar" && "text-justify "}`}>
+              className={`text-muted-foreground md:text-base/relaxed lg:text-lg/snug `}>
               <TransText
                 en="Y.E.S Africa (Youth Empowerment Summit Africa) is a crucial initiative dedicated to addressing the growing challenge of NEET (Not in Education, Employment, or Training) youth in Africa, with projections estimating this number to exceed 70 million by 2025. This alarming trend poses significant risks not only to the future of these young individuals but also to the continent as a whole. Our mission is to transform this staggering statistic from 70 million NEETs to 70 million Doers by fostering collaboration among civil society leaders, local communities, and private sector stakeholders."
                 ar="تعتبر Y.E.S Africa (قمة تمكين الشباب في إفريقيا) مبادرة حاسمة تهدف إلى معالجة التحدي المتزايد للشباب غير المنخرطين في التعليم أو العمل أو التدريب (NEET) في إفريقيا، حيث تشير التوقعات إلى أن هذا العدد سيتجاوز 70 مليونًا بحلول عام 2025. يشكل هذا الاتجاه المقلق مخاطر كبيرة ليس فقط على مستقبل هؤلاء الشباب ولكن أيضًا على القارة ككل. مهمتنا هي تحويل هذا الرقم المذهل من 70 مليون شاب عاطل إلى 70 مليون فاعل من خلال تعزيز التعاون بين قادة المجتمع المدني والمجتمعات المحلية وأصحاب المصلحة في القطاع الخاص."
@@ -54,7 +53,7 @@ export const AboutSection = () => {
           </div>
 
           <div className="gap-2 flex flex-col lg:w-[calc(calc(100%-3rem)/2)]">
-            <h2 className="text-xl text-beta font-medium tracking-tighter md:text-2xl lg:text-3xl/none">
+            <h2 className={`}text-xl text-beta font-medium tracking-tighter md:text-2xl lg:text-3xl/none ${selectedLanguage == "ar" ? 'text-end' : ''}`}>
               <TransText en="Our Vision" ar="رؤيتنا" fr="Notre vision" />
             </h2>
             <p
@@ -69,7 +68,7 @@ export const AboutSection = () => {
           </div>
 
           <div className="gap-2 flex flex-col lg:w-[calc(calc(100%-3rem)/2)]">
-            <h2 className="text-xl text-beta font-medium tracking-tighter md:text-2xl lg:text-3xl/none">
+            <h2 className={`}text-xl text-beta font-medium tracking-tighter md:text-2xl lg:text-3xl/none ${selectedLanguage == "ar" ? 'text-end' : ''}`}>
               <TransText en="Our Approach" ar="نهجنا" fr="Notre approche" />
             </h2>
             <p

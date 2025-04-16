@@ -19,8 +19,8 @@ export const CommitteeSection = () => {
   return (
     <>
       <section
-        className={`bg-muted-background px-8 md:px-12 lg:px-16 py-16 md:py-20 lg:py-28 flex flex-col justify-center gap-3 md:gap-4 lg:gap-6 ${selectedLanguage == "ar" && "text-end"
-          }`}
+        dir={selectedLanguage === "ar" ? "rtl" : "ltr"}
+        className={`bg-muted-background px-8 md:px-12 lg:px-16 py-16 md:py-20 lg:py-28 flex flex-col justify-center gap-3 md:gap-4 lg:gap-6`}
       >
         <h2 className="text-xl text-alpha font-medium tracking-tighter md:text-2xl lg:text-3xl/none">
           <TransText en="The Scientific Committee" ar="اللجنة العلمية" fr="Le Comité Scientifique" />
@@ -111,7 +111,7 @@ export const CommitteeSection = () => {
               linkedin: "https://www.linkedin.com/in/khadija-boujanoui",
             },
 
-            
+
             {
               name: "M. Abdou SOULEYE DIOP",
               job: {
@@ -122,8 +122,8 @@ export const CommitteeSection = () => {
               image: diop,
               linkedin: "https://www.linkedin.com/in/abdoudiop",
             },
-     
-        
+
+
 
           ].map(({ name, job, image, linkedin }, index) => (
             <div
