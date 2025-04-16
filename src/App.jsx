@@ -20,7 +20,7 @@ function App() {
       <AppProvider>
         <Navbar />
           <Routes>
-            <Route path="/backoffice" element={<ManagementRedirect />} />
+            <Route path="/yes-backend" element={<ManagementRedirect />} />
             <Route path="/*" element={<ErrorPage />} />
             <Route path="/" element={<HomePage />} />
             <Route path="/about" element={<AboutPage />} />
