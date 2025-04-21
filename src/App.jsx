@@ -12,6 +12,7 @@ import Formulaire from "./pages/formulaire/formulaire";
 import Form from "./pages/formulaire/partials/form";
 import ManagementRedirect from "./pages/management";
 import { SponsorsForm } from "./pages/formulaire/SponsorsForm";
+import Maps from "./pages/maps/maps";
 
 function App() {
 
@@ -30,6 +31,8 @@ function App() {
             <Route path="/form" element={<Formulaire />} />
             {/* <Route path="/formulaire" element={<Form />} /> */}
             <Route path="/participants" element={<SponsorsForm/>} ></Route>
+            <Route path="/maps" element={<Maps />} />
+
           </Routes>
         <Footer />
       </AppProvider>
