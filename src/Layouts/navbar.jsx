@@ -46,10 +46,10 @@ const Navbar = () => {
   const navItems = [
     { label: { en: "Home", ar: "الرئيسية", fr: "Accueil" }, path: "/" },
     { label: { en: "About", ar: "حول", fr: "À propos" }, path: "/about" },
-    {
-      label: { en: "Maps", ar: " خرائط", fr: "Carts" },
-      path: "/maps",
-    },
+    // {
+    //   label: { en: "Maps", ar: " خرائط", fr: "Carts" },
+    //   path: "/maps",
+    // },
     {
       label: { en: "Participate", ar: "المشاركة", fr: "Participer" },
       path: "/participate",
