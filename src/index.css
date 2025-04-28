@@ -3,50 +3,51 @@
 @tailwind utilities;
 
 @font-face {
-    font-family:'made_tomy';
-    src: url('../src/assets/fonts/MADE\ TOMMY\ Regular_PERSONAL\ USE.otf');
+  font-family: "made_tomy";
+  src: url("../src/assets/fonts/MADE\ TOMMY\ Regular_PERSONAL\ USE.otf");
 }
 @media (max-width: 768px) {
-
-    .swiper-button-next,
-    .swiper-button-prev {
-        display: none;
-    }
+  .swiper-button-next,
+  .swiper-button-prev {
+    display: none;
+  }
+}
+.swiper-button-next,
+.swiper-button-prev {
+  color: #2e539d;
 }
 
-
-body{
-    font-family: 'made_tomy';
+body {
+  font-family: "made_tomy";
 }
 /* To Reset Tailwind Classes in a div and it's children */
 .reset-tw,
 .reset-tw * {
-    all: revert ;
+  all: revert;
 }
 
 input[type="checkbox"] {
-    width: 15px;
-    height: 15px;
-    accent-color: #2e539d;
-  }
+  width: 15px;
+  height: 15px;
+  accent-color: #2e539d;
+}
 
-  @keyframes ellipsis {
-    0% {
-      content: "Loading";
-    }
-    33% {
-      content: "Loading.";
-    }
-    66% {
-      content: "Loading..";
-    }
-    100% {
-      content: "Loading...";
-    }
-  }
-  
-  .ellipsis-animation::after {
+@keyframes ellipsis {
+  0% {
     content: "Loading";
-    animation: ellipsis 1.5s infinite steps(1, end);
   }
-  
+  33% {
+    content: "Loading.";
+  }
+  66% {
+    content: "Loading..";
+  }
+  100% {
+    content: "Loading...";
+  }
+}
+
+.ellipsis-animation::after {
+  content: "Loading";
+  animation: ellipsis 1.5s infinite steps(1, end);
+}

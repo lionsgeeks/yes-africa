@@ -5,7 +5,8 @@ import { useAppContext } from "../../../context/AppContext";
 import TransText from "../../../components/TransText";
 import { Link } from "react-router-dom";
 import Countdown from "../../../components/Countdown";
-
+import FacesCarousel from "../../../components/facesCarousel";
+// import FacesCarousel from "../../../components/FacesCarousel";
 const EventInfo = () => {
   const { selectedLanguage } = useAppContext();
 
@@ -15,7 +16,7 @@ const EventInfo = () => {
       text: {
         en: "June 19-20, 2025",
         ar: "19-20 يونيو 2025",
-        fr: "19-20 juin 2025"
+        fr: "19-20 juin 2025",
       },
     },
     {
@@ -23,7 +24,7 @@ const EventInfo = () => {
       text: {
         en: "9:00 AM - 5:00 PM",
         ar: "9:00 ص - 5:00 م",
-        fr: "9h00 - 17h00"
+        fr: "9h00 - 17h00",
       },
     },
     {
@@ -31,45 +32,45 @@ const EventInfo = () => {
       text: {
         en: "Marrakech",
         ar: "مراكش",
-        fr: "Marrakech"
+        fr: "Marrakech",
       },
     },
   ];
-
 
   const text = [
     {
       title: {
         en: "Information About The Event",
         ar: "معلومات عن الحدث",
-        fr: "Informations sur l'événement"
+        fr: "Informations sur l'événement",
       },
       desc: {
         en: "Join us for a vibrant celebration of African youth empowerment! Experience an exciting event featuring inspiring speakers, interactive workshops, and captivating live performances. This is a fantastic opportunity to connect with fellow change-makers, exchange ideas, and celebrate the dynamism of African youth. Don’t miss this enriching experience designed to uplift and inspire the next generation!",
         ar: "انضموا إلينا للاحتفال النابض بتمكين الشباب الأفريقي! عيشوا تجربة مثيرة تتضمن متحدثين ملهمين، ورش عمل تفاعلية، وعروض حية ساحرة. هذه فرصة رائعة للتواصل مع صانعي التغيير الآخرين، وتبادل الأفكار، والاحتفال بحيوية الشباب الأفريقي. لا تفوتوا هذه التجربة الغنية المصممة لرفع معنويات وإلهام الجيل القادم!",
-        fr: "Rejoignez-nous pour une célébration vibrante de l'autonomisation des jeunes africains ! Vivez un événement passionnant avec des conférenciers inspirants, des ateliers interactifs et des performances en direct captivantes. C'est une occasion fantastique de se connecter avec d'autres acteurs du changement, d'échanger des idées et de célébrer le dynamisme des jeunes africains. Ne manquez pas cette expérience enrichissante conçue pour élever et inspirer la prochaine génération !"
+        fr: "Rejoignez-nous pour une célébration vibrante de l'autonomisation des jeunes africains ! Vivez un événement passionnant avec des conférenciers inspirants, des ateliers interactifs et des performances en direct captivantes. C'est une occasion fantastique de se connecter avec d'autres acteurs du changement, d'échanger des idées et de célébrer le dynamisme des jeunes africains. Ne manquez pas cette expérience enrichissante conçue pour élever et inspirer la prochaine génération !",
       },
       aboutBtn: {
         en: "About Summit",
         ar: "حول الملتقى",
-        fr: "À propos du sommet"
+        fr: "À propos du sommet",
       },
       contactBtn: {
         en: "Contact Us",
         ar: "اتصل بنا",
-        fr: "Contactez-nous"
+        fr: "Contactez-nous",
       },
     },
   ];
 
-
   return (
     <section
-      className={`py-16 relative md:py-20 lg:py-24 bg-beta z-20 overflow-hidden rounded-2xl flex flex-col lg:items-center gap-12 lg:gap-5 justify-around text-white my-6 lg:my-16 p-6 mx-3 lg:mx-16
+      className={`py-16 relative md:py-20 lg:py-18 bg-beta z-20 overflow-hidden rounded-2xl flex flex-col lg:items-center gap-12 lg:gap-5 justify-around text-white my-6 lg:my-16 p-6 mx-3 lg:mx-16
         ${selectedLanguage === "ar" ? "lg:flex-row-reverse" : "lg:flex-row"}`}
     >
       <svg
-        className={"absolute -z-10 lg:w-1/2 scale-[1.25] opacity-[20%] right-0 lg:-top-[10%] "}
+        className={
+          "absolute -z-10 lg:w-1/2 scale-[1.25] opacity-[20%] right-0 lg:-top-[10%] "
+        }
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 264.94 186.06"
       >
@@ -92,21 +93,27 @@ const EventInfo = () => {
       </svg>
 
       <div
-        className={`lg:w-[50%] ${selectedLanguage == "ar" && "text-end justify-end z-50"
-          }`}
+        className={`lg:w-[50%] space-y-2 ${
+          selectedLanguage == "ar" && "text-end justify-end z-50"
+        }`}
       >
         {text.map(({ title, desc, aboutBtn, contactBtn }, index) => (
           <div className="flex flex-col gap-4" key={index}>
             <h1 className="text-2xl font-semibold tracking-tighter md:text-3xl lg:text-4xl/none">
               <TransText {...title} />
             </h1>
-            <p className={`text-gray-100 md:text-base/relaxed lg:text-lg/snug ${selectedLanguage != "ar" && "text-justify"}`}>
+            <p
+              className={`text-gray-100 md:text-base/relaxed lg:text-lg/snug ${
+                selectedLanguage != "ar" && "text-justify"
+              }`}
+            >
               <TransText {...desc} />
             </p>
 
             <div
-              className={`mt-4 flex items-center gap-4 ${selectedLanguage === "ar" && "flex-row-reverse"
-                }`}
+              className={`mt-4 flex items-center gap-4 ${
+                selectedLanguage === "ar" && "flex-row-reverse"
+              }`}
             >
               <Link to={"/about"}>
                 <button className="bg-alpha border-2 lg:text-lg text-white border-alpha hover:border-white hover:bg-white hover:text-alpha px-8 py-2.5 w-fit rounded-lg lg:font-medium">
@@ -122,28 +129,43 @@ const EventInfo = () => {
             </div>
           </div>
         ))}
-      </div>
-
-      <div
-        className={`lg:w-[40%] flex flex-col gap-3 ${selectedLanguage === "ar" ? "items-end" : "items-start"
+        <div
+          className={`lg:w-[40%] flex flex-col gap-3 ${
+            selectedLanguage === "ar" ? "items-end" : "items-start"
           }`}
-      >
-        {eventInformation.map(({ icon, text }, index) => (
-          <div
-            key={index}
-            className={`flex items-center gap-2 ${selectedLanguage === "ar" && "flex-row-reverse"
+        >
+          {eventInformation.map(({ icon, text }, index) => (
+            <div
+              key={index}
+              className={`flex items-center gap-2 ${
+                selectedLanguage === "ar" && "flex-row-reverse"
               }`}
-          >
-            {icon}
-            <p className="text-gray-100 md:text-base/relaxed lg:text-lg/snug">
-              <TransText {...text} />
-            </p>
+            >
+              {icon}
+              <p className="text-gray-100 md:text-base/relaxed lg:text-lg/snug">
+                <TransText {...text} />
+              </p>
+            </div>
+          ))}
+          <div>
+            <Countdown targetDate="2025-06-19T00:09:00" />
           </div>
-        ))}
-        <div>
-          <Countdown targetDate="2025-06-19T00:09:00"/>
         </div>
       </div>
+      <FacesCarousel
+        videos={[
+          {
+            title:
+              "Meet The faces behind YES SUMMIT Episode 1 – Mr. Hamid BEN ELAFDIL, President of Jadara Foundation",
+            id: "gTNrjHGoWmQ",
+          },
+          {
+            title:
+              "Meet the Faces behin YES Africa Summit : Mahdi Bouziane, Executif Director of LionsGEEK",
+            id: "0mg3CiRvgIQ",
+          },
+        ]}
+      />
     </section>
   );
 };
