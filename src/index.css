@@ -6,12 +6,6 @@
   font-family: "made_tomy";
   src: url("../src/assets/fonts/MADE\ TOMMY\ Regular_PERSONAL\ USE.otf");
 }
-@media (max-width: 768px) {
-  .swiper-button-next,
-  .swiper-button-prev {
-    display: none;
-  }
-}
 .swiper-button-next,
 .swiper-button-prev {
   color: #2e539d;

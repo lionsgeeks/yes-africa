@@ -7,31 +7,10 @@ const FacesCarousel = ({ videos }) => {
     <Swiper
       className="w-full lg:w-[40%]"
       loop={true}
-      speed={3000}
+      speed={1000}
       freeMode={true}
-      modules={[FreeMode, Navigation]}
+      modules={[Navigation]}
       navigation
-      scrollbar={{ draggable: true }}
-      // breakpoints={
-      //   {
-      //     0: {
-      //       slidesPerView: 1,
-      //       spaceBetween: 10,
-      //     },
-      //     640: {
-      //       slidesPerView: 2,
-      //       spaceBetween: 20,
-      //     },
-      //     768: {
-      //       slidesPerView: 3,
-      //       spaceBetween: 30,
-      //     },
-      //     1024: {
-      //       slidesPerView: 4,
-      //       spaceBetween: 40,
-      //     },
-      //   }
-      // }
     >
       {videos?.map((video, index) => (
         <SwiperSlide className="flex items-center justify-center" key={index}>
