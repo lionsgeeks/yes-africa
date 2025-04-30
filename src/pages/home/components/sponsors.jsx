@@ -58,7 +58,7 @@ const Sponsors = () => {
           }}
         >
           {
-            [ucgc,  lionsgeek,  spo1 , spo2 , spo3 , spo4 , spo5 , Africa_50].map((spon, index) => (
+            [  lionsgeek,  spo1 , spo2 , spo3 , spo4 , spo5 , Africa_50].map((spon, index) => (
               <SwiperSlide className="lg:aspect-[1/0.5] aspect-[1/1.5] bg-yellow- flex items-center justify-center" key={index}>
                 <img
                   src={spon}

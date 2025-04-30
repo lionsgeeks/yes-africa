@@ -59,18 +59,7 @@ export const OrganizatesSection = () => {
   ];
 
   const tech_partners = [
-    {
-      logo: ucgc,
-      title: "CGLU Afrique",
-      text: (
-        <TransText
-          en="CGLU Africa is the umbrella organization and unified representative voice of local governments in Africa. It was founded in 2005 in Tshwane, South Africa, following the unification of three continental groups of local governments: the African Union of Local Authorities (AULA); the Union of African Cities (UVA); and the African Chapter of the Uniao dos Ciudades y Capitais Lusofonas Africana (UCCL AFRICA). Established as the African section of the global organization UCLG (United Cities and Local Governments), CGLU Africa now includes 44 national associations of local governments from all regions of Africa, as well as 2,000 cities with populations of over 100,000. In this capacity, the organization represents nearly 350 million African citizens. Its headquarters is located in Rabat, where it enjoys a..."
-          ar="CGLU إفريقيا هي المنظمة الأم وتمثل الصوت الموحد والتمثيلي للحكومات المحلية في إفريقيا. تأسست في عام 2005 في مدينة تسواني بجنوب إفريقيا، بعد توحيد ثلاث مجموعات قارية من الحكومات المحلية: الاتحاد الإفريقي للسلطات المحلية (AULA)؛ اتحاد المدن الإفريقية (UVA)؛ والفصل الإفريقي لمنظمة Uniao dos Ciudades y Capitais Lusofonas Africana (UCCL AFRICA). تأسست كفرع إفريقي للمنظمة العالمية CGLU (المدن والحكومات المحلية المتحدة)، ويضم CGLU إفريقيا الآن 44 جمعية وطنية للحكومات المحلية من جميع مناطق إفريقيا، بالإضافة إلى 2000 مدينة يزيد عدد سكانها عن 100,000 نسمة. وبهذا الصدد، تمثل المنظمة ما يقرب من 350 مليون مواطن إفريقي. يقع مقرها الرئيسي في مدينة الرباط حيث تتمتع..."
-          fr="CGLU Afrique est l'organisation parapluie et la voix représentative unifiée des gouvernements locaux en Afrique. Elle a été fondée en 2005 à Tshwane, en Afrique du Sud, suite à l'unification de trois groupes continentaux de gouvernements locaux : l'Union Africaine des Autorités Locales (AULA), l'Union des Villes Africaines (UVA) et le Chapitre Africain de l'Uniao dos Ciudades y Capitais Lusofonas Africana (UCCL AFRICA). Établie en tant que section africaine de l'organisation mondiale CGLU (United Cities and Local Governments), CGLU Afrique regroupe désormais 44 associations nationales de gouvernements locaux de toutes les régions de l'Afrique, ainsi que 2 000 villes de plus de 100 000 habitants. À ce titre, l'organisation représente près de 350 millions de citoyens africains. Son siège est situé à Rabat, où il jouit..."
-        />
-      ),
-      Technical: false
-    },
+
     {
       logo: lionsgeek,
       title: "LionsGeek",
