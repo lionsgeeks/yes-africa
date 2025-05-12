@@ -21,9 +21,9 @@ import { useAppContext } from "../../../context/AppContext";
 
 const Sponsors = () => {
   const title = {
-    en: "They Said YES to Africa",
+    en: "They said yes to africa",
     ar: "قالوا نعم لأفريقيا",
-    fr: "Ils ont dit OUI à l'Afrique"
+    fr: "Ils ont dit oui à l'Afrique"
   };
   const { selectedLanguage } = useAppContext();
 
