@@ -164,6 +164,11 @@ const EventInfo = () => {
           //     "Meet the Faces behin YES Africa Summit : Mahdi Bouziane, Executif Director of LionsGEEK",
           //   id: "0mg3CiRvgIQ",
           // },
+          {
+            title:
+              "MEET THE FACES BEHIND Y.E.S EP3 : M.BA BOCAR ABDOULAYE",
+            id: "re_q6h-K7ac?si=CQTan1x_nb74aMS4",
+          },
         ]}
       />
     </section>
