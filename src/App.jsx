@@ -13,6 +13,7 @@ import Form from "./pages/formulaire/partials/form";
 import ManagementRedirect from "./pages/management";
 import { SponsorsForm } from "./pages/formulaire/SponsorsForm";
 import Maps from "./pages/maps/maps";
+import DetailsPage from "./pages/maps/details";
 
 function App() {
 
@@ -32,6 +33,8 @@ function App() {
             {/* <Route path="/formulaire" element={<Form />} /> */}
             <Route path="/participants" element={<SponsorsForm/>} ></Route>
             <Route path="/maps" element={<Maps />} />
+            <Route path="/details" element={<DetailsPage />} />
+
 
           </Routes>
         <Footer />
