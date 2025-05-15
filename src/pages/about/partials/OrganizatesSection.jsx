@@ -72,6 +72,7 @@ export const OrganizatesSection = () => {
       ),
       Technical: false
     },
+    
 
     {
       logo: Méditerranée,

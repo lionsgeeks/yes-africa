@@ -48,7 +48,7 @@ const Sponsors = () => {
           breakpoints={{
             0: {
               slidesPerView: 2,
-            },
+            }, 
             768: {
               slidesPerView: 3,
             },
