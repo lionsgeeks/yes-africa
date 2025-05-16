@@ -34,7 +34,7 @@ const Maps = () => {
     useEffect(() => {
         const fetchApprovedShows = async () => {
             try {
-                const response = await axios.post('http://192.168.11.110:8000/api/approved');
+                const response = await axios.post('https://management.youthempowermentsummit.africa/api/approved');
                 setMarkersData(response.data);
                 console.log(response.data.Agence.showable);
             } catch (error) {
@@ -385,7 +385,7 @@ const Maps = () => {
                 formDataOsc.append('financial_partners', formData.financial_partners);
 
                 try {
-                    const response = await axios.post('http://192.168.11.110:8000/api/organizations', formDataOsc, {
+                    const response = await axios.post('https://management.youthempowermentsummit.africa/api/organizations', formDataOsc, {
                         headers: {
                             'Content-Type': 'multipart/form-data',
                         }
@@ -456,7 +456,7 @@ const Maps = () => {
                 });
 
                 try {
-                    const response = await axios.post('http://192.168.11.110:8000/api/bailleurs',
+                    const response = await axios.post('https://management.youthempowermentsummit.africa/api/bailleurs',
                         formDataToSend,
                         {
                             headers: {
@@ -524,7 +524,7 @@ const Maps = () => {
 
 
                 try {
-                    const response = await axios.post('http://192.168.11.110:8000/api/entreprises', formData2, {
+                    const response = await axios.post('https://management.youthempowermentsummit.africa/api/entreprises', formData2, {
                         headers: {
                             'Content-Type': 'multipart/form-data',
                             'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -589,7 +589,7 @@ const Maps = () => {
                 });
 
                 try {
-                    const response = await axios.post('http://192.168.11.110:8000/api/agences', formData3, {
+                    const response = await axios.post('https://management.youthempowermentsummit.africa/api/agences', formData3, {
                         headers: {
                             'Content-Type': 'multipart/form-data',
                         }
@@ -645,7 +645,7 @@ const Maps = () => {
                 formDataPubliqueForm.append('cooperation_opportunities', formDataPublique.cooperationOpportunities);
 
                 try {
-                    const response = await axios.post('http://192.168.11.110:8000/api/publique', formDataPubliqueForm, {
+                    const response = await axios.post('https://management.youthempowermentsummit.africa/api/publique', formDataPubliqueForm, {
                         headers: {
                             'Content-Type': 'multipart/form-data',
                         }
@@ -707,7 +707,7 @@ const Maps = () => {
                 formDataAcademiqueForm.append('conferences', formDataAcademique.conferences || '');
                 formDataAcademiqueForm.append('ateliers', formDataAcademique.ateliers || '');
                 try {
-                    const response = await axios.post('http://192.168.11.110:8000/api/academiques', formDataAcademiqueForm, {
+                    const response = await axios.post('https://management.youthempowermentsummit.africa/api/academiques', formDataAcademiqueForm, {
                         headers: {
                             'Content-Type': 'multipart/form-data',
                         }
@@ -782,7 +782,7 @@ const Maps = () => {
         setLoading(true);
         setError('');
         try {
-            await axios.post('http://192.168.11.110:8000/api/register-map', {
+            await axios.post('https://management.youthempowermentsummit.africa/api/register-map', {
                 name: form.name,
                 email: form.email,
                 role: form.role,
@@ -802,7 +802,7 @@ const Maps = () => {
         setLoading(true);
         setError('');
         try {
-            await axios.post('http://192.168.11.110:8000/api/verify-code', {
+            await axios.post('https://management.youthempowermentsummit.africa/api/verify-code', {
                 email: form.email,
                 code: form.code,
             });
@@ -854,7 +854,7 @@ const Maps = () => {
                         <div className="flex items-center bg-white/90 shadow-md rounded-xl p-4 gap-4 w-[40vw] mx-auto relative">
                             <div className='w-[70%]'>
                                 <img
-                                    src={`http://192.168.11.110:8000/storage/${details.showable.logo}`}
+                                    src={`https://management.youthempowermentsummit.africa/storage/${details.showable.logo}`}
                                     alt={`${details.showable.name} logo`}
                                     className="w-80 h-52 object-cover rounded-md"
                                 />
@@ -885,7 +885,7 @@ const Maps = () => {
                         <div className="flex items-center bg-white/90 shadow-md rounded-xl p-4 gap-4 w-[40vw] mx-auto relative">
                             <div className='w-[70%]'>
                                 <img
-                                    src={`http://192.168.11.110:8000/storage/${details.showable.logo_path}`}
+                                    src={`https://management.youthempowermentsummit.africa/storage/${details.showable.logo_path}`}
                                     alt={`${details.showable.nom} logo_path`}
                                     className="w-80 h-52 object-cover rounded-md"
                                 />
@@ -913,7 +913,7 @@ const Maps = () => {
                         <div className="flex items-center bg-white/90 shadow-md rounded-xl p-4 gap-4 w-[40vw] mx-auto relative">
                             <div className='w-[70%]'>
                                 <img
-                                    src={`http://192.168.11.110:8000/storage/${details.showable.logo}`}
+                                    src={`https://management.youthempowermentsummit.africa/storage/${details.showable.logo}`}
                                     alt={`${details.showable.nom} logo`}
                                     className="w-80 h-52 object-cover rounded-md"
                                 />
@@ -941,7 +941,7 @@ const Maps = () => {
                         <div className="flex items-center bg-white/90 shadow-md rounded-xl p-4 gap-4 w-[40vw] mx-auto relative">
                             <div className='w-[70%]'>
                                 <img
-                                    src={`http://192.168.11.110:8000/storage/${details.showable.logo}`}
+                                    src={`https://management.youthempowermentsummit.africa/storage/${details.showable.logo}`}
                                     alt={`${details.showable.nom} logo`}
                                     className="w-80 h-52 object-cover rounded-md"
                                 />
@@ -967,7 +967,7 @@ const Maps = () => {
                         <div className="flex items-center bg-white/90 shadow-md rounded-xl p-4 gap-4 w-[40vw] mx-auto relative">
                             <div className='w-[70%]'>
                                 <img
-                                    src={`http://192.168.11.110:8000/storage/${details.showable.logo_path}`}
+                                    src={`https://management.youthempowermentsummit.africa/storage/${details.showable.logo_path}`}
                                     alt={`${details.showable.institution_name} logo`}
                                     className="w-80 h-52 object-cover rounded-md"
                                 />
@@ -992,7 +992,7 @@ const Maps = () => {
                         <div className="flex items-center bg-white/90 shadow-md rounded-xl p-4 gap-4 w-[40vw] mx-auto relative">
                             <div className='w-[70%]'>
                                 <img
-                                    src={`http://192.168.11.110:8000/storage/${details.showable.logo_path}`}
+                                    src={`https://management.youthempowermentsummit.africa/storage/${details.showable.logo_path}`}
                                     alt={`${details.showable.nom} logo`}
                                     className="w-80 h-52 object-cover rounded-md"
                                 />
