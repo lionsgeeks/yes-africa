@@ -6,6 +6,9 @@ import { ArticleCard } from "../../components";
 const ArticlesPage = () => {
   const { articles, selectedLanguage } = useAppContext();
 
+  console.log(articles);
+  
+
   return (
     articles ? (
       <div className="">

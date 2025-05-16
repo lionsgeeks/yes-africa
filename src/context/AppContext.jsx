@@ -18,23 +18,23 @@ const AppProvider = ({ children }) => {
   // const url = "http://172.28.0.109:8002";
   // const IMAGEURL = "http://172.28.0.109:8000/storage/images/"
 
-  // useEffect(() => {
-  //   window.scrollTo(0, 0);
-  //   const fetchArticles = async () => {
-  //     try {
-  //       const response = await axios.get(url + "/api/articles");
-  //       // const articles = await response; 
-  //       // console.log(response.data.data);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    const fetchArticles = async () => {
+      try {
+        const response = await axios.get(url + "/api/articles");
+        // const articles = await response; 
+        // console.log(response.data.data);
 
-  //       setArticles(response?.data.data);
-  //     } catch (error) {
-  //       window.location.href = "https://management.youthempowermentsummit.africa?redirect=true";
-  //       console.log("Error fetching articles", error);
-  //     }
-  //   }
+        setArticles(response?.data.data);
+      } catch (error) {
+        window.location.href = "https://management.youthempowermentsummit.africa?redirect=true";
+        console.log("Error fetching articles", error);
+      }
+    }
 
-  //   fetchArticles()
-  // }, [path]);
+    fetchArticles()
+  }, [path]);
 
   const savedSelectedLanguage = localStorage.getItem("selectedLanguage");
   const [selectedLanguage, setSelectedLanguage] = useState(
