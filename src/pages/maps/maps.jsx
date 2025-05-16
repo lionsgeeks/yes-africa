@@ -5,6 +5,7 @@ import axios from 'axios';
 import data from '../../json/data.json';
 import indicatif from '../../json/indicatif.json';
 import { useNavigate } from 'react-router-dom';
+import { useAppContext } from '../../context/AppContext';
 
 const Maps = () => {
     const [openCardIndex, setOpenCardIndex] = useState(null);
@@ -29,12 +30,13 @@ const Maps = () => {
     const [position, setPosition] = useState(initial_position);
     const [zoom, setZoom] = useState(initial_zoom);
     const [selectedMarker, setSelectedMarker] = useState(null);
+    const { url } = useAppContext()
 
 
     useEffect(() => {
         const fetchApprovedShows = async () => {
             try {
-                const response = await axios.post('https://management.youthempowermentsummit.africa/api/approved');
+                const response = await axios.post(url + '/api/approved');
                 setMarkersData(response.data);
                 console.log(response.data.Agence.showable);
             } catch (error) {
@@ -385,7 +387,7 @@ const Maps = () => {
                 formDataOsc.append('financial_partners', formData.financial_partners);
 
                 try {
-                    const response = await axios.post('https://management.youthempowermentsummit.africa/api/organizations', formDataOsc, {
+                    const response = await axios.post(url + '/api/organizations', formDataOsc, {
                         headers: {
                             'Content-Type': 'multipart/form-data',
                         }
@@ -456,7 +458,7 @@ const Maps = () => {
                 });
 
                 try {
-                    const response = await axios.post('https://management.youthempowermentsummit.africa/api/bailleurs',
+                    const response = await axios.post(url + '/api/bailleurs',
                         formDataToSend,
                         {
                             headers: {
@@ -524,7 +526,7 @@ const Maps = () => {
 
 
                 try {
-                    const response = await axios.post('https://management.youthempowermentsummit.africa/api/entreprises', formData2, {
+                    const response = await axios.post(url + '/api/entreprises', formData2, {
                         headers: {
                             'Content-Type': 'multipart/form-data',
                             'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -589,7 +591,7 @@ const Maps = () => {
                 });
 
                 try {
-                    const response = await axios.post('https://management.youthempowermentsummit.africa/api/agences', formData3, {
+                    const response = await axios.post(url + '/api/agences', formData3, {
                         headers: {
                             'Content-Type': 'multipart/form-data',
                         }
@@ -645,7 +647,7 @@ const Maps = () => {
                 formDataPubliqueForm.append('cooperation_opportunities', formDataPublique.cooperationOpportunities);
 
                 try {
-                    const response = await axios.post('https://management.youthempowermentsummit.africa/api/publique', formDataPubliqueForm, {
+                    const response = await axios.post(url + '/api/publique', formDataPubliqueForm, {
                         headers: {
                             'Content-Type': 'multipart/form-data',
                         }
@@ -707,7 +709,7 @@ const Maps = () => {
                 formDataAcademiqueForm.append('conferences', formDataAcademique.conferences || '');
                 formDataAcademiqueForm.append('ateliers', formDataAcademique.ateliers || '');
                 try {
-                    const response = await axios.post('https://management.youthempowermentsummit.africa/api/academiques', formDataAcademiqueForm, {
+                    const response = await axios.post(url + '/api/academiques', formDataAcademiqueForm, {
                         headers: {
                             'Content-Type': 'multipart/form-data',
                         }
@@ -782,15 +784,15 @@ const Maps = () => {
         setLoading(true);
         setError('');
         try {
-            await axios.post('https://management.youthempowermentsummit.africa/api/register-map', {
+            await axios.post(url + '/api/register-map', {
                 name: form.name,
                 email: form.email,
                 role: form.role,
                 lat: newPosition.lat,
                 lng: newPosition.lng,
             });
-            setStep(3);
-            $
+            setStep(2);
+            
         } catch (err) {
             setError(err.response?.data?.message);
         } finally {
@@ -798,21 +800,21 @@ const Maps = () => {
         }
     };
 
-    // const handleVerify = async () => {
-    //     setLoading(true);
-    //     setError('');
-    //     try {
-    //         await axios.post('https://management.youthempowermentsummit.africa/api/verify-code', {
-    //             email: form.email,
-    //             code: form.code,
-    //         });
-    //         setStep(3);
-    //     } catch (err) {
-    //         setError(err.response?.data?.message || 'Code invalide ou expiré.');
-    //     } finally {
-    //         setLoading(false);
-    //     }
-    // };
+    const handleVerify = async () => {
+        setLoading(true);
+        setError('');
+        try {
+            await axios.post(url + '/api/verify-code', {
+                email: form.email,
+                code: form.code,
+            });
+            setStep(3);
+        } catch (err) {
+            setError(err.response?.data?.message || 'Code invalide ou expiré.');
+        } finally {
+            setLoading(false);
+        }
+    };
 
     const toggleSocialInput = (platform) => {
         const urlKey = `${platform}_url`;
@@ -854,7 +856,7 @@ const Maps = () => {
                         <div className="flex items-center bg-white/90 shadow-md rounded-xl p-4 gap-4 w-[40vw] mx-auto relative">
                             <div className='w-[70%]'>
                                 <img
-                                    src={`https://management.youthempowermentsummit.africa/storage/${details.showable.logo}`}
+                                    src={url + `/storage/${details.showable.logo}`}
                                     alt={`${details.showable.name} logo`}
                                     className="w-80 h-52 object-cover rounded-md"
                                 />
@@ -885,7 +887,7 @@ const Maps = () => {
                         <div className="flex items-center bg-white/90 shadow-md rounded-xl p-4 gap-4 w-[40vw] mx-auto relative">
                             <div className='w-[70%]'>
                                 <img
-                                    src={`https://management.youthempowermentsummit.africa/storage/${details.showable.logo_path}`}
+                                    src={url + `/storage/${details.showable.logo_path}`}
                                     alt={`${details.showable.nom} logo_path`}
                                     className="w-80 h-52 object-cover rounded-md"
                                 />
@@ -913,7 +915,7 @@ const Maps = () => {
                         <div className="flex items-center bg-white/90 shadow-md rounded-xl p-4 gap-4 w-[40vw] mx-auto relative">
                             <div className='w-[70%]'>
                                 <img
-                                    src={`https://management.youthempowermentsummit.africa/storage/${details.showable.logo}`}
+                                    src={url + `/storage/${details.showable.logo}`}
                                     alt={`${details.showable.nom} logo`}
                                     className="w-80 h-52 object-cover rounded-md"
                                 />
@@ -941,7 +943,7 @@ const Maps = () => {
                         <div className="flex items-center bg-white/90 shadow-md rounded-xl p-4 gap-4 w-[40vw] mx-auto relative">
                             <div className='w-[70%]'>
                                 <img
-                                    src={`https://management.youthempowermentsummit.africa/storage/${details.showable.logo}`}
+                                    src={url + `/storage/${details.showable.logo}`}
                                     alt={`${details.showable.nom} logo`}
                                     className="w-80 h-52 object-cover rounded-md"
                                 />
@@ -967,7 +969,7 @@ const Maps = () => {
                         <div className="flex items-center bg-white/90 shadow-md rounded-xl p-4 gap-4 w-[40vw] mx-auto relative">
                             <div className='w-[70%]'>
                                 <img
-                                    src={`https://management.youthempowermentsummit.africa/storage/${details.showable.logo_path}`}
+                                    src={url + `/storage/${details.showable.logo_path}`}
                                     alt={`${details.showable.institution_name} logo`}
                                     className="w-80 h-52 object-cover rounded-md"
                                 />
@@ -992,7 +994,7 @@ const Maps = () => {
                         <div className="flex items-center bg-white/90 shadow-md rounded-xl p-4 gap-4 w-[40vw] mx-auto relative">
                             <div className='w-[70%]'>
                                 <img
-                                    src={`https://management.youthempowermentsummit.africa/storage/${details.showable.logo_path}`}
+                                    src={url + `/storage/${details.showable.logo_path}`}
                                     alt={`${details.showable.nom} logo`}
                                     className="w-80 h-52 object-cover rounded-md"
                                 />
@@ -1121,7 +1123,7 @@ const Maps = () => {
                             </>
                         )}
 
-                        {/* {step === 2 && (
+                        {step === 2 && (
                             <>
                                 <h2 className="text-xl font-semibold mb-4 text-alpha">Vérification du Code</h2>
 
@@ -1147,7 +1149,7 @@ const Maps = () => {
                                 </button>
                             </>
 
-                        )} */}
+                        )}
 
                         {step === 3 && (
                             <div className="bg-white p-6 rounded-lg shadow-md w-[42vw] ">
@@ -1674,7 +1676,7 @@ const Maps = () => {
                                                                     }))}
                                                                     className="form-checkbox h-4 w-4 text-[#1DA1F2]"
                                                                 />
-                                                                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                                                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                                                                     <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
                                                                 </svg>
                                                             </div>
@@ -2066,9 +2068,9 @@ const Maps = () => {
                                                                 }))}
                                                                 className="form-checkbox h-4 w-4 text-[#1877F2]"
                                                             />
-                                                                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                                                                    <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
-                                                                </svg>
+                                                            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                                                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
+                                                            </svg>
                                                         </div>
                                                         {formDataEntreprise.reseaux_sociaux2.twitter && (
                                                             <input
@@ -2093,8 +2095,8 @@ const Maps = () => {
                                                                 className="form-checkbox h-4 w-4 text-[#1877F2]"
                                                             />
                                                             <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                                                                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                                                                </svg>
+                                                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                                                            </svg>
                                                         </div>
                                                         {formDataEntreprise.reseaux_sociaux2.linkedin && (
                                                             <input
