@@ -789,7 +789,7 @@ const Maps = () => {
                 lat: newPosition.lat,
                 lng: newPosition.lng,
             });
-            setStep(2);
+            setStep(3);
             $
         } catch (err) {
             setError(err.response?.data?.message);
@@ -798,21 +798,21 @@ const Maps = () => {
         }
     };
 
-    const handleVerify = async () => {
-        setLoading(true);
-        setError('');
-        try {
-            await axios.post('https://management.youthempowermentsummit.africa/api/verify-code', {
-                email: form.email,
-                code: form.code,
-            });
-            setStep(3);
-        } catch (err) {
-            setError(err.response?.data?.message || 'Code invalide ou expiré.');
-        } finally {
-            setLoading(false);
-        }
-    };
+    // const handleVerify = async () => {
+    //     setLoading(true);
+    //     setError('');
+    //     try {
+    //         await axios.post('https://management.youthempowermentsummit.africa/api/verify-code', {
+    //             email: form.email,
+    //             code: form.code,
+    //         });
+    //         setStep(3);
+    //     } catch (err) {
+    //         setError(err.response?.data?.message || 'Code invalide ou expiré.');
+    //     } finally {
+    //         setLoading(false);
+    //     }
+    // };
 
     const toggleSocialInput = (platform) => {
         const urlKey = `${platform}_url`;
@@ -1121,7 +1121,7 @@ const Maps = () => {
                             </>
                         )}
 
-                        {step === 2 && (
+                        {/* {step === 2 && (
                             <>
                                 <h2 className="text-xl font-semibold mb-4 text-alpha">Vérification du Code</h2>
 
@@ -1147,7 +1147,7 @@ const Maps = () => {
                                 </button>
                             </>
 
-                        )}
+                        )} */}
 
                         {step === 3 && (
                             <div className="bg-white p-6 rounded-lg shadow-md w-[42vw] ">
