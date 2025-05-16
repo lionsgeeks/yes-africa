@@ -422,7 +422,7 @@ const DetailsPage = () => {
                     <tr className='border-b border-gray-300'>
                         <th className="text-left p-4 bg-[#e0ecff9d] text-black">Cadre stratégique</th>
                         <td className="p-4">
-                            <a href={`http://192.168.100.171:8000/storage/${details.cadre_strategique}`} className="text-blue-600">Télécharger</a>
+                            <a href={`https://management.youthempowermentsummit.africa/storage/${details.cadre_strategique}`} className="text-blue-600">Télécharger</a>
                         </td>
                     </tr>
                     <tr className='border-b border-gray-300'><th className="text-left p-4 bg-[#e0ecff9d] text-black">Budget</th><td className="p-4">{details.budget}</td></tr>
@@ -452,7 +452,7 @@ const DetailsPage = () => {
                     <tr className='border-b border-gray-300'>
                         <th className="text-left p-4 bg-[#e0ecff9d] text-black">Outils méthodologiques</th>
                         <td className="p-4">
-                            <a href={`http://192.168.100.171:8000/storage/${details.outils_methodologiques}`} className="text-blue-600">Télécharger</a>
+                            <a href={`https://management.youthempowermentsummit.africa/storage/${details.outils_methodologiques}`} className="text-blue-600">Télécharger</a>
                         </td>
                     </tr>
                     <tr className='border-b border-gray-300'><th className="text-left p-4 bg-[#e0ecff9d] text-black">Opportunités de financement</th><td className="p-4">{details.opportunites_financement}</td></tr>
