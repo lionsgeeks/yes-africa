@@ -6,6 +6,8 @@ import TransText from "../../../components/TransText";
 import { Link } from "react-router-dom";
 import Countdown from "../../../components/Countdown";
 import FacesCarousel from "../../../components/facesCarousel";
+import program from "../../../assets/documents/Programme _YES_AFRICA.pdf";
+import { MdFileDownload } from "react-icons/md";
 // import FacesCarousel from "../../../components/FacesCarousel";
 const EventInfo = () => {
   const { selectedLanguage } = useAppContext();
@@ -50,9 +52,14 @@ const EventInfo = () => {
         fr: "Rejoignez-nous pour une célébration vibrante de l'autonomisation des jeunes africains ! Vivez un événement passionnant avec des conférenciers inspirants, des ateliers interactifs et des performances en direct captivantes. C'est une occasion fantastique de se connecter avec d'autres acteurs du changement, d'échanger des idées et de célébrer le dynamisme des jeunes africains. Ne manquez pas cette expérience enrichissante conçue pour élever et inspirer la prochaine génération !",
       },
       aboutBtn: {
-        en: "About Summit",
-        ar: "حول الملتقى",
-        fr: "À propos du sommet",
+        en: "Register to Summit",
+        ar: " تسجل في القمة",
+        fr: "Inscrivez-vous au Sommet",
+      },
+      programBtn: {
+        en: "Download Program",
+        ar: "تحميل البرنامج", 
+        fr: "Télécharger le programme",
       },
       contactBtn: {
         en: "Contact Us",
@@ -97,7 +104,7 @@ const EventInfo = () => {
           selectedLanguage == "ar" && "text-end justify-end z-50"
         }`}
       >
-        {text.map(({ title, desc, aboutBtn, contactBtn }, index) => (
+        {text.map(({ title, desc, aboutBtn,programBtn, contactBtn }, index) => (
           <div className="flex flex-col gap-4" key={index}>
             <h1 className="text-2xl font-semibold tracking-tighter md:text-3xl lg:text-4xl/none">
               <TransText {...title} />
@@ -111,15 +118,21 @@ const EventInfo = () => {
             </p>
 
             <div
-              className={`mt-4 flex items-center gap-4 ${
+              className={`mt-4 flex flex-col md:flex-row lg:items-center gap-4 ${
                 selectedLanguage === "ar" && "flex-row-reverse"
               }`}
             >
-              <Link to={"/about"}>
+              <Link target="_blank" to={"https://www.registration.yesafrica.eventlink.ma/inscription/yes-africa3ZlSqN8"}>
                 <button className="bg-alpha border-2 lg:text-lg text-white border-alpha hover:border-white hover:bg-white hover:text-alpha px-8 py-2.5 w-fit rounded-lg lg:font-medium">
                   <TransText {...aboutBtn} />
                 </button>
               </Link>
+              <a download={true} href={program}>
+                <button className="bg-alpha border-2 lg:text-lg flex items-center text-white border-alpha hover:border-white hover:bg-white hover:text-alpha px-8 py-2.5 w-fit rounded-lg lg:font-medium">
+                  <MdFileDownload size={20} className="inline-block mr-2" />
+                  <TransText {...programBtn} />
+                </button>
+              </a>
 
               <Link to={"/contact"}>
                 <button className="bg-transparent border-2 lg:text-lg text-white border-white  hover:border-alpha hover:text-alpha px-8 py-2.5 w-fit rounded-lg font-medium transition-[background-color] duration-[700ms]">
