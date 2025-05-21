@@ -5,7 +5,6 @@ import ArticlePage from "./pages/articles/article_id";
 import AboutPage from "./pages/about/about";
 import { AppProvider } from "./context/AppContext";
 import { ContactUs } from "./pages/contact/contact";
-import Navbar from "./Layouts/navbar";
 import Footer from "./Layouts/footer";
 import ErrorPage from "./pages/error";
 import Formulaire from "./pages/formulaire/formulaire";
@@ -14,6 +13,7 @@ import ManagementRedirect from "./pages/management";
 import { SponsorsForm } from "./pages/formulaire/SponsorsForm";
 import Maps from "./pages/maps/maps";
 import DetailsPage from "./pages/maps/details";
+import Navbar from "./layouts/navbar";
 
 function App() {
 
@@ -31,7 +31,7 @@ function App() {
             <Route path="/contact" element={<ContactUs />} />
             <Route path="/form" element={<Formulaire />} />
             {/* <Route path="/formulaire" element={<Form />} /> */}
-            <Route path="/participants" element={<SponsorsForm/>} ></Route>
+            {/* <Route path="/participants" element={<SponsorsForm/>} ></Route> */}
             <Route path="/maps" element={<Maps />} />
             <Route path="/details" element={<DetailsPage />} />
 

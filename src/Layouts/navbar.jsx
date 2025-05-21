@@ -96,13 +96,25 @@ const Navbar = () => {
             <div className="flex gap-2 items-center">
               {/* <span className="self-center text-xl font-semibold whitespace-nowrap">Yes Africa</span> */}
               {logos.map((element, index) => (
-                <a key={index} href={element.link} className="flex items-center">
-                  <img className={`${index === 0 ? 'lg:w-[5.5vw] md:w-[11vw] w-[20vw]' : 'lg:w-[3vw] md:w-[7vw] w-[12vw]'} `} src={element.image} alt="" />
+                <a
+                  key={index}
+                  href={element.link}
+                  className="flex items-center"
+                >
+                  <img
+                    className={`${
+                      index === 0
+                        ? "lg:w-[5.5vw] md:w-[11vw] w-[20vw]"
+                        : "lg:w-[3vw] md:w-[7vw] w-[12vw]"
+                    } `}
+                    src={element.image}
+                    alt=""
+                  />
                 </a>
               ))}
             </div>
           </div>
- 
+
           <div className="flex items-center">
             <button
               onClick={() => setIsToggle(!isToggle)}
@@ -199,7 +211,8 @@ const Navbar = () => {
                           </li>
                           <li>
                             <Link
-                              to="/participants"
+                              target="_blank"
+                              to="https://www.registration.yesafrica.eventlink.ma/inscription/yes-africa3ZlSqN8"
                               className={`block px-4 py-2 hover:bg-gray-100 ${
                                 location.pathname === "/participants"
                                   ? "text-beta"
