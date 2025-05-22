@@ -172,16 +172,22 @@ const EventInfo = () => {
               "Meet The faces behind YES SUMMIT Episode 1 – Mr. Hamid BEN ELAFDIL, President of Jadara Foundation",
             id: "gTNrjHGoWmQ",
           },
-          // {
-          //   title:
-          //     "Meet the Faces behin YES Africa Summit : Mahdi Bouziane, Executif Director of LionsGEEK",
-          //   id: "0mg3CiRvgIQ",
-          // },
+          {
+            title:
+              "Meet the Faces behin YES Africa Summit : Mahdi Bouziane, Executif Director of LionsGEEK",
+            id: "0mg3CiRvgIQ",
+          },
           {
             title:
               "MEET THE FACES BEHIND Y.E.S EP3 : M.BA BOCAR ABDOULAYE",
             id: "re_q6h-K7ac?si=CQTan1x_nb74aMS4",
           },
+           {
+            title:
+              "MEET THE FACES BEHIND Y.E.S EP4 : M.BAKOR Salaheddine",
+            id: "i7pzwyV9tjM?si=jtTI8rhvNIYbQ9-1",
+          },
+          
         ]}
       />
     </section>

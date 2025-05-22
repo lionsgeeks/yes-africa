@@ -38,7 +38,6 @@ const Maps = () => {
             try {
                 const response = await axios.post(url + '/api/approved');
                 setMarkersData(response.data);
-                console.log(response.data.Agence.showable);
             } catch (error) {
                 console.error('Error fetching approved shows:', error);
             }
@@ -73,7 +72,6 @@ const Maps = () => {
 
             const lat = e.lngLat.lat;
             const lng = e.lngLat.lng;
-            console.log(lat, lng)
             setNewPosition({ lat, lng });
             setStep(1);
             setShowModal(true);
@@ -792,7 +790,7 @@ const Maps = () => {
                 lng: newPosition.lng,
             });
             setStep(2);
-            
+            $
         } catch (err) {
             setError(err.response?.data?.message);
         } finally {
