@@ -12,7 +12,7 @@ interface TextProps {
 const TransText: React.FC<TextProps> = (props) => {
   const { selectedLanguage } = useAppContext();
 
-  const allowedLanguages = ["ar", "fr", "en","sw",'pr'];
+  const allowedLanguages = ["ar", "fr", "en", "sw", "pr"];
 
   if (!allowedLanguages.includes(selectedLanguage)) {
     throw new Error(
@@ -22,7 +22,11 @@ const TransText: React.FC<TextProps> = (props) => {
     );
   }
 
-  return props[selectedLanguage] ? props[selectedLanguage] : props["en"];
+  const text = props[selectedLanguage] ? props[selectedLanguage] : props["en"];
+
+  return (
+    <span dangerouslySetInnerHTML={{ __html: text?.replace(/\n/g, "<br />") }} />
+  );
 };
 
 export default TransText;

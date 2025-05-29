@@ -6,6 +6,7 @@ import data from '../../json/data.json';
 import indicatif from '../../json/indicatif.json';
 import { useNavigate } from 'react-router-dom';
 import { useAppContext } from '../../context/AppContext';
+import Drawer from '../../components/Drawer';
 
 const Maps = () => {
     const [openCardIndex, setOpenCardIndex] = useState(null);
@@ -31,13 +32,14 @@ const Maps = () => {
     const [zoom, setZoom] = useState(initial_zoom);
     const [selectedMarker, setSelectedMarker] = useState(null);
     const { url } = useAppContext()
-
+    const [openDrawer, setOpenDrawer] = useState(true);
 
     useEffect(() => {
         const fetchApprovedShows = async () => {
             try {
                 const response = await axios.post(url + '/api/approved');
                 setMarkersData(response.data);
+                console.log('response :',response?.data);
             } catch (error) {
                 console.error('Error fetching approved shows:', error);
             }
@@ -62,8 +64,8 @@ const Maps = () => {
 
 
         mapRef.current.on("move", () => {
-            const mapCenter = mapRef.current.getCenter();
-            const mapZoom = mapRef.current.getZoom();
+            const mapCenter = mapRef.current?.getCenter();
+            const mapZoom = mapRef.current?.getZoom();
             setPosition([mapCenter.lng, mapCenter.lat]);
             setZoom(mapZoom);
         });
@@ -1034,17 +1036,40 @@ const Maps = () => {
             </div>
         );
     };
-
     return (
         <>
+        {
+            openDrawer && (
+                <Drawer openDrawer={openDrawer} setOpenDrawer={setOpenDrawer}/>
+            )
+        }
+        <button onClick={() => setOpenDrawer(true) } className='w-[10%] lg:w-[4%] aspect-square animate-bounce bg-alpha text-white fixed right-3 bottom-3 z-40 rounded-full flex justify-center items-center'>
+        <span className='font-bold text-2xl'>?</span>
+        </button>
             <div
                 className="w-full h-screen bg-white"
                 id="map-container"
                 ref={mapContainerRef}
-            ></div>
+            >
+        <div className='fixed w-[65%] top-[15%] lg:w-[15%] right-[3%] z-20 bg-white rounded' >
+            <input onFocus={()=>console.log('focus')} className='p-2 rounded w-full' type="text" placeholder='search' />
+            <div className='bg-white'>
+                <div className='bg-blue-400 h-14 flex flex-row items-start gap-2 p-2'><div className='w-10 aspect-square bg-black rounded-full '></div>
+                <div>
+                <p className='font-bold'>Lionsgeek </p>
+                <p>Morocco</p>
+                </div>
+                </div>
+                <div className='bg-blue-300 h-14'></div>
+                <div className='bg-blue-200 h-14'></div>
+                <div className='bg-blue-100 h-14'></div>
+                <div className='bg-blue-50 h-14'></div>
+            </div>
+        </div>
 
+            </div>
             <div>
-                <div ref={mapRef} style={{ width: '100%', height: '500px' }} />
+                <div className='hidden' ref={mapRef} style={{ width: '100%', height: '500px' }} />
                 {Object.entries(markersData).map(([category, markersArray]) =>
                     markersArray.map((element, idx) => {
                         const uniqueKey = `${category}-${idx}`;
