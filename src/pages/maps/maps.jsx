@@ -27,19 +27,51 @@ const Maps = () => {
     const mapRef = useRef();
     const mapContainerRef = useRef();
     const initial_position = [20.9394, 6.6111];
-    const initial_zoom = 3.7;
+    const initial_zoom = 2.5;
     const [position, setPosition] = useState(initial_position);
     const [zoom, setZoom] = useState(initial_zoom);
     const [selectedMarker, setSelectedMarker] = useState(null);
     const { url } = useAppContext()
     const [openDrawer, setOpenDrawer] = useState(true);
 
+    const markersRef = useRef([]);
+
+    const handleGetLocation = () => {
+        if ("geolocation" in navigator) {
+            navigator.geolocation.getCurrentPosition(
+                (pos) => {
+                    const { latitude, longitude } = pos.coords;
+                    setPosition({ lat: latitude, lng: longitude });
+
+                    if (mapRef.current) {
+                        mapRef.current.flyTo({
+                            center: [longitude, latitude],
+                            zoom: 15,
+                            essential: true
+                        });
+
+                        new mapboxgl.Marker({ color: 'red' })
+                            .setLngLat([longitude, latitude])
+                            .addTo(mapRef.current);
+                    }
+                },
+                (err) => {
+                    setError("Impossible d'obtenir votre position");
+                    console.error(err);
+                }
+            );
+        } else {
+            setError("La géolocalisation n'est pas supportée par ce navigateur.");
+        }
+    };
+
+
     useEffect(() => {
         const fetchApprovedShows = async () => {
             try {
-                const response = await axios.post(url + '/api/approved');
+                const response = await axios.post('http://192.168.100.171:8000/api/approved');
                 setMarkersData(response.data);
-                console.log('response :',response?.data);
+                console.log('response :', response?.data);
             } catch (error) {
                 console.error('Error fetching approved shows:', error);
             }
@@ -58,10 +90,6 @@ const Maps = () => {
             center: position,
             zoom: zoom,
         });
-        new mapboxgl.Marker({ color: "black" })
-
-
-
 
         mapRef.current.on("move", () => {
             const mapCenter = mapRef.current?.getCenter();
@@ -88,15 +116,46 @@ const Maps = () => {
     }, []);
 
     useEffect(() => {
+        markersRef.current.forEach(marker => marker.remove());
+        markersRef.current = [];
+
+        if (!mapRef.current) return;
+
         Object.entries(markersData).forEach(([key, value]) => {
             value.forEach((marker, idx) => {
                 if (marker.showable.lat && marker.showable.lng) {
-                    const mapMarker = new mapboxgl.Marker()
+                    const el = document.createElement('div');
+                    el.className = 'custom-marker';
+
+                    const img = document.createElement('img');
+                    const logoPath =
+                        marker.showable_type === 'App\\Models\\Organization' ||
+                            marker.showable_type === 'App\\Models\\Entreprise' ||
+                            marker.showable_type === 'App\\Models\\Agence' ||
+                            marker.showable_type === 'App\\Models\\Publique' ||
+                            marker.showable_type === 'App\\Models\\Academique'
+                            ? marker.showable.logo
+                            : marker.showable.logo_path;
+
+                    img.src = logoPath
+                        ? `http://192.168.100.171:8000/storage/${logoPath}`
+                        : '/default_logo.png';
+                    img.style.width = '25px';
+                    img.style.height = '25px';
+                    img.style.borderRadius = '50%';
+                    img.style.border = '2px solid white';
+                    img.style.objectFit = 'cover';
+
+                    el.appendChild(img);
+
+                    const mapMarker = new mapboxgl.Marker(el)
                         .setLngLat([marker.showable.lng, marker.showable.lat])
                         .addTo(mapRef.current);
 
+                    markersRef.current.push(mapMarker);
+
                     const uniqueKey = `${key}-${idx}`;
-                    mapMarker.getElement().addEventListener('click', (e) => {
+                    el.addEventListener('click', (e) => {
                         e.stopPropagation();
                         setShowModal(false);
                         setOpenCardIndex(uniqueKey);
@@ -105,6 +164,10 @@ const Maps = () => {
             });
         });
 
+        return () => {
+            markersRef.current.forEach(marker => marker.remove());
+            markersRef.current = [];
+        };
     }, [markersData]);
 
     useEffect(() => {
@@ -136,10 +199,11 @@ const Maps = () => {
     const [form, setForm] = useState({
         name: '',
         email: '',
-        role: '',
         code: '',
     });
+
     const [formData, setFormData] = useState({
+
         name: '',
         logo: null,
         creation_year: '',
@@ -159,7 +223,8 @@ const Maps = () => {
         linkedin_url: '',
         instagram_url: '',
         main_email: '',
-        phone: '',
+        phone1: '',
+        telephone_code1: '',
         postal_address: '',
         contact_name: '',
         contact_function: '',
@@ -168,11 +233,11 @@ const Maps = () => {
         target_groups: '',
         annual_beneficiaries: '',
         program_title: '',
-        program_description: '',
-        methodological_approach: '',
-        result1: '',
-        result2: '',
-        result3: '',
+        // program_description: '',
+        // methodological_approach: '',
+        // result1: '',
+        // result2: '',
+        // result3: '',
         technical_partners: '',
         financial_partners: ''
     });
@@ -216,7 +281,7 @@ const Maps = () => {
         type_institution: '',
         type_institution_autre: '',
         pays_origine: [],
-        couverture_geographique: '',
+        couverture_geographique: [],
         site_web: '',
         reseaux_sociaux: {
             linkedin: false,
@@ -227,22 +292,22 @@ const Maps = () => {
         email_contact: '',
         telephone_code: '',
         telephone_number: '',
-        representation_afrique: [],
+        // representation_afrique: [],
         contact_responsable: {
             nom: '',
             fonction: '',
             email: ''
         },
         priorites_thematiques: '',
-        modalites_soutien: [],
-        financement_min: '',
-        financement_max: '',
-        budget_annuel: '',
-        criteres_eligibilite: '',
-        projets_phares: [],
-        approche_impact: '',
-        partenaires_actuels: '',
-        procedure_soumission: ''
+        // modalites_soutien: [],
+        // financement_min: '',
+        // financement_max: '',
+        // budget_annuel: '',
+        // criteres_eligibilite: '',
+        // projets_phares: [],
+        // approche_impact: '',
+        // partenaires_actuels: '',
+        // procedure_soumission: ''
     });
 
     const [formDataAgence, setFormDataAgence] = useState({
@@ -370,7 +435,9 @@ const Maps = () => {
                 if (formData.socials.social_instagram) formDataOsc.append('instagram_url', formData.instagram_url);
                 formDataOsc.append('website', formData.website);
                 formDataOsc.append('main_email', formData.main_email);
-                formDataOsc.append('phone', formData.phone);
+
+                const phoneNumberosc = `${formData.telephone_code1 || ''}${formData.phone1 || ''}`.trim();
+                formDataOsc.append('phone', phoneNumberosc);
                 formDataOsc.append('postal_address', formData.postal_address);
                 formDataOsc.append('contact_name', formData.contact_name);
                 formDataOsc.append('contact_function', formData.contact_function);
@@ -378,22 +445,22 @@ const Maps = () => {
                 formDataOsc.append('target_groups', formData.target_groups);
                 formDataOsc.append('annual_beneficiaries', formData.annual_beneficiaries);
                 formDataOsc.append('program_title', formData.program_title);
-                formDataOsc.append('program_description', formData.program_description);
-                formDataOsc.append('methodological_approach', formData.methodological_approach);
-                formDataOsc.append('result1', formData.result1);
-                formDataOsc.append('result2', formData.result2);
-                formDataOsc.append('result3', formData.result3);
+                // formDataOsc.append('program_description', formData.program_description);
+                // formDataOsc.append('methodological_approach', formData.methodological_approach);
+                // formDataOsc.append('result1', formData.result1);
+                // formDataOsc.append('result2', formData.result2);
+                // formDataOsc.append('result3', formData.result3);
                 formDataOsc.append('technical_partners', formData.technical_partners);
                 formDataOsc.append('financial_partners', formData.financial_partners);
 
                 try {
-                    const response = await axios.post(url + '/api/organizations', formDataOsc, {
+                    const response = await axios.post('http://192.168.100.171:8000/api/organizations', formDataOsc, {
                         headers: {
                             'Content-Type': 'multipart/form-data',
                         }
                     });
                     alert('Organisation créée avec succès !');
-                    setShowModal(false);
+                    setShowModal(true);
                     window.location.reload();
                 } catch (error) {
                     console.error('Error:', error);
@@ -426,14 +493,17 @@ const Maps = () => {
                 formDataToSend.append('telephone', phoneNumber);
 
                 formDataToSend.append('priorites_thematiques', formDataBailleur.priorites_thematiques);
-                formDataToSend.append('budget_annuel', formDataBailleur.budget_annuel);
-                formDataToSend.append('criteres_eligibilite', formDataBailleur.criteres_eligibilite);
-                formDataToSend.append('approche_impact', formDataBailleur.approche_impact);
-                formDataToSend.append('partenaires_actuels', formDataBailleur.partenaires_actuels);
-                formDataToSend.append('procedure_soumission', formDataBailleur.procedure_soumission);
+                // formDataToSend.append('budget_annuel', formDataBailleur.budget_annuel);
+                // formDataToSend.append('criteres_eligibilite', formDataBailleur.criteres_eligibilite);
+                // formDataToSend.append('approche_impact', formDataBailleur.approche_impact);
+                // formDataToSend.append('partenaires_actuels', formDataBailleur.partenaires_actuels);
+                // formDataToSend.append('procedure_soumission', formDataBailleur.procedure_soumission);
                 formDataToSend.append('pays_origine', formDataBailleur.pays_origine);
-                formDataToSend.append('couverture_geographique', formDataBailleur.couverture_geographique);
-                formDataToSend.append('representation_afrique', formDataBailleur.representation_afrique);
+                // formDataToSend.append('couverture_geographique', formDataBailleur.couverture_geographique);
+                if (Array.isArray(formDataBailleur.couverture_geographique)) {
+                    formDataBailleur.couverture_geographique.forEach(r => formDataToSend.append('couverture_geographique[]', r));
+                }
+                // formDataToSend.append('representation_afrique', formDataBailleur.representation_afrique);
 
                 const socials = {
                     linkedin: formDataBailleur.linkedin_url2 || '',
@@ -446,19 +516,19 @@ const Maps = () => {
                 formDataToSend.append('contact_responsable[fonction]', formDataBailleur.contact_responsable.fonction);
                 formDataToSend.append('contact_responsable[email]', formDataBailleur.contact_responsable.email);
 
-                formDataBailleur.modalites_soutien.forEach(ms => {
-                    formDataToSend.append('modalites_soutien[]', ms);
-                });
+                // formDataBailleur.modalites_soutien.forEach(ms => {
+                //     formDataToSend.append('modalites_soutien[]', ms);
+                // });
 
-                formDataToSend.append('financement_min', formDataBailleur.financement_min);
-                formDataToSend.append('financement_max', formDataBailleur.financement_max);
+                // formDataToSend.append('financement_min', formDataBailleur.financement_min);
+                // formDataToSend.append('financement_max', formDataBailleur.financement_max);
 
-                formDataBailleur.projets_phares.forEach((projet, index) => {
-                    formDataToSend.append(`projets_phares[${index}]`, projet);
-                });
+                // formDataBailleur.projets_phares.forEach((projet, index) => {
+                //     formDataToSend.append(`projets_phares[${index}]`, projet);
+                // });
 
                 try {
-                    const response = await axios.post(url + '/api/bailleurs',
+                    const response = await axios.post('http://192.168.100.171:8000/api/bailleurs',
                         formDataToSend,
                         {
                             headers: {
@@ -526,7 +596,7 @@ const Maps = () => {
 
 
                 try {
-                    const response = await axios.post(url + '/api/entreprises', formData2, {
+                    const response = await axios.post('http://192.168.100.171:8000/api/entreprises', formData2, {
                         headers: {
                             'Content-Type': 'multipart/form-data',
                             'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -591,7 +661,7 @@ const Maps = () => {
                 });
 
                 try {
-                    const response = await axios.post(url + '/api/agences', formData3, {
+                    const response = await axios.post('http://192.168.100.171:8000/api/agences', formData3, {
                         headers: {
                             'Content-Type': 'multipart/form-data',
                         }
@@ -647,7 +717,7 @@ const Maps = () => {
                 formDataPubliqueForm.append('cooperation_opportunities', formDataPublique.cooperationOpportunities);
 
                 try {
-                    const response = await axios.post(url + '/api/publique', formDataPubliqueForm, {
+                    const response = await axios.post('http://192.168.100.171:8000/api/publique', formDataPubliqueForm, {
                         headers: {
                             'Content-Type': 'multipart/form-data',
                         }
@@ -709,7 +779,7 @@ const Maps = () => {
                 formDataAcademiqueForm.append('conferences', formDataAcademique.conferences || '');
                 formDataAcademiqueForm.append('ateliers', formDataAcademique.ateliers || '');
                 try {
-                    const response = await axios.post(url + '/api/academiques', formDataAcademiqueForm, {
+                    const response = await axios.post('http://192.168.100.171:8000/api/academiques', formDataAcademiqueForm, {
                         headers: {
                             'Content-Type': 'multipart/form-data',
                         }
@@ -784,10 +854,9 @@ const Maps = () => {
         setLoading(true);
         setError('');
         try {
-            await axios.post(url + '/api/register-map', {
+            await axios.post('http://192.168.100.171:8000/api/register-map', {
                 name: form.name,
                 email: form.email,
-                role: form.role,
                 lat: newPosition.lat,
                 lng: newPosition.lng,
             });
@@ -804,7 +873,7 @@ const Maps = () => {
         setLoading(true);
         setError('');
         try {
-            await axios.post(url + '/api/verify-code', {
+            await axios.post('http://192.168.100.171:8000/api/verify-code', {
                 email: form.email,
                 code: form.code,
             });
@@ -856,7 +925,7 @@ const Maps = () => {
                         <div className="flex items-center bg-white/90 shadow-md rounded-xl p-4 gap-4 w-[40vw] mx-auto relative">
                             <div className='w-[70%]'>
                                 <img
-                                    src={url + `/storage/${details.showable.logo}`}
+                                    src={`http://192.168.100.171:8000/storage/${details.showable.logo}`}
                                     alt={`${details.showable.name} logo`}
                                     className="w-80 h-52 object-cover rounded-md"
                                 />
@@ -865,13 +934,15 @@ const Maps = () => {
                             <div className="flex flex-col w-96 justify-between gap-1 text-sm text-gray-800">
                                 <p className="font-bold text-lg text-beta">{details.showable.name}</p>
                                 <p><span className="font-medium text-gray-500">Statut légal:</span> {details.showable.legal_status}</p>
-                                <p><span className="font-medium text-gray-500">Email:</span> {details.showable.main_email}</p>
-                                <p><span className="font-medium text-gray-500">Année de création:</span> {details.showable.creation_year}</p>
-                                <p><span className="font-medium text-gray-500">Pays:</span> {Array.isArray(details.showable.country) ? details.showable.country[0] : details.showable.country}</p>
-                                <p><span className="font-medium text-gray-500">Région:</span> {details.showable.regions}</p>
-                                <p><span className="font-medium text-gray-500">Site web:</span> <a href={details.showable.website} className="text-blue-600 hover:underline" target="_blank" rel="noreferrer">{details.showable.website}</a></p>
+                                {/* <p><span className="font-medium text-gray-500">Email:</span> {details.showable.main_email}</p> */}
+                                {/* <p><span className="font-medium text-gray-500">Année de création:</span> {details.showable.creation_year}</p> */}
+                                {/* <p><span className="font-medium text-gray-500">Pays:</span> {Array.isArray(details.showable.country) ? details.showable.country[0] : details.showable.country}</p> */}
+                                <p className='truncate'><span className="font-medium text-gray-500 ">Pays d'interventions :</span> {details.showable.regions}</p>
+                                <p><span className="font-medium text-gray-500">Groupes Cibles :</span> {details.showable.target_groups}</p>
+                                <p className='truncate'><span className="font-medium text-gray-500">Bonnes Pratiques :</span> {details.showable.program_title}</p>
+                                {/* <p><span className="font-medium text-gray-500">Site web:</span> <a href={details.showable.website} className="text-blue-600 hover:underline" target="_blank" rel="noreferrer">{details.showable.website}</a></p>
                                 <p><span className="font-medium text-gray-500">LinkedIn:</span> <a href={details.showable.linkedin_url} className="text-blue-600 hover:underline" target="_blank" rel="noreferrer">{details.showable.linkedin_url}</a></p>
-                                <p><span className="font-medium text-gray-500">Twitter:</span> <a href={details.showable.twitter_url} className="text-blue-600 hover:underline" target="_blank" rel="noreferrer">{details.showable.twitter_url}</a></p>
+                                <p><span className="font-medium text-gray-500">Twitter:</span> <a href={details.showable.twitter_url} className="text-blue-600 hover:underline" target="_blank" rel="noreferrer">{details.showable.twitter_url}</a></p> */}
                                 <button
                                     onClick={handleSeeMore}
                                     className="mt-4 px-4 py-2 bg-beta text-white rounded hover:bg-[#a68513] w-fit"
@@ -887,7 +958,7 @@ const Maps = () => {
                         <div className="flex items-center bg-white/90 shadow-md rounded-xl p-4 gap-4 w-[40vw] mx-auto relative">
                             <div className='w-[70%]'>
                                 <img
-                                    src={url + `/storage/${details.showable.logo_path}`}
+                                    src={`http://192.168.100.171:8000/storage/${details.showable.logo_path}`}
                                     alt={`${details.showable.nom} logo_path`}
                                     className="w-80 h-52 object-cover rounded-md"
                                 />
@@ -897,10 +968,15 @@ const Maps = () => {
                                 <p><span className="font-medium text-gray-500">Email:</span> {details.showable.email_contact}</p>
                                 <p><span className="font-medium text-gray-500">Type:</span> {details.showable.type_institution}</p>
                                 <p><span className="font-medium text-gray-500">Pays:</span> {details.showable.pays_origine}</p>
-                                <p><span className="font-medium text-gray-500">couverture geographique:</span> {details.showable.couverture_geographique}</p>
-                                <p><span className="font-medium text-gray-500">Site web:</span> <a href={details.showable.site_web} className="text-blue-600 hover:underline" target="_blank" rel="noreferrer">{details.showable.website}</a></p>
-                                <p><span className="font-medium text-gray-500">LinkedIn:</span> <a href={details.showable.linkedin_url2} className="text-blue-600 hover:underline" target="_blank" rel="noreferrer">{details.showable.linkedin_url2}</a></p>
-                                <p><span className="font-medium text-gray-500">Twitter:</span> <a href={details.showable.twitter_url2} className="text-blue-600 hover:underline" target="_blank" rel="noreferrer">{details.showable.twitter_url2}</a></p>
+                                <p className='truncate w-80'>
+                                    <span className="font-medium text-gray-500">couverture geographique: </span>
+                                    {Array.isArray(details.showable.couverture_geographique)
+                                        ? details.showable.couverture_geographique.join(', ')
+                                        : (details.showable.couverture_geographique || '')
+
+                                    }
+                                </p>                                <p><span className="font-medium text-gray-500">Site web:</span> <a href={details.showable.site_web} className="text-blue-600 hover:underline" target="_blank" rel="noreferrer">{details.showable.website}</a></p>
+                                <p className='truncate w-80'><span className="font-medium text-gray-500">Bonnes Pratiques :</span> {details.showable.priorites_thematiques}</p>
                                 <button
                                     onClick={handleSeeMore}
                                     className="mt-4 px-4 py-2 bg-beta text-white rounded hover:bg-[#a68513] w-fit"
@@ -915,7 +991,7 @@ const Maps = () => {
                         <div className="flex items-center bg-white/90 shadow-md rounded-xl p-4 gap-4 w-[40vw] mx-auto relative">
                             <div className='w-[70%]'>
                                 <img
-                                    src={url + `/storage/${details.showable.logo}`}
+                                    src={`http://192.168.100.171:8000/storage/${details.showable.logo}`}
                                     alt={`${details.showable.nom} logo`}
                                     className="w-80 h-52 object-cover rounded-md"
                                 />
@@ -943,7 +1019,7 @@ const Maps = () => {
                         <div className="flex items-center bg-white/90 shadow-md rounded-xl p-4 gap-4 w-[40vw] mx-auto relative">
                             <div className='w-[70%]'>
                                 <img
-                                    src={url + `/storage/${details.showable.logo}`}
+                                    src={`http://192.168.100.171:8000/storage/${details.showable.logo}`}
                                     alt={`${details.showable.nom} logo`}
                                     className="w-80 h-52 object-cover rounded-md"
                                 />
@@ -969,7 +1045,7 @@ const Maps = () => {
                         <div className="flex items-center bg-white/90 shadow-md rounded-xl p-4 gap-4 w-[40vw] mx-auto relative">
                             <div className='w-[70%]'>
                                 <img
-                                    src={url + `/storage/${details.showable.logo_path}`}
+                                    src={`http://192.168.100.171:8000/storage/${details.showable.logo_path}`}
                                     alt={`${details.showable.institution_name} logo`}
                                     className="w-80 h-52 object-cover rounded-md"
                                 />
@@ -994,7 +1070,7 @@ const Maps = () => {
                         <div className="flex items-center bg-white/90 shadow-md rounded-xl p-4 gap-4 w-[40vw] mx-auto relative">
                             <div className='w-[70%]'>
                                 <img
-                                    src={url + `/storage/${details.showable.logo_path}`}
+                                    src={`http://192.168.100.171:8000/storage/${details.showable.logo_path}`}
                                     alt={`${details.showable.nom} logo`}
                                     className="w-80 h-52 object-cover rounded-md"
                                 />
@@ -1038,36 +1114,52 @@ const Maps = () => {
     };
     return (
         <>
-        {
-            openDrawer && (
-                <Drawer openDrawer={openDrawer} setOpenDrawer={setOpenDrawer}/>
-            )
-        }
-        <button onClick={() => setOpenDrawer(true) } className='w-[10%] lg:w-[4%] aspect-square animate-bounce bg-alpha text-white fixed right-3 bottom-3 z-40 rounded-full flex justify-center items-center'>
-        <span className='font-bold text-2xl'>?</span>
-        </button>
+
+            {
+                openDrawer && (
+                    <Drawer openDrawer={openDrawer} setOpenDrawer={setOpenDrawer} />
+                )
+            }
+
             <div
                 className="w-full h-screen bg-white"
                 id="map-container"
                 ref={mapContainerRef}
             >
-        <div className='fixed w-[65%] top-[15%] lg:w-[15%] right-[3%] z-20 bg-white rounded' >
-            <input onFocus={()=>console.log('focus')} className='p-2 rounded w-full' type="text" placeholder='search' />
-            <div className='bg-white'>
-                <div className='bg-blue-400 h-14 flex flex-row items-start gap-2 p-2'><div className='w-10 aspect-square bg-black rounded-full '></div>
-                <div>
-                <p className='font-bold'>Lionsgeek </p>
-                <p>Morocco</p>
+                <div className='fixed w-[65%] top-[15%] lg:w-[15%] right-[3%] z-20 bg-white rounded' >
+                    <input onFocus={() => console.log('focus')} className='p-2 rounded w-full' type="text" placeholder='search' />
+                    <div className='bg-white'>
+                        <div className='bg-blue-400 h-14 flex flex-row items-start gap-2 p-2'><div className='w-10 aspect-square bg-black rounded-full '></div>
+                            <div>
+                                <p className='font-bold'>Lionsgeek </p>
+                                <p>Morocco</p>
+                            </div>
+                        </div>
+                        <div className='bg-blue-300 h-14'></div>
+                        <div className='bg-blue-200 h-14'></div>
+                        <div className='bg-blue-100 h-14'></div>
+                        <div className='bg-blue-50 h-14'></div>
+                    </div>
                 </div>
-                </div>
-                <div className='bg-blue-300 h-14'></div>
-                <div className='bg-blue-200 h-14'></div>
-                <div className='bg-blue-100 h-14'></div>
-                <div className='bg-blue-50 h-14'></div>
-            </div>
-        </div>
 
             </div>
+
+            <div className="fixed bottom-4 right-4 gap-3 flex flex-col items-end">
+                <button onClick={() => setOpenDrawer(true)} className='p-2 aspect-square animate-bounce bg-alpha text-white rounded-full '>
+                    <span className='font-bold text-xl'>?</span>
+                </button>
+                <button
+                    onClick={handleGetLocation}
+                    className="bg-alpha text-white p-3 rounded-full shadow-lg"
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                </button>
+            </div>
+
+
             <div>
                 <div className='hidden' ref={mapRef} style={{ width: '100%', height: '500px' }} />
                 {Object.entries(markersData).map(([category, markersArray]) =>
@@ -1115,22 +1207,10 @@ const Maps = () => {
                                     className="mb-3 w-full p-2 border border-gray-300 rounded"
                                 />
 
-                                <label htmlFor="role" className="block text-sm font-medium text-gray-600 mb-1">
-                                    Rôle
-                                </label>
-                                <input
-                                    id="role"
-                                    name="role"
-                                    placeholder="Votre rôle"
-                                    onChange={handleChange}
-                                    className="mb-4 w-full p-2 border border-gray-300 rounded"
-                                />
-
-                                {error && <div className="text-red-500 mb-2">{error}</div>}
-                                <div className='flex justify-between items-center'>
+                                <div className='flex mt-4 justify-between items-center'>
                                     <button
                                         onClick={() => setShowModal(false)}
-                                        className="mt-4 px-4 py-2 border border-beta text-alpha rounded"
+                                        className=" px-4 py-2 border border-beta text-alpha rounded"
                                     >
                                         Annuler
                                     </button>
@@ -1183,18 +1263,12 @@ const Maps = () => {
                                     className="mb-4 w-full p-3 border border-alpha rounded focus:outline-none focus:ring-2 focus:ring-beta"
                                 >
                                     <option value="">-- Sélectionner un type --</option>
-                                    <option value="osc">
-                                        Formulaire pour les Organisations de la Société Civile (OSC)
-                                    </option>
-                                    <option value="bailleurs">Formulaire pour Bailleurs de Fonds</option>
-                                    <option value="entreprises">Formulaire pour Entreprises du Secteur Privé</option>
-                                    <option value="agences">
-                                        Formulaire pour Agences des Nations Unies et de Coopération Internationale
-                                    </option>
-                                    <option value="publiques">Formulaire pour Institutions Publiques</option>
-                                    <option value="academiques">
-                                        Formulaire pour Institutions Académiques et de Recherche
-                                    </option>
+                                    <option value="osc">Organisation de la Société Civile (OSC)</option>
+                                    <option value="bailleurs">Bailleur de Fonds</option>
+                                    <option value="entreprises">Entreprise du Secteur Privé</option>
+                                    <option value="agences">Agence des Nation Unies et de Coopération Internationale</option>
+                                    <option value="publiques">Institution Publique</option>
+                                    <option value="academiques">Institution Académique et de Recherche</option>
                                 </select>
 
                                 <button
@@ -1219,11 +1293,11 @@ const Maps = () => {
                                         {
                                             {
                                                 osc: 'Formulaire - Organisation de la Société Civile',
-                                                bailleurs: 'Formulaire - Bailleurs de Fonds',
-                                                entreprises: 'Formulaire - Entreprises du Secteur Privé',
-                                                agences: 'Formulaire - Agences des Nations Unies et Coopération',
-                                                publiques: 'Formulaire - Institutions Publiques',
-                                                academiques: 'Formulaire - Institutions Académiques et de Recherche'
+                                                bailleurs: 'Formulaire - Bailleur de Fonds',
+                                                entreprises: 'Formulaire - Entreprise du Secteur Privé',
+                                                agences: 'Formulaire - Agence des Nations Unies et Coopération',
+                                                publiques: 'Formulaire - Institution Publique',
+                                                academiques: 'Formulaire - Institution Académique et de Recherche'
                                             }[selectedForm]
                                         }
                                     </h2>
@@ -1238,7 +1312,7 @@ const Maps = () => {
                                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                                         <div className="space-y-2">
                                                             <label className="block text-sm font-medium text-gray-700">Nom de l'organisation <span className="text-red-500">*</span></label>
-                                                            <input type="text" name='name' value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} required className="w-full p-2 border rounded-md" />
+                                                            <input type="text" name='name' value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} className="w-full p-2 border rounded-md" />
                                                         </div>
 
                                                         <div className="space-y-2">
@@ -1247,12 +1321,12 @@ const Maps = () => {
                                                         </div>
                                                         <div className="space-y-2">
                                                             <label className="block text-sm font-medium text-gray-700">Année de création <span className="text-red-500">*</span></label>
-                                                            <input type="number" value={formData.creation_year} onChange={(e) => setFormData({ ...formData, creation_year: e.target.value })} min="1900" max="2025" name='creation_year' required className="w-full p-2 border rounded-md" />
+                                                            <input type="number" value={formData.creation_year} onChange={(e) => setFormData({ ...formData, creation_year: e.target.value })} min="1900" max="2025" name='creation_year' className="w-full p-2 border rounded-md" />
                                                         </div>
 
                                                         <div className="space-y-2">
                                                             <label className="block text-sm font-medium text-gray-700">Statut juridique <span className="text-red-500">*</span></label>
-                                                            <select required className="w-full p-2 border rounded-md" id="legal-status" name='legal_status' value={formData.legal_status} onChange={(e) => setFormData({ ...formData, legal_status: e.target.value })}>
+                                                            <select className="w-full p-2 border rounded-md" id="legal-status" name='legal_status' value={formData.legal_status} onChange={(e) => setFormData({ ...formData, legal_status: e.target.value })}>
                                                                 <option value="">Sélectionner...</option>
                                                                 <option>Association</option>
                                                                 <option>Fondation</option>
@@ -1263,7 +1337,7 @@ const Maps = () => {
                                                                 <input
                                                                     type="text"
                                                                     placeholder="Précisez"
-                                                                    required
+
                                                                     className="w-full p-2 border rounded-md mt-2"
                                                                     name='other_legal_status'
                                                                     value={formData.other_legal_status}
@@ -1272,7 +1346,7 @@ const Maps = () => {
                                                             )}                                                        </div>
 
                                                         <div className="space-y-2">
-                                                            <label className="block text-sm font-medium text-gray-700">Pays d'implantation <span className="text-red-500">*</span></label>
+                                                            <label className="block text-sm font-medium text-gray-700">Pays d'implantations <span className="text-red-500">*</span></label>
                                                             <select onChange={(e) => setFormData({ ...formData, country: Array.from(e.target.selectedOptions, option => option.value) })} className="w-full  p-2 border rounded-md" name='country'>
                                                                 <option value="">Sélectionner un pays...</option>
                                                                 {data.map((item) => (
@@ -1282,18 +1356,32 @@ const Maps = () => {
                                                                 ))}
                                                             </select>
                                                         </div>
-
-                                                        <div className="space-y-2">
-                                                            <label className="block text-sm font-medium text-gray-700">Régions d'intervention</label>
-                                                            <select onChange={(e) => setFormData({ ...formData, regions: Array.from(e.target.selectedOptions, option => option.value) })} required className="w-full  p-2 border rounded-md" name='regions'>
-                                                                <option value="">Sélectionner un region...</option>
+                                                        <div className="space-y-2 overflow-y-scroll h-32">
+                                                            <label className="block text-sm font-medium text-gray-700">Pays d'interventions</label>
+                                                            <div className="flex flex-col">
                                                                 {data.map((item) => (
-                                                                    <option className='' key={item.id} value={item.value} >
-                                                                        {item.name}
-                                                                    </option>
+                                                                    <div key={item.name} className="flex items-center">
+                                                                        <input
+                                                                            type="checkbox"
+                                                                            checked={formData.regions.includes(item.name)}
+                                                                            value={item.name}
+                                                                            onChange={(e) => {
+                                                                                const { checked, value } = e.target;
+                                                                                setFormData((prev) => {
+                                                                                    let updatedRegions = checked
+                                                                                        ? [...prev.regions, value]
+                                                                                        : prev.regions.filter((r) => r !== value);
+                                                                                    return { ...prev, regions: updatedRegions };
+                                                                                });
+                                                                            }}
+                                                                        />
+                                                                        <label className="ml-2">{item.name}</label>
+                                                                    </div>
                                                                 ))}
-                                                            </select>
+
+                                                            </div>
                                                         </div>
+
 
                                                         <div className="space-y-2">
                                                             <label className="block text-sm font-medium text-gray-700">Site web</label>
@@ -1411,36 +1499,35 @@ const Maps = () => {
                                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                                         <div className="space-y-2">
                                                             <label className="block text-sm font-medium text-gray-700">Email principal <span className="text-red-500">*</span></label>
-                                                            <input type="email" required className="w-full p-2 border rounded-md" value={formData.main_email} onChange={(e) => setFormData({ ...formData, main_email: e.target.value })} />
+                                                            <input type="email" className="w-full p-2 border rounded-md" value={formData.main_email} onChange={(e) => setFormData({ ...formData, main_email: e.target.value })} />
                                                         </div>
 
                                                         <div className="space-y-2">
                                                             <label className="block text-sm font-medium text-gray-700">Téléphone <span className="text-red-500">*</span></label>
                                                             <div className="flex">
                                                                 <select
-                                                                    value={selectedPhoneCode}
-                                                                    onChange={handlePhoneCodeChange}
-                                                                    required
+                                                                    value={formData.telephone_code1}
+                                                                    onChange={(e) => setFormData(prev => ({
+                                                                        ...prev,
+                                                                        telephone_code1: e.target.value
+                                                                    }))}
                                                                     className="w-[5rem] p-2 border rounded-l-md border-gray-300 bg-white"
                                                                 >
                                                                     <option value="">+Indicatif</option>
                                                                     {indicatif.map((item) => (
-                                                                        <option key={item.id} value={item.dial_code}>
-                                                                            {item.dial_code}
-                                                                        </option>
+                                                                        <option key={item.id} value={item.dial_code}>{item.dial_code}</option>
                                                                     ))}
                                                                 </select>
                                                                 <input
                                                                     type="tel"
-                                                                    name="phone"
+                                                                    name="phone1"
                                                                     placeholder="Numéro"
-                                                                    value={formData.phone?.replace(selectedPhoneCode, "") || ""}
-                                                                    onChange={(e) => {
-                                                                        const rawNumber = e.target.value;
-                                                                        const fullNumber = selectedPhoneCode + rawNumber;
-                                                                        setFormData({ ...formData, phone: fullNumber });
-                                                                    }}
-                                                                    required
+                                                                    value={formData.phone1}
+                                                                    onChange={(e) => setFormData(prev => ({
+                                                                        ...prev,
+                                                                        phone1: e.target.value
+                                                                    }))}
+
                                                                     className="w-2/3 p-2 border border-l-0 rounded-r-md border-gray-300"
                                                                 />
                                                             </div>
@@ -1503,11 +1590,11 @@ const Maps = () => {
 
                                                     <div className="space-y-4">
                                                         <div className="space-y-2">
-                                                            <label className="block text-sm font-medium text-gray-700">Titre du programme phare</label>
-                                                            <input type="text" className="w-full p-2 border rounded-md" name='program_title' value={formData.program_title} onChange={(e) => setFormData({ ...formData, program_title: e.target.value })} />
+                                                            <label className="block text-sm font-medium text-gray-700">Bonnes Pratiques (100 mots max)</label>
+                                                            <textarea type="text" className="w-full p-2 border rounded-md" name='program_title' value={formData.program_title} onChange={(e) => setFormData({ ...formData, program_title: e.target.value })} />
                                                         </div>
 
-                                                        <div className="space-y-2">
+                                                        {/* <div className="space-y-2">
                                                             <label className="block text-sm font-medium text-gray-700">Description (100 mots max)</label>
                                                             <textarea className="w-full p-2 border rounded-md" rows="4" maxlength="500" name='program_description' value={formData.program_description} onChange={(e) => setFormData({ ...formData, program_description: e.target.value })}></textarea>
                                                         </div>
@@ -1524,7 +1611,7 @@ const Maps = () => {
                                                                 <input type="text" placeholder="Résultat 2" className="p-2 border rounded-md" name='result2' value={formData.result2} onChange={(e) => setFormData({ ...formData, result2: e.target.value })} />
                                                                 <input type="text" placeholder="Résultat 3" className="p-2 border rounded-md" name='result3' value={formData.result3} onChange={(e) => setFormData({ ...formData, result3: e.target.value })} />
                                                             </div>
-                                                        </div>
+                                                        </div> */}
                                                     </div>
                                                 </fieldset>
 
@@ -1570,7 +1657,7 @@ const Maps = () => {
                                                                 name='nom'
                                                                 value={formDataBailleur.nom}
                                                                 onChange={(e) => setFormDataBailleur({ ...formDataBailleur, nom: e.target.value })}
-                                                                required
+
                                                                 className="w-full p-2 border rounded-md"
                                                             />
                                                         </div>
@@ -1589,7 +1676,7 @@ const Maps = () => {
                                                         <div className="space-y-2">
                                                             <label className="block text-sm font-medium text-gray-700">Type d'institution <span className="text-red-500">*</span></label>
                                                             <select
-                                                                required
+
                                                                 className="w-full p-2 border rounded-md"
                                                                 name='type_institution'
                                                                 value={formDataBailleur.type_institution}
@@ -1619,7 +1706,7 @@ const Maps = () => {
                                                                 onChange={(e) => setFormDataBailleur({ ...formDataBailleur, pays_origine: Array.from(e.target.selectedOptions, option => option.value) })}
                                                                 className="w-full p-2 border rounded-md"
                                                                 name='pays_origine'
-                                                                multiple
+
                                                             >
                                                                 <option value="">Sélectionner un pays...</option>
                                                                 {data.map((item) => (
@@ -1628,20 +1715,35 @@ const Maps = () => {
                                                             </select>
                                                         </div>
 
-                                                        <div className="space-y-2">
-                                                            <label className="block text-sm font-medium text-gray-700">Couverture géographique <span className="text-red-500">*</span></label>
-                                                            <select
-                                                                onChange={(e) => setFormDataBailleur({ ...formDataBailleur, couverture_geographique: Array.from(e.target.selectedOptions, option => option.value) })}
-                                                                className="w-full p-2 border rounded-md"
-                                                                name='couverture_geographique'
-                                                                multiple
-                                                            >
-                                                                <option value="">Sélectionner une région...</option>
+                                                        <div className="space-y-2 overflow-y-scroll h-32">
+                                                            <label className="block text-sm font-medium text-gray-700">
+                                                                Couverture géographique <span className="text-red-500">*</span>
+                                                            </label>
+                                                            <div className="flex flex-col">
                                                                 {data.map((item) => (
-                                                                    <option key={item.id} value={item.value}>{item.name}</option>
+                                                                    <div key={item.name} className="flex items-center">
+                                                                        <input
+                                                                            type="checkbox"
+                                                                            checked={formDataBailleur.couverture_geographique.includes(item.name)}
+                                                                            value={item.name}
+                                                                            onChange={(e) => {
+                                                                                const { checked, value } = e.target;
+                                                                                setFormDataBailleur((prev) => {
+                                                                                    let updatedcouverture_geographique = checked
+                                                                                        ? [...prev.couverture_geographique, value]
+                                                                                        : prev.couverture_geographique.filter((r) => r !== value);
+                                                                                    return { ...prev, couverture_geographique: updatedcouverture_geographique };
+                                                                                });
+                                                                            }}
+                                                                        />
+                                                                        <label className="ml-2">{item.name}</label>
+                                                                    </div>
                                                                 ))}
-                                                            </select>
+                                                            </div>
                                                         </div>
+
+
+
 
                                                         <div className="space-y-2">
                                                             <label className="block text-sm font-medium text-gray-700">Site web</label>
@@ -1724,7 +1826,7 @@ const Maps = () => {
                                                             <label className="block text-sm font-medium text-gray-700">Email de contact <span className="text-red-500">*</span></label>
                                                             <input
                                                                 type="email"
-                                                                required
+
                                                                 className="w-full p-2 border rounded-md"
                                                                 name='email_contact'
                                                                 value={formDataBailleur.email_contact}
@@ -1757,13 +1859,13 @@ const Maps = () => {
                                                                         ...prev,
                                                                         telephone_number: e.target.value
                                                                     }))}
-                                                                    required
+
                                                                     className="w-2/3 p-2 border border-l-0 rounded-r-md border-gray-300"
                                                                 />
                                                             </div>
                                                         </div>
 
-                                                        <div className="space-y-2 md:col-span-2">
+                                                        {/* <div className="space-y-2 md:col-span-2">
                                                             <label className="block text-sm font-medium text-gray-700">Représentation en Afrique</label>
                                                             <select
                                                                 onChange={(e) => setFormDataBailleur({ ...formDataBailleur, representation_afrique: Array.from(e.target.selectedOptions, option => option.value) })}
@@ -1776,7 +1878,7 @@ const Maps = () => {
                                                                     <option key={item.id} value={item.value}>{item.name}</option>
                                                                 ))}
                                                             </select>
-                                                        </div>
+                                                        </div> */}
 
                                                         <div className="space-y-2 md:col-span-2">
                                                             <label className="block text-sm font-medium text-gray-700">Contact responsable</label>
@@ -1829,23 +1931,23 @@ const Maps = () => {
                                                 </fieldset>
 
                                                 <fieldset className="bg-gray-100 p-6 rounded-lg">
-                                                    <legend className="text-xl font-bold text-alpha mb-4">Stratégie de Financement</legend>
+                                                    <legend className="text-xl font-bold text-alpha mb-4">Programme NEET</legend>
 
                                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                                         <div className="space-y-2">
-                                                            <label className="block text-sm font-medium text-gray-700">Priorités thématiques <span className="text-red-500">*</span></label>
+                                                            <label className="block text-sm font-medium text-gray-700">Bonnes Pratiques (100 mots max)<span className="text-red-500">*</span></label>
                                                             <textarea
                                                                 className="w-full p-2 border rounded-md"
                                                                 rows="3"
                                                                 name='priorites_thematiques'
                                                                 value={formDataBailleur.priorites_thematiques}
                                                                 onChange={(e) => setFormDataBailleur({ ...formDataBailleur, priorites_thematiques: e.target.value })}
-                                                                required
+
                                                             ></textarea>
                                                         </div>
 
-                                                        <div className="space-y-2">
-                                                            <label className="block text-sm font-medium text-gray-700">Modalités de soutien <span className="text-red-500">*</span></label>
+                                                        {/* <div className="space-y-2">
+                                                            <label className="block text-sm font-medium text-gray-700">Modalités de soutiens <span className="text-red-500">*</span></label>
                                                             <div className="space-y-1">
                                                                 {["Subventions", "Prêts", "Assistance technique", "Investissement"].map(option => (
                                                                     <label key={option} className="flex items-center">
@@ -1867,9 +1969,9 @@ const Maps = () => {
                                                                     </label>
                                                                 ))}
                                                             </div>
-                                                        </div>
+                                                        </div> */}
 
-                                                        <div className="space-y-2">
+                                                        {/* <div className="space-y-2">
                                                             <label className="block text-sm font-medium text-gray-700">Montant minimum (€)</label>
                                                             <input
                                                                 type="number"
@@ -1911,11 +2013,11 @@ const Maps = () => {
                                                                 value={formDataBailleur.criteres_eligibilite}
                                                                 onChange={(e) => setFormDataBailleur({ ...formDataBailleur, criteres_eligibilite: e.target.value })}
                                                             ></textarea>
-                                                        </div>
+                                                        </div> */}
                                                     </div>
                                                 </fieldset>
 
-                                                <fieldset className="bg-gray-100 p-6 rounded-lg">
+                                                {/* <fieldset className="bg-gray-100 p-6 rounded-lg">
                                                     <legend className="text-xl font-bold text-alpha mb-4">Portefeuille et Partenariats</legend>
 
                                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -1967,7 +2069,7 @@ const Maps = () => {
                                                             ></textarea>
                                                         </div>
                                                     </div>
-                                                </fieldset>
+                                                </fieldset> */}
 
                                                 <div className="text-center p-4">
                                                     <button type="submit" className="bg-alpha text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors">
@@ -1990,7 +2092,7 @@ const Maps = () => {
                                                         <label className="block text-sm font-semibold text-gray-700">Nom de l'entreprise *</label>
                                                         <input
                                                             type="text"
-                                                            required
+
                                                             value={formDataEntreprise.nom}
                                                             onChange={(e) => setFormDataEntreprise(prev => ({ ...prev, nom: e.target.value }))}
                                                             className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500"
@@ -2010,7 +2112,7 @@ const Maps = () => {
                                                         <label className="block text-sm font-semibold text-gray-700">Secteur d'activité *</label>
                                                         <input
                                                             type="text"
-                                                            required
+
                                                             value={formDataEntreprise.secteur}
                                                             onChange={(e) => setFormDataEntreprise(prev => ({ ...prev, secteur: e.target.value }))}
                                                             className="w-full p-3 border rounded-lg"
@@ -2020,7 +2122,7 @@ const Maps = () => {
                                                     <div className="space-y-2">
                                                         <label className="block text-sm font-semibold text-gray-700">Taille de l'entreprise *</label>
                                                         <select
-                                                            required
+
                                                             value={formDataEntreprise.taille}
                                                             onChange={(e) => setFormDataEntreprise(prev => ({ ...prev, taille: e.target.value }))}
                                                             className="w-full p-3 border rounded-lg"
@@ -2038,7 +2140,7 @@ const Maps = () => {
                                                         <select
                                                             value={formDataEntreprise.pays_siege}
                                                             onChange={(e) => setFormDataEntreprise(prev => ({ ...prev, pays_siege: e.target.value }))}
-                                                            required
+
                                                             className="w-full p-2 border rounded-md"
                                                         >
                                                             <option value="">Sélectionner un pays...</option>
@@ -2058,21 +2160,30 @@ const Maps = () => {
                                                         />
                                                     </div>
 
-                                                    <div className="space-y-2 md:col-span-2">
-                                                        <label className="block text-sm font-semibold text-gray-700">Présence en Afrique</label>
-                                                        <select
-                                                            multiple
-                                                            value={formDataEntreprise.regions_afrique}
-                                                            onChange={(e) => {
-                                                                const selected = Array.from(e.target.selectedOptions, option => option.value);
-                                                                setFormDataEntreprise(prev => ({ ...prev, regions_afrique: selected }));
-                                                            }}
-                                                            className="w-full p-2 border rounded-md"
-                                                        >
+                                                    <div className="space-y-2 overflow-y-scroll h-32">
+                                                        <label className="block text-sm font-medium text-gray-700">Pays d'interventions</label>
+                                                        <div className="flex flex-col">
                                                             {data.map((item) => (
-                                                                <option key={item.id} value={item.value}>{item.name}</option>
+                                                                <div key={item.name} className="flex items-center">
+                                                                    <input
+                                                                        type="checkbox"
+                                                                        checked={formDataEntreprise.regions_afrique.includes(item.name)}
+                                                                        value={item.name}
+                                                                        onChange={(e) => {
+                                                                            const { checked, value } = e.target;
+                                                                            setFormDataEntreprise((prev) => {
+                                                                                let updatedregions_afrique = checked
+                                                                                    ? [...prev.regions_afrique, value]
+                                                                                    : prev.regions_afrique.filter((r) => r !== value);
+                                                                                return { ...prev, regions_afrique: updatedregions_afrique };
+                                                                            });
+                                                                        }}
+                                                                    />
+                                                                    <label className="ml-2">{item.name}</label>
+                                                                </div>
                                                             ))}
-                                                        </select>
+
+                                                        </div>
                                                     </div>
 
                                                     <div className="space-y-2">
@@ -2143,7 +2254,7 @@ const Maps = () => {
                                                         <label className="block text-sm font-semibold text-gray-700">Email de contact *</label>
                                                         <input
                                                             type="email"
-                                                            required
+
                                                             value={formDataEntreprise.email_contact}
                                                             onChange={(e) => setFormDataEntreprise(prev => ({ ...prev, email_contact: e.target.value }))}
                                                             className="w-full p-3 border rounded-lg"
@@ -2373,7 +2484,7 @@ const Maps = () => {
                                                                 value={formDataAgence.nom}
                                                                 onChange={(e) => setFormDataAgence(prev => ({ ...prev, nom: e.target.value.trim() }))}
                                                                 className="w-full p-3 border rounded-lg border-gray-300 focus:ring-2 focus:ring-blue-500"
-                                                                required
+
                                                             />
                                                         </div>
 
@@ -2392,7 +2503,7 @@ const Maps = () => {
                                                             <label className="block text-sm font-semibold text-gray-700">Type d'organisation <span className="text-red-500">*</span></label>
                                                             <select
                                                                 name="type_organisation"
-                                                                required
+
                                                                 className="w-full p-3 border rounded-lg"
                                                                 onChange={(e) => setFormDataAgence(prev => ({ ...prev, type_organisation: e.target.value }))}
                                                             >
@@ -2453,7 +2564,7 @@ const Maps = () => {
                                                             <input
                                                                 type="email"
                                                                 name="email_institutionnel"
-                                                                required
+
                                                                 className="w-full p-3 border rounded-lg"
                                                                 onChange={(e) => setFormDataAgence(prev => ({ ...prev, email_institutionnel: e.target.value }))}
                                                             />
@@ -2782,7 +2893,7 @@ const Maps = () => {
                                                                 name="institution_name"
                                                                 value={formDataPublique.institution_name}
                                                                 onChange={(e) => setFormDataPublique({ ...formDataPublique, institution_name: e.target.value })}
-                                                                required
+
                                                                 className="w-full p-3 border rounded-lg"
                                                             />
                                                         </div>
@@ -2804,7 +2915,7 @@ const Maps = () => {
                                                                 name="institution_type"
                                                                 value={formDataPublique.institution_type}
                                                                 onChange={(e) => setFormDataPublique({ ...formDataPublique, institution_type: e.target.value })}
-                                                                required
+
                                                                 className="w-full p-3 border rounded-lg"
                                                             >
                                                                 <option value="">Sélectionner...</option>
@@ -2820,7 +2931,7 @@ const Maps = () => {
                                                                 name="country"
                                                                 value={formDataPublique.country}
                                                                 onChange={(e) => setFormDataPublique({ ...formDataPublique, country: e.target.value })}
-                                                                required
+
                                                                 className="w-full p-2 border rounded-md"
                                                             >
                                                                 <option value="">Sélectionner un pays...</option>
@@ -2854,7 +2965,7 @@ const Maps = () => {
                                                                 name="email"
                                                                 value={formDataPublique.email}
                                                                 onChange={(e) => setFormDataPublique({ ...formDataPublique, email: e.target.value })}
-                                                                required
+
                                                                 className="w-full p-3 border rounded-lg"
                                                             />
                                                         </div>
@@ -2866,7 +2977,7 @@ const Maps = () => {
                                                                     name="phoneCode"
                                                                     value={formDataPublique.phone_code}
                                                                     onChange={(e) => setFormDataPublique({ ...formDataPublique, phone_code: e.target.value })}
-                                                                    required
+
                                                                     className="w-[5rem] p-2 border rounded-l-md border-gray-300 bg-white"
                                                                 >
                                                                     <option value="">+Indicatif</option>
@@ -2880,7 +2991,7 @@ const Maps = () => {
                                                                     placeholder="Numéro"
                                                                     value={formDataPublique.phone_number}
                                                                     onChange={(e) => setFormDataPublique({ ...formDataPublique, phone_number: e.target.value })}
-                                                                    required
+
                                                                     className="w-2/3 p-2 border border-l-0 rounded-r-md border-gray-300"
                                                                 />
                                                             </div>
@@ -3153,7 +3264,7 @@ const Maps = () => {
                                                                 name="nom"
                                                                 value={formDataAcademique.nom}
                                                                 onChange={handleAcademiqueChange}
-                                                                required
+
                                                                 className="w-full p-3 border rounded-lg"
                                                             />
                                                         </div>
@@ -3175,7 +3286,7 @@ const Maps = () => {
                                                                 name="type_institution"
                                                                 value={formDataAcademique.type_institution}
                                                                 onChange={handleAcademiqueChange}
-                                                                required
+
                                                                 className="w-full p-3 border rounded-lg"
                                                             >
                                                                 <option value="">Sélectionner...</option>
@@ -3191,7 +3302,7 @@ const Maps = () => {
                                                                 name="pays"
                                                                 value={formDataAcademique.pays}
                                                                 onChange={handleAcademiqueChange}
-                                                                required
+
                                                                 className="w-full p-2 border rounded-md"
                                                             >
                                                                 <option value="">Sélectionner un pays...</option>
@@ -3236,7 +3347,7 @@ const Maps = () => {
                                                                 name="email"
                                                                 value={formDataAcademique.email}
                                                                 onChange={handleAcademiqueChange}
-                                                                required
+
                                                                 className="w-full p-3 border rounded-lg"
                                                             />
                                                         </div>
@@ -3248,7 +3359,7 @@ const Maps = () => {
                                                                     name="telephone_code"
                                                                     value={formDataAcademique.telephone_code}
                                                                     onChange={handleAcademiqueChange}
-                                                                    required
+
                                                                     className="w-[5rem] p-2 border rounded-l-md border-gray-300 bg-white"
                                                                 >
                                                                     <option value="">+Indicatif</option>
@@ -3262,7 +3373,7 @@ const Maps = () => {
                                                                     placeholder="Numéro"
                                                                     value={formDataAcademique.telephone_number}
                                                                     onChange={handleAcademiqueChange}
-                                                                    required
+
                                                                     className="w-2/3 p-2 border border-l-0 rounded-r-md border-gray-300"
                                                                 />
                                                             </div>
@@ -3519,11 +3630,16 @@ const Maps = () => {
                                     )}
 
                                 </div>
+
+
                             </div>
                         )}
 
+
                     </div>
+
                 </div >
+
             )}
         </>
     );

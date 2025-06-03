@@ -52,11 +52,11 @@ const DetailsPage = () => {
                         </td>
                     </tr>
                     <tr className="border-b border-gray-300">
-                        <th className="text-left p-4 bg-[#e0ecff9d] text-black">Pays</th>
+                        <th className="text-left p-4 bg-[#e0ecff9d] text-black">Pays d'implantations</th>
                         <td className="p-4">{details.country}</td>
                     </tr>
                     <tr className="border-b border-gray-300">
-                        <th className="text-left p-4 bg-[#e0ecff9d] text-black">Régions</th>
+                        <th className="text-left p-4 bg-[#e0ecff9d] text-black">Pays d'interventions</th>
                         <td className="p-4">{details.regions}</td>
                     </tr>
                     <tr className="border-b border-gray-300 align-top">
@@ -104,10 +104,10 @@ const DetailsPage = () => {
                         <td className="p-4">{details.annual_beneficiaries}</td>
                     </tr>
                     <tr className="border-b border-gray-300">
-                        <th className="text-left p-4 bg-[#e0ecff9d] text-black">Titre du programme</th>
+                        <th className="text-left p-4 bg-[#e0ecff9d] text-black">Bonnes Pratiques</th>
                         <td className="p-4">{details.program_title}</td>
                     </tr>
-                    <tr className="border-b border-gray-300 align-top">
+                    {/* <tr className="border-b border-gray-300 align-top">
                         <th className="text-left p-4 bg-[#e0ecff9d] text-black">Description du programme</th>
                         <td className="p-4">{details.program_description}</td>
                     </tr>
@@ -124,7 +124,7 @@ const DetailsPage = () => {
                                 <li>{details.result3}</li>
                             </ul>
                         </td>
-                    </tr>
+                    </tr> */}
                     <tr className="border-b border-gray-300">
                         <th className="text-left p-4 bg-[#e0ecff9d] text-black">Partenaires techniques</th>
                         <td className="p-4">{details.technical_partners}</td>
@@ -186,10 +186,6 @@ const DetailsPage = () => {
                         <th className="text-left p-4 bg-[#e0ecff9d] text-black w-1/3">Téléphone</th>
                         <td className="p-4">{details.telephone}</td>
                     </tr>
-                    <tr className="border-b border-gray-300">
-                        <th className="text-left p-4 bg-[#e0ecff9d] text-black w-1/3">Représentation en Afrique</th>
-                        <td className="p-4">{details.representation_afrique}</td>
-                    </tr>
 
                     <tr className="border-b border-gray-300">
                         <th className="text-left p-4 bg-[#e0ecff9d] text-black w-1/3 align-top">Contact responsable</th>
@@ -215,10 +211,10 @@ const DetailsPage = () => {
                     </tr>
 
                     <tr className="border-b border-gray-300">
-                        <th className="text-left p-4 bg-[#e0ecff9d] text-black w-1/3">Priorités thématiques</th>
+                        <th className="text-left p-4 bg-[#e0ecff9d] text-black w-1/3">Bonnes Pratiques</th>
                         <td className="p-4">{details.priorites_thematiques}</td>
                     </tr>
-                    <tr className="border-b border-gray-300">
+                    {/* <tr className="border-b border-gray-300">
                         <th className="text-left p-4 bg-[#e0ecff9d] text-black w-1/3">Modalités de soutien</th>
                         <td className="p-4">{details.modalites_soutien}</td>
                     </tr>
@@ -256,7 +252,7 @@ const DetailsPage = () => {
      border-gray-300'>
                         <th className="text-left p-4 bg-[#e0ecff9d] text-black w-1/3">Procédure de soumission</th>
                         <td className="p-4">{details.procedure_soumission}</td>
-                    </tr>
+                    </tr> */}
                 </tbody>
             </table>
         </div>
@@ -291,7 +287,7 @@ const DetailsPage = () => {
                     </tr>
 
                     <tr className="border-b border-gray-300">
-                        <th className="text-left p-4 bg-[#e0ecff9d] text-black w-1/3">Régions en Afrique</th>
+                        <th className="text-left p-4 bg-[#e0ecff9d] text-black w-1/3">Pays d'interventions</th>
                         <td className="p-4">{details.regions_afrique}</td>
                     </tr>
 
