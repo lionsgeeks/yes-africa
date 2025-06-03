@@ -70,12 +70,10 @@ const Maps = () => {
   };
   const handleSearch = (e) => {
     const search = e.target.value;
-    console.log(search);
     setSearchTerm(search);
     handleFilter(selectedCategory, search);
   };
   const goToMarker = (markerData) => {
-    console.log(markerData);
     if (mapRef.current && markerData.lat && markerData.lng) {
       mapRef.current.flyTo({
         center: [markerData.lng, markerData.lat],
@@ -118,7 +116,6 @@ const Maps = () => {
       try {
         const response = await axios.post(url + "/api/approved");
         setMarkersData(response.data);
-        console.log("response :", response?.data);
       } catch (error) {
         console.error("Error fetching approved shows:", error);
       }
@@ -211,11 +208,6 @@ const Maps = () => {
     };
   }, [filtredData, url]);
 
-  useEffect(() => {
-    if (newPosition) {
-      console.log("Nouvelle position:", newPosition);
-    }
-  }, [newPosition]);
 
   const handleCountryChange = (e) => setSelectedCountry(e.target.value);
   const handleRegionChange = (e) => setSelectedRegion(e.target.value);
@@ -751,7 +743,6 @@ const Maps = () => {
             }
           );
 
-          console.log("Réponse du serveur:", response.data);
           alert("Formulaire soumis avec succès!");
           setShowModal(false);
           window.location.reload();
@@ -1005,7 +996,6 @@ const Maps = () => {
               },
             }
           );
-          console.log(response);
           alert("Enregistrement réussi!");
           setShowModal(false);
           window.location.reload();
@@ -1641,8 +1631,8 @@ const Maps = () => {
         id="map-container"
         ref={mapContainerRef}
       >
-        <div className="fixed w-[35%] z-20 top-[15%] right-4 flex gap-3">
-          <div className=" lg:w-[60%] right-[3%]  bg-white rounded">
+        <div className="fixed w-[75%] lg:w-[35%] z-20 top-[15%] left-2 lg:right-4 flex flex-col lg:flex-row gap-3">
+          <div className="lg:w-[60%] right-[3%]  bg-white rounded">
             <input
               ref={searchInputRef}
               onFocus={() => setIsInputFocus(true)}
@@ -1696,12 +1686,12 @@ const Maps = () => {
               }}
             >
               <option value="">All Categories</option>
-              <option value="App\\Models\\Organization">Organization</option>
-              <option value="App\\Models\\Bailleur">Bailleur</option>
-              <option value="App\\Models\\Publique">Publique</option>
-              <option value="App\\Models\\Entreprise">Entreprise</option>
-              <option value="App\\Models\\Academique">Academique</option>
-              <option value="App\\Models\\Agence">Agence</option>
+              <option value="App\\Models\\Organization">Organisation de la Société Civile (OSC)</option>
+              <option value="App\\Models\\Bailleur">Bailleur de Fonds</option>
+              <option value="App\\Models\\Publique">Institution Publique</option>
+              <option value="App\\Models\\Entreprise">Entreprise du Secteur Privé</option>
+              <option value="App\\Models\\Academique">Institution Académique et de Recherche</option>
+              <option value="App\\Models\\Agence">Agence des Nation Unies et de Coopération Internationale</option>
             </select>
           </div>
         </div>
