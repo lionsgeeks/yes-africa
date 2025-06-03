@@ -1656,7 +1656,7 @@ const Maps = () => {
                   >
                     <div className="w-10 aspect-square object-cover bg-gray-100 rounded-full ">
                       <img
-                        src={url + `/storage/${element.showable.logo}`}
+                        src={url + `/storage/${element.showable.logo || element.showable.logo_path}`}
                         className="w-full h-full object-cover rounded-full"
                         alt="logo"
                       />
