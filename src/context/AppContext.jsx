@@ -15,8 +15,8 @@ const AppProvider = ({ children }) => {
   const [articles, setArticles] = useState();
   const url = "https://management.youthempowermentsummit.africa";
   const IMAGEURL = "https://management.youthempowermentsummit.africa/storage/images/"
-  // const url = "http://172.28.0.109:8002";
-  // const IMAGEURL = "http://172.28.0.109:8000/storage/images/"
+  // const url = "http://192.168.100.80:8000";
+  // const IMAGEURL = "http://192.168.100.80:8000/storage/images/"
 
   useEffect(() => {
     window.scrollTo(0, 0);
