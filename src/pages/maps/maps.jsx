@@ -9,7 +9,7 @@ import { useAppContext } from "../../context/AppContext";
 import Drawer from "../../components/Drawer";
 
 const Maps = () => {
-  const [openCardIndex, setOpenCardIndex] = useState(null);
+  const [openCardIndex, setOpenCardIndex] = useState("");
   const [markersData, setMarkersData] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [step, setStep] = useState(1);
@@ -39,6 +39,7 @@ const Maps = () => {
   const [isInputFocuse, setIsInputFocus] = useState();
   const [searchTerm, setSearchTerm] = useState("");
   const searchInputRef = useRef(null);
+
   useEffect(() => {
     handleFilter(selectedCategory, searchTerm);
   }, [markersData]);
@@ -160,7 +161,6 @@ const Maps = () => {
   useEffect(() => {
     markersRef.current.forEach((marker) => marker.remove());
     markersRef.current = [];
-
     if (!mapRef.current) return;
 
     filtredData.forEach((marker, idx) => {
@@ -193,7 +193,7 @@ const Maps = () => {
 
         markersRef.current.push(mapMarker);
 
-        const uniqueKey = `${marker.showable_type}-${idx}`;
+        const uniqueKey = marker?.showable_type + "-" + idx;
         el.addEventListener("click", (e) => {
           e.stopPropagation();
           setShowModal(false);
@@ -207,7 +207,6 @@ const Maps = () => {
       markersRef.current = [];
     };
   }, [filtredData, url]);
-
 
   const handleCountryChange = (e) => setSelectedCountry(e.target.value);
   const handleRegionChange = (e) => setSelectedRegion(e.target.value);
@@ -1656,7 +1655,12 @@ const Maps = () => {
                   >
                     <div className="w-10 aspect-square object-cover bg-gray-100 rounded-full ">
                       <img
-                        src={url + `/storage/${element.showable.logo || element.showable.logo_path}`}
+                        src={
+                          url +
+                          `/storage/${
+                            element.showable.logo || element.showable.logo_path
+                          }`
+                        }
                         className="w-full h-full object-cover rounded-full"
                         alt="logo"
                       />
@@ -1686,12 +1690,22 @@ const Maps = () => {
               }}
             >
               <option value="">All Categories</option>
-              <option value="App\\Models\\Organization">Organisation de la Société Civile (OSC)</option>
+              <option value="App\\Models\\Organization">
+                Organisation de la Société Civile (OSC)
+              </option>
               <option value="App\\Models\\Bailleur">Bailleur de Fonds</option>
-              <option value="App\\Models\\Publique">Institution Publique</option>
-              <option value="App\\Models\\Entreprise">Entreprise du Secteur Privé</option>
-              <option value="App\\Models\\Academique">Institution Académique et de Recherche</option>
-              <option value="App\\Models\\Agence">Agence des Nation Unies et de Coopération Internationale</option>
+              <option value="App\\Models\\Publique">
+                Institution Publique
+              </option>
+              <option value="App\\Models\\Entreprise">
+                Entreprise du Secteur Privé
+              </option>
+              <option value="App\\Models\\Academique">
+                Institution Académique et de Recherche
+              </option>
+              <option value="App\\Models\\Agence">
+                Agence des Nation Unies et de Coopération Internationale
+              </option>
             </select>
           </div>
         </div>
@@ -1738,9 +1752,10 @@ const Maps = () => {
           style={{ width: "100%", height: "500px" }}
         />
         {Object.entries(markersData).map(([category, markersArray]) =>
-          markersArray.map((element, idx) => {
-            const uniqueKey = `${category}-${idx}`;
+        markersArray.map((element, idx) => {
+        const uniqueKey = `${element.showable_type}-${idx}`;
             const isOpen = openCardIndex === uniqueKey;
+            // alert(isOpen, uniqueKey);
             return (
               <div key={uniqueKey}>
                 {isOpen && (
