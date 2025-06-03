@@ -203,7 +203,7 @@ const Participants = () => {
                                     name="logo"
                                     id="logo"
                                     required
-                                    capture="user"
+                                    capture=""
                                 />
                                 <label
                                     htmlFor="logo"
