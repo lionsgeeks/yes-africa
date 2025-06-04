@@ -125,7 +125,7 @@ const DetailsPage = () => {
                             </ul>
                         </td>
                     </tr> */}
-                    <tr className="border-b border-gray-300">
+                    {/* <tr className="border-b border-gray-300">
                         <th className="text-left p-4 bg-[#e0ecff9d] text-black">Partenaires techniques</th>
                         <td className="p-4">{details.technical_partners}</td>
                     </tr>
@@ -133,7 +133,7 @@ const DetailsPage = () => {
      border-gray-300'>
                         <th className="text-left p-4 bg-[#e0ecff9d] text-black">Partenaires financiers</th>
                         <td className="p-4">{details.financial_partners}</td>
-                    </tr>
+                    </tr> */}
                 </tbody>
             </table>
         </div>
