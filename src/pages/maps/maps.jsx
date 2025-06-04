@@ -520,7 +520,7 @@ const Maps = () => {
                         }
                     );
                     alert("Organisation créée avec succès !");
-                    setShowModal(true);
+                    setShowModal(false);
                 } catch (error) {
                     console.error("Error:", error);
                     let errorMessage = "Une erreur est survenue";
@@ -1172,7 +1172,7 @@ const Maps = () => {
     };
 
     const handleRegister = async () => {
-        setLoading(true);
+        setLoading(false);
         setError("");
         try {
             await axios.post(url + "/api/register-map", {
