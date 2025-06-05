@@ -520,7 +520,7 @@ const Maps = () => {
                         }
                     );
                     alert("Organisation créée avec succès !");
-                    setShowModal(false);
+                    setShowModal(true);
                 } catch (error) {
                     console.error("Error:", error);
                     let errorMessage = "Une erreur est survenue";
@@ -2390,59 +2390,106 @@ const Maps = () => {
 
                                                     <div className="grid grid-cols-1 md:grid-cols-1 gap-2">
                                                         <label className="block text-sm font-medium text-gray-700">
-                                                            intervention_areas
+                                                            Domaines d’intervention
                                                         </label>
-                                                        {[
-                                                            "Migration",
-                                                            "Sport",
-                                                            "Éducation",
-                                                            "Santé",
-                                                            "Formation professionnelle",
-                                                            "Entrepreneuriat",
-                                                        ].map((area) => (
-                                                            <label
-                                                                key={area}
-                                                                className="flex items-center ml-2"
-                                                            >
-                                                                <input
-                                                                    type="checkbox"
-                                                                    multiple
-                                                                    checked={formData.intervention_areas.includes(
-                                                                        area
-                                                                    )}
-                                                                    onChange={(e) => {
-                                                                        const newAreas = e.target.checked
-                                                                            ? [...formData.intervention_areas, area]
-                                                                            : formData.intervention_areas.filter(
-                                                                                (a) => a !== area
-                                                                            );
-                                                                        setFormData({
-                                                                            ...formData,
-                                                                            intervention_areas: newAreas,
-                                                                        });
-                                                                    }}
-                                                                    className="mr-2 domaine-checkbox"
-                                                                />
-                                                                {area}
-                                                            </label>
-                                                        ))}
+                                                        <div className="h-72 overflow-y-scroll border border-gray-300 rounded-md p-2 space-y-1">
 
+                                                            {[
+                                                                "Éducation et formation professionnelle",
+                                                                "Santé",
+                                                                "Emploi et insertion professionnelle",
+                                                                "Migration et intégration",
+                                                                "Environnement et développement durable",
+                                                                "Culture et patrimoine",
+                                                                "Sport et loisirs",
+                                                                "Droits humains et citoyenneté",
+                                                                "Logement et habitat",
+                                                                "Justice et médiation",
+                                                                "Famille et enfance",
+                                                                "Handicap et inclusion",
+                                                                "Urgence et action humanitaire",
+                                                                "Recherche et innovation sociale",
+                                                                "Agriculture et alimentation",
+                                                                "Économie sociale et solidaire",
+                                                                "Numérique et technologies",
+                                                                "Transport et mobilité",
+                                                                "Autre",
+                                                            ].map((area) => (
+                                                                <label
+                                                                    key={area}
+                                                                    className="flex items-center ml-2"
+                                                                >
+                                                                    <input
+                                                                        type="checkbox"
+                                                                        multiple
+                                                                        checked={formData.intervention_areas.includes(
+                                                                            area
+                                                                        )}
+                                                                        onChange={(e) => {
+                                                                            const newAreas = e.target.checked
+                                                                                ? [...formData.intervention_areas, area]
+                                                                                : formData.intervention_areas.filter(
+                                                                                    (a) => a !== area
+                                                                                );
+                                                                            setFormData({
+                                                                                ...formData,
+                                                                                intervention_areas: newAreas,
+                                                                            });
+                                                                        }}
+                                                                        className="mr-2 domaine-checkbox"
+                                                                    />
+                                                                    {area}
+                                                                </label>
+                                                            ))}
+                                                        </div>
                                                         <div className="space-y-2">
                                                             <label className="block text-sm font-medium text-gray-700">
-                                                                Groupes cibles
+                                                                Groupes cibles à intégrer sur l’annuaire
                                                             </label>
-                                                            <textarea
-                                                                className="w-full p-2 border rounded-md"
-                                                                rows="3"
-                                                                name="target_groups"
-                                                                value={formData.target_groups}
-                                                                onChange={(e) =>
-                                                                    setFormData({
-                                                                        ...formData,
-                                                                        target_groups: e.target.value,
-                                                                    })
-                                                                }
-                                                            ></textarea>
+
+                                                            <div className="h-72 overflow-y-scroll border border-gray-300 rounded-md p-2 space-y-1">
+                                                                {[
+                                                                    "Bébés dénutris",
+                                                                    "Enfants en situation de précarité ou de danger",
+                                                                    "Enfants / Jeunes en situation de rue",
+                                                                    "Enfants / Jeunes en décrochage scolaire",
+                                                                    "Jeunes NEET (jeunes ni en emploi, ni en études, ni en formation)",
+                                                                    "Adolescents / Jeunes en rupture familiale et sociale",
+                                                                    "Familles monoparentales en difficulté",
+                                                                    "Femmes en situation de vulnérabilité",
+                                                                    "Femmes victimes de violences basées sur le genre / en situation de vulnérabilité",
+                                                                    "Femmes victimes de trafic sexuel",
+                                                                    "Seniors isolés ou en perte d'autonomie",
+                                                                    "Personnes âgées en situation de précarité",
+                                                                    "Personnes sans domicile fixe",
+                                                                    "Personnes en situation de handicap mentale ou physique",
+                                                                    "Demandeurs d'asile et réfugiés",
+                                                                    "Personnes en situation irrégulière",
+                                                                    "Personnes victimes d'une situation de guerre",
+                                                                    "Personnes victimes de traite d’êtres humains",
+                                                                    "Autre",
+                                                                ].map((group) => (
+                                                                    <label key={group} className="flex items-center ml-2">
+                                                                        <input
+                                                                            type="checkbox"
+                                                                            multiple
+                                                                            checked={formData.target_groups.includes(group)}
+                                                                            onChange={(e) => {
+                                                                                const newGroups = e.target.checked
+                                                                                    ? [...formData.target_groups, group]
+                                                                                    : formData.target_groups.filter((g) => g !== group);
+                                                                                setFormData({
+                                                                                    ...formData,
+                                                                                    target_groups: newGroups,
+                                                                                });
+                                                                            }}
+                                                                            className="mr-2"
+                                                                        />
+                                                                        {group}
+                                                                    </label>
+                                                                ))}
+                                                            </div>
+
                                                         </div>
 
                                                         <div className="space-y-2">
