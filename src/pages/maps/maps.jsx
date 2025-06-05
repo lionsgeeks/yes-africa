@@ -1852,7 +1852,7 @@ const Maps = () => {
                         )}
 
                         {step === 3 && (
-                            <div className="bg-white p-6 rounded-lg shadow-md w-[42vw] ">
+                            <div className="bg-white p-6 rounded-lg shadow-md w-full sm:w-[90vw] md:w-[70vw] lg:w-[50vw] xl:w-[42vw]">
                                 <h2 className="text-xl font-bold text-alpha mb-4">
                                     Type d’organisation
                                 </h2>
@@ -1893,7 +1893,7 @@ const Maps = () => {
 
                         {showOrgModal && (
                             <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-                                <div className="bg-white p-6 rounded shadow-lg w-[80%] overflow-y-scroll ">
+                                <div className="bg-white p-2.5 md:p-6 rounded shadow-lg w-[80%] overflow-y-scroll ">
                                     <h2 className="text-xl font-bold mb-4">
                                         {
                                             {
