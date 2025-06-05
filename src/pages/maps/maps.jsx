@@ -520,7 +520,7 @@ const Maps = () => {
                         }
                     );
                     alert("Organisation créée avec succès !");
-                    setShowModal(true);
+                    setShowModal(false);
                 } catch (error) {
                     console.error("Error:", error);
                     let errorMessage = "Une erreur est survenue";
@@ -2392,7 +2392,7 @@ const Maps = () => {
                                                         <label className="block text-sm font-medium text-gray-700">
                                                             Domaines d’intervention
                                                         </label>
-                                                        <div className="h-72 overflow-y-scroll border border-gray-300 rounded-md p-2 space-y-1">
+                                                        <div className="h-52 overflow-y-scroll border border-gray-300 rounded-md p-2 space-y-1">
 
                                                             {[
                                                                 "Éducation et formation professionnelle",
@@ -2447,7 +2447,7 @@ const Maps = () => {
                                                                 Groupes cibles à intégrer sur l’annuaire
                                                             </label>
 
-                                                            <div className="h-72 overflow-y-scroll border border-gray-300 rounded-md p-2 space-y-1">
+                                                            <div className="h-52 overflow-y-scroll border border-gray-300 rounded-md p-2 space-y-1">
                                                                 {[
                                                                     "Bébés dénutris",
                                                                     "Enfants en situation de précarité ou de danger",
