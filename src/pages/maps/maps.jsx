@@ -117,7 +117,7 @@ const Maps = () => {
       try {
         const response = await axios.post(url + "/api/approved");
         setMarkersData(response.data);
-        console.log(response.data);
+        // console.log(response.data);
       } catch (error) {
         console.error("Error fetching approved shows:", error);
       }
@@ -190,7 +190,7 @@ const Maps = () => {
         const uniqueKey = `${marker.showable_type}-${marker.showable.id}`;
         el.addEventListener("click", (e) => {
           e.stopPropagation();
-          console.log("click : ", uniqueKey);
+          // console.log("click : ", uniqueKey);
           setShowModal(false);
           setOpenCardIndex(uniqueKey);
         });
@@ -427,7 +427,7 @@ const Maps = () => {
 
   const handleSubmit = async (e, formType) => {
     e.preventDefault();
-
+    setLoading(true);
     const includeCoordinates = (formData) => {
       formData.append("lat", newPosition.lat);
       formData.append("lng", newPosition.lng);
@@ -517,6 +517,8 @@ const Maps = () => {
           );
           alert("Organisation créée avec succès !");
           setShowModal(false);
+          setLoading(false);
+          window.location.reload();
         } catch (error) {
           console.error("Error:", error);
           let errorMessage = "Une erreur est survenue";
@@ -620,6 +622,7 @@ const Maps = () => {
           );
           alert("Bailleur enregistré avec succès!");
           setShowModal(false);
+          setLoading(false);
           window.location.reload();
         } catch (error) {
           console.error("Erreur:", error.response?.data);
@@ -738,6 +741,7 @@ const Maps = () => {
 
           alert("Formulaire soumis avec succès!");
           setShowModal(false);
+          setLoading(false);
           window.location.reload();
         } catch (error) {
           console.error(
@@ -866,6 +870,7 @@ const Maps = () => {
           });
           alert("Enregistrement réussi!");
           setShowModal(false);
+          setLoading(false);
           window.location.reload();
         } catch (error) {
           console.error("Erreur:", error.response?.data);
@@ -991,6 +996,7 @@ const Maps = () => {
           );
           alert("Enregistrement réussi!");
           setShowModal(false);
+          setLoading(false);
           window.location.reload();
         } catch (error) {
           console.error("Erreur:", error.response?.data);
@@ -1105,6 +1111,7 @@ const Maps = () => {
           );
           alert("Institution académique enregistrée avec succès!");
           setShowModal(false);
+          setLoading(false);
           window.location.reload();
         } catch (error) {
           console.error("Erreur:", error.response?.data);
@@ -2321,6 +2328,7 @@ const Maps = () => {
                             <div className="space-y-2 md:col-span-2">
                               <label className="block text-sm font-medium text-gray-700">
                                 Adresse postale
+                                <span className="text-red-500">*</span>
                               </label>
                               <textarea
                                 className="w-full p-2 border rounded-md"
@@ -2339,6 +2347,7 @@ const Maps = () => {
                             <div className="space-y-2 md:col-span-2">
                               <label className="block text-sm font-medium text-gray-700">
                                 Contact principal
+                                <span className="text-red-500">*</span>
                               </label>
                               <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
                                 <input
@@ -2388,6 +2397,7 @@ const Maps = () => {
                         <fieldset className="bg-gray-100 p-6 rounded-lg">
                           <legend className="text-xl font-bold text-alpha mb-4">
                             Profil d'activité
+                            <span className="text-red-500">*</span>
                           </legend>
 
                           <div className="grid grid-cols-1 md:grid-cols-1 gap-2">
@@ -2612,9 +2622,32 @@ const Maps = () => {
                         <div className="text-center">
                           <button
                             type="submit"
-                            className="bg-alpha text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors"
+                            className="bg-alpha text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors flex items-center justify-center"
+                            disabled={loading}
                           >
-                            Soumettre le formulaire
+                            {loading && (
+                              <svg
+                                className="animate-spin h-5 w-5 mr-2 text-white"
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                              >
+                                <circle
+                                  className="opacity-25"
+                                  cx="12"
+                                  cy="12"
+                                  r="10"
+                                  stroke="currentColor"
+                                  strokeWidth="4"
+                                />
+                                <path
+                                  className="opacity-75"
+                                  fill="currentColor"
+                                  d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+                                />
+                              </svg>
+                            )}
+                            {loading ? "Envoi..." : "Soumettre le formulaire"}
                           </button>
                         </div>
                       </form>
