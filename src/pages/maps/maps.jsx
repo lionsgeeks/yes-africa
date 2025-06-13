@@ -75,9 +75,9 @@ const Maps = () => {
     handleFilter(selectedCategory, search);
   };
   const goToMarker = (markerData) => {
-    if (mapRef.current && markerData.lat && markerData.lng) {
+    if (mapRef.current && markerData.lat && markerData?.lng) {
       mapRef.current.flyTo({
-        center: [markerData.lng, markerData.lat],
+        center: [markerData?.lng, markerData.lat],
         zoom: 7,
         essential: true,
       });
@@ -117,7 +117,7 @@ const Maps = () => {
       try {
         const response = await axios.post(url + "/api/approved");
         setMarkersData(response.data);
-        // console.log(response.data);
+        console.log(response.data);
       } catch (error) {
         console.error("Error fetching approved shows:", error);
       }
@@ -139,13 +139,13 @@ const Maps = () => {
     mapRef.current.on("move", () => {
       const mapCenter = mapRef.current?.getCenter();
       const mapZoom = mapRef.current?.getZoom();
-      setPosition([mapCenter.lng, mapCenter.lat]);
+      setPosition([mapCenter?.lng, mapCenter.lat]);
       setZoom(mapZoom);
     });
 
     mapRef.current.on("click", (e) => {
       const lat = e.lngLat.lat;
-      const lng = e.lngLat.lng;
+      const lng = e.lngLat?.lng;
       setNewPosition({ lat, lng });
       setStep(1);
       setShowModal(true);
@@ -164,8 +164,8 @@ const Maps = () => {
     markersRef.current = [];
     if (!mapRef.current) return;
 
-    filtredData.forEach((marker, idx) => {
-      if (marker.showable.lat && marker.showable.lng) {
+    filtredData?.forEach((marker, idx) => {
+      if (marker.showable?.lat && marker.showable?.lng) {
         const el = document.createElement("div");
         el.className = "custom-marker";
 
@@ -182,12 +182,12 @@ const Maps = () => {
         el.appendChild(img);
 
         const mapMarker = new mapboxgl.Marker(el)
-          .setLngLat([marker.showable.lng, marker.showable.lat])
+          .setLngLat([marker.showable?.lng, marker.showable.lat])
           .addTo(mapRef.current);
 
         markersRef.current.push(mapMarker);
 
-        const uniqueKey = `${marker.showable_type}-${marker.showable.id}`;
+        const uniqueKey = `${marker.showable_type}-${marker.showable?.id}`;
         el.addEventListener("click", (e) => {
           e.stopPropagation();
           // console.log("click : ", uniqueKey);
@@ -430,7 +430,7 @@ const Maps = () => {
     setLoading(true);
     const includeCoordinates = (formData) => {
       formData.append("lat", newPosition.lat);
-      formData.append("lng", newPosition.lng);
+      formData.append("lng", newPosition?.lng);
     };
 
     const formDataOsc = new FormData();
@@ -1184,7 +1184,7 @@ const Maps = () => {
         name: form.name,
         email: form.email,
         lat: newPosition.lat,
-        lng: newPosition.lng,
+        lng: newPosition?.lng,
       });
       setStep(2);
       $;
@@ -1754,7 +1754,7 @@ const Maps = () => {
         />
         {Object.entries(markersData).map(([category, markersArray]) =>
           markersArray.map((element, idx) => {
-            const uniqueKey = `${element.showable_type}-${element.showable.id}`;
+            const uniqueKey = `${element.showable_type}-${element.showable?.id}`;
             const isOpen = openCardIndex === uniqueKey;
             return (
               <div key={uniqueKey}>
