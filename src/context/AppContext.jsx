@@ -13,11 +13,20 @@ const AppContext = createContext();
 const AppProvider = ({ children }) => {
   const path = useLocation();
   const [articles, setArticles] = useState();
+  const [stores, setStores] = useState();
   const url = "https://management.youthempowermentsummit.africa";
   const IMAGEURL = "https://management.youthempowermentsummit.africa/storage/images/"
   // const url = "http://192.168.100.80:8000";
   // const IMAGEURL = "http://192.168.100.80:8000/storage/images/"
-
+const fetchStores = async () => {
+  try {
+    const response = await axios.get("https://app.youthempowermentsummit.africa/api/general");
+    setStores(response?.data.general);
+    console.log(response?.data.general);
+  } catch (error) {
+    console.log("Error fetching stores", error);
+  }
+};
   useEffect(() => {
     window.scrollTo(0, 0);
     const fetchArticles = async () => {
@@ -32,8 +41,8 @@ const AppProvider = ({ children }) => {
         console.log("Error fetching articles", error);
       }
     }
-
-    fetchArticles()
+    fetchStores();
+    fetchArticles();
   }, [path]);
 
   const savedSelectedLanguage = localStorage.getItem("selectedLanguage");
@@ -49,7 +58,7 @@ const AppProvider = ({ children }) => {
   return (
     <>
       <AppContext.Provider
-        value={{ articles, selectedLanguage, setSelectedLanguage, url, IMAGEURL }}
+        value={{ articles, selectedLanguage, setSelectedLanguage, url, IMAGEURL, stores }}
       >
         {children}
       </AppContext.Provider>

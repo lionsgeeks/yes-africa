@@ -1,28 +1,49 @@
 import playstore from "../../../assets/images/play_store_logo.png";
 import applestore from "../../../assets/images/app_store_logo.png";
 import heroAppMockup from "../../../assets/images/app-mockup2.jpg";
+import TransText from "../../../components/TransText";
+import { useAppContext } from "../../../context/AppContext";
 
 const MobileApp = () => {
+  const { selectedLanguage, stores } = useAppContext();
   return (
-    <div className="lg:h-[80vh] flex lg:flex-row flex-col-reverse lg:gap-0 gap-6 items-center lg:px-14 overflow-hidden">
+    <div dir={selectedLanguage === "ar" ? "rtl" : "ltr"} className="lg:h-[80vh] flex lg:flex-row flex-col-reverse lg:gap-0 gap-6 items-center lg:px-14 overflow-hidden">
       <div className="lg:w-1/2 w-full lg:h-full lg:p-0 p-12  flex flex-col justify-center space-y-6">
         <p className="text-xl text-gray-700 font-medium text-center lg:text-start">
-          — Stay Connected, Stay Informed
+          <TransText
+            en="— Stay Connected, Stay Informed"
+            fr="– Restez connecté, restez informé"
+            ar="– كن على اتصال، وابقَ على اطلاع"
+          />
         </p>
         <h1 className="lg:text-5xl text-xl text-center lg:text-start font-bold text-gray-900 leading-tight">
-          Download the Y.E.S Africa Summit App Now!
+          <TransText
+            en="Download the Y.E.S Africa Summit App Now!"
+            fr="Téléchargez dès maintenant l’application Y.E.S Africa Summit !"
+            ar="حمّل تطبيق Y.E.S Africa Summit الآن!"
+          />
         </h1>
         <p className="text-lg text-center lg:text-start text-gray-600 lg:w-4/5">
-          Make the most of your summit experience with the official Y.E.S Africa
+          <TransText
+            en="Make the most of your summit experience with the official Y.E.S Africa
           Summit mobile app. Get instant access to event schedules, speaker
-          info, networking tools, and live session updates — all in one place.
+          info, networking tools, and live session updates — all in one place."
+            fr="Optimisez votre expérience du sommet grâce à l’application mobile officielle Y.E.S Africa Summit.
+Accédez rapidement aux programmes, aux informations sur les intervenants, aux outils de networking, et recevez des mises à jour en temps réel."
+            ar="استمتع بتجربة القمة على أكمل وجه مع التطبيق الرسمي لقمة Y.E.S Africa.
+يمكنك الوصول مباشرة إلى الجداول الزمنية، معلومات المتحدثين، أدوات التواصل، والتحديثات المباشرة."
+          />
         </p>
         <p className="text-lg text-center lg:text-start text-gray-600 lg:w-4/5">
-          Download the app today and be ready for the summit!
+          <TransText
+            en="Download the app today and be ready for the summit!"
+            fr="Téléchargez l’application aujourd’hui et soyez prêt pour le sommet !"
+            ar="حمّل التطبيق الآن وكن جاهزًا للقمة!"
+          />
         </p>
         <div className="flex gap-4 mt-6">
           <a
-            href="https://play.google.com/store/apps/details?id=com.youthempowerment.yesmobil&hl=fr"
+            href={stores?.playstore}
             target="_blank"
             className="transform transition-transform duration-300 hover:scale-105"
           >
@@ -33,7 +54,7 @@ const MobileApp = () => {
             />
           </a>
           <a
-            href="https://apps.apple.com/ma/app/y-e-s-africa/id6746057896"
+            href={stores?.appstore}  
             target="_blank"
             className="transform transition-transform duration-300 hover:scale-105"
           >
