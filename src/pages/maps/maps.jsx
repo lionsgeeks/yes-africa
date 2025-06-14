@@ -117,7 +117,7 @@ const Maps = () => {
       try {
         const response = await axios.post(url + "/api/approved");
         setMarkersData(response.data);
-        console.log(response.data);
+        // console.log(response.data);
       } catch (error) {
         console.error("Error fetching approved shows:", error);
       }
@@ -1752,8 +1752,8 @@ const Maps = () => {
           ref={mapRef}
           style={{ width: "100%", height: "500px" }}
         />
-        {Object.entries(markersData).map(([category, markersArray]) =>
-          markersArray.map((element, idx) => {
+        {Object.entries(markersData)?.map(([category, markersArray]) =>
+          markersArray?.map((element, idx) => {
             const uniqueKey = `${element.showable_type}-${element.showable?.id}`;
             const isOpen = openCardIndex === uniqueKey;
             return (
