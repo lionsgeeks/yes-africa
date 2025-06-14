@@ -1659,7 +1659,7 @@ const Maps = () => {
                         src={
                           url +
                           `/storage/${
-                            element.showable.logo || element.showable.logo_path
+                            element?.showable?.logo || element?.showable?.logo_path
                           }`
                         }
                         className="w-full h-full object-cover rounded-full"
@@ -1668,11 +1668,11 @@ const Maps = () => {
                     </div>
                     <div>
                       <p className="font-bold">
-                        {element.showable_type === "App\\Models\\Organization"
-                          ? element.showable.name
-                          : element.showable_type === "App\\Models\\Publique"
-                          ? element.showable.institution_name
-                          : element.showable.nom}{" "}
+                        {element?.showable_type === "App\\Models\\Organization"
+                          ? element?.showable?.name
+                          : element?.showable_type === "App\\Models\\Publique"
+                          ? element?.showable?.institution_name
+                          : element?.showable?.nom}{" "}
                       </p>
                       {/* <p>Morocco</p> */}
                     </div>
