@@ -14,6 +14,7 @@ import { SponsorsForm } from "./pages/formulaire/SponsorsForm";
 import Maps from "./pages/maps/maps";
 import DetailsPage from "./pages/maps/details";
 import Navbar from "./layouts/navbar";
+import DownloadPage from "./pages/download";
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
         <Navbar />
           <Routes>
             <Route path="/yes-backend" element={<ManagementRedirect />} />
+            <Route path="/apk/download" element={<DownloadPage />} />
             <Route path="/*" element={<ErrorPage />} />
             <Route path="/" element={<HomePage />} />
             <Route path="/about" element={<AboutPage />} />
